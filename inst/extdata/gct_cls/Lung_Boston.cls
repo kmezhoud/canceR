@@ -1,0 +1,3 @@
+62 2 1
+# DEAD ALIVE
+D D D D D D D D D D D D D D D D D D D D D D D D D D D D D D D A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A

@@ -1,0 +1,34 @@
+import(tkrplot)
+import(cgdsr)
+import(tcltk)
+import(tcltk2)
+#importClassesFrom(Biobase, ExpressionSet, eSet, VersionedBiobase, Versioned)
+importFrom(Biobase,exprs,openPDF,ExpressionSet,pData,varLabels)
+#importFrom(Biobase, openPDF)
+
+
+#importFrom(hgu133a.db, hgu133aCHR, hgu133aCHRLOC, hgu133aCHRLOCEND)
+
+importFrom(phenoTest, ExpressionPhenoTest,getSignif, getFc)
+
+import(RSvgDevice)
+import(Formula)
+
+#import(GSEAlm)
+importFrom(GSEAlm, gsealmPerm)
+
+importFrom(rpart, rpart)
+
+importClassesFrom(GSEABase, GeneSet, GeneSetCollection)
+
+importFrom(geNetClassifier,calculateGenesRanking)
+importFrom(geNetClassifier,genesDetails)
+
+
+import(RUnit)
+#importFrom(biomaRt, getLDS, useMart)
+
+
+exportPattern("^[[:alpha:]]+")
+#export(canceR)
+
