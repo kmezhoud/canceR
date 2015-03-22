@@ -21,6 +21,6 @@ Depends:
 Imports:
     GSEABase,GSEAlm,tkrplot,
     geNetClassifier,RUnit,
-    Formula, rpart,RSvgDevice,
+    Formula, rpart,
     Biobase, phenoTest
 biocViews: GUI, GeneExpression, Software

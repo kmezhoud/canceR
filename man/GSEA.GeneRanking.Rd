@@ -1,0 +1,50 @@
+\name{GSEA.GeneRanking}
+\alias{GSEA.GeneRanking}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+GSEA.GeneRanking
+}
+\description{
+GSEA.GeneRanking
+}
+
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{A}{
+%%     ~~Describe \code{A} here~~
+}
+  \item{class.labels}{
+%%     ~~Describe \code{class.labels} here~~
+}
+  \item{gene.labels}{
+%%     ~~Describe \code{gene.labels} here~~
+}
+  \item{nperm}{
+%%     ~~Describe \code{nperm} here~~
+}
+  \item{permutation.type}{
+%%     ~~Describe \code{permutation.type} here~~
+}
+  \item{sigma.correction}{
+%%     ~~Describe \code{sigma.correction} here~~
+}
+  \item{fraction}{
+%%     ~~Describe \code{fraction} here~~
+}
+  \item{replace}{
+%%     ~~Describe \code{replace} here~~
+}
+  \item{reverse.sign}{
+%%     ~~Describe \code{reverse.sign} here~~
+}
+}
+
+
+\examples{
+\dontrun{
+library(canceR)
+## Load workspace
+load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+##Run.GSEA()
+}
+}

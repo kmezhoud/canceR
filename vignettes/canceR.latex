@@ -10,7 +10,7 @@
 %tools::compactPDF("/home/mezhoud/CGDS-R/canceR/vignettes/canceR.pdf", gs_quality="ebook")
 
 
-%% synchronize Github
+%% synchronize with Github
 %%git remote add origin git@github.com:kmezhoud/canceR.git
 %%git pull origin master
 %%git push -u origin master
@@ -770,6 +770,10 @@ Their are two plotting functions.The first one (1 Gene/ 2 Gen. Profiles) plots g
 \item Spearman correlation is used for non-parametric data.
 \item Kendall tau is non-parametric test that mesures the rank correlation. 
 \end{itemize}
+
+\item Axes : User can permutate variables in axis.
+
+\paragraph{NB}: RSvgDevice package is not working in Windows OS. Linux or MAC user needs to load before \texttt{RSvgDevice} library to save plots as svg format.
 
 \end{itemize}
 

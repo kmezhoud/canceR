@@ -11,7 +11,7 @@ importFrom(Biobase,exprs,openPDF,ExpressionSet,pData,varLabels)
 
 importFrom(phenoTest, ExpressionPhenoTest,getSignif, getFc)
 
-import(RSvgDevice)
+#import(RSvgDevice)
 import(Formula)
 
 #import(GSEAlm)

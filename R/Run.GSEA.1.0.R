@@ -60,6 +60,7 @@ GSEA.Analyze.Sets(
   
   directory           = myGlobalEnv$fname.Output,        # Directory where to store output and results (default: "")
    topgs = 20,                              # number of top scoring gene sets used for analysis
+   non.interactive.run = F,
    height = 16,
    width = 16
 )
