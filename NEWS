@@ -1,3 +1,6 @@
+CHANGES IN VERSION 0.99.2
+1- Add documentation for RUN.GSEA() function
+2- Remove dependency of RSvgDevice. This package is not available for Windows OS.
 CHANGES IN VERSION 0.99.1
 1- Add examples in documents
 ----------------------
