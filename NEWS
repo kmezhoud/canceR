@@ -4,6 +4,7 @@ CHANGES IN VERSION 0.99.3
 3- getProfDataMultipleGenes(): line 7 add testCheckedCaseGenProf()
 
 CHANGES IN VERSION 0.99.2
+<<<<<<< HEAD
 1- Add documentation for RUN.GSEA() function
 2- Remove dependency of RSvgDevice. This package is not available for Windows OS.
 
@@ -11,5 +12,23 @@ CHANGES IN VERSION 0.99.1
 1- Add examples in documents
 
 ----------------------
+=======
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Add documentation for RUN.GSEA() function
+
+    o Remove dependency of RSvgDevice. This package is not available for Windows OS.
+
+CHANGES IN VERSION 0.99.1
+--------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Add examples in documents
+
+>>>>>>> 44dcc68b14f9c1d10323d195aeb68469d3255bf8
 NEW FEATURES
+
     o Package released
