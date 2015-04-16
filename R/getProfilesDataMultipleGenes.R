@@ -75,6 +75,12 @@ getProfilesDataMultipleGenes <-function(getSummaryGSEAExists){
             if (myGlobalEnv$curselectGenProfs[k] <= LengthGenProfs && myGlobalEnv$curselectGenProfs[k]>LastLengthGenProfs){    
                 
                 GenProf<- myGlobalEnv$GenProfsRefStudies[myGlobalEnv$curselectGenProfs[k]]
+                ## verify if GenProf has expression data
+                if (length(grep("mrna", GenProf, ignore.case = TRUE))==0 && length(grep("gistic", GenProf, ignore.case = TRUE))==0&& length(grep("CNA", GenProf, ignore.case = TRUE))==0){
+                    msgNoExp <- "Select Expression data from Genetics Profiles"
+                    tkmessageBox(message = msgNoExp, icon='info')
+                    break
+                }
                 #print("GenProf"); print(k)
                 Case<- myGlobalEnv$CasesRefStudies[myGlobalEnv$curselectCases[k]]
                 #print("Case");print(k)

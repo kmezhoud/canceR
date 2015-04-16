@@ -93,7 +93,7 @@ getMutData <- function(){
                         
                         name <- paste("MutDataSub", c, sep="")
                         #Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)
-                        assign(name, MutDataSub, envir=.GlobalEnv)
+                        assign(name, MutDataSub, envir=myGlobalEnv)
                         
                         title=paste(myGlobalEnv$StudyRefCase[c],myGlobalEnv$CasesStudies[myGlobalEnv$curselectCases[c]+1], myGlobalEnv$GenProfsStudies[myGlobalEnv$curselectGenProfs[c]+1], sep=": ")
                         getInTable(MutDataSub, title=title)
