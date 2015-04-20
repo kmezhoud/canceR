@@ -9,7 +9,7 @@ importFrom(Biobase,exprs,openPDF,ExpressionSet,pData,varLabels)
 
 #importFrom(hgu133a.db, hgu133aCHR, hgu133aCHRLOC, hgu133aCHRLOCEND)
 
-importFrom(phenoTest, ExpressionPhenoTest,getSignif, getFc)
+#importFrom(phenoTest, ExpressionPhenoTest,getSignif, getFc)
 
 #import(RSvgDevice)
 import(Formula)
