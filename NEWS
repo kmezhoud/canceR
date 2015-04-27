@@ -1,19 +1,34 @@
+CHANGES IN VERSION 1.1.1
+------------------------
+1- Survival plot
+1.1 add getSurvival(Coxph) and getSurvival.Rd file
+1.1 getOptionGSEAlm(s, ClinicalData): add line 105
+    ### only for Survival plot
+    myGlobalEnv$variable <- as.formula(sprintf("Surv(OS_MONTH  S,OS_STATUS)~%s", coVariables))
+1.2 cancer.latex file: add Survival plot paragraph
+1.3 add image in /image folder: KM.png, Coxph.png
+1.4 getCasesGenProfs(): add getSurvival in Plot menu
+
+RELEASE 1.0.0 (17 Avril 2015)
+-------------------------
+
 CHANGES IN VERSION 0.99.3
-1- getProfilesDataMultipleGenes: line 78: Test only Genetic Profiles having mRNA expression to get Profile Data.
-2- getMutData(): line 96  change .GlobalEnv to myGlobalEnv)
-3- getProfDataMultipleGenes(): line 7 add testCheckedCaseGenProf()
+-------------------------
+
+    o getProfilesDataMultipleGenes: line 78: Test only Genetic Profiles having mRNA expression to get Profile Data.
+    o  getMutData(): line 96  change .GlobalEnv to myGlobalEnv)
+    o  getProfDataMultipleGenes(): line 7 add testCheckedCaseGenProf()
 
 CHANGES IN VERSION 0.99.2
-<<<<<<< HEAD
-1- Add documentation for RUN.GSEA() function
-2- Remove dependency of RSvgDevice. This package is not available for Windows OS.
+-------------------------
+
+    o Add documentation for RUN.GSEA() function
+    o Remove dependency of RSvgDevice. This package is not available for Windows OS.
 
 CHANGES IN VERSION 0.99.1
-1- Add examples in documents
-
-----------------------
-=======
 -------------------------
+
+    o Add examples in documents
 
 SIGNIFICANT USER-VISIBLE CHANGES
 
@@ -28,7 +43,6 @@ SIGNIFICANT USER-VISIBLE CHANGES
 
     o Add examples in documents
 
->>>>>>> 44dcc68b14f9c1d10323d195aeb68469d3255bf8
 NEW FEATURES
 
     o Package released

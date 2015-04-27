@@ -41,7 +41,7 @@ dialogOptionGSEAlm <- function(k, ClinicalData){
     
 
     #####################
-#    
+   
 #     tkgrid(frameCoVariables)
 #     tkgrid.configure(frameCoVariables, sticky="new")
 #     
@@ -60,7 +60,6 @@ dialogOptionGSEAlm <- function(k, ClinicalData){
 #         labelI <- tklabel(frameCoVariables,text= names(ClinicalData[i]))
 #         tkgrid(labelI,cbi)
 #     }
-
     OnOK <- function(){
         
         ######################
@@ -102,6 +101,9 @@ dialogOptionGSEAlm <- function(k, ClinicalData){
 #         }
         
         myGlobalEnv$namesClinicalData <- namesClinicalData
+
+        ### only for Survival plot
+        myGlobalEnv$variable <- as.formula(sprintf("Surv(OS_MONTHS,OS_STATUS)~%s", coVariables))
 
         #coVariables<-paste0(strsplit(namesClinicalData, '')[[1]][c(-1,-2)], collapse = '')
         coVariables <- sprintf("~%s", coVariables)

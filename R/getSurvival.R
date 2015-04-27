@@ -1,0 +1,135 @@
+getSurvival<- function(Coxph){
+    #library(survival)
+    
+    ## verify checked cases
+    if(!exists("curselectCases", envir = myGlobalEnv) || length(myGlobalEnv$curselectCases)!=1){
+        msgNoCases <- "Select ONE Case"
+        tkmessageBox(message=msgNoCases)
+        stop(msgNoCases)
+    }
+    
+    
+    
+    ## Correspond the name study to selectec case in multiple studies choice
+    LengthCases <- 0
+    
+    for (s in 1:length(myGlobalEnv$checked_Studies)){
+        
+        LengthCases <- LengthCases + myGlobalEnv$LCases[s]+1
+        
+        if(myGlobalEnv$curselectCases <= LengthCases){
+            
+            Case<- myGlobalEnv$CasesRefStudies[myGlobalEnv$curselectCases]
+            ClinicData <- getClinicalData(myGlobalEnv$cgds,Case)
+            
+            
+            ##Verify if there are Age,OS_STATUS, OS_MONTHS, DFS_STATUS
+            if(length(grep("^OS_STATUS$", names(ClinicData), ignore.case = TRUE))==1&&   
+                   length(grep("^OS_MONTHS$", names(ClinicData), ignore.case = TRUE))==1 &&
+                   length(grep("^DFS_STATUS$", names(ClinicData), ignore.case = TRUE))==1
+            ){
+                
+                ClinicData[ClinicData== "DECEASED"] <- 1
+                ClinicData[ClinicData== "Deceased"] <- 1
+                ClinicData[ClinicData== "LIVING"] <- 0
+                ClinicData[ClinicData== "Living"] <- 0
+                ClinicData$OS_STATUS <- as.numeric(ClinicData$OS_STATUS)
+                myGlobalEnv$ClinicData <- ClinicData
+                ## Subset plot space into 3
+                #layout(matrix(c(1,1,2,3), 2, 2, byrow = FALSE))
+                if(Coxph==0){
+                    dialogOptionGSEAlm(s,ClinicData)
+                    n<- length(names(table(ClinicData[myGlobalEnv$curselect])))
+                    #fit a Kaplan-Meier and plot it
+                    par(mfrow=c(1,1))
+                    fit <- survival::survfit(myGlobalEnv$variable, type="kaplan-meier", conf.type="log",data=ClinicData)
+                    plot(fit,pch=20,conf.int = FALSE, lty=2:3,lwd=2 ,xlab="OS_MONTHS", ylab="OS_STATUS: Survival", main=myGlobalEnv$StudyChoice[s], cex.main = 0.8, cex.lab= 0.7, cex.axis= 0.7, col=1:n)
+                    legend("topright", c(names(table(ClinicData[myGlobalEnv$curselect]))), col=1:n,lty = 2:3, cex=0.7, bty = 'n')
+                    #                 ## 45, 1.09
+                    ############
+                    #                 plotCommand<- function(){
+                    #                     #fit a Kaplan-Meier and plot it
+                    #                     par(mfrow=c(1,1))
+                    #                     fit <- survfit(Surv(OS_MONTHS,OS_STATUS)~DFS_STATUS, data=ClinicData)
+                    #                     
+                    # #                     if (inherits(try(plot(fit,pch=20,lty=2:3, xlab="OS_MONTHS", ylab="OS_STATUS: Survival", main=myGlobalEnv$StudyChoice[s], cex.main = 0.8, cex.lab= 0.7, cex.axis= 0.7  ), silent=TRUE),"try-error"))
+                    # #                     {
+                    # #                         msgBadMARGIN <- paste(" Error in plot.new() : figure margins too large ")
+                    # #                         tkmessageBox(message=msgBadMARGIN, icon="warning")
+                    # #                         stop(msgBadMARGIN)
+                    # #                     } else{         
+                    #                         plot(fit,pch=20,lty=2:3, xlab="OS_MONTHS", ylab="OS_STATUS: Survival", main=myGlobalEnv$StudyChoice[s], cex.main = 0.8, cex.lab= 0.7, cex.axis= 0.7  )
+                    #                         legend(45, 1.09, c("DiseaseFree", "Recurred/Progressed"), lty = 2:3, cex=0.7, bty = 'n')
+                    #                         
+                    #                #     }
+                    #                 }
+                    #                 Title<- paste (myGlobalEnv$StudyRefCase,"Kaplan-Meier fit", sep=": ")
+                    #                 plotModel(plotCommand, title=Title,hscale=1 vscale=1)
+                    #                 #plotCommand(s)
+                    #                 #######
+                    
+                    
+                    
+                }else if(Coxph==1){
+                    if(exists("age", envir=myGlobalEnv)){
+                        rm(age, envir = myGlobalEnv)
+                    }
+                    dialogOptionGSEAlm(s,ClinicData)
+                    n<- length(names(table(ClinicData[myGlobalEnv$curselect])))
+                    
+                    #if(length(grep("^AGE$", names(ClinicData),ignore.case = TRUE))==1){
+                        
+                        ttAge <- tktoplevel()
+                        tktitle(ttAge) <- "Choose numeric variable"
+                        Age_Entry  = tclVar(median(ClinicData[,myGlobalEnv$curselect], na.rm=TRUE))
+                        ScaleAge <- tkscale(ttAge,length=200,from=min(as.numeric(ClinicData[,myGlobalEnv$curselect]), na.rm=TRUE),to=max(as.numeric(ClinicData[,myGlobalEnv$curselect]), na.rm = TRUE),showvalue=TRUE,
+                                            variable=Age_Entry,resolution=1,orient='horiz')
+                        tkgrid(ScaleAge)
+                        
+                        OkOn<-function(){
+                            
+                            #Entry Threshold of miRNA correlation
+                            myGlobalEnv$age <- as.numeric(tclvalue(Age_Entry))
+                            tkdestroy(ttAge) 
+                            
+                        }
+                        
+                        Ok.but <- tkbutton(ttAge, text= "OK", command= OkOn)
+                        
+                        tkgrid(Ok.but)
+                        tkwait.window(ttAge)
+                        #tkgrid.configure(Ok.but, sticky="n", column=0)
+                
+                        #fit a Cox proportional hazards model and plot the  
+                        #predicted survival for a 60 year old 
+                        par(mfrow=c(1,2))
+                        fit<- survival::coxph(myGlobalEnv$variable, data= myGlobalEnv$ClinicData, method="breslow", na.action=na.exclude)
+                    
+                    #ClinicData <- myGlobalEnv$ClinicData
+                        #title <- paste("Cox: Predicted survival for a",myGlobalEnv$age, names(ClinicData[myGlobalEnv$curselect]))
+                        plot(survfit(fit, newdata=data.frame(ClinicData[myGlobalEnv$curselect]== myGlobalEnv$age)),xlab = "OS_MONTHS", ylab="OS_STATUS: Survival", main=myGlobalEnv$StudyChoice[s], cex=1, col=1:n, cex.main = 0.8, cex.lab= 0.7, cex.axis= 0.7) 
+                        
+                        #legend("bottomleft", c(names(table(ClinicData[myGlobalEnv$curselect]))),col=1:n, lty = 2:3, cex=0.7, bty = 'n')
+                        text(60,1.0,paste("Cox: Predicted survival for a",myGlobalEnv$age, names(ClinicData[myGlobalEnv$curselect])), cex=0.65)
+                        
+                        res <- survival::cox.zph(fit)
+                        ##capture results 
+                        resCap <- capture.output(print(res))
+                        plot(res,main= resCap, cex.main = 0.8, cex.lab= 0.7, cex=0.6,cex.axis= 0.7 ) # plot curves
+                        #text(0, 0,main= resCap, cex=0.7)
+#                     }else{
+#                         msgNoAGE <- "There is no AGE data"
+#                         tkmessageBox(message=msgNoAGE, icon="warning")
+#                         stop(msgNoAGE)
+#                     } 
+                    #tkwait.window(ttAge)
+                }
+                
+            }else{
+                msgNoData <- "There is no \n OS_STATUT or OS_MONTHS or DFS_STATUS data"
+                tkmessageBox(message=msgNoData, icon="warning")
+                stop(msgNoData)
+            }
+        }
+    }
+}

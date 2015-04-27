@@ -9,12 +9,6 @@
 %% Reduce the size of Vignette.pdf file
 %tools::compactPDF("/home/mezhoud/CGDS-R/canceR/vignettes/canceR.pdf", gs_quality="ebook")
 
-
-%% synchronize with Github
-%%git remote add origin git@github.com:kmezhoud/canceR.git
-%%git pull origin master
-%%git push -u origin master
-
 \documentclass[a4paper]{article}
 %\usepackage[OT1]{fontenc}
 \usepackage{zi4}
@@ -104,7 +98,8 @@ canceR()
 Get the development version from github
 \begin{Schunk}
 \begin{Sinput}
-devtools::install\_git("kmezhoud/canceR")
+library(devtools)
+devtools::install_github("kmezhoud/canceR")
 \end{Sinput}
 \end{Schunk}
 
@@ -771,10 +766,6 @@ Their are two plotting functions.The first one (1 Gene/ 2 Gen. Profiles) plots g
 \item Kendall tau is non-parametric test that mesures the rank correlation. 
 \end{itemize}
 
-\item Axes : User can permutate variables in axis.
-
-\paragraph{NB}: RSvgDevice package is not working in Windows OS. Linux or MAC user needs to load before \texttt{RSvgDevice} library to save plots as svg format.
-
 \end{itemize}
 
 \paragraph{Example: Association  of P53 copy number alteration and mRNA exprssion in glioblastoma}
@@ -818,6 +809,31 @@ No significant pearson correlation was observed between P53 Copy Number Variatio
  \includegraphics[scale=0.5]{image/plot3.jpeg}
  \caption{MAP2K2 and ABHD17A mRNA expression levels correlation in Uterine Corpus Endometrioid Carcinoma}
  \label{plot2}
+ \end{figure}
+ 
+ \subsubsection{Survival Plots}
+ In medical research, it is often useful to estimate the survival of patient amount time at tumor stage, or after treatment or particular event. The OS\_MONTHS is the overall Survival duration of patient after the first surgery. The OS\_STATUS is the event at OS\_MONTHS. The survival plot works only with studies that have non empty OS\_MONTHS and OS\_STATUS.
+ 
+ \paragraph{Kaplan-Meier Curves}
+The Kaplan-Meier estimator mesures the fraction of patients in life for a certain amount of time after the first surgery. The survival curve can be created assuming various situations. This can be calculated for two groups (DiseaseFree, Recurred) or more of subjects. When the shapes of the curves are similar, the Survival would not be dependent of the groups. The Figure~\ref{KM} shows two plots of survival curves depending, in left, to Tumor stage of patients grouped into 4 stages. The curves show that patients with advanced stage (4) have less survive than early ones (stage 1). in the same way, the right plot shows more survival patients without disease than patients with reccured disease.   
+
+\begin{figure}[!ht]
+  \centering
+ \includegraphics[scale=0.5]{image/KM.png}
+ \caption{Kaplan-Meier Curves, left, Tumor Stage; right, DFS\_STATUS}
+ \label{KM}
+ \end{figure}
+ 
+\paragraph{Cox proportional Hazards Model}
+ A Cox model is a statistical technique for exploring relationship between the survival of a patient and several explanatory variables. In survival analysis the Cox model is preferred to a logistic model, since the latter one ignores survival times and censoring information. The Figure~\ref{Coxph} shows an example of Cox model of survival patients wih 62 years old.
+ If selected variable has \texttt{NA} value (Censoring data), two cuvres were ploted (censored and variable).
+ 
+ 
+ \begin{figure}[!ht]
+  \centering
+ \includegraphics[scale=0.5]{image/Coxph.png}
+ \caption{left, Cox Proportional Hazard model; right, plot of residuals and/or test of proportional hazards assumptions for Cox model.}
+ \label{Coxph}
  \end{figure}
  
  

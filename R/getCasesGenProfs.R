@@ -27,6 +27,7 @@ getCasesGenProfs <- function(){
     GeneListMenu <- tkmenu(OpenMenu, tearoff=FALSE)
     Gene1 <- tkmenu(PlotMenu, tearoff= FALSE)
     Gene2 <- tkmenu(PlotMenu, tearoff= FALSE)
+    Survival <- tkmenu(PlotMenu, tearoff= FALSE)
     get <- tkmenu(GSEAMenu, tearoff=FALSE)
     GSEAlm <- tkmenu(GSEAMenu, tearoff=FALSE)
     TreeClass <- tkmenu(ClassMenu, tearoff=FALSE)
@@ -47,6 +48,8 @@ getCasesGenProfs <- function(){
     tkadd(topMenu, "cascade", label = "Help", menu = HelpMenu)
     tkadd(PlotMenu, "cascade", label= "1Gene", menu=Gene1)
     tkadd(PlotMenu, "cascade", label= "2Genes", menu=Gene2)
+    tkadd(PlotMenu, "cascade", label= "Survival", menu=Survival)
+    
     tkadd(GSEAMenu, "cascade", label = "get", menu=get)
     #tkadd(GSEAMenu, "command", label = "Which MSig for gene list", command= function()Match_GeneList_MSigDB())
     #tkadd(GSEAMenu, "command", label = "get MSigDB for eSet", command= function()getMSigDB())
@@ -65,6 +68,8 @@ getCasesGenProfs <- function(){
     tkadd(ProfMenu, "command", label = "Multiple Genes", command= function() getProfilesDataMultipleGenes(getSummaryGSEAExists=0))
     tkadd(Gene1, "command", label = "2 Gen. Profiles",  command = function() plot_1Gene_2GenProfs())
     tkadd(Gene2, "command", label = "1 Gen. Profile", command = function() plot_2Genes_1GenProf())
+    tkadd(Survival, "command", label = "Kaplan-Meier", command = function() getSurvival(Coxph = 0))
+    tkadd(Survival, "command", label = "CoxPH", command = function() getSurvival(Coxph = 1))
     tkadd(PhenoMenu, "command", label = "eSet", command = function() geteSet())
     tkadd(PhenoMenu, "command", label= "Pheno/Exp", command= function() getPhenoTest())
     

@@ -28,6 +28,11 @@ importFrom(geNetClassifier,genesDetails)
 import(RUnit)
 #importFrom(biomaRt, getLDS, useMart)
 
+importFrom(survival, survfit)
+importFrom(survival, coxph)
+importFrom(survival, Surv)
+importFrom(survival,cox.zph)
+
 
 exportPattern("^[[:alpha:]]+")
 #export(canceR)
