@@ -1,8 +1,13 @@
 Package: canceR
 Type: Package
 Title: A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC.
+<<<<<<< HEAD
 Version: 1.1.1
 Date: 2015-04-27
+=======
+Version: 1.1.0
+Date: 2015-04-20
+>>>>>>> e9a2d7d85dde55acac7d8cb976bed7bd15fa4e2f
 Author:    Karim Mezhoud.
            Nuclear Safety Department.
            Nuclear Science Center of Tunisia.
@@ -23,6 +28,11 @@ Depends:
 Imports:
     GSEABase,GSEAlm,tkrplot,
     geNetClassifier,RUnit,
+<<<<<<< HEAD
     Formula, rpart,survival,
     Biobase, phenoTest
+=======
+    Formula, rpart,
+    Biobase
+>>>>>>> e9a2d7d85dde55acac7d8cb976bed7bd15fa4e2f
 biocViews: GUI, GeneExpression, Software
