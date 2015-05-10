@@ -26,7 +26,7 @@
 
 \title{canceR: A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC}
 \author{Karim Mezhoud}
-\date{January 5, 2015}
+\date{Mai 12, 2015}
 \maketitle
 
 
@@ -44,6 +44,8 @@
 \item to classify genes by diseases (\texttt{geNetClassifier},\cite{Aibar2013}), or
 \item to classify genes by variable or phenotype (\texttt{rpart}, \cite{Therneau2014}),
 \item to plot genes correlations.
+\item to plot survival curves
+\item to plot muti-omics data using Circos style (\texttt{circlize}, \cite{Gu2014})
 
 \end{enumerate}
 
@@ -150,6 +152,14 @@ After selecting studies and pressing on "Get Cases and Genetic Profiles" Button,
 %\label{toolbar}
 \subsection{\texttt{Gene List}}
 The first step to get genomics data is to specify what are interesting genes for user. The \texttt{Gene List} button browses folders to load Gene list file or displays examples of genes list. The genes could be in text file (.txt) with one gene by line using HUGO gene Symbol. The function removes automatically duplicate genes.
+\paragraph{Gene List from MSigDB} User can focus  analysis on some gene set or pathways. This function loads gene list from selected gene sets available in MSigDB. 
+
+\begin{figure}[!ht]
+ \centering
+\includegraphics[scale=0.7]{image/GeneListFromMSigDB.png}
+\caption{ Getting Gene List from MSigDB. User can select one by one any gene set using keywords. }
+\label{GeneListFromMSigDB}
+\end{figure}
 
 \subsection{\texttt{Clinical Data}}
 The \texttt{Multiple Cases} button displays successively selected Cases. Results are returned in a table with row for each case and a column for each clinical attribute (Figure~\ref{Fig4}B). User could select all  or some clinical data by checking dialog box (Figure~\ref{Fig4}A). For example, we select clinical attributes:
@@ -812,10 +822,10 @@ No significant pearson correlation was observed between P53 Copy Number Variatio
  \end{figure}
  
  \subsubsection{Survival Plots}
- In medical research, it is often useful to estimate the survival of patient amount time at tumor stage, or after treatment or particular event. The OS\_MONTHS is the overall Survival duration of patient after the first surgery. The OS\_STATUS is the event at OS\_MONTHS. The survival plot works only with studies that have non empty OS\_MONTHS and OS\_STATUS.
+ In medical research is often useful to estimate the survival of patient amount time at tumor stage, or after treatment or particular event. The OS\_MONTHS is the overall Survival duration of patient after the first surgery. The OS\_STATUS is the event at OS\_MONTHS. The survival plot works only with studies that have non empty OS\_MONTHS and OS\_STATUS.
  
  \paragraph{Kaplan-Meier Curves}
-The Kaplan-Meier estimator mesures the fraction of patients in life for a certain amount of time after the first surgery. The survival curve can be created assuming various situations. This can be calculated for two groups (DiseaseFree, Recurred) or more of subjects. When the shapes of the curves are similar, the Survival would not be dependent of the groups. The Figure~\ref{KM} shows two plots of survival curves depending, in left, to Tumor stage of patients grouped into 4 stages. The curves show that patients with advanced stage (4) have less survive than early ones (stage 1). in the same way, the right plot shows more survival patients without disease than patients with reccured disease.   
+The Kaplan-Meier estimator mesures the fraction of patients in life for a certain amount of time after the first surgery. The survival curve can be created assuming various situations. This can be calculated for two groups (DiseaseFree, Recurred) or more of subjects. When the shapes of the curves are similar, the Survival would not be dependent of the groups. The Figure~\ref{KM} shows two plots of survival curves depending, in left, to Tumor stage of patients grouped into 4 stages. The curves show that patients with advanced stage (4) have less survive than early ones (stage 1). in the same way, the right plot shows more survival patients without disease than patients with recurred disease.   
 
 \begin{figure}[!ht]
   \centering
@@ -825,8 +835,8 @@ The Kaplan-Meier estimator mesures the fraction of patients in life for a certai
  \end{figure}
  
 \paragraph{Cox proportional Hazards Model}
- A Cox model is a statistical technique for exploring relationship between the survival of a patient and several explanatory variables. In survival analysis the Cox model is preferred to a logistic model, since the latter one ignores survival times and censoring information. The Figure~\ref{Coxph} shows an example of Cox model of survival patients wih 62 years old.
- If selected variable has \texttt{NA} value (Censoring data), two cuvres were ploted (censored and variable).
+ A Cox model is a statistical technique for exploring relationship between the survival of a patient and several explanatory variables. In survival analysis the Cox model is preferred to a logistic model, since the latter one ignores survival times and censoring information. The Figure~\ref{Coxph} shows an example of Cox model of survival patients with 62 years old.
+ If selected variable has \texttt{NA} value (Censoring data), two curves were plotted (censored and variable).
  
  
  \begin{figure}[!ht]
@@ -836,7 +846,24 @@ The Kaplan-Meier estimator mesures the fraction of patients in life for a certai
  \label{Coxph}
  \end{figure}
  
- 
+  \subsubsection{Circos Style}
+  Circos tools~\cite{Krzywinski2009} is usefull to visualize a multi-omics assays with high number of genes. Despite its  complexe setting it remains unattainable by biologists. \texttt{canceR} makes it easy without any setting. User needs only to select study and which dimensions (Figure~\ref{dialogCircos}) will be plotted. \texttt{canceR} uses \texttt{circlize} package. 
+  
+  
+  
+   \begin{figure}[!ht]
+  \centering
+ \includegraphics[scale=0.01]{image/dialogCircos.png}
+ \caption{Dialog Box to select dimensions and set the thresholds of genes correlation. Only significant correlated genes are plotted.}
+ \label{dialogCircos}
+ \end{figure}
+  
+    \begin{figure}[!ht]
+  \centering
+ \includegraphics[scale=0.6]{image/Circos.png}
+ \caption{Circos plot of 5 diseases (brc\_tcga, gbm\_tcga, prad\_tcga, stad\_tcga, ucec\_tcga\_pub) and 4 dimensions (Exp, CNA, Met HM450 and Mutation). The significant gene were plotted with corresponding color (red (Exp), green (CNA), orange (Methylation) and gold (Mutation) and bilong to two gene sets (purpe : DNA repair, cyano: Responce to oxydative stress). The choice of the gene set was done by selecting Gene list from MSigDB (load Menu).}
+ \label{Circos}
+ \end{figure}
  
 \section{Perspectives}
 \begin{enumerate}

@@ -33,6 +33,8 @@ importFrom(survival, coxph)
 importFrom(survival, Surv)
 importFrom(survival,cox.zph)
 
+import(circlize)
+import(plyr)
 
 exportPattern("^[[:alpha:]]+")
 #export(canceR)

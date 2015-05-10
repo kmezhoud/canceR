@@ -49,6 +49,7 @@ getCasesGenProfs <- function(){
     tkadd(PlotMenu, "cascade", label= "1Gene", menu=Gene1)
     tkadd(PlotMenu, "cascade", label= "2Genes", menu=Gene2)
     tkadd(PlotMenu, "cascade", label= "Survival", menu=Survival)
+    tkadd(PlotMenu, "command", label = "Circos", command = function() getCircos(dimension = "All"))
     
     tkadd(GSEAMenu, "cascade", label = "get", menu=get)
     #tkadd(GSEAMenu, "command", label = "Which MSig for gene list", command= function()Match_GeneList_MSigDB())
@@ -58,6 +59,7 @@ getCasesGenProfs <- function(){
     #Second Menu
     tkadd(GeneListMenu, "command", label = "File", command = function() getGeneList())
     tkadd(GeneListMenu, "command", label = "Example", command = function() getGeneListExample())
+    tkadd(GeneListMenu, "command", label = "MSigDB", command = function() getGeneListFromMSigDB())
     tkadd(ClinMenu, "command", label = "Multiple Cases", command = function() getClinicData_MultipleCases(getSummaryGSEAExists=0))
     #tkadd(ClinMenu, "command", label = "All", command = function() getClinicData_MultipleCases())
     #tkadd(ClinMenu, "command", label = "Single Case", command = function() getClinicData_SingleCase())
@@ -66,6 +68,8 @@ getCasesGenProfs <- function(){
     tkadd(MutMenu, "command", label = "Specific", command= function()getSpecificMut())
     tkadd(ProfMenu, "command", label = "Single Gene", command= function() getProfilesDataSingleGene())
     tkadd(ProfMenu, "command", label = "Multiple Genes", command= function() getProfilesDataMultipleGenes(getSummaryGSEAExists=0))
+    tkadd(ProfMenu, "command", label = "ListProfData", command= function() getListProfData())
+    
     tkadd(Gene1, "command", label = "2 Gen. Profiles",  command = function() plot_1Gene_2GenProfs())
     tkadd(Gene2, "command", label = "1 Gen. Profile", command = function() plot_2Genes_1GenProf())
     tkadd(Survival, "command", label = "Kaplan-Meier", command = function() getSurvival(Coxph = 0))

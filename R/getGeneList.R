@@ -1,5 +1,8 @@
 getGeneList <- function(){
-   
+   if(exists("GeneListMSigDB", envir=myGlobalEnv)){
+       rm("GeneListMSigDB", envir=myGlobalEnv)
+   }
+       
     Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)
     if(exists("Genelistfile", envir = myGlobalEnv)){
         rm(myGlobalEnv$GeneList)
@@ -11,7 +14,7 @@ getGeneList <- function(){
         tkmessageBox(message = "No file was selected!")
         tkfocus(myGlobalEnv$ttCasesGenProfs)
     } else {
-        Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)
+        #Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)
         myGlobalEnv$GeneList<-unique(read.table(myGlobalEnv$GeneListfile))
         
        

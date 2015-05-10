@@ -1,4 +1,29 @@
-CHANGES IN VERSION 1.1.1
+CHANGES IN VERSION 1.1.2 (12 May 2015)
+------------------------
+1- add Circos function to plot Menu
+Function 1:    getGeneListmSigDB(): get Gene list and their gene Sets from MSigDB
+Function 1.1: dialoggetGeneListMSigDB(): Select Gene Sets from list and extract hem genes
+
+Function 2: getListProfData(): This function save Profiles Data of cancer in lists;
+            Outputs:myGlobalEnv$ListProfData$Expression 
+                    myGlobalEnv$ListProfData$CNA    
+                    myGlobalEnv$ListMetData$HM450$StudiesRef
+                    myGlobalEnv$ListMetData$HM27$StudiesRef
+                    myGlobalEnv$ListProfData$RPPA$StudiesRef
+                    myGlobalEnv$ListProfData$miRNA$StudiesRef
+                    myGlobalEnv$ListMutData$StudiesRef
+                    myGlobalEnv$Freq_DfMutData
+
+Function 3 : getCircos(dimension="All"): Main fucntion of Circos plot: plot Tracks        
+            (dimensions) and Sectors (diseases)
+Function 3.1: getCor_ExpCNAMet(ListMatrix, dimension)
+Function 3.2: dialogOptionCircos(): specifing which dimension and Threshold gene 
+                dimensions levels will be plot.
+
+1- dialogMetOption(): add "Circos" argument to make the difference between getMetDataMultipleGene() and getListMetData()
+2- getGeneList(): add rm("GeneListMSigDB"", envir="myGlobalEnv")
+
+CHANGES IN VERSION 1.1.1 (27 April 2015)
 ------------------------
 1- Survival plot
 1.1 add getSurvival(Coxph) and getSurvival.Rd file
@@ -10,7 +35,7 @@ CHANGES IN VERSION 1.1.1
 1.4 getCasesGenProfs(): add getSurvival in Plot menu
 
 
-RELEASE 1.0.0 (17 Avril 2015)
+RELEASE 1.0.0 (17 April 2015)
 -------------------------
 
 CHANGES IN VERSION 0.99.3

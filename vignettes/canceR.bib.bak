@@ -1,0 +1,289 @@
+% This file was created with JabRef 2.10.
+% Encoding: UTF-8
+
+
+@Manual{Aibar2013,
+  Title                    = {geNetClassifier: classify diseases and build associated gene networks using gene expression profiles},
+  Author                   = {Sara Aibar and Celia Fontanillo and Javier De Las Rivas. Bioinformatics and Functional Genomics Group. Cancer Research Center. Salamanca. Spain.},
+  Note                     = {R package version 1.2.0},
+  Year                     = {2013},
+
+  Url                      = {http://bioinfow.dep.usal.es/}
+}
+
+@Article{Cerami2012,
+  Title                    = {The cBio cancer genomics portal: an open platform for exploring multidimensional cancer genomics data.},
+  Author                   = {Cerami, Ethan and Gao, Jianjiong and Dogrusoz, Ugur and Gross, Benjamin E. and Sumer, Selcuk Onur and Aksoy, B{\"{u}}lent Arman and Jacobsen, Anders and Byrne, Caitlin J. and Heuer, Michael L. and Larsson, Erik and Antipin, Yevgeniy and Reva, Boris and Goldberg, Arthur P. and Sander, Chris and Schultz, Nikolaus},
+  Journal                  = {Cancer Discov},
+  Year                     = {2012},
+
+  Month                    = {May},
+  Number                   = {5},
+  Pages                    = {401--404},
+  Volume                   = {2},
+
+  Abstract                 = {The cBio Cancer Genomics Portal (http://cbioportal.org) is an open-access resource for interactive exploration of multidimensional cancer genomics data sets, currently providing access to data from more than 5,000 tumor samples from 20 cancer studies. The cBio Cancer Genomics Portal significantly lowers the barriers between complex genomic data and cancer researchers who want rapid, intuitive, and high-quality access to molecular profiles and clinical attributes from large-scale cancer genomics projects and empowers researchers to translate these rich data sets into biologic insights and clinical applications.},
+  Doi                      = {10.1158/2159-8290.CD-12-0095},
+  Institution              = {Computational Biology Center, Memorial Sloan-Kettering Cancer Center, New York, New York 10021, USA. cancergenomics@cbio.mskcc.org},
+  Keywords                 = {Database Management Systems; Databases, Factual; Genomics; Humans; Internet; Neoplasms, genetics},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {mezhoud},
+  Pii                      = {2/5/401},
+  Pmid                     = {22588877},
+  Timestamp                = {2014.09.15},
+  Url                      = {http://dx.doi.org/10.1158/2159-8290.CD-12-0095}
+}
+
+@Article{Cox1972,
+  Title                    = {Regression models and life tables.},
+  Author                   = {Cox, D. R.},
+  Journal                  = {Journal of the Royal Statistical Society Series B},
+  Year                     = {1972},
+  Number                   = {2},
+  Pages                    = {187-220},
+  Volume                   = {34},
+
+  Owner                    = {mezhoud},
+  Timestamp                = {2014.09.26}
+}
+
+@Article{Gao2013,
+  Title                    = {Integrative analysis of complex cancer genomics and clinical profiles using the cBioPortal.},
+  Author                   = {Gao, Jianjiong and Aksoy, B{\"{u}}lent Arman and Dogrusoz, Ugur and Dresdner, Gideon and Gross, Benjamin and Sumer, S Onur and Sun, Yichao and Jacobsen, Anders and Sinha, Rileen and Larsson, Erik and Cerami, Ethan and Sander, Chris and Schultz, Nikolaus},
+  Journal                  = {Sci Signal},
+  Year                     = {2013},
+
+  Month                    = {Apr},
+  Number                   = {269},
+  Pages                    = {pl1},
+  Volume                   = {6},
+
+  Abstract                 = {The cBioPortal for Cancer Genomics (http://cbioportal.org) provides a Web resource for exploring, visualizing, and analyzing multidimensional cancer genomics data. The portal reduces molecular profiling data from cancer tissues and cell lines into readily understandable genetic, epigenetic, gene expression, and proteomic events. The query interface combined with customized data storage enables researchers to interactively explore genetic alterations across samples, genes, and pathways and, when available in the underlying data, to link these to clinical outcomes. The portal provides graphical summaries of gene-level data from multiple platforms, network visualization and analysis, survival analysis, patient-centric queries, and software programmatic access. The intuitive Web interface of the portal makes complex cancer genomics profiles accessible to researchers and clinicians without requiring bioinformatics expertise, thus facilitating biological discoveries. Here, we provide a practical guide to the analysis and visualization features of the cBioPortal for Cancer Genomics.},
+  Doi                      = {10.1126/scisignal.2004088},
+  Institution              = {Computational Biology Center, Memorial Sloan-Kettering Cancer Center, New York, NY 10065, USA.},
+  Keywords                 = {Gene Expression Profiling; Gene Regulatory Networks; Genetic Predisposition to Disease, genetics; Genomics; Humans; Information Storage and Retrieval, methods; Internet; Neoplasms, genetics/pathology; Reproducibility of Results; Software},
+  Language                 = {eng},
+  Medline-pst              = {epublish},
+  Owner                    = {mezhoud},
+  Pii                      = {scisignal.2004088},
+  Pmid                     = {23550210},
+  Timestamp                = {2014.09.15},
+  Url                      = {http://dx.doi.org/10.1126/scisignal.2004088}
+}
+
+@Article{Gu2014,
+  Title                    = {circlize Implements and enhances circular visualization in R.},
+  Author                   = {Gu, Zuguang and Gu, Lei and Eils, Roland and Schlesner, Matthias and Brors, Benedikt},
+  Journal                  = {Bioinformatics},
+  Year                     = {2014},
+
+  Month                    = {Oct},
+  Number                   = {19},
+  Pages                    = {2811--2812},
+  Volume                   = {30},
+
+  __markedentry            = {[mezhoud:6]},
+  Abstract                 = {Circular layout is an efficient way for the visualization of huge amounts of genomic information. Here we present the circlize package, which provides an implementation of circular layout generation in R as well as an enhancement of available software. The flexibility of this package is based on the usage of low-level graphics functions such that self-defined high-level graphics can be easily implemented by users for specific purposes. Together with the seamless connection between the powerful computational and visual environment in R, circlize gives users more convenience and freedom to design figures for better understanding genomic patterns behind multi-dimensional data.circlize is available at the Comprehensive R Archive Network (CRAN): http://cran.r-project.org/web/packages/circlize/},
+  Doi                      = {10.1093/bioinformatics/btu393},
+  Institution              = {Division of Theoretical Bioinformatics, German Cancer Research Center (DKFZ), Heidelberg Center for Personalized Oncology (DKFZ-HIPO) and Department for Bioinformatics and Functional Genomics, Institute for Pharmacy and Molecular Biotechnology (IPMB) and BioQuant Center, Heidelberg University, 69120 Heidelberg, Germany Division of Theoretical Bioinformatics, German Cancer Research Center (DKFZ), Heidelberg Center for Personalized Oncology (DKFZ-HIPO) and Department for Bioinformatics and Functional Genomics, Institute for Pharmacy and Molecular Biotechnology (IPMB) and BioQuant Center, Heidelberg University, 69120 Heidelberg, Germany.},
+  Keywords                 = {Algorithms; Computational Biology, methods; Computer Graphics; Genome; Genomics, methods; Internet; Programming Languages; Software},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {mezhoud},
+  Pii                      = {btu393},
+  Pmid                     = {24930139},
+  Timestamp                = {2015.05.09},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btu393}
+}
+
+@Article{Jacobsen2013,
+  Title                    = {Analysis of microRNA-target interactions across diverse cancer types.},
+  Author                   = {Jacobsen, Anders and Silber, Joachim and Harinath, Girish and Huse, Jason T. and Schultz, Nikolaus and Sander, Chris},
+  Journal                  = {Nat Struct Mol Biol},
+  Year                     = {2013},
+
+  Month                    = {Nov},
+  Number                   = {11},
+  Pages                    = {1325--1332},
+  Volume                   = {20},
+
+  Abstract                 = {Little is known about the extent to which individual microRNAs (miRNAs) regulate common processes of tumor biology across diverse cancer types. Using molecular profiles of >3,000 tumors from 11 human cancer types in The Cancer Genome Atlas, we systematically analyzed expression of miRNAs and mRNAs across cancer types to infer recurrent cancer-associated miRNA-target relationships. As we expected, the inferred relationships were consistent with sequence-based predictions and published data from miRNA perturbation experiments. Notably, miRNAs with recurrent target relationships were frequently regulated by genetic and epigenetic alterations across the studied cancer types. We also identify new examples of miRNAs that coordinately regulate cancer pathways, including the miR-29 family, which recurrently regulates active DNA demethylation pathway members TET1 and TDG. The online resource http://cancerminer.org allows exploration and prioritization of miRNA-target interactions that potentially regulate tumorigenesis.},
+  Doi                      = {10.1038/nsmb.2678},
+  Institution              = {Computational Biology Center, Memorial Sloan-Kettering Cancer Center, New York, New York, USA.},
+  Keywords                 = {Computational Biology, methods; DNA Methylation; Epigenesis, Genetic; Gene Expression Profiling; Gene Expression Regulation; Humans; MicroRNAs, genetics/metabolism; Neoplasms, genetics; RNA, Messenger, genetics/metabolism},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {mezhoud},
+  Pii                      = {nsmb.2678},
+  Pmid                     = {24096364},
+  Timestamp                = {2014.09.15},
+  Url                      = {http://dx.doi.org/10.1038/nsmb.2678}
+}
+
+@Article{Kendziorski2003,
+  Title                    = {On parametric empirical Bayes methods for comparing multiple groups using replicated gene expression profiles.},
+  Author                   = {Kendziorski, C. M. and Newton, M. A. and Lan, H. and Gould, M. N.},
+  Journal                  = {Stat Med},
+  Year                     = {2003},
+
+  Month                    = {Dec},
+  Number                   = {24},
+  Pages                    = {3899--3914},
+  Volume                   = {22},
+
+  __markedentry            = {[mezhoud:]},
+  Abstract                 = {DNA microarrays provide for unprecedented large-scale views of gene expression and, as a result, have emerged as a fundamental measurement tool in the study of diverse biological systems. Statistical questions abound, but many traditional data analytic approaches do not apply, in large part because thousands of individual genes are measured with relatively little replication. Empirical Bayes methods provide a natural approach to microarray data analysis because they can significantly reduce the dimensionality of an inference problem while compensating for relatively few replicates by using information across the array. We propose a general empirical Bayes modelling approach which allows for replicate expression profiles in multiple conditions. The hierarchical mixture model accounts for differences among genes in their average expression levels, differential expression for a given gene among cell types, and measurement fluctuations. Two distinct parameterizations are considered: a model based on Gamma distributed measurements and one based on log-normally distributed measurements. False discovery rate and related operating characteristics of the methodology are assessed in a simulation study. We also show how the posterior odds of differential expression in one version of the model is related to the ratio of the arithmetic mean to the geometric mean of the two sample means. The methodology is used in a study of mammary cancer in the rat, where four distinct patterns of expression are possible.},
+  Doi                      = {10.1002/sim.1548},
+  Institution              = {Department of Biostatistics and Medical Informatics, University of Wisconsin, Madison, WI 53703, USA. kendzior@biostat.wisc.edu},
+  Keywords                 = {Animals; Bayes Theorem; Breast Neoplasms, genetics; Disease Models, Animal; Female; Gene Expression Profiling; Humans; Models, Statistical; Oligonucleotide Array Sequence Analysis},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {mezhoud},
+  Pmid                     = {14673946},
+  Timestamp                = {2014.10.29},
+  Url                      = {http://dx.doi.org/10.1002/sim.1548}
+}
+
+@Article{Liberzon2011,
+  Title                    = {Molecular signatures database (MSigDB) 3.0.},
+  Author                   = {Liberzon, Arthur and Subramanian, Aravind and Pinchback, Reid and Thorvaldsd{\'{o}}ttir, Helga and Tamayo, Pablo and Mesirov, Jill P.},
+  Journal                  = {Bioinformatics},
+  Year                     = {2011},
+
+  Month                    = {Jun},
+  Number                   = {12},
+  Pages                    = {1739--1740},
+  Volume                   = {27},
+
+  Abstract                 = {Well-annotated gene sets representing the universe of the biological processes are critical for meaningful and insightful interpretation of large-scale genomic data. The Molecular Signatures Database (MSigDB) is one of the most widely used repositories of such sets.We report the availability of a new version of the database, MSigDB 3.0, with over 6700 gene sets, a complete revision of the collection of canonical pathways and experimental signatures from publications, enhanced annotations and upgrades to the web site.MSigDB is freely available for non-commercial use at http://www.broadinstitute.org/msigdb.},
+  Doi                      = {10.1093/bioinformatics/btr260},
+  Institution              = {Broad Institute of MIT and Harvard, Cambridge, MA 02142, USA.},
+  Keywords                 = {Databases, Genetic; Genomics; Internet; Molecular Sequence Annotation},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {mezhoud},
+  Pii                      = {btr260},
+  Pmid                     = {21546393},
+  Timestamp                = {2014.09.23},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btr260}
+}
+
+@Article{Oron2008,
+  Title                    = {Gene set enrichment analysis using linear models and diagnostics.},
+  Author                   = {Oron, Assaf P. and Jiang, Zhen and Gentleman, Robert},
+  Journal                  = {Bioinformatics},
+  Year                     = {2008},
+
+  Month                    = {Nov},
+  Number                   = {22},
+  Pages                    = {2586--2591},
+  Volume                   = {24},
+
+  Abstract                 = {Gene-set enrichment analysis (GSEA) can be greatly enhanced by linear model (regression) diagnostic techniques. Diagnostics can be used to identify outlying or influential samples, and also to evaluate model fit and explore model expansion.We demonstrate this methodology on an adult acute lymphoblastic leukemia (ALL) dataset, using GSEA based on chromosome-band mapping of genes. Individual residuals, grouped or aggregated by chromosomal loci, indicate problematic samples and potential data-entry errors, and help identify hyperdiploidy as a factor playing a key role in expression for this dataset. Subsequent analysis pinpoints suspected DNA copy number abnormalities of specific samples and chromosomes (most prevalent are chromosomes X, 21 and 14), and also reveals significant expression differences between the hyperdiploid and diploid groups on other chromosomes (most prominently 19, 22, 3 and 13)--differences which are apparently not associated with copy number.Software for the statistical tools demonstrated in this article is available as Bioconductor package GSEAlm.Supplementary data are available at Bioinformatics online.},
+  Doi                      = {10.1093/bioinformatics/btn465},
+  Institution              = {Fred Hutchinson Cancer Research Center, 1100 Fairview Avenue North, Seattle, WA 98109-1024, USA. assaf.oron@gmail.com},
+  Keywords                 = {Chromosomes, genetics; Gene Expression Profiling; Humans; Leukemia, Lymphoid, diagnosis/genetics; Linear Models; Models, Genetic; Phenotype},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {mezhoud},
+  Pii                      = {btn465},
+  Pmid                     = {18790795},
+  Timestamp                = {2014.09.23},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btn465}
+}
+
+@Electronic{Planet2013,
+  Title                    = {phenoTest: Tools to test association between gene expression and phenotype in a way that is efficient, structured, fast and scalable},
+  Author                   = {Planet, Evarist},
+  Url                      = {http://www.bioconductor.org/packages/release/bioc/html/phenoTest.html},
+  Year                     = {2013},
+
+  Comment                  = {R package version 1.12.0.},
+  Owner                    = {mezhoud},
+  Timestamp                = {2014.09.26}
+}
+
+@Article{Subramanian2007,
+  Title                    = {GSEA-P: a desktop application for Gene Set Enrichment Analysis.},
+  Author                   = {Subramanian, Aravind and Kuehn, Heidi and Gould, Joshua and Tamayo, Pablo and Mesirov, Jill P.},
+  Journal                  = {Bioinformatics},
+  Year                     = {2007},
+
+  Month                    = {Dec},
+  Number                   = {23},
+  Pages                    = {3251--3253},
+  Volume                   = {23},
+
+  Abstract                 = {Gene Set Enrichment Analysis (GSEA) is a computational method that assesses whether an a priori defined set of genes shows statistically significant, concordant differences between two biological states. We report the availability of a new version of the Java based software (GSEA-P 2.0) that represents a major improvement on the previous release through the addition of a leading edge analysis component, seamless integration with the Molecular Signature Database (MSigDB) and an embedded browser that allows users to search for gene sets and map them to a variety of microarray platform formats. This functionality makes it possible for users to directly import gene sets from MSigDB for analysis with GSEA. We have also improved the visualizations in GSEA-P 2.0 and added links to a new form of concise gene set annotations called Gene Set Cards. These additions, as well as other improvements suggested by over 3500 users who have downloaded the software over the past year have been incorporated into this new release of the GSEA-P Java desktop program.GSEA-P 2.0 is freely available for academic and commercial users and can be downloaded from http://www.broad.mit.edu/GSEA},
+  Doi                      = {10.1093/bioinformatics/btm369},
+  Institution              = {Broad Institute of MIT and Harvard, Cambridge, MA 02142, USA.},
+  Keywords                 = {Algorithms; Computer Graphics; Computer Simulation; Gene Expression Profiling; Models, Biological; Programming Languages; Proteins, metabolism; Signal Transduction, physiology; Software; User-Computer Interface},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {mezhoud},
+  Pii                      = {btm369},
+  Pmid                     = {17644558},
+  Timestamp                = {2014.09.23},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btm369}
+}
+
+@Article{Subramanian2005,
+  Title                    = {Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles.},
+  Author                   = {Subramanian, Aravind and Tamayo, Pablo and Mootha, Vamsi K. and Mukherjee, Sayan and Ebert, Benjamin L. and Gillette, Michael A. and Paulovich, Amanda and Pomeroy, Scott L. and Golub, Todd R. and Lander, Eric S. and Mesirov, Jill P.},
+  Journal                  = {Proc Natl Acad Sci U S A},
+  Year                     = {2005},
+
+  Month                    = {Oct},
+  Number                   = {43},
+  Pages                    = {15545--15550},
+  Volume                   = {102},
+
+  Abstract                 = {Although genomewide RNA expression analysis has become a routine tool in biomedical research, extracting biological insight from such information remains a major challenge. Here, we describe a powerful analytical method called Gene Set Enrichment Analysis (GSEA) for interpreting gene expression data. The method derives its power by focusing on gene sets, that is, groups of genes that share common biological function, chromosomal location, or regulation. We demonstrate how GSEA yields insights into several cancer-related data sets, including leukemia and lung cancer. Notably, where single-gene analysis finds little similarity between two independent studies of patient survival in lung cancer, GSEA reveals many biological pathways in common. The GSEA method is embodied in a freely available software package, together with an initial database of 1,325 biologically defined gene sets.},
+  Doi                      = {10.1073/pnas.0506580102},
+  Institution              = {Broad Institute of Massachusetts Institute of Technology and Harvard, 320 Charles Street, Cambridge, MA 02141, USA.},
+  Keywords                 = {Cell Line, Tumor; Female; Gene Expression Profiling, methods; Genes, p53, physiology; Genome; Humans; Leukemia, Myeloid, Acute, genetics; Lung Neoplasms, genetics/mortality; Male; Oligonucleotide Array Sequence Analysis; Precursor Cell Lymphoblastic Leukemia-Lymphoma, genetics},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {mezhoud},
+  Pii                      = {0506580102},
+  Pmid                     = {16199517},
+  Timestamp                = {2014.09.23},
+  Url                      = {http://dx.doi.org/10.1073/pnas.0506580102}
+}
+
+@Electronic{Therneau2014,
+  Title                    = {rpart: Recursive Partitioning and Regression Trees},
+  Author                   = {Therneau, T. and Atkinson, B. and Ripley, B.},
+  Organization             = {R Project},
+  Url                      = {http://cran.r-project.org/web/packages/rpart/index.html},
+  Year                     = {2014},
+
+  Owner                    = {mezhoud},
+  Publisher                = {R Project},
+  Timestamp                = {2014.11.12}
+}
+
+@Article{Wettenhall2004,
+  Title                    = {limmaGUI: a graphical user interface for linear modeling of microarray data.},
+  Author                   = {Wettenhall, James M. and Smyth, Gordon K.},
+  Journal                  = {Bioinformatics},
+  Year                     = {2004},
+
+  Month                    = {Dec},
+  Number                   = {18},
+  Pages                    = {3705--3706},
+  Volume                   = {20},
+  Abstract                 = {limmaGUI is a graphical user interface (GUI) based on R-Tcl/Tk for the exploration and linear modeling of data from two-color spotted microarray experiments, especially the assessment of differential expression in complex experiments. limmaGUI provides an interface to the statistical methods of the limma package for R, and is itself implemented as an R package. The software provides point and click access to a range of methods for background correction, graphical display, normalization, and analysis of microarray data. Arbitrarily complex microarray experiments involving multiple RNA sources can be accomodated using linear models and contrasts. Empirical Bayes shrinkage of the gene-wise residual variances is provided to ensure stable results even when the number of arrays is small. Integrated support is provided for quantitative spot quality weights, control spots, within-array replicate spots and multiple testing. limmaGUI is available for most platforms on the which R runs including Windows, Mac and most flavors of Unix.http://bioinf.wehi.edu.au/limmaGUI.},
+  Doi                      = {10.1093/bioinformatics/bth449},
+  Institution              = {>},
+  Keywords                 = {Computer Graphics; Computer Simulation; Gene Expression Profiling, methods; Linear Models; Models, Genetic; Oligonucleotide Array Sequence Analysis, methods; Software; User-Computer Interface},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {mezhoud},
+  Pii                      = {bth449},
+  Pmid                     = {15297296},
+  Timestamp                = {2014.09.26},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/bth449}
+}
+
