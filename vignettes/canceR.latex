@@ -26,7 +26,7 @@
 
 \title{canceR: A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC}
 \author{Karim Mezhoud}
-\date{Mai 12, 2015}
+\date{July 12, 2015}
 \maketitle
 
 
@@ -847,10 +847,19 @@ The Kaplan-Meier estimator mesures the fraction of patients in life for a certai
  \end{figure}
  
   \subsubsection{Circos Style}
-  Circos tools~\cite{Krzywinski2009} is usefull to visualize a multi-omics assays with high number of genes. Despite its  complexe setting it remains unattainable by biologists. \texttt{canceR} makes it easy without any setting. User needs only to select study and which dimensions (Figure~\ref{dialogCircos}) will be plotted. \texttt{canceR} uses \texttt{circlize} package. 
-  
-  
-  
+  Circular layout is an interesting way to integrate multi-omics heterogeneous  and big data of cancer disease in the same plot~\cite{Krzywinski2009}. The goal is to make easy the interpretation and the exploring of the relationships between cancers, genes or dimensions. 
+There are two R packages (\texttt{RCircos} and \texttt{Circlize}) available for Circular layout but its use remain laborious and needs computational skills. 
+CanceR package implements \texttt{getCircos} function to facilitate the visualization of cancer disease using Circos style. User needs only to select cancers and check which dimensions will be plotted.
+
+User can select a simple gene list from files or examples or can focus on gene list from gene sets selected from MSigDB.
+
+In the following case, I  focus my exploring to two gene lists corresponding to gene set involved in DNA repair and Response to oxidative stres. \texttt{canceR} package allows user to select any gene sets from MSigDB without gene duplication.
+
+I selected mRNA (0.3 threshold), CNA (0.85), Met HM450 (0.3), Mutation (Frequency 101). Only genes with significant rates are plotted with corresponding colors. For example Gold for mutation, Orange (Methylation), Green (CNA), red (mRNA expression) (Figure~\ref{dialogCircos}).
+
+I selected 5 cancers represented with 5 sectors. In the same sector there are 7 tracks (layouts) corresponding respectively (out : in) to: Gene List, Gene Sets, mRNA, CNA, Methylation, Mutation (Figure~\ref{Circos}).
+
+ 
    \begin{figure}[!ht]
   \centering
  \includegraphics[scale=0.01]{image/dialogCircos.png}
