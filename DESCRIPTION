@@ -6,7 +6,7 @@ Date: 2015-07-12
 Author:    Karim Mezhoud.
            Nuclear Safety Department.
            Nuclear Science Center of Tunisia.
-Maintainer: Karim Mezhoud <kmezhoud@bioinformatics.tn>
+Maintainer: Karim Mezhoud <kmezhoud@gmail.com>
 Description: The package is user friendly interface based on the cgdsr and
     other modeling packages to explore, compare, and analyse all
     available Cancer Data (Clinical data, Gene Mutation, Gene Methylation, Gene
