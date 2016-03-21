@@ -1,0 +1,5 @@
+language: r
+cache: packages
+bioc_required: true
+
+sudo: required
