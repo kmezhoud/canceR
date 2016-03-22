@@ -2,7 +2,8 @@
 
 myGlobalEnv <- new.env(parent = emptyenv())
 
-
+canceR <- function(){
+    
     ## Create project
     cgds<-CGDS("http://www.cbioportal.org/public-portal/")
     myGlobalEnv$cgds <- cgds
@@ -185,5 +186,5 @@ myGlobalEnv <- new.env(parent = emptyenv())
     tkgrid(getCasesGenProfs.but)
     tkfocus(myGlobalEnv$ttMain)
     
-
+}
 

@@ -1,7 +1,7 @@
 getGenProfs <- function(){
     
     #get Study Index 
-    StudiesRef <- cgdsr::getCancerStudies(myGlobalEnv$cgds)[,1]
+    StudiesRef <- cgdsr::getCancerStudies.CGDS(myGlobalEnv$cgds)[,1]
     
     
     ## and we need the cases list of every study
