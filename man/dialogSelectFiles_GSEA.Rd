@@ -10,7 +10,6 @@ This function select GCT, CLS, GMT and output Files for GSEA-R.
 
 \examples{
 ## Not run
-library(canceR)
 ## Load workspace
 load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
 ##dialogSelectFiles_GSEA()

@@ -22,12 +22,12 @@ dialogGeneClassifier(Lchecked_Cases, entryWidth = 10, returnValOnCancel = "ID_CA
 \code{"ID_CANCEL"} 
 }
 }
+\value{
+Value
+}
 
 \examples{
 ## Not run
-library(canceR)
-library(Biobase)
-library(geNetClassifier)
 ## Load workspace
 load(paste(path.package("canceR"),"/data/brca_tcgaClassifier223.RData", sep=""))
 ##getGenesClassifier()

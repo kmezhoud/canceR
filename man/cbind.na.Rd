@@ -6,6 +6,9 @@
 \description{ 
 This function allows user to bind non equal columns
 }
+\value{
+Value
+}
 
 \examples{
 col1 <- c("a","b","c","d")

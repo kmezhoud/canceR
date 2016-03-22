@@ -22,7 +22,6 @@ Karim Mezhoud Nuclear Safety Department, Nuclear Science Center of Tunisia.
 
 \examples{
 \dontrun{
-library(canceR)
 canceR()
 
 }

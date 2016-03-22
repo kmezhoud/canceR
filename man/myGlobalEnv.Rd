@@ -17,6 +17,5 @@ Global environment to store canceR variables.
 
 
 \examples{
-library(canceR)
 myGlobalEnv
 }

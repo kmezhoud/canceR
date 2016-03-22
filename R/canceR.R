@@ -2,13 +2,12 @@
 
 myGlobalEnv <- new.env(parent = emptyenv())
 
-canceR <- function(){
-    
+
     ## Create project
     cgds<-CGDS("http://www.cbioportal.org/public-portal/")
     myGlobalEnv$cgds <- cgds
     ## Get all Cancer Studies using column 2 (description)
-    Studies <- getCancerStudies(cgds)[,2]
+    Studies <- getCancerStudies.CGDS(cgds)[,2]
     myGlobalEnv$Studies <- Studies
     
     ## first dialog START or CANCEL
@@ -186,5 +185,5 @@ canceR <- function(){
     tkgrid(getCasesGenProfs.but)
     tkfocus(myGlobalEnv$ttMain)
     
-}
+
 

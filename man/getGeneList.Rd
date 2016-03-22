@@ -10,7 +10,6 @@ User needs to specify which gene is interesting to get genomic cancer data. The 
 
 \examples{
 ## Not run
-library(canceR)
 ##getGeneList()
 ## End(Not run)
 }

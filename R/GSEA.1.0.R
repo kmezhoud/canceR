@@ -13,7 +13,7 @@
 
 # Auxiliary functions and definitions 
 
-GSEA.GeneRanking <- function(A, class.labels, gene.labels, nperm, permutation.type = 0, sigma.correction = "GeneCluster", fraction=1.0, replace=F, reverse.sign= F) { 
+GSEA.GeneRanking <- function(A, class.labels, gene.labels, nperm, permutation.type = 0, sigma.correction = "GeneCluster", fraction=1.0, replace= FALSE, reverse.sign= FALSE) { 
 
 # This function ranks the genes according to the signal to noise ratio for the actual phenotype and also random permutations and bootstrap  
 # subsamples of both the observed and random phenotypes. It uses matrix operations to implement the signal to noise calculation 
@@ -199,13 +199,13 @@ GSEA.GeneRanking <- function(A, class.labels, gene.labels, nperm, permutation.ty
 
      s2n.matrix <- M1/S1
 
-     if (reverse.sign == T) {
+     if (reverse.sign == TRUE) {
         s2n.matrix <- - s2n.matrix
      }
      gc()
 
      for (r in 1:nperm) {
-        order.matrix[, r] <- order(s2n.matrix[, r], decreasing=T)            
+        order.matrix[, r] <- order(s2n.matrix[, r], decreasing=TRUE)            
      }
 
 # compute S2N for the "observed" permutation matrix
@@ -256,7 +256,7 @@ GSEA.GeneRanking <- function(A, class.labels, gene.labels, nperm, permutation.ty
      }
 
      for (r in 1:nperm) {
-        obs.order.matrix[,r] <- order(obs.s2n.matrix[,r], decreasing=T)            
+        obs.order.matrix[,r] <- order(obs.s2n.matrix[,r], decreasing=TRUE)            
      }
 
      return(list(s2n.matrix = s2n.matrix, 
@@ -412,7 +412,7 @@ GSEA.EnrichmentScore2 <- function(gene.list, gene.set, weighted.score.type = 1, 
    loc.vector[gene.list] <- seq(1, N)
    tag.loc.vector <- loc.vector[gene.set]
 
-   tag.loc.vector <- sort(tag.loc.vector, decreasing = F)
+   tag.loc.vector <- sort(tag.loc.vector, decreasing = FALSE)
 
    if (weighted.score.type == 0) {
       tag.correl.vector <- rep(1, Nh)
@@ -443,7 +443,7 @@ GSEA.EnrichmentScore2 <- function(gene.list, gene.set, weighted.score.type = 1, 
 
 }
 
-GSEA.HeatMapPlot <- function(V, row.names = F, col.labels, col.classes, col.names = F, main = " ", xlab=" ", ylab=" ") {
+GSEA.HeatMapPlot <- function(V, row.names = FALSE, col.labels, col.classes, col.names = FALSE, main = " ", xlab=" ", ylab=" ") {
 #
 # Plots a heatmap "pinkogram" of a gene expression matrix including phenotype vector and gene, sample and phenotype labels
 #
@@ -522,7 +522,7 @@ GSEA.Res2Frame <- function(filename = "NULL") {
    temp <- unlist(strsplit(header.cont, "\t"))
    colst <- length(temp)
    header.labels <- temp[seq(3, colst, 2)]
-   ds <- read.delim(filename, header=F, row.names = 2, sep="\t", skip=3, blank.lines.skip=T, comment.char="", as.is=T)
+   ds <- read.delim(filename, header= FALSE, row.names = 2, sep="\t", skip=3, blank.lines.skip=TRUE, comment.char="", as.is=TRUE)
    colst <- length(ds[1,])
    cols <- (colst - 1)/2
    rows <- length(ds[,1])
@@ -546,7 +546,7 @@ GSEA.Gct2Frame <- function(filename = "NULL") {
 # This software is supplied without any warranty or guaranteed support
 # whatsoever. Neither the Broad Institute nor MIT can be responsible for
 # its use, misuse, or functionality.
-   ds <- read.delim(filename, header=T, sep="\t", skip=2, row.names=1, blank.lines.skip=T, comment.char="", as.is=T)
+   ds <- read.delim(filename, header=TRUE, sep="\t", skip=2, row.names=1, blank.lines.skip=TRUE, comment.char="", as.is=TRUE)
    ds <- ds[-1]
    return(ds)
 }
@@ -760,7 +760,7 @@ gs.db,
 gs.ann = "",
 output.directory = "", 
 doc.string = "GSEA.analysis", 
-non.interactive.run = F, 
+non.interactive.run = FALSE, 
 reshuffling.type = "sample.labels", 
 nperm = 1000, 
 weighted.score.type = 1, 
@@ -768,18 +768,18 @@ nom.p.val.threshold = -1,
 fwer.p.val.threshold = -1, 
 fdr.q.val.threshold = 0.25, 
 topgs = 10,
-adjust.FDR.q.val = F, 
+adjust.FDR.q.val = FALSE, 
 gs.size.threshold.min = 25, 
 gs.size.threshold.max = 500, 
-reverse.sign = F, 
+reverse.sign = FALSE, 
 preproc.type = 0, 
 random.seed = 123456, 
 perm.type = 0, 
 fraction = 1.0, 
-replace = F,
-save.intermediate.results = F,
-OLD.GSEA = F,
-use.fast.enrichment.routine = T) {
+replace = FALSE,
+save.intermediate.results = FALSE,
+OLD.GSEA = FALSE,
+use.fast.enrichment.routine = TRUE) {
 
 # This is a methodology for the analysis of global molecular profiles called Gene Set Enrichment Analysis (GSEA). It determines 
 # whether an a priori defined set of genes shows statistically significant, concordant differences between two biological 
@@ -891,49 +891,49 @@ time.string <- as.character(as.POSIXlt(Sys.time(),"GMT"))
 write(paste("Run of GSEA on ", time.string), file=filename)
 
 if (is.data.frame(input.ds)) {
-#      write(paste("input.ds=", quote(input.ds), sep=" "), file=filename, append=T)
+#      write(paste("input.ds=", quote(input.ds), sep=" "), file=filename, append= TRUE)
 } else {
-      write(paste("input.ds=", input.ds, sep=" "), file=filename, append=T)
+      write(paste("input.ds=", input.ds, sep=" "), file=filename, append= TRUE)
 }
 if (is.list(input.cls)) {
-#      write(paste("input.cls=", input.cls, sep=" "), file=filename, append=T) 
+#      write(paste("input.cls=", input.cls, sep=" "), file=filename, append= TRUE) 
 } else {
-      write(paste("input.cls=", input.cls, sep=" "), file=filename, append=T) 
+      write(paste("input.cls=", input.cls, sep=" "), file=filename, append= TRUE) 
 }
 if (is.data.frame(gene.ann)) {
-#    write(paste("gene.ann =", gene.ann, sep=" "), file=filename, append=T) 
+#    write(paste("gene.ann =", gene.ann, sep=" "), file=filename, append= TRUE) 
 } else {
-    write(paste("gene.ann =", gene.ann, sep=" "), file=filename, append=T) 
+    write(paste("gene.ann =", gene.ann, sep=" "), file=filename, append= TRUE) 
 }
  if (regexpr(pattern=".gmt", gs.db[1]) == -1) {
-#   write(paste("gs.db=", gs.db, sep=" "), file=filename, append=T) 
+#   write(paste("gs.db=", gs.db, sep=" "), file=filename, append= TRUE) 
 } else {
-   write(paste("gs.db=", gs.db, sep=" "), file=filename, append=T) 
+   write(paste("gs.db=", gs.db, sep=" "), file=filename, append= TRUE) 
 }
 if (is.data.frame(gs.ann)) {
-#    write(paste("gene.ann =", gene.ann, sep=" "), file=filename, append=T) 
+#    write(paste("gene.ann =", gene.ann, sep=" "), file=filename, append= TRUE) 
 } else {
-    write(paste("gs.ann =", gs.ann, sep=" "), file=filename, append=T) 
+    write(paste("gs.ann =", gs.ann, sep=" "), file=filename, append= TRUE) 
 }
-write(paste("output.directory =", output.directory, sep=" "), file=filename, append=T) 
-write(paste("doc.string = ", doc.string, sep=" "), file=filename, append=T) 
-write(paste("non.interactive.run =", non.interactive.run, sep=" "), file=filename, append=T) 
-write(paste("reshuffling.type =", reshuffling.type, sep=" "), file=filename, append=T) 
-write(paste("nperm =", nperm, sep=" "), file=filename, append=T) 
-write(paste("weighted.score.type =", weighted.score.type, sep=" "), file=filename, append=T) 
-write(paste("nom.p.val.threshold =", nom.p.val.threshold, sep=" "), file=filename, append=T) 
-write(paste("fwer.p.val.threshold =", fwer.p.val.threshold, sep=" "), file=filename, append=T) 
-write(paste("fdr.q.val.threshold =", fdr.q.val.threshold, sep=" "), file=filename, append=T) 
-write(paste("topgs =", topgs, sep=" "), file=filename, append=T)
-write(paste("adjust.FDR.q.val =", adjust.FDR.q.val, sep=" "), file=filename, append=T) 
-write(paste("gs.size.threshold.min =", gs.size.threshold.min, sep=" "), file=filename, append=T) 
-write(paste("gs.size.threshold.max =", gs.size.threshold.max, sep=" "), file=filename, append=T) 
-write(paste("reverse.sign =", reverse.sign, sep=" "), file=filename, append=T) 
-write(paste("preproc.type =", preproc.type, sep=" "), file=filename, append=T) 
-write(paste("random.seed =", random.seed, sep=" "), file=filename, append=T) 
-write(paste("perm.type =", perm.type, sep=" "), file=filename, append=T) 
-write(paste("fraction =", fraction, sep=" "), file=filename, append=T) 
-write(paste("replace =", replace, sep=" "), file=filename, append=T)
+write(paste("output.directory =", output.directory, sep=" "), file=filename, append= TRUE) 
+write(paste("doc.string = ", doc.string, sep=" "), file=filename, append= TRUE) 
+write(paste("non.interactive.run =", non.interactive.run, sep=" "), file=filename, append= TRUE) 
+write(paste("reshuffling.type =", reshuffling.type, sep=" "), file=filename, append= TRUE) 
+write(paste("nperm =", nperm, sep=" "), file=filename, append= TRUE) 
+write(paste("weighted.score.type =", weighted.score.type, sep=" "), file=filename, append= TRUE) 
+write(paste("nom.p.val.threshold =", nom.p.val.threshold, sep=" "), file=filename, append= TRUE) 
+write(paste("fwer.p.val.threshold =", fwer.p.val.threshold, sep=" "), file=filename, append= TRUE) 
+write(paste("fdr.q.val.threshold =", fdr.q.val.threshold, sep=" "), file=filename, append= TRUE) 
+write(paste("topgs =", topgs, sep=" "), file=filename, append= TRUE)
+write(paste("adjust.FDR.q.val =", adjust.FDR.q.val, sep=" "), file=filename, append= TRUE) 
+write(paste("gs.size.threshold.min =", gs.size.threshold.min, sep=" "), file=filename, append= TRUE) 
+write(paste("gs.size.threshold.max =", gs.size.threshold.max, sep=" "), file=filename, append= TRUE) 
+write(paste("reverse.sign =", reverse.sign, sep=" "), file=filename, append= TRUE) 
+write(paste("preproc.type =", preproc.type, sep=" "), file=filename, append= TRUE) 
+write(paste("random.seed =", random.seed, sep=" "), file=filename, append= TRUE) 
+write(paste("perm.type =", perm.type, sep=" "), file=filename, append= TRUE) 
+write(paste("fraction =", fraction, sep=" "), file=filename, append= TRUE) 
+write(paste("replace =", replace, sep=" "), file=filename, append= TRUE)
 }
 
 # Start of GSEA methodology 
@@ -995,7 +995,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
   class.labels <- CLS$class.v
   class.phen <- CLS$phen
 
-  if (reverse.sign == T) {
+  if (reverse.sign == TRUE) {
      phen1 <- class.phen[2]
      phen2 <- class.phen[1]
   } else {
@@ -1005,7 +1005,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
 
   # sort samples according to phenotype
  
- col.index <- order(class.labels, decreasing=F)
+ col.index <- order(class.labels, decreasing= FALSE)
  class.labels <- class.labels[col.index]
  sample.names <- sample.names[col.index]
  for (j in 1:rows) {
@@ -1088,7 +1088,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
         all.gene.symbols[i] <- gene.labels[i]
      }
   } else {
-     temp <- read.delim(gene.ann, header=T, sep=",", comment.char="", as.is=T)
+     temp <- read.delim(gene.ann, header= TRUE, sep=",", comment.char="", as.is= TRUE)
      a.size <- length(temp[,1])
      print(c("Number of gene annotation file entries:", a.size))  
      accs <- as.character(temp[,1])
@@ -1111,7 +1111,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
         all.gs.descs[i] <- gs.desc[i]
      }
   } else {
-     temp <- read.delim(gs.ann, header=T, sep="\t", comment.char="", as.is=T)
+     temp <- read.delim(gs.ann, header= TRUE, sep="\t", comment.char="", as.is= TRUE)
      a.size <- length(temp[,1])
      print(c("Number of gene set annotation file entries:", a.size))  
      accs <- as.character(temp[,1])
@@ -1174,8 +1174,8 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
  }
 
   obs.s2n <- apply(obs.correl.matrix, 1, median)  # using median to assign enrichment scores
-  obs.index <- order(obs.s2n, decreasing=T)            
-  obs.s2n   <- sort(obs.s2n, decreasing=T)            
+  obs.index <- order(obs.s2n, decreasing= TRUE)            
+  obs.s2n   <- sort(obs.s2n, decreasing= TRUE)            
 
   obs.gene.labels <- gene.labels[obs.index]       
   obs.gene.descs <- all.gene.descs[obs.index]       
@@ -1194,7 +1194,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
        gene.set <- gs[i,gs[i,] != "null"]
        gene.set2 <- vector(length=length(gene.set), mode = "numeric")
        gene.set2 <- match(gene.set, gene.labels)
-       if (OLD.GSEA == F) {
+       if (OLD.GSEA == FALSE) {
           GSEA.results <- GSEA.EnrichmentScore(gene.list=gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector = obs.s2n)
        } else {
           GSEA.results <- OLD.GSEA.EnrichmentScore(gene.list=gene.list2, gene.set=gene.set2)
@@ -1227,7 +1227,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
         gene.set2 <- match(gene.set, gene.labels)
         for (r in 1:nperm) {
             gene.list2 <- order.matrix[,r]
-            if (use.fast.enrichment.routine == F) {
+            if (use.fast.enrichment.routine == FALSE) {
                GSEA.results <- GSEA.EnrichmentScore(gene.list=gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=correl.matrix[, r])   
             } else {
                GSEA.results <- GSEA.EnrichmentScore2(gene.list=gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=correl.matrix[, r])   
@@ -1237,7 +1237,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
         if (fraction < 1.0) { # if resampling then compute ES for all observed rankings
             for (r in 1:nperm) {
                 obs.gene.list2 <- obs.order.matrix[,r]
-                if (use.fast.enrichment.routine == F) {
+                if (use.fast.enrichment.routine == FALSE) {
                    GSEA.results <- GSEA.EnrichmentScore(gene.list=obs.gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=obs.correl.matrix[, r]) 
                 } else {
                    GSEA.results <- GSEA.EnrichmentScore2(gene.list=obs.gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=obs.correl.matrix[, r])
@@ -1246,7 +1246,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
             }
         } else { # if no resampling then compute only one column (and fill the others with the same value)
              obs.gene.list2 <- obs.order.matrix[,1]
-            if (use.fast.enrichment.routine == F) {
+            if (use.fast.enrichment.routine == FALSE) {
                GSEA.results <- GSEA.EnrichmentScore(gene.list=obs.gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=obs.correl.matrix[, r]) 
             } else {
                GSEA.results <- GSEA.EnrichmentScore2(gene.list=obs.gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=obs.correl.matrix[, r])
@@ -1266,7 +1266,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
         gene.set2 <- match(gene.set, gene.labels)
         for (r in 1:nperm) {
             reshuffled.gene.labels <- sample(1:rows)
-            if (use.fast.enrichment.routine == F) {
+            if (use.fast.enrichment.routine == FALSE) {
                GSEA.results <- GSEA.EnrichmentScore(gene.list=reshuffled.gene.labels, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=obs.s2n)   
             } else {
                GSEA.results <- GSEA.EnrichmentScore2(gene.list=reshuffled.gene.labels, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=obs.s2n)   
@@ -1276,7 +1276,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
         if (fraction < 1.0) { # if resampling then compute ES for all observed rankings
            for (r in 1:nperm) {
               obs.gene.list2 <- obs.order.matrix[,r]
-              if (use.fast.enrichment.routine == F) {
+              if (use.fast.enrichment.routine == FALSE) {
                  GSEA.results <- GSEA.EnrichmentScore(gene.list=obs.gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=obs.correl.matrix[, r])   
               } else {
                  GSEA.results <- GSEA.EnrichmentScore2(gene.list=obs.gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=obs.correl.matrix[, r])   
@@ -1285,7 +1285,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append=T)
            }
         } else { # if no resampling then compute only one column (and fill the others with the same value)
            obs.gene.list2 <- obs.order.matrix[,1]
-           if (use.fast.enrichment.routine == F) {
+           if (use.fast.enrichment.routine == FALSE) {
               GSEA.results <- GSEA.EnrichmentScore(gene.list=obs.gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=obs.correl.matrix[, r])   
            } else {
               GSEA.results <- GSEA.EnrichmentScore2(gene.list=obs.gene.list2, gene.set=gene.set2, weighted.score.type=weighted.score.type, correl.vector=obs.correl.matrix[, r])   
@@ -1307,7 +1307,7 @@ print("Computing nominal p-values...")
 
 p.vals <- matrix(0, nrow = Ng, ncol = 2)
 
-if (OLD.GSEA == F) {
+if (OLD.GSEA == FALSE) {
    for (i in 1:Ng) {
       pos.phi <- NULL
       neg.phi <- NULL
@@ -1365,7 +1365,7 @@ if (OLD.GSEA == F) {
 
 print("Computing rescaling normalization for each gene set null...")
 
-if (OLD.GSEA == F) {
+if (OLD.GSEA == FALSE) {
    for (i in 1:Ng) {
          pos.phi <- NULL
          neg.phi <- NULL
@@ -1421,32 +1421,32 @@ if (OLD.GSEA == F) {
 
 # Save intermedite results
 
-       if (save.intermediate.results == T) {
+       if (save.intermediate.results == TRUE) {
 
           filename <- paste(output.directory, doc.string, ".phi.txt", sep="", collapse="")
-          write.table(phi, file = filename, quote=F, col.names= F, row.names=F, sep = "\t")
+          write.table(phi, file = filename, quote= FALSE, col.names= FALSE, row.names= FALSE, sep = "\t")
 
           filename <- paste(output.directory, doc.string, ".obs.phi.txt", sep="", collapse="")
-          write.table(obs.phi, file = filename, quote=F, col.names= F, row.names=F, sep = "\t")
+          write.table(obs.phi, file = filename, quote= FALSE, col.names= FALSE, row.names= FALSE, sep = "\t")
 
           filename <- paste(output.directory, doc.string, ".phi.norm.txt", sep="", collapse="")
-          write.table(phi.norm, file = filename, quote=F, col.names= F, row.names=F, sep = "\t")
+          write.table(phi.norm, file = filename, quote= FALSE, col.names= FALSE, row.names= FALSE, sep = "\t")
 
           filename <- paste(output.directory, doc.string, ".obs.phi.norm.txt", sep="", collapse="")
-          write.table(obs.phi.norm, file = filename, quote=F, col.names= F, row.names=F, sep = "\t")
+          write.table(obs.phi.norm, file = filename, quote= FALSE, col.names= FALSE, row.names= FALSE, sep = "\t")
 
           filename <- paste(output.directory, doc.string, ".Obs.ES.txt", sep="", collapse="")
-          write.table(Obs.ES, file = filename, quote=F, col.names= F, row.names=F, sep = "\t")
+          write.table(Obs.ES, file = filename, quote= FALSE, col.names= FALSE, row.names= FALSE, sep = "\t")
 
           filename <- paste(output.directory, doc.string, ".Obs.ES.norm.txt", sep="", collapse="")
-          write.table(Obs.ES.norm, file = filename, quote=F, col.names= F, row.names=F, sep = "\t")
+          write.table(Obs.ES.norm, file = filename, quote= FALSE, col.names= FALSE, row.names= FALSE, sep = "\t")
       }
 
 # Compute FWER p-vals
 
       print("Computing FWER p-values...")
 
-if (OLD.GSEA == F) {
+if (OLD.GSEA == FALSE) {
     max.ES.vals.p <- NULL
     max.ES.vals.n <- NULL
     for (j in 1:nperm) {
@@ -1512,10 +1512,10 @@ if (OLD.GSEA == F) {
       phi.norm.median.d <- vector(length=Ng, mode="numeric")
       obs.phi.norm.median.d <- vector(length=Ng, mode="numeric")
 
-      Obs.ES.index <- order(Obs.ES.norm, decreasing=T)
+      Obs.ES.index <- order(Obs.ES.norm, decreasing= TRUE)
       Orig.index <- seq(1, Ng)
       Orig.index <- Orig.index[Obs.ES.index]
-      Orig.index <- order(Orig.index, decreasing=F)
+      Orig.index <- order(Orig.index, decreasing= FALSE)
       Obs.ES.norm.sorted <- Obs.ES.norm[Obs.ES.index]
       gs.names.sorted <- gs.names[Obs.ES.index]
 
@@ -1625,12 +1625,12 @@ if (OLD.GSEA == F) {
        names(report) <- c("GS", "SIZE", "SOURCE", "ES", "NES", "NOM p-val", "FDR q-val", "FWER p-val", "Tag \\%", "Gene \\%", "Signal", "FDR (median)", "glob.p.val")
 #       print(report)
        report2 <- report
-       report.index2 <- order(Obs.ES.norm, decreasing=T)
+       report.index2 <- order(Obs.ES.norm, decreasing= TRUE)
        for (i in 1:Ng) {
            report2[i,] <- report[report.index2[i],]
        }   
        report3 <- report
-       report.index3 <- order(Obs.ES.norm, decreasing=F)
+       report.index3 <- order(Obs.ES.norm, decreasing= FALSE)
        for (i in 1:Ng) {
            report3[i,] <- report[report.index3[i],]
        }   
@@ -1642,18 +1642,18 @@ if (OLD.GSEA == F) {
 if (output.directory != "")  {
        if (phen1.rows > 0) {
           filename <- paste(output.directory, doc.string, ".SUMMARY.RESULTS.REPORT.", phen1,".txt", sep="", collapse="")
-          write.table(report.phen1, file = filename, quote=F, row.names=F, sep = "\t")
+          write.table(report.phen1, file = filename, quote=FALSE, row.names=FALSE, sep = "\t")
        }
        if (phen2.rows > 0) {
           filename <- paste(output.directory, doc.string, ".SUMMARY.RESULTS.REPORT.", phen2,".txt", sep="", collapse="")
-          write.table(report.phen2, file = filename, quote=F, row.names=F, sep = "\t")
+          write.table(report.phen2, file = filename, quote=FALSE, row.names=FALSE, sep = "\t")
        }
 }
 
 # Global plots
 
 if (output.directory != "")  {
-      if (non.interactive.run == F) {
+      if (non.interactive.run == FALSE) {
            if (.Platform$OS.type == "windows") {
               glob.filename <- paste(output.directory, doc.string, ".global.plots", sep="", collapse="")
               windows(width = 10, height = 10)
@@ -1672,7 +1672,7 @@ if (output.directory != "")  {
       }
 }
 
-      nf <- layout(matrix(c(1,2,3,4), 2, 2, byrow=T), c(1,1), c(1,1), TRUE)
+      nf <- layout(matrix(c(1,2,3,4), 2, 2, byrow= TRUE), c(1,1), c(1,1), TRUE)
 
 # plot S2N correlation profile
 
@@ -1686,7 +1686,7 @@ if (output.directory != "")  {
      }
      x <- points(location, obs.s2n, type = "l", lwd = 2, cex = 0.9, col = 1)            
      lines(c(1, N), c(0, 0), lwd = 2, lty = 1, cex = 0.9, col = 1) # zero correlation horizontal line
-     temp <- order(abs(obs.s2n), decreasing=T)
+     temp <- order(abs(obs.s2n), decreasing= TRUE)
      arg.correl <- temp[N]
      lines(c(arg.correl, arg.correl), c(min.corr, 0.7*max.corr), lwd = 2, lty = 3, cex = 0.9, col = 1) # zero correlation vertical line
 
@@ -1844,7 +1844,7 @@ if (output.directory != "")  {
       lines(c(min(NES), max(NES)), c(fwer.p.val.threshold, fwer.p.val.threshold), lwd = 1, lty = 2, col = colors()[577]) 
       lines(c(min(NES), max(NES)), c(fdr.q.val.threshold, fdr.q.val.threshold), lwd = 1, lty = 2, col = 1) 
 
-      if (non.interactive.run == F) {  
+      if (non.interactive.run == FALSE) {  
            if (.Platform$OS.type == "windows") {
                savePlot(filename = glob.filename, type ="jpeg", device = dev.cur())
            } else if (.Platform$OS.type == "unix") {
@@ -1918,9 +1918,9 @@ if (output.directory != "")  {
 if (output.directory != "")  {
 
        filename <- paste(output.directory, doc.string, ".", gs.names[i], ".report.", phen.tag, ".", loc, ".txt", sep="", collapse="")
-       write.table(gene.report, file = filename, quote=F, row.names=F, sep = "\t")
+       write.table(gene.report, file = filename, quote= FALSE, row.names= FALSE, sep = "\t")
 
-       if (non.interactive.run == F) {
+       if (non.interactive.run == FALSE) {
            if (.Platform$OS.type == "windows") {
                gs.filename <- paste(output.directory, doc.string, ".", gs.names[i], ".plot.", phen.tag, ".", loc, sep="", collapse="")
                windows(width = 14, height = 6)
@@ -1940,7 +1940,7 @@ if (output.directory != "")  {
 
 }
 
-            nf <- layout(matrix(c(1,2,3), 1, 3, byrow=T), 1, c(1, 1, 1), TRUE)
+            nf <- layout(matrix(c(1,2,3), 1, 3, byrow= TRUE), 1, c(1, 1, 1), TRUE)
             ind <- 1:N
             min.RES <- min(Obs.RES[i,])
             max.RES <- max(Obs.RES[i,])
@@ -1973,7 +1973,7 @@ if (output.directory != "")  {
             }
             lines(ind, Obs.correl.vector.norm, type = "l", lwd = 1, cex = 1, col = 1)
             lines(c(1, N), c(zero.corr.line, zero.corr.line), lwd = 1, lty = 1, cex = 1, col = 1) # zero correlation horizontal line
-            temp <- order(abs(obs.s2n), decreasing=T)
+            temp <- order(abs(obs.s2n), decreasing= TRUE)
             arg.correl <- temp[N]
             lines(c(arg.correl, arg.correl), c(min.plot, max.plot), lwd = 1, lty = 3, cex = 1, col = 3) # zero crossing correlation vertical line
 
@@ -2028,7 +2028,7 @@ if (output.directory != "")  {
             }
             GSEA.HeatMapPlot(V = pinko, row.names = pinko.gene.names, col.labels = class.labels, col.classes = class.phen, col.names = sample.names, main =" Heat Map for Genes in Gene Set", xlab=" ", ylab=" ")
 
-      if (non.interactive.run == F) {  
+      if (non.interactive.run == FALSE) {  
            if (.Platform$OS.type == "windows") {
                savePlot(filename = gs.filename, type ="jpeg", device = dev.cur())
            } else if (.Platform$OS.type == "unix") {
@@ -2153,7 +2153,7 @@ GSEA.HeatMapPlot2 <- function(V, row.names = "NA", col.names = "NA", main = " ",
 GSEA.Analyze.Sets <- function(
    directory,
    topgs = "",
-   non.interactive.run = F,
+   non.interactive.run = FALSE,
    height = 12,
    width = 17) {
 
@@ -2195,9 +2195,9 @@ GSEA.Analyze.Sets <- function(
    set.table.phen1 <- set.table[set.table[,3] == phen1,]
    set.table.phen2 <- set.table[set.table[,3] == phen2,]
  
-   seq.order <- order(as.numeric(set.table.phen1[, 4]), decreasing = F)
+   seq.order <- order(as.numeric(set.table.phen1[, 4]), decreasing = FALSE)
    set.table.phen1 <- set.table.phen1[seq.order,]
-   seq.order <- order(as.numeric(set.table.phen2[, 4]), decreasing = F)
+   seq.order <- order(as.numeric(set.table.phen2[, 4]), decreasing = FALSE)
    set.table.phen2 <- set.table.phen2[seq.order,]
 
 #   max.sets.phen1 <- length(set.table.phen1[,1])
@@ -2216,7 +2216,7 @@ GSEA.Analyze.Sets <- function(
    leading.lists <- NULL
    for (i in 1:max.sets.phen1) {
       inputfile <- paste(directory, set.table.phen1[i, 1], sep="", collapse="")
-      gene.set <- read.table(file=inputfile, sep="\t", header=T, comment.char="", as.is=T)
+      gene.set <- read.table(file=inputfile, sep="\t", header= TRUE, comment.char="", as.is= TRUE)
       leading.set <- as.vector(gene.set[gene.set[,"CORE_ENRICHMENT"] == "YES", "SYMBOL"])
       leading.lists <- c(leading.lists, list(leading.set))
       if (i == 1) {
@@ -2242,7 +2242,7 @@ GSEA.Analyze.Sets <- function(
    names(Itable) <- set.table.phen1[1:max.sets.phen1, 2]
    row.names(Itable) <- set.table.phen1[1:max.sets.phen1, 2]
 
-   if (non.interactive.run == F) {
+   if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.overlap.", phen1, sep="", collapse="")
            windows(height = width, width = width)
@@ -2262,7 +2262,7 @@ GSEA.Analyze.Sets <- function(
 
    GSEA.ConsPlot(Itable, col.names = set.table.phen1[1:max.sets.phen1, 2], main = " ", sub=paste("Leading Subsets Overlap ", doc.string, " - ", phen1, sep=""), xlab=" ", ylab=" ")
 
-   if (non.interactive.run == F) {  
+   if (non.interactive.run == FALSE) {  
         if (.Platform$OS.type == "windows") {
             savePlot(filename = filename, type ="jpeg", device = dev.cur())
         } else if (.Platform$OS.type == "unix") {
@@ -2288,7 +2288,7 @@ GSEA.Analyze.Sets <- function(
    output <- paste(directory, doc.string, ".all.leading.genes.", phen1, ".gmt", sep="")
    write(noquote(output.line), file = output, ncolumns = length(output.line))
 
-   if (non.interactive.run == F) {
+   if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.assignment.", phen1, sep="", collapse="")
            windows(height = height, width = width)
@@ -2309,7 +2309,7 @@ GSEA.Analyze.Sets <- function(
    #cmap <-  c("#AAAAFF", "#111166")
    GSEA.HeatMapPlot2(V = data.matrix(D.phen1), row.names = row.names(D.phen1), col.names = names(D.phen1), main = "Leading Subsets Assignment", sub = paste(doc.string, " - ", phen1, sep=""), xlab=" ", ylab=" ", color.map = cmap) 
 
-   if (non.interactive.run == F) {  
+   if (non.interactive.run == FALSE) {  
         if (.Platform$OS.type == "windows") {
             savePlot(filename = filename, type ="jpeg", device = dev.cur())
         } else if (.Platform$OS.type == "unix") {
@@ -2330,7 +2330,7 @@ GSEA.Analyze.Sets <- function(
    leading.lists <- NULL
    for (i in 1:max.sets.phen2) {
       inputfile <- paste(directory, set.table.phen2[i, 1], sep="", collapse="")
-      gene.set <- read.table(file=inputfile, sep="\t", header=T, comment.char="", as.is=T)
+      gene.set <- read.table(file=inputfile, sep="\t", header= TRUE, comment.char="", as.is= TRUE)
       leading.set <- as.vector(gene.set[gene.set[,"CORE_ENRICHMENT"] == "YES", "SYMBOL"])
       leading.lists <- c(leading.lists, list(leading.set))
       if (i == 1) {
@@ -2356,7 +2356,7 @@ GSEA.Analyze.Sets <- function(
    names(Itable) <- set.table.phen2[1:max.sets.phen2, 2]
    row.names(Itable) <- set.table.phen2[1:max.sets.phen2, 2]
 
-   if (non.interactive.run == F) {
+   if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.overlap.", phen2, sep="", collapse="")
            windows(height = width, width = width)
@@ -2376,7 +2376,7 @@ GSEA.Analyze.Sets <- function(
 
    GSEA.ConsPlot(Itable, col.names = set.table.phen2[1:max.sets.phen2, 2], main = " ", sub=paste("Leading Subsets Overlap ", doc.string, " - ", phen2, sep=""), xlab=" ", ylab=" ")
 
-   if (non.interactive.run == F) {  
+   if (non.interactive.run == FALSE) {  
         if (.Platform$OS.type == "windows") {
             savePlot(filename = filename, type ="jpeg", device = dev.cur())
         } else if (.Platform$OS.type == "unix") {
@@ -2402,7 +2402,7 @@ GSEA.Analyze.Sets <- function(
    output <- paste(directory, doc.string, ".all.leading.genes.", phen2, ".gmt", sep="")
    write(noquote(output.line), file = output, ncolumns = length(output.line))
 
-   if (non.interactive.run == F) {
+   if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.assignment.", phen2, sep="", collapse="")
            windows(height = height, width = width)
@@ -2423,7 +2423,7 @@ GSEA.Analyze.Sets <- function(
    #cmap <-  c("#AAAAFF", "#111166")
    GSEA.HeatMapPlot2(V = data.matrix(D.phen2), row.names = row.names(D.phen2), col.names = names(D.phen2), main = "Leading Subsets Assignment", sub = paste(doc.string, " - ", phen2, sep=""), xlab=" ", ylab=" ", color.map = cmap) 
 
-   if (non.interactive.run == F) {  
+   if (non.interactive.run == FALSE) {  
         if (.Platform$OS.type == "windows") {
             savePlot(filename = filename, type ="jpeg", device = dev.cur())
         } else if (.Platform$OS.type == "unix") {
@@ -2476,7 +2476,7 @@ GSEA.Analyze.Sets <- function(
    A <- A[HC$order,]
    A.row.names <- A.row.names[HC$order]
 
-   if (non.interactive.run == F) {
+   if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.assignment.clustered.", phen1, sep="", collapse="")
            windows(height = height, width = width)
@@ -2506,9 +2506,9 @@ GSEA.Analyze.Sets <- function(
     line.header <- paste(line.list, collapse="\t")
     line.length <- length(A.row.names) + 1
     write(line.header, file = text.filename, ncolumns = line.length)
-    write.table(t(A), file=text.filename, append = T, quote=F, col.names= F, row.names=T, sep = "\t")
+    write.table(t(A), file=text.filename, append = T, quote= FALSE, col.names= FALSE, row.names= TRUE, sep = "\t")
 
-   if (non.interactive.run == F) {  
+   if (non.interactive.run == FALSE) {  
         if (.Platform$OS.type == "windows") {
             savePlot(filename = filename, type ="jpeg", device = dev.cur())
         } else if (.Platform$OS.type == "unix") {
@@ -2560,7 +2560,7 @@ GSEA.Analyze.Sets <- function(
    A <- A[HC$order,]
    A.row.names <- A.row.names[HC$order]
 
-   if (non.interactive.run == F) {
+   if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.assignment.clustered.", phen2, sep="", collapse="")
            windows(height = height, width = width)
@@ -2588,9 +2588,9 @@ GSEA.Analyze.Sets <- function(
     line.header <- paste(line.list, collapse="\t")
     line.length <- length(A.row.names) + 1
     write(line.header, file = text.filename, ncolumns = line.length)
-    write.table(t(A), file=text.filename, append = T, quote=F, col.names= F, row.names=T, sep = "\t")
+    write.table(t(A), file=text.filename, append = TRUE, quote= FALSE, col.names= FALSE, row.names=TRUE, sep = "\t")
 
-   if (non.interactive.run == F) {  
+   if (non.interactive.run == FALSE) {  
         if (.Platform$OS.type == "windows") {
             savePlot(filename = filename, type ="jpeg", device = dev.cur())
         } else if (.Platform$OS.type == "unix") {
