@@ -1,3 +1,22 @@
+#' Display matrix in tcltk table
+#' @usage
+#' displayInTable(tclarray,title="",height=-1,width=-1,nrow=-1,ncol=-1)
+#'
+#' @param tclarray a dataframe
+#' @param title title of the table
+#' @param height -1
+#' @param width -1
+#' @param nrow -1
+#' @param ncol -1
+#' 
+#' @return display a Table
+#' @export
+#'
+#' @examples
+#' data(ClinicalData)
+#' \dontrun{
+#' getInTable(Table= ClinicalData, title= "Clinical Data")
+#' }
 displayInTable <- function(tclarray,title="",height=-1,width=-1,nrow=-1,ncol=-1)
 {
     #require(tcltk)

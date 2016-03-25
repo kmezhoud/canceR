@@ -1,3 +1,16 @@
+#' get Circos Layout for selected studies and selected dimensions
+#' @usage
+#' getCircos(dimension)
+#' @param dimension string (All,mRNA, CNA, Met,RPPA, miRNA, Mut) 
+#' @return a plot with Circos style
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/Circos.RData", sep=""))
+#' \dontrun{
+#' getCircos(dimension ="All")
+#' }
+#' @import circlize
 getCircos <- function(dimension){
     #library(circlize)
     circos.clear()

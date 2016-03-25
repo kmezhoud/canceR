@@ -1,4 +1,15 @@
-`about` <-
+#' about canceR
+#' @usage about()
+#' @return dialig box with text
+#' @export
+#'
+#' @examples
+#' about()
+#'
+#'
+
+
+about <-
     function() {
         
         fontinfo <- tkfont.create(family="times",size=11)

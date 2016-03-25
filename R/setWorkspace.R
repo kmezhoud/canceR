@@ -1,3 +1,13 @@
+#' Setting work Directory and output folders.At starting window, user needs to set work directory for output data. The function is foud in File menu.
+#' @usage setWorkspace()
+#' @return paths of output files
+#' @export
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#' \dontrun{
+#' setWorkspace()
+#' }
+#' 
 setWorkspace <- function(){
     
     

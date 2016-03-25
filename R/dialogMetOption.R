@@ -1,3 +1,20 @@
+#' Dialog Box to set methylation options
+#' @usage
+#' dialogMetOption(ProfData, k)
+#' @param ProfData adataframe with methylation data
+#' @param k threshold of silencing gene 0:1
+#'
+#' @return a dialog box to set methylation option (threshold of silencing gene)
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' getMetDataMultipleGenes()
+#' #dialogMetOption(ProfData,0.7)
+#' }
+#' 
+#' 
 dialogMetOption <- function(ProfData,k){
     
     

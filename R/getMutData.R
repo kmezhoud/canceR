@@ -1,3 +1,16 @@
+#' get Mutation data for multiple genes
+#' @usage
+#' getMutData()
+#'
+#' @return a a dataframe with mutation informations
+#' @export
+#'
+#' @examples
+#' load("/Volumes/DATA/canceR/data/ucec_tcga_pubGSEA1021.RData")
+#' \dontrun{
+#' getMutData()
+#' }
+#' 
 getMutData <- function(){
     
     tclRequire("BWidget")

@@ -17,5 +17,5 @@ Global environment to store canceR variables.
 
 
 \examples{
-myGlobalEnv
+myGlobalEnv <- new.env(parent = emptyenv())
 }

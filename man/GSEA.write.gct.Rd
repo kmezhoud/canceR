@@ -19,12 +19,15 @@ GSEA.write.gct(gct, filename)
 %%     ~~Describe \code{filename} here~~
 }
 }
+\value{
+GSEA.Write.gct
+}
 
 \examples{
-\dontrun{
-library(canceR)
 ## Load workspace
 load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+\dontrun{
+
 ##Run.GSEA()
 }
 }

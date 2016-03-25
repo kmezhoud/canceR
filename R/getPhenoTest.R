@@ -1,3 +1,20 @@
+#' Associate phenotype to Studies (cancers)
+#' @usage
+#' getPhenoTest()
+#' 
+#' @return a dataframe with disease/ variables association
+#' @export
+#'
+#' @examples
+#' load("/Volumes/DATA/canceR/data/prad_michPhenoTest1021.RData")
+#' \dontrun{
+#' getPhenoTest(myGlobalEnv$eSet)
+#' }
+#' @importFrom phenoTest ExpressionPhenoTest
+#' @importFrom phenoTest getSignif
+#' @importFrom phenoTest getFc
+#' 
+
 getPhenoTest <- function(){
     
     print("Getting eSet from selected Case and Genetic Profile...")

@@ -1,3 +1,16 @@
+#' get GSEA linear modeling by variables (phenotype)
+#' @usage
+#' getGSEAlm_Variables()
+#'
+#' @return a dataframe with annotation (GO, BP)
+#' @export
+#'
+#' @examples
+#'  x <- 3
+#' \dontrun{
+#' load(paste(.libPaths(),"/canceR/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' getGSEAlm_Variables()
+#' }
 getGSEAlm_Variables <-function(){
     
     ##Remove "GenesDetails" objectf if exists

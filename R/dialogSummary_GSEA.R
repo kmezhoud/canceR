@@ -1,3 +1,17 @@
+#'Dialog Box to specify phenotype (variable) used in last GSEA-R to get Summary Results. This function ask the user to specify the phenotype (variable).
+#' @usage dialogSummary_GSEA(Variable,returnValOnCancel ="ID_CANCEL")
+#' 
+#' @param Variable phenotype
+#' @param returnValOnCancel  "ID_CANCEL"
+#' 
+#' @return variables
+#' @export
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' #Run.GSEA()
+#' #getSummaryGSEA()
+#' }
 dialogSummary_GSEA <- function(Variable,returnValOnCancel = "ID_CANCEL") {
     
     dlg <- tktoplevel()

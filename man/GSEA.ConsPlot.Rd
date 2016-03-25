@@ -32,7 +32,9 @@ GSEA.ConsPlot(V, col.names, main = " ", sub = " ", xlab = " ", ylab = " ")
     \code{ylab = " "} 
 }
 }
-
+\value{
+GSEA.ConsPlot
+}
 \examples{
 \dontrun{
 library(canceR)

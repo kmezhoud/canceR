@@ -1,11 +1,22 @@
 
 #mSigDB<- list(set1=c("a","b","d","x"), set2=c("b","c","q","m"), set3=c("b","f","e","k","q","h"))
-
 ## Remove gene in duplicates
 #sapply(1:length(MSigDB),function(x){MSigDB[[x]][as.numeric(table(unlist(MSigDB))[MSigDB[[x]]])==1]})
-
 #MSigDB <- readLines("/home/mezhoud/CGDS-R/canceRdev/inst/extdata/MSigDB/c5.bp.v4.0.symbols.gmt")
 
+#' get gene list from MSigDB
+#' @usage
+#' getGeneListFromMSigDB()
+#' 
+#' @return a vector with gene list
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/brca_tcgaGSEAlm1021.RData", sep=""))
+#' \dontrun{
+#' getGeneListFromMSigDB()
+#'}
+#'
 getGeneListFromMSigDB <- function(){
     if(exists("GeneListMSigDB", envir = myGlobalEnv)){
         rm("GeneListMSigDB", envir = myGlobalEnv)

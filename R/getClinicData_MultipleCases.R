@@ -1,3 +1,22 @@
+#' get Clinical Data for Multiple Cases. User needs to select at least one case to run this function. Get clinical data for more one or multiple cases.
+#' @usage 
+#' getClinicData_MultipleCases(getSummaryGSEAExists)
+#' 
+#' @param getSummaryGSEAExists  if equal to 0, the clinical data is displayed in table. if the argument is equal to 1, the clinical data is used to summarise GSEA analysis results.
+#' 
+#' @export
+#' @return dataframe with clinical data
+#' 
+#' @examples 
+#' ##Load Session
+#' load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#' ## Select Case
+#' myGlobalEnv$curselectCases <- 2
+#' ## get Clinical data
+#' \dontrun{
+#' getClinicData_MultipleCases(getSummaryGSEAExists = 0)
+#' }
+#' 
 getClinicData_MultipleCases<- function(getSummaryGSEAExists){
     
     ##getSummaryGSEAExists is an argument for the function getSummaryGSEA(). this function accept only one clinical dats.

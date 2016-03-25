@@ -1,3 +1,12 @@
+#' User needs to specify which gene is interesting to get genomic cancer data. The gene must be with Symbol and one gene by line.
+#' @usage getGeneList()
+#' @return Gene list path of file
+#' @export
+#' @examples
+#' myGlobalEnv <- new.env(parent = emptyenv())
+#' \dontrun{
+#' getGeneList()
+#'  }
 getGeneList <- function(){
    if(exists("GeneListMSigDB", envir=myGlobalEnv)){
        rm("GeneListMSigDB", envir=myGlobalEnv)

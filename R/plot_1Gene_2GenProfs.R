@@ -1,3 +1,12 @@
+#' Plotting two genetic profiles for  one Gene 
+#' @usage plot_1Gene_2GenProfs()
+#' @return plot
+#' @export
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
+#' \dontrun{
+#' plot_1Gene_2GenProfs()
+#' }
 plot_1Gene_2GenProfs <- function(){
     
     

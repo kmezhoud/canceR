@@ -1,3 +1,18 @@
+#' Reduce MSigDB size for only gene list
+#' @usage getMSigDB(eSet, k)
+#' @param eSet Expression Set
+#' @param k integer Number of studies
+#' 
+#' @return MSigDB for user gene List
+#' @export
+#' 
+#' @examples
+#'  d <- 7
+#' \dontrun{
+#' setWorkspace()
+#' getMSigDB(eSet = myGlobalEnv$eSetClassifier,k = 1)
+#' }
+#' 
 getMSigDB <- function(eSet,k){
      
     ## Selecting GeneList from getGeneList.R or getGenesClasses.R functions.

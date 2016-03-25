@@ -1,3 +1,16 @@
+#' Get profile data for more than 500 genes list.
+#' @usage getMegaProfData(MegaGeneList,k)
+#' @param MegaGeneList Genelist >500
+#' @param k integer number of studies
+#' @return dataframewith profile data
+#' @export
+#' @examples 
+#' myGlobalEnv <- new.env(parent = emptyenv())
+#' load(paste(path.package("canceR"),"/data/brca_tcgaGSEAlm1021.RData", sep=""))
+#' \dontrun{
+#' getMegaProfData(myGlobaEnv$MegaGeneList,1) 
+#' }
+#' 
 getMegaProfData <- function(MegaGeneList,k)
 {
     

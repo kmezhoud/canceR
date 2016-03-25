@@ -1,3 +1,17 @@
+#' model plotting with tcltk
+#' @usage plotModel(plotCommand, title= "TITLE",hscale=1, vscale=1 )
+#' @param plotCommand plotcommand
+#' @param title title of plot
+#' @param hscale horizintal scale
+#' @param vscale vertical scale
+#' 
+#' @return plot
+#' @export
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
+#' \dontrun{
+#' plot_1Gene_2GenProfs()
+#' }
 plotModel <- function(plotCommand, title= "TITLE",hscale=1, vscale=1 ){
     
     

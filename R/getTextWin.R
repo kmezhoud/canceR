@@ -1,3 +1,14 @@
+#' get text in tcltk windows
+#' @usage getTextWin(text)
+#' @param text string
+#' 
+#' @return tcltk windows with text
+#' @export
+#' @examples 
+#' text <- "mytext"
+#' \dontrun{
+#' getTextWin(text) 
+#' }
 getTextWin <- function(text){
     #require(tcltk)
     tt  <- tktoplevel()

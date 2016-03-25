@@ -17,6 +17,9 @@ GSEA.NormalizeRows(V)
 }
 }
 
+\value{
+GSEA.NormalizeRows
+}
 
 \examples{
 \dontrun{

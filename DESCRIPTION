@@ -1,11 +1,12 @@
 Package: canceR
 Type: Package
-Title: A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC.
-Version: 1.1.5
-Date: 2016-03-22
-Author:    Karim Mezhoud.
-           Nuclear Safety Department.
-           Nuclear Science Center of Tunisia.
+Title: A Graphical User Interface for accessing and modeling the Cancer Genomics
+    Data of MSKCC.
+Version: 1.3.1
+Date: 2016-03-24
+Author: Karim Mezhoud.
+    Nuclear Safety Department.
+    Nuclear Science Center of Tunisia.
 Maintainer: Karim Mezhoud <kmezhoud@gmail.com>
 Description: The package is user friendly interface based on the cgdsr and
     other modeling packages to explore, compare, and analyse all
@@ -21,10 +22,22 @@ Depends:
     tcltk2,
     cgdsr
 Imports:
-    GSEABase,GSEAlm,tkrplot,
-    geNetClassifier,RUnit,
-    Formula, rpart,survival,
-    Biobase, phenoTest,
-    Formula, rpart,
-    Biobase, circlize, plyr
+    GSEABase,
+    GSEAlm,
+    tkrplot,
+    geNetClassifier,
+    RUnit,
+    Formula,
+    rpart,
+    survival,
+    Biobase,
+    phenoTest,
+    circlize,
+    plyr,
+    graphics,
+    stats,
+    utils
+Suggests:
+    testthat (>= 0.10.0)
 biocViews: GUI, GeneExpression, Software
+RoxygenNote: 5.0.1

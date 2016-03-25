@@ -1,3 +1,23 @@
+#' Dialog box to specify Gene Symbol.
+#' @usage modalDialog(title, question, entryInit, entryWidth = 40,returnValOnCancel = "ID_CANCEL")
+#' @param title string
+#' @param question string
+#' @param entryInit entryInit
+#' @param entryWidth 40
+#' @param returnValOnCancel "ID_CANCEL"
+#' 
+#' @return dialog box
+#' @export
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#' ## Select Case from Breast Cancer
+#' myGlobalEnv$curselectCases <- 9
+#' ##Select Genetic Profile from Breast Cancer
+#' myGlobalEnv$curselectGenProfs <- 4
+#' ## get Specific Mutation data for 73 Genes list
+#' \dontrun{
+#' getProfilesDataSingleGene()
+#' }
 modalDialog <- function(title, question, entryInit, entryWidth = 40,
                         returnValOnCancel = "ID_CANCEL") {
     dlg <- tktoplevel()

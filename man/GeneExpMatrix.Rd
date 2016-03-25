@@ -2,10 +2,10 @@
 \alias{GeneExpMatrix}
 \docType{data}
 \title{
-Profile data
+GeneExpMatrix
 }
 \description{
-Example of gene expression matrix
+Example of GeneExpMatrix
 }
 \usage{data("GeneExpMatrix")}
 \format{
@@ -31,14 +31,20 @@ Example of gene expression matrix
     \item{\code{VPS16}}{a numeric vector}
   }
 }
-
+\details{
+example of gene expression
+}
 \source{
 cbioportal
 }
-
-\keyword{datasets}
-\examples{
-## Not run
-##canceRHelp()
-## End(Not run)
+\references{
+cbioportal
 }
+\value{
+a dataframe of gene expression
+}
+\examples{
+data(GeneExpMatrix)
+## maybe str(GeneExpMatrix) ; plot(GeneExpMatrix) ...
+}
+\keyword{datasets}

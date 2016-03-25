@@ -1,3 +1,17 @@
+#' get GSEA linear modeling by studies (diseases)
+#' @usage
+#' getGSEAlm_Diseases()
+#'
+#' @return a dataframe with annotation (GO, BP)
+#' @export
+#' @examples
+#'  load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#'  \dontrun{
+#'  load(paste(.libPaths(),"/canceR/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#'  getGSEAlm_Diseases
+#' }
+#' @importFrom GSEAlm gsealmPerm
+#' 
 getGSEAlm_Diseases <-function(){
     
     ##Remove "GenesDetails" objectf if exists

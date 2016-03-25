@@ -1,3 +1,20 @@
+#' Dialog bos to set returned Mutation information
+#' @usage
+#' dialogMut(title, question, entryInit, entryWidth = 40,returnValOnCancel = "ID_CANCEL")
+#' @param title title of the table
+#' @param question question
+#' @param entryInit entryInit
+#' @param entryWidth 40
+#' @param returnValOnCancel "ID_CANCEL"
+#'
+#' @return a check box with mutations variables
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' dialogMut("title", "question", "entryInit", entryWidth = 40, returnValOnCancel = "ID_CANCEL")
+#' }
 dialogMut <- function(title, question, entryInit, entryWidth = 40,
                       returnValOnCancel = "ID_CANCEL") {
     dlg <- tktoplevel()

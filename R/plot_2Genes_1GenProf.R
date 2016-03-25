@@ -1,3 +1,12 @@
+#' plot correlation of two genes expressions.
+#' @usage plot_2Genes_1GenProf()
+#' @return plot
+#' @export
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' plot_2Genes_1GenProf()
+#' }
 plot_2Genes_1GenProf <- function(){
     
     if(!exists("curselectCases", envir = myGlobalEnv)){

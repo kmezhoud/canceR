@@ -1,3 +1,13 @@
+#' get Summary  results from GSEA-R (Broad Institute)
+#' @usage getSummaryGSEA()
+#' @return Dataframe with summary results
+#' @export
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' Run.GSEA()
+#' getSummaryGSEA()
+#' }
 getSummaryGSEA <- function(){
     
     Variable <- as.data.frame(getClinicData_MultipleCases(getSummaryGSEAExists=1))

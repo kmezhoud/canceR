@@ -1,3 +1,15 @@
+#' get Methylation data for multiple genes
+#' @usage
+#' getMetDataMultipleGenes()
+#'
+#' @return a a dataframe with mean and median of methylation rate (threshold of silencing gene)
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' getMetDataMultipleGenes()
+#' }
 getMetDataMultipleGenes <-function(){
     
     tclRequire("BWidget")

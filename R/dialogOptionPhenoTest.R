@@ -1,3 +1,16 @@
+#' Checkbox to select variables from clinical data
+#' @usage dialogOptionPhenoTest(eSet)
+#' @param eSet Expression Set
+#' 
+#' @return vectors: variables to test Survival status, AGE, p-value 
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/prad_michPhenoTest1021.RData", sep=""))
+#' \dontrun{
+#' dialogOptionPhenoTest(myGlobalEnv$eSet)
+#' }
+#' 
 dialogOptionPhenoTest <- function(eSet){
     #require(tcltk)
     
@@ -80,7 +93,7 @@ dialogOptionPhenoTest <- function(eSet){
         curselectSurvival <- as.numeric(tkcurselection(tl1))+1
         lcurselectSurvival <- length(curselectSurvival)
         
-        myGlobalEnv$EventTime <-  names(pData(eSet))[curselectSurvival]
+        myGlobalEnv$EventTime <-  names(Biobase::pData(eSet))[curselectSurvival]
         if (lcurselectSurvival !=2){
             msgSelectSurvival<-"Select two variables for Survival \n Event(OS_STATUT) \n Time(OS_MONTHS"
             tkmessageBox(message=msgSelectSurvival)
@@ -103,9 +116,9 @@ dialogOptionPhenoTest <- function(eSet){
     tkgrid(xscr1Info)
     tkgrid.configure(xscr1Info,rowspan=4, column=1,sticky="we")
     
-    for (i in 1:length(names(pData(eSet)))){
+    for (i in 1:length(names(Biobase::pData(eSet)))){
         
-        tkinsert(tl1,"end",names(pData(eSet))[i])
+        tkinsert(tl1,"end",names(Biobase::pData(eSet))[i])
     }
     
     ###################################
@@ -115,16 +128,16 @@ dialogOptionPhenoTest <- function(eSet){
         curselectCategorical <- as.numeric(tkcurselection(tl2))+1
         lcurselectCategorical <- length(curselectCategorical)
         
-        myGlobalEnv$Category <-  names(pData(eSet))[curselectCategorical]
+        myGlobalEnv$Category <-  names(Biobase::pData(eSet))[curselectCategorical]
         
         if (lcurselectCategorical ==0){
             msgSelectCategorical<-"Select one variable for Category \n not numeric"
             tkmessageBox(message=msgSelectCategorical)
             tkfocus(myGlobalEnv$ttPheno)
-        }else if (all(is.na(pData(eSet)[curselectCategorical] ))){
+        }else if (all(is.na(Biobase::pData(eSet)[curselectCategorical] ))){
             msgNoData <- paste("No data are avaible for ",Category)
             tkmessageBox(message=msgNoData, icon="info")
-        } else if (is.numeric(pData(eSet)[curselectCategorical][1,])==TRUE){
+        } else if (is.numeric(Biobase::pData(eSet)[curselectCategorical][1,])==TRUE){
             msgBadCategory<-"Select non numeric Variable"
             tkmessageBox(message=msgBadCategory)
         } else {
@@ -132,7 +145,7 @@ dialogOptionPhenoTest <- function(eSet){
             tkinsert(tl2info,"end",myGlobalEnv$Category)
             tkfocus()
             ##Remove NA from selected variables 
-            #pData(eSet)[curselectCategorical] <-as.matrix(na.omit(pData(eSet)[curselectCategorical]))
+            #Biobase::pData(eSet)[curselectCategorical] <-as.matrix(na.omit(Biobase::pData(eSet)[curselectCategorical]))
         }
         
     }
@@ -148,9 +161,9 @@ dialogOptionPhenoTest <- function(eSet){
     tkgrid(xscr2Info)
     tkgrid.configure(xscr2Info,rowspan=4, column=1,sticky="we")
     
-    for (i in 1:length(names(pData(eSet)))){
+    for (i in 1:length(names(Biobase::pData(eSet)))){
         
-        tkinsert(tl2,"end",names(pData(eSet))[i])
+        tkinsert(tl2,"end",names(Biobase::pData(eSet))[i])
     }
     
     ###################################
@@ -160,12 +173,12 @@ dialogOptionPhenoTest <- function(eSet){
         curselectContinuous <- as.numeric(tkcurselection(tl3))+1
         lcurselectContinuous <- length(curselectContinuous)
         
-        myGlobalEnv$Continu <-  names(pData(eSet))[curselectContinuous]
+        myGlobalEnv$Continu <-  names(Biobase::pData(eSet))[curselectContinuous]
         if (lcurselectContinuous ==0){
             msgSelectContinuous<-"Select one or more Continuous variables \n  numeric"
             tkmessageBox(message=msgSelectContinuous)
         }
-        if (is.character(pData(eSet)[curselectContinuous][1,])==TRUE|is.factor(pData(eSet)[curselectContinuous][1,])==TRUE){
+        if (is.character(Biobase::pData(eSet)[curselectContinuous][1,])==TRUE|is.factor(Biobase::pData(eSet)[curselectContinuous][1,])==TRUE){
             msgBadContinuous<-"Select non character/factor Variable"
             tkmessageBox(message=msgBadContinuous)
         } else {
@@ -173,7 +186,7 @@ dialogOptionPhenoTest <- function(eSet){
             tkinsert(tl3info,"end",myGlobalEnv$Continu)
             tkfocus()
             ##Remove NA from selected variables 
-            #pData(eSet)[curselectContinuous] <-as.matrix(na.omit(pData(eSet)[curselectContinuous]))
+            #Biobase::pData(eSet)[curselectContinuous] <-as.matrix(na.omit(Biobase::pData(eSet)[curselectContinuous]))
         }
         
     }
@@ -189,9 +202,9 @@ dialogOptionPhenoTest <- function(eSet){
     tkgrid(xscr3Info)
     tkgrid.configure(xscr3Info,rowspan=4, column=1,sticky="we")
     
-    for (i in 1:length(names(pData(eSet)))){
+    for (i in 1:length(names(Biobase::pData(eSet)))){
         
-        tkinsert(tl3,"end",names(pData(eSet))[i])
+        tkinsert(tl3,"end",names(Biobase::pData(eSet))[i])
     }
     
     

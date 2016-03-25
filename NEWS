@@ -1,3 +1,9 @@
+CHANGES IN VERSION 1.3.1 (24 Mars 2016)
+------------------------
+rewrite documents using roxygen
+rewrite test package
+include .travis check system
+
 CHANGES IN VERSION 1.1.2 (12 May 2015)
 ------------------------
 1- add Circos function to plot Menu

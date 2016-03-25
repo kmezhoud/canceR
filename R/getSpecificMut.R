@@ -1,3 +1,16 @@
+#' get specific Mutation data for multiple genes
+#' @usage
+#' getSpecificMut()
+#'
+#' @return a a dataframe with specific mutation informations
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' getSpecificMut()
+#' }
+#' 
 getSpecificMut <- function(){
     
     

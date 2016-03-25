@@ -1,3 +1,17 @@
+#' Checkbox to select dimensions
+#' @usage
+#' dialogOptionCircos()
+#' 
+#' @return a checkbox with all dimensions
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/Circos.RData", sep=""))
+#' \dontrun{
+#' dialogOptionCircos()
+#' #getCircos(dimension ="All")
+#' }
+#' @import circlize
 dialogOptionCircos <- function(){
 
 ttCircos <- tktoplevel()

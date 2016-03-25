@@ -1,3 +1,12 @@
+#' get Profile (GCT file) and Phenotype (CLS file) Data from Disease.
+#' @usage getGCT_CLSfiles()
+#' @return GCT and CLS files paths
+#' @export
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' getGCT_CLSfiles()
+#' }
 getGCT_CLSfiles <- function(){
     
     tclRequire("BWidget")

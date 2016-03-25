@@ -1,3 +1,13 @@
+#' get GCT and CLS example files.
+#' @usage getGCTCLSExample()
+#' @return GCT and CLS files
+#' @export
+#' @examples
+#' ## Load workspace
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' getGCTCLSExample()
+#' }
 getGCTCLSExample <- function(){
     #require(tcltk)
     

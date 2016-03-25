@@ -1,3 +1,18 @@
+#' get Profles Data of multiple genes
+#' 
+#' @usage
+#' getProfilesDataMultipleGenes(getSummaryGSEAExists)
+#' @param getSummaryGSEAExists if equal to 0, the clinical data is displayed in table. if the argument is equal to 1, the clinical data is used to summarise GSEA analysis results.
+#' 
+#' @return a file with a dataframe of profle data
+#' @export
+#'
+#' @examples
+#'load(paste(path.package("canceR"),"/data/prad_michPhenoTest1021.RData", sep=""))
+#'\dontrun{
+#' getProfilesDataMultipleGenes(getSummaryGSEAExists = 0)
+#' }
+#' 
 getProfilesDataMultipleGenes <-function(getSummaryGSEAExists){
     
     tclRequire("BWidget")

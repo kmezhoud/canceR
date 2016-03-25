@@ -1,3 +1,15 @@
+#' The  main function to run GSEA-R from Broad Institute
+#' @usage
+#' Run.GSEA()
+#' 
+#' @return A vector with sampling size
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' Run.GSEA()
+#' }
 Run.GSEA <- function(){
 #   if (!require("GSEABase")) {
 #     source("http://bioconductor.org/biocLite.R")

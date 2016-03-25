@@ -1,7 +1,26 @@
-##set myGlobalEnv
-
 myGlobalEnv <- new.env(parent = emptyenv())
-
+#' main function
+#' @usage
+#' canceR()
+#'
+#' @return open the starting windows with cancer studies
+#' @export
+#'
+#' @examples
+#' myGlobalEnv <- new.env(parent = emptyenv())
+#' \dontrun{
+#' canceR()
+#'}
+#' @import tkrplot
+#' @import cgdsr
+#' @import tcltk
+#' @import tcltk2
+#' 
+#'@importFrom graphics axis image layout legend lines par plot points text
+#'@importFrom stats as.formula cor density dist hclust median na.exclude p.adjust pnorm sd setNames window
+#'@importFrom utils browseURL capture.output memory.limit read.table write.table read.delim
+#'
+#'
 canceR <- function(){
     
     ## Create project

@@ -1,3 +1,17 @@
+#' Dialog Box to  Select MSigDB Files from drive 
+#' @usage
+#' getMSigDBfile()
+#' 
+#' @return A path of MSigDB file
+#' @export
+#'
+#' @examples
+#' f <- 5+2
+#' \dontrun{
+#' load(paste(path.package("canceR"),"/data/prad_michPhenoTest1021", sep=""))
+#' geteSet()
+#' getMSigDBfile()
+#' }
 getMSigDBfile <- function(){
     
     Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)

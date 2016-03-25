@@ -1,3 +1,14 @@
+#' Built Expression Set (eSet) from profile data.
+#' @usage geteSet()
+#' @export
+#' @return ExpressionSet
+#' @examples 
+#'  f <- 9
+#'  \dontrun{
+#'  load(paste(.libPaths(),"canceR/data/prad_michPhenoTest1021", sep=""))
+#'  geteSet()
+#'  }
+#' 
 geteSet <- function(){
     
     #function to replace blanks with missing

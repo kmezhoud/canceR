@@ -1,3 +1,13 @@
+#' get a list of Profile Data of every available dimensions. This function load matrices of every dimension (Exp, CNA, Met, RPPA,miRNA,Mut) and save them in a list for every disease. 
+#' @usage getListProfData()
+#' @return a list of data frame with Profiles Data
+#' @export
+#' @examples
+#' load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#' \dontrun{
+#' getListProfData() 
+#' head(myGlobalEnv$ProfData$Expression) 
+#' }
 getListProfData <- function(){
     #library(plyr)
     
@@ -23,11 +33,11 @@ getListProfData <- function(){
                     if(length(ProfData_X)== 0){
                         if(length(myGlobalEnv$GeneList) <= 500){
                             ## built empty data frame with gene Symbol in colnames
-                            ProfData_X <- as.data.frame(setNames(replicate(length(myGlobalEnv$GeneList),numeric(1), simplify = F), myGlobalEnv$GeneList[order(myGlobalEnv$GeneList)]))
+                            ProfData_X <- as.data.frame(setNames(replicate(length(myGlobalEnv$GeneList),numeric(1), simplify = FALSE), myGlobalEnv$GeneList[order(myGlobalEnv$GeneList)]))
                             return(ProfData_X)
                             
                         }else{
-                            ProfData_X <- as.data.frame(setNames(replicate(length(SubMegaGeneList),numeric(1), simplify = F), SubMegaGeneList[order(SubMegaGeneList)]))
+                            ProfData_X <- as.data.frame(setNames(replicate(length(SubMegaGeneList),numeric(1), simplify = FALSE), SubMegaGeneList[order(SubMegaGeneList)]))
                             return(ProfData_X)
                         }
                     }else{
@@ -54,10 +64,10 @@ getListProfData <- function(){
                   print(paste("There is no genetic Profile: ", regex2," for Study:",myGlobalEnv$checked_Studies[i],"..." ))
                   ## built empty data frame with gene Symbol in colnames
                   if(length(myGlobalEnv$GeneList) <500){
-                       ProfData_X <- as.data.frame(setNames(replicate(length(myGlobalEnv$GeneList),numeric(1), simplify = F), myGlobalEnv$GeneList[order(myGlobalEnv$GeneList)]))
+                       ProfData_X <- as.data.frame(setNames(replicate(length(myGlobalEnv$GeneList),numeric(1), simplify = FALSE), myGlobalEnv$GeneList[order(myGlobalEnv$GeneList)]))
                       return(ProfData_X)
                   }else{
-                      ProfData_X <- as.data.frame(setNames(replicate(length(SubMegaGeneList),numeric(1), simplify = F), SubMegaGeneList[order(SubMegaGeneList)]))
+                      ProfData_X <- as.data.frame(setNames(replicate(length(SubMegaGeneList),numeric(1), simplify = FALSE), SubMegaGeneList[order(SubMegaGeneList)]))
                       return(ProfData_X)
                   }
                   return( ProfData_X)  
@@ -67,10 +77,10 @@ getListProfData <- function(){
             print(paste("There is no Cases: ", regex1," for Study:",myGlobalEnv$checked_Studies[i],"..." ))
             ## built empty data frame with gene Symbol in colnames
             if(length(myGlobalEnv$GeneList) <500){
-                ProfData_X <-as.data.frame(setNames(replicate(length(myGlobalEnv$GeneList),numeric(1), simplify = F), myGlobalEnv$GeneList[order(myGlobalEnv$GeneList)]))
+                ProfData_X <-as.data.frame(setNames(replicate(length(myGlobalEnv$GeneList),numeric(1), simplify = FALSE), myGlobalEnv$GeneList[order(myGlobalEnv$GeneList)]))
                 return(ProfData_X)
             }else{
-                ProfData_X <-as.data.frame(setNames(replicate(length(SubMegaGeneList),numeric(1), simplify = F), SubMegaGeneList[order(SubMegaGeneList)]))
+                ProfData_X <-as.data.frame(setNames(replicate(length(SubMegaGeneList),numeric(1), simplify = FALSE), SubMegaGeneList[order(SubMegaGeneList)]))
                 return(ProfData_X)
             }
             return(ProfData_X)

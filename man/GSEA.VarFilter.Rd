@@ -25,13 +25,14 @@ GSEA.VarFilter(V, fold, delta, gene.names = "NULL")
 %%     ~~Describe \code{gene.names} here~~
 }
 }
-
+\value{
+GSEA.VarFilter
+}
 
 \examples{
-\dontrun{
-library(canceR)
 ## Load workspace
 load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+\dontrun{
 ##Run.GSEA()
 }
 }

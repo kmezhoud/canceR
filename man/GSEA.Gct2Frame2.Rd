@@ -16,7 +16,9 @@ GSEA.Gct2Frame2(filename = "NULL")
 %%     ~~Describe \code{filename} here~~
 }
 }
-
+\value{
+GSEA.GCT2Frame2
+}
 
 \examples{
 \dontrun{

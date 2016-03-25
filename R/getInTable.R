@@ -1,3 +1,17 @@
+#' get dataframe in TK/TCL table
+#' @usage
+#' getInTable(table,title)
+#' @param table Dataframe
+#' @param title string a title of the table
+#' @return display a Table
+#' @export
+#'
+#' @examples
+#' data(ClinicalData)
+#' \dontrun{
+#' getInTable(Table= ClinicalData, title= "Clinical Data")
+#' }
+
 getInTable <- function(table,title){
 matrix <-rbind(colnames(table), table)
 matrix1 <- cbind(row.names(matrix), matrix)

@@ -1,3 +1,12 @@
+#' get Gene List from examples. User can select one from available gene list
+#' @usage getGeneListExample()
+#' @return Gene list path of file
+#' @export
+#' @examples
+#' myGlobalEnv <- new.env(parent = emptyenv())
+#' \dontrun{
+#' getGeneListExample() 
+#' }
 getGeneListExample <- function(){
     
     

@@ -5,7 +5,7 @@
 ClinicalData
 }
 \description{
-Exmaple of Clinical Data
+Example of Clinical Data
 }
 \usage{data("ClinicalData")}
 \format{
@@ -26,12 +26,10 @@ cbioportal
 \keyword{datasets}
 
 \value{
-Value
+a dataframe with clinical data
 }
 \examples{
-## Nor run
-##library(canceR)
-##getClinicalData()
-## End(Not run)
+
+data("ClinicalData")
 
 }

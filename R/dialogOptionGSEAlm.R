@@ -1,3 +1,17 @@
+#' Dialogbox to select variables from Clinical data
+#' @usage
+#' dialogOptionGSEAlm(k,ClinicalData)
+#' @param k  integer 1
+#' @param ClinicalData dataframe with clinical variables
+#'
+#' @return permutaion value, p-value, coVariables
+#' @export
+#'
+#' @examples
+#' data(ClinicalData)
+#' \dontrun{
+#' getOptionGSEAlm()
+#' }
 dialogOptionGSEAlm <- function(k, ClinicalData){
     Lchecked_Cases <- length(myGlobalEnv$curselectCases)
     ttClinData_cb <- tktoplevel()

@@ -1,3 +1,19 @@
+#' bind non equal colunm
+#' @usage cbind.na(..., deparse.level = 1) 
+#' @param ... ...
+#' @param deparse.level  1
+#' 
+#'
+#' @return a data frame with merged columns
+#' @export
+#'
+#' @examples
+#'col1 <- c("a","b","c","d")
+#'col2 <- c("A", "B", "C")
+#'col3 <- cbind.na(col1, col2)
+#'
+#'
+#'
 cbind.na <- function (..., deparse.level = 1) 
 {
     na <- nargs() - (!missing(deparse.level))    

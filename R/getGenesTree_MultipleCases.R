@@ -1,3 +1,17 @@
+#' Get  successively trees of genes list for multiple cases
+#' @usage getGenesTree_MultipleCases(entryWidth = 10)
+#' @param entryWidth 10
+#' @export
+#' @return plot tree
+#' @examples 
+#' q <- load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#' \dontrun{
+#' load(paste(.libPaths(),"/canceR/data/brca_tcga73genes.RData", sep=""))
+#' getGenesTree_MultipleCases(entryWidth = 10)
+#' }
+#' @import rpart
+#' @import Formula
+#' @import RUnit
 getGenesTree_MultipleCases <- function(entryWidth = 10){
     
              testCheckedCaseGenProf()

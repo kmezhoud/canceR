@@ -1,3 +1,12 @@
+#' get matrix with clinical from file
+#' @usage getClinicalDataMatrix()
+#' @export
+#' @return dataframe of clinicaldata
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#' \dontrun{
+#' getClinicalDataMatrix()
+#' }
 getClinicalDataMatrix <- function(){
  
     Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)

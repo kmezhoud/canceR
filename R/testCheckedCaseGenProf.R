@@ -1,3 +1,12 @@
+#' Testing checked appropriate Cases for appropriate Genetic profiles.
+#' @usage testCheckedCaseGenProf()
+#' @return dialog box with warning message
+#' @export
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#' \dontrun{
+#' testCheckedCaseGenProf()
+#' }
 testCheckedCaseGenProf <- function(){
     
 if(!exists("curselectCases", envir = myGlobalEnv)){

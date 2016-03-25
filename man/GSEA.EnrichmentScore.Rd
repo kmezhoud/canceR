@@ -25,7 +25,9 @@ GSEA.EnrichmentScore(gene.list, gene.set, weighted.score.type = 1, correl.vector
 %%     ~~Describe \code{correl.vector} here~~
 }
 }
-
+\value{
+GSEA.EnrichmentScore
+}
 
 \examples{
 \dontrun{

@@ -16,13 +16,14 @@ GSEA.NormalizeCols(V)
 %%     ~~Describe \code{V} here~~
 }
 }
-
+\value{
+GSEA.NormalizeCols
+}
 
 \examples{
-\dontrun{
-library(canceR)
-## Load workspace
 load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+\dontrun{
+## Load workspace
 ##Run.GSEA()
 }
 }

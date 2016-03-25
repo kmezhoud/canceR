@@ -1,3 +1,20 @@
+#' Get gene correlation for multiple dimensions. 
+#' @usage 
+#' getCor_ExpCNAMet(ListMatrix, dimension)
+#' 
+#' @param ListMatrix  is a List of numeric matrices
+#' @param dimension  Exp,CNA, Met , miRNA , RPPA
+#' 
+#' @return correlation matrix
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/Circos.RData", sep=""))
+#' \dontrun{
+#' getListProfData()
+#' getCor_ExpCNAMet(myGlobalEnv$ListProfData$Expression, dimension="mRNA")
+#' head(myGlobalEnv$Cor_Exp)
+#' }
+#' @import plyr
+#' 
 getCor_ExpCNAMet <- function(ListMatrix, dimension){
     
     #library(plyr)

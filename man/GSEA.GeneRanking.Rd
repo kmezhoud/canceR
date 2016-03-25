@@ -38,7 +38,9 @@ GSEA.GeneRanking
 %%     ~~Describe \code{reverse.sign} here~~
 }
 }
-
+\value{
+GSEA.GeneRanking
+}
 
 \examples{
 \dontrun{

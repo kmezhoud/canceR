@@ -1,3 +1,20 @@
+#' bind non equal row
+#' @usage rbind.na(..., deparse.level = 1) 
+#' @param ... ...
+#' @param deparse.level  1
+#' 
+#'
+#' @return a data frame with merged rows
+#' @export
+#'
+#' @examples
+#' 
+#' row1 <- c("a","b","c","d")
+#' row2 <- c("A", "B", "C")
+#' row3 <- rbind.na(row1, row2)
+#'
+#'
+#'
 rbind.na <- function (..., deparse.level = 1) 
 {
     na <- nargs() - (!missing(deparse.level))

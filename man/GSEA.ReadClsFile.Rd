@@ -17,12 +17,13 @@ GSEA.ReadClsFile(file = "NULL")
 }
 }
 
+\value{
+GSEA.ReadClsFile
+}
 
 \examples{
-\dontrun{
-library(canceR)
-## Load workspace
 load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+\dontrun{
 ##Run.GSEA()
 }
 }

@@ -1,3 +1,17 @@
+#' get Profiles Data  for a Single Gene.
+#' @usage getProfilesDataSingleGene()
+#' @return dataframe with profiles data for a single gene
+#' @export
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#' ## Select Case from Breast Cancer
+#' myGlobalEnv$curselectCases <- 9
+#' ##Select Genetic Profile from Breast Cancer
+#' myGlobalEnv$curselectGenProfs <- 4
+#' ## get Specific Mutation data for 73 Genes list
+#' \dontrun{
+#' getProfilesDataSingleGene()
+#' }
 getProfilesDataSingleGene <-function(){
     
     tclRequire("BWidget")

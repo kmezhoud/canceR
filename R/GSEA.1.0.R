@@ -251,7 +251,7 @@ GSEA.GeneRanking <- function(A, class.labels, gene.labels, nperm, permutation.ty
      obs.s2n.matrix <- M1/S1
      gc()
 
-     if (reverse.sign == T) {
+     if (reverse.sign == TRUE) {
         obs.s2n.matrix <- - obs.s2n.matrix
      }
 
@@ -877,7 +877,7 @@ use.fast.enrichment.routine = TRUE) {
 
   print(" *** Running GSEA Analysis...")
 
-if (OLD.GSEA == T) {
+if (OLD.GSEA == TRUE) {
    print("Running OLD GSEA from Mootha et al 2003")
 }
 
@@ -1042,7 +1042,7 @@ write(paste("replace =", replace, sep=" "), file=filename, append= TRUE)
               gene.set.tags[j] <- gs.line[j + 2]
           } 
           existing.set <- is.element(gene.set.tags, gene.labels)
-          set.size <- length(existing.set[existing.set == T])
+          set.size <- length(existing.set[existing.set == TRUE])
           if ((set.size < gs.size.threshold.min) || (set.size > gs.size.threshold.max)) next
           temp.size.G[gs.count] <- set.size
           gs[gs.count,] <- c(gene.set.tags[existing.set], rep("null", max.size.G - temp.size.G[gs.count]))
@@ -1549,7 +1549,7 @@ if (OLD.GSEA == FALSE) {
 
 # adjust q-values
 
-      if (adjust.FDR.q.val == T) {
+      if (adjust.FDR.q.val == TRUE) {
          pos.nes <- length(NES[NES >= 0])
          min.FDR.mean <- FDR.mean[pos.nes]
          min.FDR.median <- FDR.median[pos.nes]
@@ -2188,7 +2188,7 @@ GSEA.Analyze.Sets <- function(
    doc.string <- prefix.name
 
    set.table <- noquote(set.table)
-   phen.order <- order(set.table[, 3], decreasing = T)
+   phen.order <- order(set.table[, 3], decreasing = TRUE)
    set.table <- set.table[phen.order,]
    phen1 <- names(table(set.table[,3]))[1]
    phen2 <- names(table(set.table[,3]))[2]
@@ -2506,7 +2506,7 @@ GSEA.Analyze.Sets <- function(
     line.header <- paste(line.list, collapse="\t")
     line.length <- length(A.row.names) + 1
     write(line.header, file = text.filename, ncolumns = line.length)
-    write.table(t(A), file=text.filename, append = T, quote= FALSE, col.names= FALSE, row.names= TRUE, sep = "\t")
+    write.table(t(A), file=text.filename, append = TRUE, quote= FALSE, col.names= FALSE, row.names= TRUE, sep = "\t")
 
    if (non.interactive.run == FALSE) {  
         if (.Platform$OS.type == "windows") {

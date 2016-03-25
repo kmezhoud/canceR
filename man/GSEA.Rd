@@ -12,6 +12,9 @@ GSEA-R (Broad Institute)
 Subramanian, Tamayo, et al. (2005, PNAS 102, 15545-15550) and Mootha,
 Lindgren, et al. (2003, Nat Genet 34, 267-273)
 }
+\value{
+GSEA
+}
 
 
 \examples{

@@ -8,7 +8,9 @@ GSEA.HeatMapPlot2
 \description{
 GSEA.HeatMapPlot2
 }
-
+\value{
+GSEA.HeatMapPlot2
+}
 \examples{
 \dontrun{
 library(canceR)

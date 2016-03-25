@@ -1,3 +1,20 @@
+#' Multi-select choice of gene sets from loaded MSigDB
+#' @usage
+#' dialoggetGeneListMSigDB(MSigDB)
+#' @param MSigDB object with MSigDB. A list of genesets
+#' 
+#' @return a dataframe with genes classes
+#' @export
+#'
+#' @examples
+#' z <- 7
+#' \dontrun{
+#' MSigDB <- readLines(paste(.libPaths(),"/canceR/extdata/MSigDB/c5.bp.v4.0.symbols.gmt", sep=""))
+#' dialoggetGeneListMSigDB(MSigDB)
+#' }
+#'
+#'
+#'
 dialoggetGeneListMSigDB <- function(MSigDB){   
 
     if(exists("match_GS", envir = myGlobalEnv)){

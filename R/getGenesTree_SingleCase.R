@@ -1,3 +1,13 @@
+#' classify genes in tree for two phenotypes in the same case(disease).
+#' @usage getGenesTree_SingleCase()
+#' @return tree plot
+#' @export
+#'
+#'@examples
+#'load(paste(path.package("canceR"),"/data/prad_michPhenoTest1021.RData", sep=""))
+#' \dontrun{
+#' getGenesTree_SingleCase()
+#' }
 getGenesTree_SingleCase <- function(){
    
     if(length(myGlobalEnv$curselectCases)!=1||length(myGlobalEnv$curselectGenProfs)!=1){

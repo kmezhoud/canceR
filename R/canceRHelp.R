@@ -1,3 +1,13 @@
+#' canceR Help
+#' @usage canceRHelp()
+#' @return html file  with tutorial
+#' @export
+#'
+#' @examples
+#' canceRHelp()
+#'
+
+
 `canceRHelp` <-
     function() {
         tkgrab.release(window)

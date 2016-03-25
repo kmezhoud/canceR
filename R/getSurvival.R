@@ -1,3 +1,20 @@
+#' Survival plot
+#' @usage getSurvival(Coxph)
+#' @param Coxph if Coxph = 0 : plot Kaplan-Meier curves else Coxph= 1 : plot Cox Proportional Hazard Model
+#' @return Survival plot
+#' @examples 
+#' surv <- 11
+#' \dontrun{
+#' load(paste(.libPaths(),"/canceR/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
+#' getSurvival(Coxph = 1)
+#' }
+#' @export
+#' 
+#' @importFrom survival survfit
+#' @importFrom survival coxph 
+#' @importFrom survival Surv
+#' @importFrom survival cox.zph
+#' 
 getSurvival<- function(Coxph){
     #library(survival)
     

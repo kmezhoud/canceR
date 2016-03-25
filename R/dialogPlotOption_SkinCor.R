@@ -1,3 +1,18 @@
+#' Checkbox to select variables for plotting
+#' @usage
+#' dialogPlotOption_SkinCor(s)
+#' @param s  integer number of Studies
+#' 
+#' @return Dialog box with setting of correlation method
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
+#' \dontrun{
+#' dialogPlotOption_SkinCor(1)
+#' }
+#' @import tkrplot
+#' 
 dialogPlotOption_SkinCor <- function(s){
     
     myGlobalEnv$ttDialSkinCor <- tktoplevel()

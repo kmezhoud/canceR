@@ -1,3 +1,12 @@
+#' get matrix with gene expression from file
+#' @usage getGeneExpMatrix()
+#' @export
+#' @return dataframe of gene expression
+#' @examples 
+#' load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#' \dontrun{
+#' getGeneExpMatrix()
+#' }
 getGeneExpMatrix <- function(){
     
     Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)

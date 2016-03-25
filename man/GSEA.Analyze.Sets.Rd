@@ -7,8 +7,11 @@ GSEA.Analyze.Sets
 \description{
 http://www.broadinstitute.org/cancer/software/gsea/wiki/index.php/R-GSEA_Readme
 }
+\value{
+GSEA.Analyze.Sets
+}
 \usage{
-GSEA.Analyze.Sets(directory,topgs="",non.interactive.run= F,height=12,width=17)
+GSEA.Analyze.Sets(directory,topgs="",non.interactive.run= FALSE,height=12,width=17)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,7 +22,7 @@ GSEA.Analyze.Sets(directory,topgs="",non.interactive.run= F,height=12,width=17)
 \code{topgs = 20} 
 }
   \item{non.interactive.run}{
-      \code{non.interactive.run= F} 
+      \code{non.interactive.run= FALSE} 
 }
   \item{height}{
       \code{height=16} 
@@ -43,7 +46,6 @@ Lindgren, et al. (2003, Nat Genet 34, 267-273)
 
 \examples{
 \dontrun{
-library(canceR)
 ## Load workspace
 load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
 ##Run.GSEA()

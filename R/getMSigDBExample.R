@@ -1,3 +1,12 @@
+#' get example of .gmt file from MSigDB (Broad Institute)
+#' @usage getMSigDBExample()
+#' @return path of GMT file
+#' @export
+#' @examples 
+#'  load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#'  \dontrun{
+#'  getMSigDBExample()
+#'  }
 getMSigDBExample <- function(){
     
     ifrm <- function(obj, env = myGlobalEnv()) {

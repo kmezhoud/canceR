@@ -7,7 +7,7 @@
 
 
 %% Reduce the size of Vignette.pdf file
-%tools::compactPDF("/home/mezhoud/CGDS-R/canceR/vignettes/canceR.pdf", gs_quality="ebook")
+%tools::compactPDF("/Volumes/DATA/canceR/vignettes/canceR.pdf", gs_quality="ebook")
 
 \documentclass[a4paper]{article}
 %\usepackage[OT1]{fontenc}
@@ -20,13 +20,14 @@
 \usepackage[margin=1in]{geometry}
 \setkeys{Gin}{width=0.9\textwidth} % set figures width (this is the default)
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 \input{canceR-concordance}
 %\SweaveOpts{concordance=TRUE}
 
 
 \title{canceR: A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC}
 \author{Karim Mezhoud}
-\date{January 5, 2015}
+\date{Mars 24, 2015}
 \maketitle
 
 
@@ -44,6 +45,8 @@
 \item to classify genes by diseases (\texttt{geNetClassifier},\cite{Aibar2013}), or
 \item to classify genes by variable or phenotype (\texttt{rpart}, \cite{Therneau2014}),
 \item to plot genes correlations.
+\item to plot survival curves
+\item to plot muti-omics data using Circos style (\texttt{circlize}, \cite{Gu2014})
 
 \end{enumerate}
 
@@ -98,7 +101,8 @@ canceR()
 Get the development version from github
 \begin{Schunk}
 \begin{Sinput}
-devtools::install\_git("kmezhoud/canceR")
+library(devtools)
+devtools::install_github("kmezhoud/canceR")
 \end{Sinput}
 \end{Schunk}
 
@@ -149,6 +153,14 @@ After selecting studies and pressing on "Get Cases and Genetic Profiles" Button,
 %\label{toolbar}
 \subsection{\texttt{Gene List}}
 The first step to get genomics data is to specify what are interesting genes for user. The \texttt{Gene List} button browses folders to load Gene list file or displays examples of genes list. The genes could be in text file (.txt) with one gene by line using HUGO gene Symbol. The function removes automatically duplicate genes.
+\paragraph{Gene List from MSigDB} User can focus  analysis on some gene set or pathways. This function loads gene list from selected gene sets available in MSigDB. 
+
+\begin{figure}[!ht]
+ \centering
+\includegraphics[scale=0.7]{image/GeneListFromMSigDB.png}
+\caption{ Getting Gene List from MSigDB. User can select one by one any gene set using keywords. }
+\label{GeneListFromMSigDB}
+\end{figure}
 
 \subsection{\texttt{Clinical Data}}
 The \texttt{Multiple Cases} button displays successively selected Cases. Results are returned in a table with row for each case and a column for each clinical attribute (Figure~\ref{Fig4}B). User could select all  or some clinical data by checking dialog box (Figure~\ref{Fig4}A). For example, we select clinical attributes:
@@ -810,7 +822,58 @@ No significant pearson correlation was observed between P53 Copy Number Variatio
  \label{plot2}
  \end{figure}
  
+ \subsubsection{Survival Plots}
+ In medical research is often useful to estimate the survival of patient amount time at tumor stage, or after treatment or particular event. The OS\_MONTHS is the overall Survival duration of patient after the first surgery. The OS\_STATUS is the event at OS\_MONTHS. The survival plot works only with studies that have non empty OS\_MONTHS and OS\_STATUS.
  
+ \paragraph{Kaplan-Meier Curves}
+The Kaplan-Meier estimator mesures the fraction of patients in life for a certain amount of time after the first surgery. The survival curve can be created assuming various situations. This can be calculated for two groups (DiseaseFree, Recurred) or more of subjects. When the shapes of the curves are similar, the Survival would not be dependent of the groups. The Figure~\ref{KM} shows two plots of survival curves depending, in left, to Tumor stage of patients grouped into 4 stages. The curves show that patients with advanced stage (4) have less survive than early ones (stage 1). in the same way, the right plot shows more survival patients without disease than patients with recurred disease.   
+
+\begin{figure}[!ht]
+  \centering
+ \includegraphics[scale=0.5]{image/KM.png}
+ \caption{Kaplan-Meier Curves, left, Tumor Stage; right, DFS\_STATUS}
+ \label{KM}
+ \end{figure}
+ 
+\paragraph{Cox proportional Hazards Model}
+ A Cox model is a statistical technique for exploring relationship between the survival of a patient and several explanatory variables. In survival analysis the Cox model is preferred to a logistic model, since the latter one ignores survival times and censoring information. The Figure~\ref{Coxph} shows an example of Cox model of survival patients with 62 years old.
+ If selected variable has \texttt{NA} value (Censoring data), two curves were plotted (censored and variable).
+ 
+ 
+ \begin{figure}[!ht]
+  \centering
+ \includegraphics[scale=0.5]{image/Coxph.png}
+ \caption{left, Cox Proportional Hazard model; right, plot of residuals and/or test of proportional hazards assumptions for Cox model.}
+ \label{Coxph}
+ \end{figure}
+ 
+  \subsubsection{Circos Style}
+  Circular layout is an interesting way to integrate multi-omics heterogeneous  and big data of cancer disease in the same plot~\cite{Krzywinski2009}. The goal is to make easy the interpretation and the exploring of the relationships between cancers, genes or dimensions. 
+There are two R packages (\texttt{RCircos} and \texttt{Circlize}) available for Circular layout but its use remain laborious and needs computational skills. 
+CanceR package implements \texttt{getCircos} function to facilitate the visualization of cancer disease using Circos style. User needs only to select cancers and check which dimensions will be plotted.
+
+User can select a simple gene list from files or examples or can focus on gene list from gene sets selected from MSigDB.
+
+In the following case, I  focus my exploring to two gene lists corresponding to gene set involved in DNA repair and Response to oxidative stres. \texttt{canceR} package allows user to select any gene sets from MSigDB without gene duplication.
+
+I selected mRNA (0.3 threshold), CNA (0.85), Met HM450 (0.3), Mutation (Frequency 101). Only genes with significant rates are plotted with corresponding colors. For example Gold for mutation, Orange (Methylation), Green (CNA), red (mRNA expression) (Figure~\ref{dialogCircos}).
+
+I selected 5 cancers represented with 5 sectors. In the same sector there are 7 tracks (layouts) corresponding respectively (out : in) to: Gene List, Gene Sets, mRNA, CNA, Methylation, Mutation (Figure~\ref{Circos}).
+
+ 
+   \begin{figure}[!ht]
+  \centering
+ \includegraphics[scale=0.01]{image/dialogCircos.png}
+ \caption{Dialog Box to select dimensions and set the thresholds of genes correlation. Only significant correlated genes are plotted.}
+ \label{dialogCircos}
+ \end{figure}
+  
+    \begin{figure}[!ht]
+  \centering
+ \includegraphics[scale=0.6]{image/Circos.png}
+ \caption{Circos plot of 5 diseases (brc\_tcga, gbm\_tcga, prad\_tcga, stad\_tcga, ucec\_tcga\_pub) and 4 dimensions (Exp, CNA, Met HM450 and Mutation). The significant gene were plotted with corresponding color (red (Exp), green (CNA), orange (Methylation) and gold (Mutation) and bilong to two gene sets (purpe : DNA repair, cyano: Responce to oxydative stress). The choice of the gene set was done by selecting Gene list from MSigDB (load Menu).}
+ \label{Circos}
+ \end{figure}
  
 \section{Perspectives}
 \begin{enumerate}

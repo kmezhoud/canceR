@@ -1,3 +1,26 @@
+#' get Genes Classifier
+#' @usage
+#' getGenesClassifier()
+#'
+#' @return a data frma with genes classes
+#' @export
+#'
+#' @examples
+#' x <- 0
+#' \dontrun{
+#' load(paste(.libPaths(),"/canceR/data/brca_tcga73genes.RData", sep=""))
+#' getGenesClassifier()
+#' }
+#' @importFrom geNetClassifier calculateGenesRanking
+#' @importFrom geNetClassifier genesDetails
+#' @importFrom Biobase ExpressionSet
+#' @importFrom Biobase exprs
+#' @importFrom Biobase openPDF
+#' @importFrom Biobase pData
+#' @importFrom Biobase varLabels
+#' @importFrom GSEABase GeneSet
+#' @importFrom GSEABase GeneSetCollection
+
 getGenesClassifier <- function(){
     
     ## function to remove existant object
@@ -140,9 +163,9 @@ getGenesClassifier <- function(){
             
             eSetClassifier<-Biobase::ExpressionSet(assayData=SamplingProfsData, phenoData=phenoData, annotation="GO")
             print("getting eSetClassifier...")
-            if(min(exprs(eSetClassifier), na.rm=TRUE)<0){
+            if(min(Biobase::exprs(eSetClassifier), na.rm=TRUE)<0){
                 print("There are negative values. Translating values by adding the absolute of minimum value to all matrix")
-                Biobase::exprs(eSetClassifier) <- Biobase::exprs(eSetClassifier)+(abs(min(exprs(eSetClassifier), na.rm=TRUE)))
+                Biobase::exprs(eSetClassifier) <- Biobase::exprs(eSetClassifier)+(abs(min(Biobase::exprs(eSetClassifier), na.rm=TRUE)))
             }
             
             myGlobalEnv$eSetClassifier <- eSetClassifier

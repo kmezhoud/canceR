@@ -1,3 +1,12 @@
+#' Search MSigDb that overlap gene list
+#' @usage Match_GeneList_MSigDB
+#' @return GeneList
+#' @export
+#' @examples
+#' load("/Volumes/DATA/canceR/data/prad_michPhenoTest1021.RData")
+#' \dontrun{
+#' Match_GeneList_MSigDB()
+#' }
 Match_GeneList_MSigDB <- function(){
     
     

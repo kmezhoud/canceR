@@ -1,3 +1,15 @@
+#' dialog box to Specify Mutation using Regular Expression. Search specific mutation using regular expression.
+#' @usage
+#' getSpecificMut()
+#'
+#' @return a a dataframe with specific mutation informations
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' getSpecificMut()
+#' }
 dialogSpecificMut <- function(MutData, c) {
     
     Word <- dialogMut(myGlobalEnv$StudyRefCase[c], "AA change", "G438C|G...C|G.*.")

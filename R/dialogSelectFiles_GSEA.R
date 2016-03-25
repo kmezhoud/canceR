@@ -1,3 +1,17 @@
+#' Dialog Box to  Select GCT, CLS, GMT and output Files for GSEA-R (Broad Institute) 
+#' @usage
+#' dialogSelectFiles_GSEA()
+#' 
+#' @return A vector with files paths
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' \dontrun{
+#' dialogSelectFiles_GSEA()
+#' }
+#' 
+#' 
 dialogSelectFiles_GSEA <- function(){
     
     myGlobalEnv$ttDialogGSEA<-tktoplevel()

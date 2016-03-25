@@ -1,3 +1,22 @@
+#' Dialogue Box for gene classifier setting: sample size and postprob threshold
+#' @usage
+#' dialogGeneClassifier(Lchecked_Cases,entryWidth = 10,returnValOnCancel = "ID_CANCEL")
+#' @param Lchecked_Cases integer with a number of checked cases
+#' @param  entryWidth integer default 10
+#' @param returnValOnCancel "ID_CANCEL"
+#' 
+#' @return a dataframe with genes classes
+#' @export
+#'
+#' @examples
+#' load(paste(path.package("canceR"),"/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
+#' \dontrun{
+#' getGenesClassifier()
+#' dialogGeneClassifier(1,10,returnValOnCancel = "ID_CANCEL")
+#'}
+#'
+#'
+
 dialogGeneClassifier <- function(Lchecked_Cases,entryWidth = 10,
                                  returnValOnCancel = "ID_CANCEL") {
     
