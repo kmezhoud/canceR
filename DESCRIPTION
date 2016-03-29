@@ -38,6 +38,8 @@ Imports:
     stats,
     utils
 Suggests:
-    testthat (>= 0.10.0)
+    testthat (>= 0.10.0),
+    R.rsp
+VignetteBuilder: R.rsp
 biocViews: GUI, GeneExpression, Software
 RoxygenNote: 5.0.1
