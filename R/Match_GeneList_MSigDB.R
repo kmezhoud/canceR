@@ -3,7 +3,7 @@
 #' @return GeneList
 #' @export
 #' @examples
-#' load("/Volumes/DATA/canceR/data/prad_michPhenoTest1021.RData")
+#' load(paste(path.package("canceR"),"/data/prad_michPhenoTest1021.RData", sep=""))
 #' \dontrun{
 #' Match_GeneList_MSigDB()
 #' }

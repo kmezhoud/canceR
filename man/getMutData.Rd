@@ -13,7 +13,7 @@ a a dataframe with mutation informations
 get Mutation data for multiple genes
 }
 \examples{
-load("/Volumes/DATA/canceR/data/ucec_tcga_pubGSEA1021.RData")
+load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
 \dontrun{
 getMutData()
 }
