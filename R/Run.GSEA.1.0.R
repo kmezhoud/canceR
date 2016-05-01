@@ -69,7 +69,6 @@ GSEA(                                                                    # Input
 # Overlap and leading gene subset assignment analysis of the GSEA results
 
 GSEA.Analyze.Sets(
-  
   directory           = myGlobalEnv$fname.Output,        # Directory where to store output and results (default: "")
    topgs = 20,                              # number of top scoring gene sets used for analysis
    non.interactive.run = FALSE,

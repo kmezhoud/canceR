@@ -1,19 +1,11 @@
 %\VignetteIndexEntry{canceR Vignette}
-%\VignetteEngine{R.rsp::tex}
-%\VignetteKeyword{R}
-%\VignetteKeyword{package}
-%\VignetteKeyword{vignette}
-%\VignetteKeyword{LaTeX}
-%\VignetteAuthor{Karim Mezhoud}
-%\VignetteDepends{}
-%\VignetteKeywords{ A Graphical User Interface for accessing and modeling the MSKCC Cancer Genomics Data.}
-%\VignettePackage{canceR}
 
 %% Reduce the size of Vignette.pdf file
-%tools::compactPDF("vignettes/canceR.pdf", gs_quality = "ebook")
+%  tools::compactPDF("vignettes/canceR.pdf", gs_quality = "ebook")
 
 \documentclass[a4paper]{article}
 %\usepackage[OT1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{zi4}
 \usepackage{Sweave}
 \usepackage{url}
@@ -23,6 +15,7 @@
 \usepackage[margin=1in]{geometry}
 \setkeys{Gin}{width=0.9\textwidth} % set figures width (this is the default)
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 %\input{canceR-concordance}
 %\SweaveOpts{concordance=TRUE}
 
