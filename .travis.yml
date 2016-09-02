@@ -1,0 +1,3 @@
+language: r
+bioc_required: TRUE
+sudo: required
