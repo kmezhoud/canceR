@@ -123,10 +123,12 @@ getCasesGenProfs <- function(){
                          command=function(...)tkyview(myGlobalEnv$tc,...))
     xscr1 <- tkscrollbar(myGlobalEnv$ttCasesGenProfs, repeatinterval=2,orient="horizontal",
                          command=function(...)tkxview(myGlobalEnv$tc,...))
+    
     yscr2 <- tkscrollbar(myGlobalEnv$ttCasesGenProfs, repeatinterval=2,
                          command=function(...)tkyview(myGlobalEnv$tl,...))
     xscr2 <- tkscrollbar(myGlobalEnv$ttCasesGenProfs, repeatinterval=2,orient="horizontal",
                          command=function(...)tkxview(myGlobalEnv$tl,...))
+    
     xscr1Info <- tkscrollbar(myGlobalEnv$ttCasesGenProfs, repeatinterval=2,orient="horizontal",
                              command=function(...)tkxview(tInfoC,...))
     xscr2Info <- tkscrollbar(myGlobalEnv$ttCasesGenProfs, repeatinterval=2,orient="horizontal",
@@ -170,7 +172,6 @@ getCasesGenProfs <- function(){
     
     getCases()
     getGenProfs()
-    
     
     
     

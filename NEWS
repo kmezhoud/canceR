@@ -1,4 +1,12 @@
+CHANGES IN VERSION 1.4.01 (01 Septembre 2016)
+--------------------------------------------
+resolve issue 1 about "tl not found"
+delete file R/getGeneticProfiles.R
+resolve 'no visible binding for global variable'
+add R/aaa.R
+
 CHANGES IN VERSION 1.3.91 (01 May 2016)
+---------------------------------------
 rm canceR.pdf and lines from canceR.Rnw
 %\VignetteEngine{R.rsp::tex}
 %\VignetteKeyword{R}
@@ -7,7 +15,7 @@ rm canceR.pdf and lines from canceR.Rnw
 %\VignetteKeyword{LaTeX}
 %\VignetteAuthor{Karim Mezhoud}
 %\VignetteDepends{}
-%\VignetteKeywords{ A Graphical User Interface for accessing and modeling the MSKCC Cancer Genomics Data.}
+%\VignetteKeywords{A Graphical User Interface for accessing and modeling the MSKCC Cancer Genomics Data.}
 %\VignettePackage{canceR}
 
 CHANGES IN VERSION 1.3.7 (07 April 2016)

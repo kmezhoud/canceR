@@ -15,8 +15,8 @@ get a list of Profile Data of every available dimensions. This function load mat
 \examples{
 load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
 \dontrun{
-getListProfData() 
-head(myGlobalEnv$ProfData$Expression) 
+getListProfData()
+head(myGlobalEnv$ProfData$Expression)
 }
 }
 
