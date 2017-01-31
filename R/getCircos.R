@@ -155,12 +155,12 @@ getCircos <- function(dimension){
                 circos.text(min(xlim)+i, max(ylim)+.5, all_genes[i], facing="clockwise", cex = 0.5, col="green4")
                 #circos.link("brca_tcga", i , "brca_tcga", 365,rou1=0.8,rou2=0.8, col = "#00000040")
                 }else if(myGlobalEnv$ReturnCBoxThrCircos[3] == 1 && max(myGlobalEnv$Cor_Met$HM450[i,c(-1,-2)])  > myGlobalEnv$ReturnThreshCircos[3]){
-                circos.text(min(xlim)+i, max(ylim)+.5, all_genes[i], facing="clockwise", cex = 0.5,col="orangered")
+                circos.text(min(xlim)+i, max(ylim)+.5, all_genes[i], facing="clockwise", cex = 0.5,col="mediumorchid4")
                 #circos.link("brca_tcga", i , "brca_tcga", 365,rou1=0.8,rou2=0.8, col = "#00000040") 
                 }else if(myGlobalEnv$ReturnCBoxThrCircos[3] == 1 && max(myGlobalEnv$Cor_Met$HM450[i,c(-1,-2)])< -(myGlobalEnv$ReturnThreshCircos[3])){
                  circos.text(min(xlim)+i, max(ylim)+.5, all_genes[i], facing="clockwise", cex = 0.5,col="springgreen4")   
             }else if(myGlobalEnv$ReturnCBoxThrCircos[4] == 1&&max(myGlobalEnv$Cor_Met$HM27[i,c(-1,-2)])  > myGlobalEnv$ReturnThreshCircos[4] ){
-                circos.text(min(xlim)+i, max(ylim)+.5, all_genes[i], facing="clockwise", cex = 0.5, col="orangered")
+                circos.text(min(xlim)+i, max(ylim)+.5, all_genes[i], facing="clockwise", cex = 0.5, col="mediumorchid4")
                 #circos.link("brca_tcga", i , "brca_tcga", 365,rou1=0.8,rou2=0.8, col = "#00000040") 
                 }else if(myGlobalEnv$ReturnCBoxThrCircos[4] == 1 && max(myGlobalEnv$Cor_Met$HM27[i,c(-1,-2)])< -(myGlobalEnv$ReturnThreshCircos[4])){
                 circos.text(min(xlim)+i, max(ylim)+.5, all_genes[i], facing="clockwise", cex = 0.5,col="springgreen4")   
@@ -269,7 +269,7 @@ getCircos <- function(dimension){
             disease = get.cell.meta.data("sector.index")
             mat = as.matrix(myGlobalEnv$Cor_Met$HM450[myGlobalEnv$Cor_Met$HM450[[2]] == disease, 3:(n_disease+3)])
             mat = mat[, -which(all_disease %in% disease)]
-            corr_col_fun = colorRamp2(c( -1,0 ,1), c("springgreen4","white" ,"orangered"))
+            corr_col_fun = colorRamp2(c( -1,0 ,1), c("springgreen4","white" ,"mediumorchid4"))
             
             for(i in seq_len(n_gene)) {
                 for(j in seq_len(n_disease)) {
@@ -293,7 +293,7 @@ getCircos <- function(dimension){
             disease = get.cell.meta.data("sector.index")
             mat = as.matrix(myGlobalEnv$Cor_Met$HM27[myGlobalEnv$Cor_Met$HM27[[2]] == disease, 3:(n_disease+3)])
             mat = mat[, -which(all_disease %in% disease)]
-            corr_col_fun = colorRamp2(c(-1,0 ,1), c("springgreen4","white" ,"orangered"))
+            corr_col_fun = colorRamp2(c(-1,0 ,1), c("springgreen4","white" ,"mediumorchid4"))
             
             for(i in seq_len(n_gene)) {
                 for(j in seq_len(n_disease)) {

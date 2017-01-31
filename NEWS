@@ -1,4 +1,8 @@
-CHANGES IN VERSION 1.4.01 (01 Septembre 2016)
+CHANGES IN VERSION 1.7.2 (17 January 2017)
+--------------------------------------------
+resolve issue when computing mutation frequency
+
+CHANGES IN VERSION 1.5.2 (01 Septembre 2016)
 --------------------------------------------
 resolve issue 1 about "tl not found"
 delete file R/getGeneticProfiles.R

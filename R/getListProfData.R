@@ -263,24 +263,72 @@ if(exists("ListMutData", envir = myGlobalEnv)){
         Freq_Mut <- df_merge[,c(-2,-3)]
         return(Freq_Mut)
     }
-
+######
     print("Start getting Frequency of Mutation ...")
-    Freq_ListMutData <- plyr::laply(myGlobalEnv$ListMutData,function(x) UnifyRowNames(x))
-    #output1 <- adply(Freq_ListMutData,1)
-
-    ## convert the list of correlation matrices to Array
-    Freq_ArrayMutData <- array(unlist( Freq_ListMutData), dim = c(nrow(Freq_ListMutData[[1]]), ncol( Freq_ListMutData[[1]]), length(Freq_ListMutData)))
-    dimnames(Freq_ArrayMutData) <- list(Freq_ListMutData[[1]][,1], colnames(Freq_ListMutData[[1]]), names(Freq_ListMutData))
-
-
-    Freq_DfMutData <- apply(Freq_ArrayMutData[,2,],2,as.numeric)
-    rownames(Freq_DfMutData) <- rownames(Freq_ArrayMutData[,2,])
-    ## ordering gene list as in GeneList from MSigDB: grouping genes with the same biological process or gene Sets
-    Freq_DfMutData <- Freq_DfMutData[myGlobalEnv$GeneList,,drop=FALSE]
-
+    #Freq_ListMutData <- plyr::laply(myGlobalEnv$ListMutData,function(x) UnifyRowNames(x))
+    Freq_ListMutData <- lapply(myGlobalEnv$ListMutData,
+                               function(x) UnifyRowNames(x))
+    Freq_ArrayMutData <- array(unlist( Freq_ListMutData),
+                               dim = c(nrow(Freq_ListMutData[[1]]),
+                                       ncol( Freq_ListMutData[[1]]),
+                                       length(Freq_ListMutData)))
+    
+    if (inherits(try(dimnames(Freq_ArrayMutData) <-
+                     list(Freq_ListMutData[[1]][,1],
+                          colnames(Freq_ListMutData[[1]]),
+                          names(Freq_ListMutData)),
+                     silent=TRUE),"try-error")){
+       # p("There is a Study without Mutation Data.
+        #  Use Mutation Panel to verify mutations data for selected studies.",
+         # align="center", style = "color:blue")
+    }else{
+        dimnames(Freq_ArrayMutData) <-
+            list(Freq_ListMutData[[1]][,1],
+                 colnames(Freq_ListMutData[[1]]),
+                 names(Freq_ListMutData))
+    }
+    #   ?getListProfData(Genes= empty)
+    if(dim(Freq_ArrayMutData)[3]==1){
+        Freq_DfMutData <- as.numeric(Freq_ArrayMutData[,2,])
+        names(Freq_DfMutData) <- names(Freq_ArrayMutData[,2,])
+        ## ordering gene list as in GeneList from MSigDB:
+        ## grouping genes with the same biological process or gene Sets
+        Freq_DfMutData <- Freq_DfMutData[myGlobalEnv$GeneList]
+        Freq_DfMutData <- data.frame(round(Freq_DfMutData,digits=2))
+        names(Freq_DfMutData) <- names(Freq_ListMutData)
+    }else{
+        Freq_DfMutData <- apply(Freq_ArrayMutData[,2,],2,as.numeric)
+        rownames(Freq_DfMutData) <- rownames(Freq_ArrayMutData[,2,])
+        ## ordering gene list as in GeneList from MSigDB:
+        ## grouping genes with the same biological process or gene Sets
+        Freq_DfMutData <- Freq_DfMutData[myGlobalEnv$GeneList,,drop=FALSE]
+        Freq_DfMutData <- data.frame(round(Freq_DfMutData,digits=2))
+    }
+    
+    
+    
+    
     myGlobalEnv$Freq_DfMutData <- Freq_DfMutData
-
+    
     print("End getting Mutation Frequency...")
-
+######
+ 
+    # 
+    # #output1 <- adply(Freq_ListMutData,1)
+    # 
+    # ## convert the list of correlation matrices to Array
+    # Freq_ArrayMutData <- array(unlist( Freq_ListMutData), dim = c(nrow(Freq_ListMutData[[1]]), ncol( Freq_ListMutData[[1]]), length(Freq_ListMutData)))
+    # dimnames(Freq_ArrayMutData) <- list(Freq_ListMutData[[1]][,1], colnames(Freq_ListMutData[[1]]), names(Freq_ListMutData))
+    # 
+    # 
+    # Freq_DfMutData <- apply(Freq_ArrayMutData[,2,],2,as.numeric)
+    # rownames(Freq_DfMutData) <- rownames(Freq_ArrayMutData[,2,])
+    # ## ordering gene list as in GeneList from MSigDB: grouping genes with the same biological process or gene Sets
+    # Freq_DfMutData <- Freq_DfMutData[myGlobalEnv$GeneList,,drop=FALSE]
+    # 
+    # myGlobalEnv$Freq_DfMutData <- Freq_DfMutData
+    # 
+    # print("End getting Mutation Frequency...")
+    # 
 
 }

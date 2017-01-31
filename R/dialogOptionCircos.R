@@ -157,7 +157,8 @@ tkgrid(ScalemiRNA, cbThrmiRNA)
 tkgrid.configure(cbThrmiRNA,sticky="s",column=1)
 
 ## Mutation frequency frame
-Mut_Entry  = tclVar(median(myGlobalEnv$Freq_DfMutData))
+#Mut_Entry  = tclVar(median(myGlobalEnv$Freq_DfMutData))
+Mut_Entry  = tclVar("14")
 frameMut<- tkframe(ttCircos,relief="groove",borderwidth=2)
 tkgrid(tklabel(frameMut, text="Threshold of Mutation Frequency:"))
 tkgrid(frameMut)
