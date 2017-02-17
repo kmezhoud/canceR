@@ -4,4 +4,4 @@ globalVariables(c("Li","A","EventTime","Category", "Continu", "Category",
                   "GenesDetails", "CaseChoice", "ListProfData", "ListMetData",
                   "ListMutData", "lenght", "myGlobalEnv", "MSigDB", "MSigDBFile",
                   "fname.MSigDB", "age", "CasesStudies", "curselectCases", "devSVG",
-                  "ttCasesGenProfs"))
+                  "ttCasesGenProfs", "cbind2", "new", "rbind2"))

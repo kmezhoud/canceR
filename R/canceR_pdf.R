@@ -6,8 +6,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' canceR_Vignette()
-#'
+#'}
 #'
 #'@importFrom Biobase openPDF
 #'

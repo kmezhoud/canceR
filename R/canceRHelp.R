@@ -4,7 +4,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' canceRHelp()
+#'}
 #'
 
 

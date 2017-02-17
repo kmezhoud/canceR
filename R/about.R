@@ -4,8 +4,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' about()
-#'
+#'}
 #'
 
 
