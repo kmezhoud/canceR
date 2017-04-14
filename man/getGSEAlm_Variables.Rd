@@ -19,4 +19,3 @@ load(paste(.libPaths(),"/canceR/data/ucec_tcga_pubGSEA1021.RData", sep=""))
 getGSEAlm_Variables()
 }
 }
-

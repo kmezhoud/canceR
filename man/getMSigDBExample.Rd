@@ -18,4 +18,3 @@ get example of .gmt file from MSigDB (Broad Institute)
  getMSigDBExample()
  }
 }
-

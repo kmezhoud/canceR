@@ -25,4 +25,3 @@ dialoggetGeneListMSigDB(MSigDB)
 
 
 }
-

@@ -25,4 +25,3 @@ mygeneticprofile <- getGeneticProfiles(cgds,mycancerstudy)[4,1]
 getGenProfs()
 }
 }
-

@@ -13,7 +13,8 @@ html file  with tutorial
 canceR Help
 }
 \examples{
+\dontrun{
 canceRHelp()
-
 }
 
+}

@@ -25,4 +25,3 @@ col3 <- cbind.na(col1, col2)
 
 
 }
-

@@ -25,4 +25,3 @@ getMSigDB(eSet = myGlobalEnv$eSetClassifier,k = 1)
 }
 
 }
-

@@ -31,4 +31,3 @@ data(ClinicalData)
 getInTable(Table= ClinicalData, title= "Clinical Data")
 }
 }
-

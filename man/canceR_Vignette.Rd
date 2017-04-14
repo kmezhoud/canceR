@@ -13,8 +13,8 @@ open pdf vignette
 open pdf vignette
 }
 \examples{
+\dontrun{
 canceR_Vignette()
-
-
 }
 
+}

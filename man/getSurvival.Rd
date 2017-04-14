@@ -22,4 +22,3 @@ load(paste(.libPaths(),"/canceR/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
 getSurvival(Coxph = 1)
 }
 }
-

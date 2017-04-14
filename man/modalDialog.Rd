@@ -34,4 +34,3 @@ myGlobalEnv$curselectGenProfs <- 4
 getProfilesDataSingleGene()
 }
 }
-

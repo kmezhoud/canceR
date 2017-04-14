@@ -21,4 +21,3 @@ text <- "mytext"
 getTextWin(text) 
 }
 }
-

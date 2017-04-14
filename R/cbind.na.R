@@ -8,10 +8,11 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #'col1 <- c("a","b","c","d")
 #'col2 <- c("A", "B", "C")
 #'col3 <- cbind.na(col1, col2)
-#'
+#'}
 #'
 #'
 cbind.na <- function (..., deparse.level = 1) 

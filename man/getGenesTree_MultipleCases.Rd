@@ -22,4 +22,3 @@ load(paste(.libPaths(),"/canceR/data/brca_tcga73genes.RData", sep=""))
 getGenesTree_MultipleCases(entryWidth = 10)
 }
 }
-

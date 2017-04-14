@@ -21,4 +21,3 @@ load(paste(path.package("canceR"),"/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
 dialogPlotOption_SkinCor(1)
 }
 }
-

@@ -23,4 +23,3 @@ data(ClinicalData)
 getOptionGSEAlm()
 }
 }
-

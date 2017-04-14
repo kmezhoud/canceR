@@ -22,4 +22,3 @@ dialogOptionPhenoTest(myGlobalEnv$eSet)
 }
 
 }
-

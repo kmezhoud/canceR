@@ -22,4 +22,3 @@ getProfilesDataMultipleGenes(getSummaryGSEAExists = 0)
 }
 
 }
-

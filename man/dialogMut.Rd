@@ -29,4 +29,3 @@ load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
 dialogMut("title", "question", "entryInit", entryWidth = 40, returnValOnCancel = "ID_CANCEL")
 }
 }
-

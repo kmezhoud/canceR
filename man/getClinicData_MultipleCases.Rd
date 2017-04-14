@@ -26,4 +26,3 @@ getClinicData_MultipleCases(getSummaryGSEAExists = 0)
 }
 
 }
-

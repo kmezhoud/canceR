@@ -19,4 +19,3 @@ dialogOptionCircos()
 #getCircos(dimension ="All")
 }
 }
-

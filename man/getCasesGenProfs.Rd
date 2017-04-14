@@ -20,4 +20,3 @@ load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
 getCasesGenProfs()
 }
 }
-

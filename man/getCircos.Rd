@@ -21,4 +21,3 @@ load(paste(path.package("canceR"),"/data/Circos.RData", sep=""))
 getCircos(dimension ="All")
 }
 }
-

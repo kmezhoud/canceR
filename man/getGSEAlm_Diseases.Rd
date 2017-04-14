@@ -19,4 +19,3 @@ get GSEA linear modeling by studies (diseases)
  getGSEAlm_Diseases
 }
 }
-

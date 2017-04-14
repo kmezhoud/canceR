@@ -18,4 +18,3 @@ load(paste(path.package("canceR"),"/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
 plot_1Gene_2GenProfs()
 }
 }
-

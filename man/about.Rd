@@ -13,8 +13,8 @@ dialig box with text
 about canceR
 }
 \examples{
+\dontrun{
 about()
-
-
 }
 
+}

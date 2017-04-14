@@ -25,4 +25,3 @@ getMegaProfData(myGlobaEnv$MegaGeneList,1)
 }
 
 }
-

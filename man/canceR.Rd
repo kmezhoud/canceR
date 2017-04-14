@@ -18,4 +18,3 @@ myGlobalEnv <- new.env(parent = emptyenv())
 canceR()
 }
 }
-

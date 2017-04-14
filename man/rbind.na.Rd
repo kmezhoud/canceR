@@ -26,4 +26,3 @@ row3 <- rbind.na(row1, row2)
 
 
 }
-
