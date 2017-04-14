@@ -9,7 +9,8 @@
 \usepackage{zi4}
 \usepackage{Sweave}
 \usepackage{url}
-\usepackage[pdftex,plainpages=true,pdfpagelabels, colorlinks=true ,urlcolor= blue, linkcolor= red, citecolor=magenta]{hyperref}
+\usepackage[pdftex,plainpages=true,pdfpagelabels, colorlinks=true,
+            urlcolor= blue, linkcolor= red, citecolor=magenta]{hyperref}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage[margin=1in]{geometry}
@@ -22,7 +23,7 @@
 
 \title{canceR: A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC}
 \author{Karim Mezhoud}
-\date{Mars 24, 2015}
+\date{Mars 24, 2017}
 \maketitle
 
 
