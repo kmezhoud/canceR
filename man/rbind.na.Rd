@@ -18,11 +18,11 @@ a data frame with merged rows
 bind non equal row
 }
 \examples{
-
+\dontrun{
 row1 <- c("a","b","c","d")
 row2 <- c("A", "B", "C")
 row3 <- rbind.na(row1, row2)
-
+}
 
 
 }

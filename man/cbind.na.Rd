@@ -18,10 +18,11 @@ a data frame with merged columns
 bind non equal colunm
 }
 \examples{
+\dontrun{
 col1 <- c("a","b","c","d")
 col2 <- c("A", "B", "C")
 col3 <- cbind.na(col1, col2)
-
+}
 
 
 }

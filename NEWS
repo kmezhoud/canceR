@@ -1,6 +1,10 @@
+CHANGES IN VERSION 1.11.01 (17 April 2018)
+--------------------------------------------
++ rm gamma = 1.5 argument for grDevices::rainbow function
+
 CHANGES IN VERSION 1.7.3 (17 February 2017)
 --------------------------------------------
-dontrun exmaples
+dontrun examples
 
 CHANGES IN VERSION 1.7.2 (17 January 2017)
 --------------------------------------------

@@ -2094,7 +2094,7 @@ GSEA.ConsPlot <- function(V, col.names, main = " ", sub = " ", xlab=" ", ylab=" 
 
  
 
-#     col.map <- c(rainbow(100, s = 1.0, v = 0.75, start = 0.0, end = 0.75, gamma = 1.5), "#BBBBBB", "#333333", "#FFFFFF")
+#     col.map <- c(rainbow(100, s = 1.0, v = 0.75, start = 0.0, end = 0.75), "#BBBBBB", "#333333", "#FFFFFF")
      col.map <- rev(c("#0000FF", "#4040FF", "#7070FF", "#8888FF", "#A9A9FF", "#D5D5FF", "#EEE5EE", "#FFAADA", "#FF9DB0", "#FF7080", "#FF5A5A", "#FF4040", "#FF0D1D"))
 
 #     max.size <- max(nchar(col.names))
@@ -2122,7 +2122,7 @@ GSEA.HeatMapPlot2 <- function(V, row.names = "NA", col.names = "NA", main = " ",
        n.cols <- length(V[1,])
 
        if (color.map == "default") {
-         color.map <- rev(rainbow(100, s = 1.0, v = 0.75, start = 0.0, end = 0.75, gamma = 1.5))
+         color.map <- rev(rainbow(100, s = 1.0, v = 0.75, start = 0.0, end = 0.75))
        }
 
         heatm <- matrix(0, nrow = n.rows, ncol = n.cols)
