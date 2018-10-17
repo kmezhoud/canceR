@@ -1,56 +1,65 @@
-CHANGES IN VERSION 1.11.01 (17 April 2018)
+CHANGES IN VERSION 1.11.01 (16 October 2018)
 --------------------------------------------
-+ rm gamma = 1.5 argument for grDevices::rainbow function
+° update NEWS format file
+
+CHANGES IN VERSION 1.11.01 (15 April 2018)
+--------------------------------------------
+° rm gamma = 1.5 argument for grDevices::rainbow function
+
+CHANGES IN VERSION 1.7.04 (17 April 2017)
+--------------------------------------------
+° get Manual from Bioconductor.org
+° browseURL('http://www.bioconductor.org/packages/3.4/bioc/vignettes/canceR/inst/doc/canceR.pdf')
 
 CHANGES IN VERSION 1.7.3 (17 February 2017)
 --------------------------------------------
-dontrun examples
+° dontrun examples
 
 CHANGES IN VERSION 1.7.2 (17 January 2017)
 --------------------------------------------
-resolve issue when computing mutation frequency
+° resolve issue when computing mutation frequency
 
 CHANGES IN VERSION 1.5.2 (01 Septembre 2016)
 --------------------------------------------
-resolve issue 1 about "tl not found"
-delete file R/getGeneticProfiles.R
-resolve 'no visible binding for global variable'
-add R/aaa.R
+° resolve issue 1 about "tl not found"
+° delete file R/getGeneticProfiles.R
+° resolve 'no visible binding for global variable'
+° add R/aaa.R
 
 CHANGES IN VERSION 1.3.91 (01 May 2016)
 ---------------------------------------
-rm canceR.pdf and lines from canceR.Rnw
-%\VignetteEngine{R.rsp::tex}
-%\VignetteKeyword{R}
-%\VignetteKeyword{package}
-%\VignetteKeyword{vignette}
-%\VignetteKeyword{LaTeX}
-%\VignetteAuthor{Karim Mezhoud}
-%\VignetteDepends{}
-%\VignetteKeywords{A Graphical User Interface for accessing and modeling the MSKCC Cancer Genomics Data.}
-%\VignettePackage{canceR}
+° rm canceR.pdf and lines from canceR.Rnw
+° %\VignetteEngine{R.rsp::tex}
+° %\VignetteKeyword{R}
+° %\VignetteKeyword{package}
+° %\VignetteKeyword{vignette}
+° %\VignetteKeyword{LaTeX}
+° %\VignetteAuthor{Karim Mezhoud}
+° %\VignetteDepends{}
+° %\VignetteKeywords{A Graphical User Interface for accessing and modeling the MSKCC Cancer Genomics °Data.}
+° %\VignettePackage{canceR}
 
 CHANGES IN VERSION 1.3.7 (07 April 2016)
 ------------------------
-add /extdata/canceR.pdf
+° add /extdata/canceR.pdf
 
 CHANGES IN VERSION 1.3.6 (05 April 2016)
 ------------------------
-fix paths in running examples
+° fix paths in running examples
 
 CHANGES IN VERSION 1.3.5 (04 April 2016)
 ------------------------
-git reset --hard HEAD~
-bash ../update_remotes.sh
-add vignette/image, pump version, delete canceR.tex
-git commit -m "fix vignette rm canceR.tex"
-git svn rebase
-git svn dcommit --add-author-from
+° git reset --hard HEAD~
+° bash ../update_remotes.sh
+° add vignette/image, pump version, delete canceR.tex
+° git commit -m "fix vignette rm canceR.tex"
+° git svn rebase
+° git svn dcommit --add-author-from
 
 CHANGES IN VERSION 1.3.2 (28 Mars 2016)
 ------------------------
-Bioc devel canceR is not updated to version 1.3.1
-Just add image in README
+° Bioc devel canceR is not updated to version 1.3.1
+° Just add image in README
 
 CHANGES IN VERSION 1.3.1 (24 Mars 2016)
 ------------------------
@@ -60,11 +69,11 @@ include .travis check system
 
 CHANGES IN VERSION 1.1.2 (12 May 2015)
 ------------------------
-1- add Circos function to plot Menu
-Function 1:    getGeneListmSigDB(): get Gene list and their gene Sets from MSigDB
-Function 1.1: dialoggetGeneListMSigDB(): Select Gene Sets from list and extract hem genes
+° add Circos function to plot Menu
+° Function 1:    getGeneListmSigDB(): get Gene list and their gene Sets from MSigDB
+° Function 1.1: dialoggetGeneListMSigDB(): Select Gene Sets from list and extract hem genes
 
-Function 2: getListProfData(): This function save Profiles Data of cancer in lists;
+° Function 2: getListProfData(): This function save Profiles Data of cancer in lists;
             Outputs:myGlobalEnv$ListProfData$Expression 
                     myGlobalEnv$ListProfData$CNA    
                     myGlobalEnv$ListMetData$HM450$StudiesRef
@@ -74,25 +83,25 @@ Function 2: getListProfData(): This function save Profiles Data of cancer in lis
                     myGlobalEnv$ListMutData$StudiesRef
                     myGlobalEnv$Freq_DfMutData
 
-Function 3 : getCircos(dimension="All"): Main fucntion of Circos plot: plot Tracks        
+° Function 3 : getCircos(dimension="All"): Main fucntion of Circos plot: plot Tracks        
             (dimensions) and Sectors (diseases)
-Function 3.1: getCor_ExpCNAMet(ListMatrix, dimension)
-Function 3.2: dialogOptionCircos(): specifing which dimension and Threshold gene 
+° Function 3.1: getCor_ExpCNAMet(ListMatrix, dimension)
+° Function 3.2: dialogOptionCircos(): specifing which dimension and Threshold gene 
                 dimensions levels will be plot.
 
-1- dialogMetOption(): add "Circos" argument to make the difference between getMetDataMultipleGene() and getListMetData()
-2- getGeneList(): add rm("GeneListMSigDB"", envir="myGlobalEnv")
+°  dialogMetOption(): add "Circos" argument to make the difference between getMetDataMultipleGene() and getListMetData()
+°  getGeneList(): add rm("GeneListMSigDB"", envir="myGlobalEnv")
 
 CHANGES IN VERSION 1.1.1 (27 April 2015)
 ------------------------
-1- Survival plot
-1.1 add getSurvival(Coxph) and getSurvival.Rd file
-1.1 getOptionGSEAlm(s, ClinicalData): add line 105
+°  Survival plot
++ add getSurvival(Coxph) and getSurvival.Rd file
++ getOptionGSEAlm(s, ClinicalData): add line 105
     ### only for Survival plot
     myGlobalEnv$variable <- as.formula(sprintf("Surv(OS_MONTHS,OS_STATUS)~%s", coVariables))
-1.2 cancer.latex file: add Survival plot paragraph
-1.3 add image in /image folder: KM.png, Coxph.png
-1.4 getCasesGenProfs(): add getSurvival in Plot menu
+° cancer.latex file: add Survival plot paragraph
++ add image in /image folder: KM.png, Coxph.png
++ getCasesGenProfs(): add getSurvival in Plot menu
 
 
 RELEASE 1.0.0 (17 April 2015)
@@ -101,34 +110,34 @@ RELEASE 1.0.0 (17 April 2015)
 CHANGES IN VERSION 0.99.3
 -------------------------
 
-    o getProfilesDataMultipleGenes: line 78: Test only Genetic Profiles having mRNA expression to get Profile Data.
-    o  getMutData(): line 96  change .GlobalEnv to myGlobalEnv)
-    o  getProfDataMultipleGenes(): line 7 add testCheckedCaseGenProf()
+    ° getProfilesDataMultipleGenes: line 78: Test only Genetic Profiles having mRNA expression to get Profile Data.
+    °  getMutData(): line 96  change .GlobalEnv to myGlobalEnv)
+    °  getProfDataMultipleGenes(): line 7 add testCheckedCaseGenProf()
 
 CHANGES IN VERSION 0.99.2
 -------------------------
 
-    o Add documentation for RUN.GSEA() function
-    o Remove dependency of RSvgDevice. This package is not available for Windows OS.
+    ° Add documentation for RUN.GSEA() function
+    ° Remove dependency of RSvgDevice. This package is not available for Windows OS.
 
 CHANGES IN VERSION 0.99.1
 -------------------------
 
-    o Add examples in documents
+    ° Add examples in documents
 
-SIGNIFICANT USER-VISIBLE CHANGES
+°SIGNIFICANT USER-VISIBLE CHANGES
 
-    o Add documentation for RUN.GSEA() function
+    ° Add documentation for RUN.GSEA() function
 
-    o Remove dependency of RSvgDevice. This package is not available for Windows OS.
+    ° Remove dependency of RSvgDevice. This package is not available for Windows OS.
 
 CHANGES IN VERSION 0.99.1
 --------------------------
 
-SIGNIFICANT USER-VISIBLE CHANGES
+° SIGNIFICANT USER-VISIBLE CHANGES
 
-    o Add examples in documents
+    + Add examples in documents
 
-NEW FEATURES
+° NEW FEATURES
 
-    o Package released
+    + Package released
