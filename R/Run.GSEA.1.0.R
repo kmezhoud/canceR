@@ -12,8 +12,9 @@
 #' }
 Run.GSEA <- function(){
 #   if (!require("GSEABase")) {
-#     source("http://bioconductor.org/biocLite.R")
-#     biocLite("GSEABase")
+#     if (!requireNamespace("BiocManager", quietly=TRUE))
+#    install.packages("BioManager")
+#    BiocManager::install("GSEABase")
 #     library("GSEABase")
 #   }
   #source("dialogSelectFiles_GSEA.R")

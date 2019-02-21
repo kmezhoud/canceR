@@ -27,7 +27,7 @@ about <-
         
         tkgrid(tklabel(text1 ,text=" The canceR package is developed by Karim Mezhoud Team (kmezhoud@gmail.com) 
  aimed to make easier access to the Cancer Data hosted by the Computational Biology Center 
-at Memorial-Sloan-Kettering Cancer Center (MSKCC) at http://www.cbioportal.org/public-portal/.",font=fontinfo))
+at Memorial-Sloan-Kettering Cancer Center (MSKCC) at http://www.cbioportal.org/.",font=fontinfo))
         
         tkgrid(tklabel(text2 ,text=" The canceR package is a Graphical User Interface (GUI) developed for users 
 with no or limited knowledge about R programming so they can run all functions from cgdsr package

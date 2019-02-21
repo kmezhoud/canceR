@@ -3,7 +3,7 @@
 #' @param ... ...
 #' @param deparse.level  1
 #' 
-#'
+#' 
 #' @return a data frame with merged columns
 #' @export
 #'

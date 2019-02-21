@@ -13,7 +13,7 @@ dataframe with genetic profil
 Get Genetic Profile from selected Studies
 }
 \examples{
-cgds<-CGDS("http://www.cbioportal.org/public-portal/")
+cgds<-CGDS("http://www.cbioportal.org/")
 # Get list of cancer studies at server
 Studies <- getCancerStudies(cgds)[,2]
 # Get available case lists (collection of samples) for a given cancer study

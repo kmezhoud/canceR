@@ -25,7 +25,7 @@ myGlobalEnv <- new.env(parent = emptyenv())
 canceR <- function(){
     
     ## Create project
-    cgds<-CGDS("http://www.cbioportal.org/public-portal/")
+    cgds<-CGDS("http://www.cbioportal.org/")
     myGlobalEnv$cgds <- cgds
     ## Get all Cancer Studies using column 2 (description)
     Studies <- getCancerStudies.CGDS(cgds)[,2]

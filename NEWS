@@ -1,3 +1,7 @@
+CHANGES IN VERSION 1.18.00 (16 October 2018)
+--------------------------------------------
+° Change the address of cgdsr: http://www.cbioportal.org/ instead http://www.cbioportal.org/public-portal/
+
 CHANGES IN VERSION 1.11.01 (16 October 2018)
 --------------------------------------------
 ° update NEWS format file

@@ -22,7 +22,7 @@
 
 \title{canceR: A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC}
 \author{Karim Mezhoud}
-\date{October 24, 2018}
+\date{february 20, 2019}
 \maketitle
 
 
@@ -47,7 +47,7 @@
 
 
 
-% The Cancer Genomics Data has open-access Web service at \url{http://www.cbioportal.org/public-portal/} for interactive exploration, vizualisation, and analysis~\cite{Cerami2012,Gao2013}, Web API, R package (\url{http://cran.r-project.org/web/packages/cgdsr/index.html}), and MATLAB toolbox (\url{http://www.mathworks.com/matlabcentral/fileexchange/31297-mskcc-cgds-cancer-genomics-toolbox}) for direct programmatic access.
+% The Cancer Genomics Data has open-access Web service at \url{http://www.cbioportal.org/} for interactive exploration, vizualisation, and analysis~\cite{Cerami2012,Gao2013}, Web API, R package (\url{http://cran.r-project.org/web/packages/cgdsr/index.html}), and MATLAB toolbox (\url{http://www.mathworks.com/matlabcentral/fileexchange/31297-mskcc-cgds-cancer-genomics-toolbox}) for direct programmatic access.
 
 
 
@@ -85,9 +85,10 @@ run \texttt{R} and write theses lines in console to install dependancies.
 install.packages("RCurl", "XML")
 install.packages(c("cgdsr",  "tkrplot",  "Formula", "RSvgDevice","RCurl" ))
 ## dependencies from Bioconductor 
-source("http://bioconductor.org/biocLite.R")
-biocLite("GSEABase", "GSEAlm","geNetClassifier","Biobase", "phenoTest") 
-biocLite("canceR")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("GSEABase", "GSEAlm","geNetClassifier","Biobase", "phenoTest") 
+BiocManager::install("canceR")
 library(canceR)
 canceR()
 \end{Sinput}

@@ -1923,7 +1923,8 @@ if (output.directory != "")  {
        if (non.interactive.run == FALSE) {
            if (.Platform$OS.type == "windows") {
                gs.filename <- paste(output.directory, doc.string, ".", gs.names[i], ".plot.", phen.tag, ".", loc, sep="", collapse="")
-               windows(width = 14, height = 6)
+               #windows(width = 14, height = 6)
+               dev.new(width = 14, height = 6)
            } else if (.Platform$OS.type == "unix") {
                gs.filename <- paste(output.directory, doc.string, ".", gs.names[i], ".plot.", phen.tag, ".", loc, ".pdf", sep="", collapse="")
                pdf(file=gs.filename, height = 6, width = 14)
@@ -2245,7 +2246,7 @@ GSEA.Analyze.Sets <- function(
    if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.overlap.", phen1, sep="", collapse="")
-           windows(height = width, width = width)
+           #windows(height = width, width = width)
         } else if (.Platform$OS.type == "unix") {
            filename <- paste(directory, doc.string, ".leading.overlap.", phen1, ".pdf", sep="", collapse="")
            pdf(file=filename, height = width, width = width)
@@ -2291,7 +2292,7 @@ GSEA.Analyze.Sets <- function(
    if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.assignment.", phen1, sep="", collapse="")
-           windows(height = height, width = width)
+           #windows(height = height, width = width)
         } else if (.Platform$OS.type == "unix") {
            filename <- paste(directory, doc.string, ".leading.assignment.", phen1, ".pdf", sep="", collapse="")
            pdf(file=filename, height = height, width = width)
@@ -2359,7 +2360,7 @@ GSEA.Analyze.Sets <- function(
    if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.overlap.", phen2, sep="", collapse="")
-           windows(height = width, width = width)
+           #windows(height = width, width = width)
         } else if (.Platform$OS.type == "unix") {
            filename <- paste(directory, doc.string, ".leading.overlap.", phen2, ".pdf", sep="", collapse="")
            pdf(file=filename, height = width, width = width)

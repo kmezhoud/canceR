@@ -7,6 +7,6 @@ context("canceR functions")
 
 testthat::test_that("cgdsr connection",
                     {
-                        mycgds <- cgdsr::CGDS("http://www.cbioportal.org/public-portal/")
+                        mycgds <- cgdsr::CGDS("http://www.cbioportal.org/")
                         result <- cgdsr::test(mycgds)
                     })
