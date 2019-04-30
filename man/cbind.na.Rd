@@ -7,9 +7,12 @@
 cbind.na(..., deparse.level = 1)
 }
 \arguments{
-\item{...}{...}
+\item{...}{(generalized) vectors or matrices.}
 
-\item{deparse.level}{1}
+\item{deparse.level}{integer controlling the construction of labels in 
+the case of non-matrix-like arguments (for the default method):
+deparse.level = 0 constructs no labels; the default,
+deparse.level = 1 or 2 constructs labels from the argument names.}
 }
 \value{
 a data frame with merged columns

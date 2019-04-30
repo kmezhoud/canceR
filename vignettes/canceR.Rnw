@@ -22,7 +22,7 @@
 
 \title{canceR: A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC}
 \author{Karim Mezhoud}
-\date{february 20, 2019}
+\date{April 25, 2019}
 \maketitle
 
 

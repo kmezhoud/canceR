@@ -19,7 +19,7 @@ myGlobalEnv <- new.env(parent = emptyenv())
 #'@importFrom graphics axis image layout legend lines par plot points text
 #'@importFrom stats as.formula cor density dist hclust median na.exclude p.adjust pnorm sd setNames window
 #'@importFrom utils browseURL capture.output memory.limit read.table write.table read.delim
-#'@importFrom grDevices colors dev.cur dev.off graphics.off jpeg pdf png rainbow
+#'@importFrom grDevices colors dev.cur dev.off graphics.off jpeg pdf png rainbow dev.new savePlot quartz
 #'
 
 canceR <- function(){

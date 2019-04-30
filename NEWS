@@ -1,147 +1,170 @@
-CHANGES IN VERSION 1.18.00 (16 October 2018)
+ CHANGES IN VERSION 1.17.6 (30 April 2019)
 --------------------------------------------
-° Change the address of cgdsr: http://www.cbioportal.org/ instead http://www.cbioportal.org/public-portal/
+ + Remove dependency of RSvgDevice. This package is not available for Windows os.
+ + Remove GSEA.1.0.R from /data folder
+ 
+CHANGES IN VERSION 1.17.5 (25 April 2019)
+--------------------------------------------
++ import from grDevice new.dev savePlot
++ remove /data/datalist
++ import RSvgDevice (not available for windows OS?)
 
-CHANGES IN VERSION 1.11.01 (16 October 2018)
+CHANGES IN VERSION 1.17.4 (22 April 2019)
 --------------------------------------------
-° update NEWS format file
++ modify doc for cbind.na and rbind.na functiONs
+
+CHANGES IN VERSION 1.17.3 (21 April 2019)
+--------------------------------------------
++ modify doc for cbind.na and rbind.na functiONs
+
+CHANGES IN VERSION 1.16.1 (22 February 2019)
+--------------------------------------------
++ update NEWS format
+
+CHANGES IN VERSION 1.16.1 (22 February 2019)
+--------------------------------------------
++ Change the address of cgdsr: http://www.cbioportal.org/ instead
+http://www.cbioportal.org/public-portal/
+
+CHANGES IN VERSION 1.11.01 (16 october 2018)
+--------------------------------------------
++ update NEWS format file
 
 CHANGES IN VERSION 1.11.01 (15 April 2018)
 --------------------------------------------
-° rm gamma = 1.5 argument for grDevices::rainbow function
++ rm gamma = 1.5 argument for grDevices::rainbow functiON
 
 CHANGES IN VERSION 1.7.04 (17 April 2017)
 --------------------------------------------
-° get Manual from Bioconductor.org
-° browseURL('http://www.bioconductor.org/packages/3.4/bioc/vignettes/canceR/inst/doc/canceR.pdf')
++ get Manual from Bioconductor.org
++ browseURL('http://www.biocONductor.org/packages/3.4/bioc/vignettes/canceR/inst/doc/canceR.pdf')
 
 CHANGES IN VERSION 1.7.3 (17 February 2017)
 --------------------------------------------
-° dontrun examples
++ dontrun examples
 
 CHANGES IN VERSION 1.7.2 (17 January 2017)
 --------------------------------------------
-° resolve issue when computing mutation frequency
++ resolve issue when computing mutatiON frequency
 
 CHANGES IN VERSION 1.5.2 (01 Septembre 2016)
 --------------------------------------------
-° resolve issue 1 about "tl not found"
-° delete file R/getGeneticProfiles.R
-° resolve 'no visible binding for global variable'
-° add R/aaa.R
++ resolve issue 1 about "tl not found"
++ delete file R/getGeneticProfiles.R
++ resolve 'no visible binding for global variable'
++ add R/aaa.R
 
 CHANGES IN VERSION 1.3.91 (01 May 2016)
 ---------------------------------------
-° rm canceR.pdf and lines from canceR.Rnw
-° %\VignetteEngine{R.rsp::tex}
-° %\VignetteKeyword{R}
-° %\VignetteKeyword{package}
-° %\VignetteKeyword{vignette}
-° %\VignetteKeyword{LaTeX}
-° %\VignetteAuthor{Karim Mezhoud}
-° %\VignetteDepends{}
-° %\VignetteKeywords{A Graphical User Interface for accessing and modeling the MSKCC Cancer Genomics °Data.}
-° %\VignettePackage{canceR}
++ rm canceR.pdf and lines from canceR.Rnw
++ %\VignetteEngine{R.rsp::tex}
++ %\VignetteKeyword{R}
++ %\VignetteKeyword{package}
++ %\VignetteKeyword{vignette}
++ %\VignetteKeyword{LaTeX}
++ %\VignetteAuthor{Karim Mezh+ud}
++ %\VignetteDepends{}
++ %\VignetteKeyw+rds{A Graphical User Interface for accessing and m+deling the MSKCC Cancer Genomics Data.}
++ %\VignettePackage{canceR}
 
 CHANGES IN VERSION 1.3.7 (07 April 2016)
 ------------------------
-° add /extdata/canceR.pdf
++ add /extdata/canceR.pdf
 
 CHANGES IN VERSION 1.3.6 (05 April 2016)
 ------------------------
-° fix paths in running examples
++ fix paths in running examples
 
 CHANGES IN VERSION 1.3.5 (04 April 2016)
 ------------------------
-° git reset --hard HEAD~
-° bash ../update_remotes.sh
-° add vignette/image, pump version, delete canceR.tex
-° git commit -m "fix vignette rm canceR.tex"
-° git svn rebase
-° git svn dcommit --add-author-from
++ git reset --hard HEAD~
++ bash ../update_remotes.sh
++ add vignette/image, pump version, delete canceR.tex
++ git commit -m "fix vignette rm canceR.tex"
++ git svn rebase
++ git svn dcommit --add-author-from
 
 CHANGES IN VERSION 1.3.2 (28 Mars 2016)
 ------------------------
-° Bioc devel canceR is not updated to version 1.3.1
-° Just add image in README
++ Bioc devel canceR is not updated to versiON 1.3.1
++ Just add image in README
 
 CHANGES IN VERSION 1.3.1 (24 Mars 2016)
 ------------------------
-rewrite documents using roxygen
-rewrite test package
-include .travis check system
++ rewrite documents using roxygen
++ rewrite test package
++ include .travis check system
 
 CHANGES IN VERSION 1.1.2 (12 May 2015)
 ------------------------
-° add Circos function to plot Menu
-° Function 1:    getGeneListmSigDB(): get Gene list and their gene Sets from MSigDB
-° Function 1.1: dialoggetGeneListMSigDB(): Select Gene Sets from list and extract hem genes
++ add Circos functiON to plot Menu
++ Function 1:    getGeneListmSigDB(): get Gene list and their gene Sets from MSigDB
++ Function 1.1: dialoggetGeneListMSigDB(): Select Gene Sets from list and extract hem genes
++ Function 2: getListProfData(): This functiON save Profiles Data of cancer in lists; outputs:
+                   o myGlobalEnv$ListProfData$ExpressiON 
+                   o myGlobalEnv$ListProfData$CNA    
+                   o myGlobalEnv$ListMetData$HM450$StudiesRef
+                   o myGlobalEnv$ListMetData$HM27$StudiesRef
+                   o myGlobalEnv$ListProfData$RPPA$StudiesRef
+                   o myGlobalEnv$ListProfData$miRNA$StudiesRef
+                   o myGlobalEnv$ListMutData$StudiesRef
+                   o myGlobalEnv$Freq_DfMutData
 
-° Function 2: getListProfData(): This function save Profiles Data of cancer in lists;
-            Outputs:myGlobalEnv$ListProfData$Expression 
-                    myGlobalEnv$ListProfData$CNA    
-                    myGlobalEnv$ListMetData$HM450$StudiesRef
-                    myGlobalEnv$ListMetData$HM27$StudiesRef
-                    myGlobalEnv$ListProfData$RPPA$StudiesRef
-                    myGlobalEnv$ListProfData$miRNA$StudiesRef
-                    myGlobalEnv$ListMutData$StudiesRef
-                    myGlobalEnv$Freq_DfMutData
++ FunctiON 3 : getCircos(dimensiON="All"): Main fucntiON of Circos plot: plot Tracks (dimensiONs) and Sectors (diseases)
++ FunctiON 3.1: getCor_ExpCNAMet(ListMatrix, dimensiON)
++ FunctiON 3.2: dialogoptiONCircos(): specifing which dimensiON and Threshold gene dimensiONs levels will be plot.
 
-° Function 3 : getCircos(dimension="All"): Main fucntion of Circos plot: plot Tracks        
-            (dimensions) and Sectors (diseases)
-° Function 3.1: getCor_ExpCNAMet(ListMatrix, dimension)
-° Function 3.2: dialogOptionCircos(): specifing which dimension and Threshold gene 
-                dimensions levels will be plot.
-
-°  dialogMetOption(): add "Circos" argument to make the difference between getMetDataMultipleGene() and getListMetData()
-°  getGeneList(): add rm("GeneListMSigDB"", envir="myGlobalEnv")
++  dialogMetoptiON(): add "Circos" argument to make the difference between getMetDataMultipleGene() and getListMetData()
++  getGeneList(): add rm("GeneListMSigDB"", envir="myGlobalEnv")
 
 CHANGES IN VERSION 1.1.1 (27 April 2015)
 ------------------------
-°  Survival plot
++  Survival plot
 + add getSurvival(Coxph) and getSurvival.Rd file
-+ getOptionGSEAlm(s, ClinicalData): add line 105
-    ### only for Survival plot
-    myGlobalEnv$variable <- as.formula(sprintf("Surv(OS_MONTHS,OS_STATUS)~%s", coVariables))
-° cancer.latex file: add Survival plot paragraph
++ getoptiONGSEAlm(s, ClinicalData): add line 105
+    - ###ONly for Survival plot
+    - myGlobalEnv$variable <- as.formula(sprintf("Surv(OS_MONTHS,OS_STATUS)~%s", coVariables))
++ cancer.latex file: add Survival plot paragraph
 + add image in /image folder: KM.png, Coxph.png
 + getCasesGenProfs(): add getSurvival in Plot menu
 
 
-RELEASE 1.0.0 (17 April 2015)
+CHANGES IN VERSION 1.0.0 (17 April 2015)
 -------------------------
+
++ Release
 
 CHANGES IN VERSION 0.99.3
 -------------------------
 
-    ° getProfilesDataMultipleGenes: line 78: Test only Genetic Profiles having mRNA expression to get Profile Data.
-    °  getMutData(): line 96  change .GlobalEnv to myGlobalEnv)
-    °  getProfDataMultipleGenes(): line 7 add testCheckedCaseGenProf()
+    + getProfilesDataMultipleGenes: line 78: Test ONly Genetic Profiles having mRNA expressiON to get Profile Data.
+    +  getMutData(): line 96  change .GlobalEnv to myGlobalEnv)
+    +  getProfDataMultipleGenes(): line 7 add testCheckedCaseGenProf()
 
 CHANGES IN VERSION 0.99.2
 -------------------------
 
-    ° Add documentation for RUN.GSEA() function
-    ° Remove dependency of RSvgDevice. This package is not available for Windows OS.
+    + Add documentation for RUN.GSEA() function
+    + Remove dependency of RSvgDevice. This package is not available for Windows oS.
 
 CHANGES IN VERSION 0.99.1
 -------------------------
 
-    ° Add examples in documents
+    + Add examples in documents
 
-°SIGNIFICANT USER-VISIBLE CHANGES
+SIGNIFICANT USER-VISIBLE CHANGES
 
-    ° Add documentation for RUN.GSEA() function
+    + Add documentation for RUN.GSEA() functiON
 
-    ° Remove dependency of RSvgDevice. This package is not available for Windows OS.
+    + Remove dependency of RSvgDevice. This package is not available for Windows OS.
 
 CHANGES IN VERSION 0.99.1
 --------------------------
 
-° SIGNIFICANT USER-VISIBLE CHANGES
+SIGNIFICANT USER-VISIBLE CHANGES
 
     + Add examples in documents
 
-° NEW FEATURES
+NEW FEATURES
 
     + Package released

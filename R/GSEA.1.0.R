@@ -1656,7 +1656,8 @@ if (output.directory != "")  {
       if (non.interactive.run == FALSE) {
            if (.Platform$OS.type == "windows") {
               glob.filename <- paste(output.directory, doc.string, ".global.plots", sep="", collapse="")
-              windows(width = 10, height = 10)
+              #windows(width = 10, height = 10)
+              dev.new(width = 14, height = 6)
            } else if (.Platform$OS.type == "unix") {
                glob.filename <- paste(output.directory, doc.string, ".global.plots.pdf", sep="", collapse="")
                pdf(file=glob.filename, height = 10, width = 10)
@@ -1925,6 +1926,7 @@ if (output.directory != "")  {
                gs.filename <- paste(output.directory, doc.string, ".", gs.names[i], ".plot.", phen.tag, ".", loc, sep="", collapse="")
                #windows(width = 14, height = 6)
                dev.new(width = 14, height = 6)
+               #quartz(width = 14, height = 6)
            } else if (.Platform$OS.type == "unix") {
                gs.filename <- paste(output.directory, doc.string, ".", gs.names[i], ".plot.", phen.tag, ".", loc, ".pdf", sep="", collapse="")
                pdf(file=gs.filename, height = 6, width = 14)
@@ -2247,6 +2249,7 @@ GSEA.Analyze.Sets <- function(
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.overlap.", phen1, sep="", collapse="")
            #windows(height = width, width = width)
+           dev.new(width = 14, height = 6)
         } else if (.Platform$OS.type == "unix") {
            filename <- paste(directory, doc.string, ".leading.overlap.", phen1, ".pdf", sep="", collapse="")
            pdf(file=filename, height = width, width = width)
@@ -2293,6 +2296,7 @@ GSEA.Analyze.Sets <- function(
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.assignment.", phen1, sep="", collapse="")
            #windows(height = height, width = width)
+           dev.new(width = 14, height = 6)
         } else if (.Platform$OS.type == "unix") {
            filename <- paste(directory, doc.string, ".leading.assignment.", phen1, ".pdf", sep="", collapse="")
            pdf(file=filename, height = height, width = width)
@@ -2361,6 +2365,7 @@ GSEA.Analyze.Sets <- function(
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.overlap.", phen2, sep="", collapse="")
            #windows(height = width, width = width)
+           dev.new(width = 14, height = 6)
         } else if (.Platform$OS.type == "unix") {
            filename <- paste(directory, doc.string, ".leading.overlap.", phen2, ".pdf", sep="", collapse="")
            pdf(file=filename, height = width, width = width)
@@ -2406,7 +2411,8 @@ GSEA.Analyze.Sets <- function(
    if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.assignment.", phen2, sep="", collapse="")
-           windows(height = height, width = width)
+           #windows(height = height, width = width)
+           dev.new(width = 14, height = 6)
         } else if (.Platform$OS.type == "unix") {
            filename <- paste(directory, doc.string, ".leading.assignment.", phen2, ".pdf", sep="", collapse="")
            pdf(file=filename, height = height, width = width)
@@ -2480,7 +2486,8 @@ GSEA.Analyze.Sets <- function(
    if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.assignment.clustered.", phen1, sep="", collapse="")
-           windows(height = height, width = width)
+           #windows(height = height, width = width)
+           dev.new(width = 14, height = 6)
         } else if (.Platform$OS.type == "unix") {
            filename <- paste(directory, doc.string, ".leading.assignment.clustered.", phen1, ".pdf", sep="", collapse="")
            pdf(file=filename, height = height, width = width)
@@ -2564,7 +2571,8 @@ GSEA.Analyze.Sets <- function(
    if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.assignment.clustered.", phen2, sep="", collapse="")
-           windows(height = height, width = width)
+           #windows(height = height, width = width)
+           dev.new(width = 14, height = 6)
         } else if (.Platform$OS.type == "unix") {
            filename <- paste(directory, doc.string, ".leading.assignment.clustered.", phen2, ".pdf", sep="", collapse="")
            pdf(file=filename, height = height, width = width)
