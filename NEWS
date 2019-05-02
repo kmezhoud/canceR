@@ -1,4 +1,10 @@
- CHANGES IN VERSION 1.17.6 (30 April 2019)
+CHANGES IN VERSION 1.17.61 (01 May 2019)
+--------------------------------------------
++ remove .txt file from /data
++ add bioc_check for travis
++ import grDevices package
+
+CHANGES IN VERSION 1.17.6 (30 April 2019)
 --------------------------------------------
  + Remove dependency of RSvgDevice. This package is not available for Windows os.
  + Remove GSEA.1.0.R from /data folder

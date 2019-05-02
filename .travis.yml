@@ -1,4 +1,5 @@
 language: r
 cache: packages
 bioc_required: TRUE
+bioc_check: True
 sudo: required
