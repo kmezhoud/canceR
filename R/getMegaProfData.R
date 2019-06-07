@@ -6,7 +6,7 @@
 #' @export
 #' @examples 
 #' myGlobalEnv <- new.env(parent = emptyenv())
-#' load(paste(path.package("canceR"),"/data/brca_tcgaGSEAlm1021.RData", sep=""))
+#' readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcgaGSEAlm1021.rds", sep=""))
 #' \dontrun{
 #' getMegaProfData(myGlobaEnv$MegaGeneList,1) 
 #' }

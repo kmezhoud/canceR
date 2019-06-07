@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' load(paste(path.package("canceR"),"/data/Circos.RData", sep=""))
+#' readRDS(paste(path.package("canceR"),"/extdata/rdata/Circos.rds", sep=""))
 #' \dontrun{
 #' getCircos(dimension ="All")
 #' }

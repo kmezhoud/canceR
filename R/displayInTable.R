@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#' data(ClinicalData)
+#' #data(ClinicalData)
 #' \dontrun{
 #' getInTable(Table= ClinicalData, title= "Clinical Data")
 #' }

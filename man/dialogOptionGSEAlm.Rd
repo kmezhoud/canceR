@@ -18,7 +18,7 @@ permutaion value, p-value, coVariables
 Dialogbox to select variables from Clinical data
 }
 \examples{
-data(ClinicalData)
+#data(ClinicalData)
 \dontrun{
 getOptionGSEAlm()
 }

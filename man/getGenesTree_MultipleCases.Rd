@@ -16,9 +16,9 @@ plot tree
 Get  successively trees of genes list for multiple cases
 }
 \examples{
-q <- load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+ q <- readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 \dontrun{
-load(paste(.libPaths(),"/canceR/data/brca_tcga73genes.RData", sep=""))
+readRDS(paste(.libPaths(),"/canceR/data/brca_tcga73genes.rds", sep=""))
 getGenesTree_MultipleCases(entryWidth = 10)
 }
 }

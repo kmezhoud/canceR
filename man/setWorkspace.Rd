@@ -13,7 +13,7 @@ paths of output files
 Setting work Directory and output folders.At starting window, user needs to set work directory for output data. The function is foud in File menu.
 }
 \examples{
-load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 \dontrun{
 setWorkspace()
 }

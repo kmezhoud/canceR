@@ -13,7 +13,7 @@ a list of data frame with Profiles Data
 get a list of Profile Data of every available dimensions. This function load matrices of every dimension (Exp, CNA, Met, RPPA,miRNA,Mut) and save them in a list for every disease.
 }
 \examples{
-load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 \dontrun{
 getListProfData()
 head(myGlobalEnv$ProfData$Expression)

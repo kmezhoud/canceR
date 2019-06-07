@@ -14,7 +14,7 @@ get Cases and Genetic Profiles of selected Studies.
 }
 \examples{
 ##Load Session
-load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 ## load Cases and Genetic Profiles 
 \dontrun{
 getCasesGenProfs()

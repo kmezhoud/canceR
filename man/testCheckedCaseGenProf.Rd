@@ -13,7 +13,7 @@ dialog box with warning message
 Testing checked appropriate Cases for appropriate Genetic profiles.
 }
 \examples{
-load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 \dontrun{
 testCheckedCaseGenProf()
 }

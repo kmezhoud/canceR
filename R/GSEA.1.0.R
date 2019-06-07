@@ -2571,6 +2571,7 @@ GSEA.Analyze.Sets <- function(
    if (non.interactive.run == FALSE) {
         if (.Platform$OS.type == "windows") {
            filename <- paste(directory, doc.string, ".leading.assignment.clustered.", phen2, sep="", collapse="")
+
            #windows(height = height, width = width)
            dev.new(width = 14, height = 6)
         } else if (.Platform$OS.type == "unix") {

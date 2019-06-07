@@ -12,9 +12,3 @@ dataframe of gene expression
 \description{
 get matrix with gene expression from file
 }
-\examples{
-load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
-\dontrun{
-getGeneExpMatrix()
-}
-}

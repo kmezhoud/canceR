@@ -15,7 +15,7 @@ get GSEA linear modeling by variables (phenotype)
 \examples{
  x <- 3
 \dontrun{
-load(paste(.libPaths(),"/canceR/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/ucec_tcga_pubGSEA1021.rds", sep=""))
 getGSEAlm_Variables()
 }
 }

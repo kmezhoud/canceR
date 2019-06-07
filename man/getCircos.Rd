@@ -16,7 +16,7 @@ a plot with Circos style
 get Circos Layout for selected studies and selected dimensions
 }
 \examples{
-load(paste(path.package("canceR"),"/data/Circos.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/Circos.rds", sep=""))
 \dontrun{
 getCircos(dimension ="All")
 }

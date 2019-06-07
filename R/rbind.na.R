@@ -1,4 +1,5 @@
 #' bind non equal row
+#' 
 #' @usage rbind.na(..., deparse.level = 1) 
 #' @param ...  (generalized) vectors or matrices. 
 #' @param deparse.level  integer controlling the construction of labels in 
@@ -8,7 +9,6 @@
 #' 
 #'
 #' @return a data frame with merged rows
-
 #'
 #' @examples
 #' \dontrun{
@@ -18,7 +18,7 @@
 #'}
 #'
 #'
-rbind.na <- function (..., deparse.level = 1) 
+rbind.na <- function(..., deparse.level = 1) 
 {
     na <- nargs() - (!missing(deparse.level))
     deparse.level <- as.integer(deparse.level)

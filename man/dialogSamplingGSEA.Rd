@@ -20,7 +20,7 @@ A vector with sampling size
 Dialog  Box for Sampling patients from expression profile data used for GSEA-R (Broad Institute)
 }
 \examples{
-load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/ucec_tcga_pubGSEA1021.rds", sep=""))
 \dontrun{
 Run.GSEA()
 #dialogSamplingGSEA(1,entryWidth=10,returnValOnCancel = "ID_CANCEL")

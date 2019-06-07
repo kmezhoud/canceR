@@ -18,7 +18,7 @@ a dialog box to set methylation option (threshold of silencing gene)
 Dialog Box to set methylation options
 }
 \examples{
-load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/ucec_tcga_pubGSEA1021.rds", sep=""))
 \dontrun{
 getMetDataMultipleGenes()
 #dialogMetOption(ProfData,0.7)

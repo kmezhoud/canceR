@@ -13,7 +13,7 @@ a a dataframe with mean and median of methylation rate (threshold of silencing g
 get Methylation data for multiple genes
 }
 \examples{
-load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/ucec_tcga_pubGSEA1021.rds", sep=""))
 \dontrun{
 getMetDataMultipleGenes()
 }

@@ -9,8 +9,9 @@
 #' @return dialog box
 #' @export
 #' @examples 
-#' load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+#' readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 #' ## Select Case from Breast Cancer
+#' myGlobalEnv <- new.env(parent = emptyenv())
 #' myGlobalEnv$curselectCases <- 9
 #' ##Select Genetic Profile from Breast Cancer
 #' myGlobalEnv$curselectGenProfs <- 4

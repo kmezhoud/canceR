@@ -26,7 +26,7 @@ display a Table
 Display matrix in tcltk table
 }
 \examples{
-data(ClinicalData)
+#data(ClinicalData)
 \dontrun{
 getInTable(Table= ClinicalData, title= "Clinical Data")
 }

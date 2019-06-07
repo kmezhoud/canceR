@@ -15,7 +15,7 @@ Built Expression Set (eSet) from profile data.
 \examples{
  f <- 9
  \dontrun{
- load(paste(.libPaths(),"canceR/data/prad_michPhenoTest1021", sep=""))
+ readRDS(paste(path.package("canceR"),"/extdata/rdata/prad_michPhenoTest1021.rds", sep=""))
  geteSet()
  }
 

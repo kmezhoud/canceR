@@ -22,7 +22,7 @@ plot
 model plotting with tcltk
 }
 \examples{
-load(paste(path.package("canceR"),"/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/gbm_tcgaPlotTwoGenProf.rds", sep=""))
 \dontrun{
 plot_1Gene_2GenProfs()
 }

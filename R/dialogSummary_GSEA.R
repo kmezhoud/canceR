@@ -7,7 +7,7 @@
 #' @return variables
 #' @export
 #' @examples 
-#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' readRDS(paste(path.package("canceR"),"/extdata/rdata/ucec_tcga_pubGSEA1021.rds", sep=""))
 #' \dontrun{
 #' #Run.GSEA()
 #' #getSummaryGSEA()

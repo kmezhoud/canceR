@@ -7,7 +7,7 @@
 #' 
 #' @return correlation matrix
 #' @examples 
-#' load(paste(path.package("canceR"),"/data/Circos.RData", sep=""))
+#' readRDS(paste(path.package("canceR"),"/extdata/rdata/Circos.rds", sep=""))
 #' \dontrun{
 #' getListProfData()
 #' getCor_ExpCNAMet(myGlobalEnv$ListProfData$Expression, dimension="mRNA")

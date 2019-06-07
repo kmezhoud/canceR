@@ -1,3 +1,8 @@
+CHANGES IN VERSION 1.18.4 (08 May 2019)
+--------------------------------------------
++ compress RData files to RDS and move them from /data to /extdata/rdata
++ update running examples
+
 CHANGES IN VERSION 1.17.61 (01 May 2019)
 --------------------------------------------
 + remove .txt file from /data

@@ -8,7 +8,7 @@
 #' @examples
 #' x <- 0
 #' \dontrun{
-#' load(paste(.libPaths(),"/canceR/data/brca_tcga73genes.RData", sep=""))
+#' readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 #' getGenesClassifier()
 #' }
 #' @importFrom geNetClassifier calculateGenesRanking

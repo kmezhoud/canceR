@@ -20,7 +20,7 @@ a dataframe with genes classes
 Dialogue Box for gene classifier setting: sample size and postprob threshold
 }
 \examples{
-load(paste(path.package("canceR"),"/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/gbm_tcgaPlotTwoGenProf.rds", sep=""))
 \dontrun{
 getGenesClassifier()
 dialogGeneClassifier(1,10,returnValOnCancel = "ID_CANCEL")

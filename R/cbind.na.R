@@ -1,4 +1,5 @@
 #' bind non equal colunm
+#' 
 #' @usage cbind.na(..., deparse.level = 1) 
 #' @param ...  (generalized) vectors or matrices. 
 #' @param deparse.level  integer controlling the construction of labels in 
@@ -17,7 +18,7 @@
 #'}
 #'
 #'
-cbind.na <- function (..., deparse.level = 1) 
+cbind.na <- function(..., deparse.level = 1) 
 {
     na <- nargs() - (!missing(deparse.level))    
     deparse.level <- as.integer(deparse.level)

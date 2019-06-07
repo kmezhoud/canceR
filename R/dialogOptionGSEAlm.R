@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' data(ClinicalData)
+#' #data(ClinicalData)
 #' \dontrun{
 #' getOptionGSEAlm()
 #' }

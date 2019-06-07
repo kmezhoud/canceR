@@ -16,7 +16,7 @@ vectors: variables to test Survival status, AGE, p-value
 Checkbox to select variables from clinical data
 }
 \examples{
-load(paste(path.package("canceR"),"/data/prad_michPhenoTest1021.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/prad_michPhenoTest1021.rds", sep=""))
 \dontrun{
 dialogOptionPhenoTest(myGlobalEnv$eSet)
 }

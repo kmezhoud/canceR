@@ -18,7 +18,7 @@ Multi-select choice of gene sets from loaded MSigDB
 \examples{
 z <- 7
 \dontrun{
-MSigDB <- readLines(paste(.libPaths(),"/canceR/extdata/MSigDB/c5.bp.v4.0.symbols.gmt", sep=""))
+##MSigDB <- readLines(paste(.libPaths(),"/canceR/extdata/MSigDB/c5.bp.v4.0.symbols.gmt", sep=""))
 dialoggetGeneListMSigDB(MSigDB)
 }
 

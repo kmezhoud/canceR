@@ -18,7 +18,7 @@ Survival plot
 \examples{
 surv <- 11
 \dontrun{
-load(paste(.libPaths(),"/canceR/data/gbm_tcgaPlotTwoGenProf.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/gbm_tcgaPlotTwoGenProf.rds", sep=""))
 getSurvival(Coxph = 1)
 }
 }

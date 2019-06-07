@@ -18,7 +18,7 @@ variables
 Dialog Box to specify phenotype (variable) used in last GSEA-R to get Summary Results. This function ask the user to specify the phenotype (variable).
 }
 \examples{
-load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/ucec_tcga_pubGSEA1021.rds", sep=""))
 \dontrun{
 #Run.GSEA()
 #getSummaryGSEA()

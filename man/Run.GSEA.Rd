@@ -13,7 +13,7 @@ A vector with sampling size
 The  main function to run GSEA-R from Broad Institute
 }
 \examples{
-load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/ucec_tcga_pubGSEA1021.rds", sep=""))
 \dontrun{
 Run.GSEA()
 }

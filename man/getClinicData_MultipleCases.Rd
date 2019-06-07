@@ -17,8 +17,9 @@ get Clinical Data for Multiple Cases. User needs to select at least one case to 
 }
 \examples{
 ##Load Session
-load(paste(path.package("canceR"),"/data/brca_tcga73genes.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 ## Select Case
+myGlobalEnv <- new.env(parent = emptyenv())
 myGlobalEnv$curselectCases <- 2
 ## get Clinical data
 \dontrun{

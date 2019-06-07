@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+#' readRDS(paste(path.package("canceR"),"/extdata/rdata/ucec_tcga_pubGSEA1021.rds", sep=""))
 #' \dontrun{
 #' Run.GSEA()
 #' }
@@ -31,7 +31,7 @@ dialogSelectFiles_GSEA()
 #  stop("The GSEA.1.0.R file is not found.")
 #}
 
-GSEA.program.location <- paste(path.package("canceR"),"/data/GSEA.1.0.R", sep="")
+GSEA.program.location <- paste(path.package("canceR"),"/R/GSEA.1.0.R", sep="")
 #GSEA.program.location <- fname.GSEA   #  R source program (change pathname to the rigth location in local machine)
 source(GSEA.program.location, verbose=TRUE, max.deparse.length=9999)
 
