@@ -1,16 +1,33 @@
+CHANGES IN VERSION 1.18.5 (09 June 2019)
+--------------------------------------------
++ omit GSEAlm dependency
++ include used functions from gsealm to canceR package in gsealm.R file.
+
 CHANGES IN VERSION 1.18.4 (08 May 2019)
 --------------------------------------------
 + compress RData files to RDS and move them from /data to /extdata/rdata
 + update running examples
 
-CHANGES IN VERSION 1.17.61 (01 May 2019)
+CHANGES IN VERSION 1.18.3 (06 May 2019)
+--------------------------------------------
++ comment %\VignetteEngine{R.rsp}
++ update NAMESPACE
+
+CHANGES IN VERSION 1.18.2 (05 May 2019)
+--------------------------------------------
++ add empty line in the end for test functions
++ do not import grDevices::quartz
+
+CHANGES IN VERSION 1.18.1 (04 May 2019)
 --------------------------------------------
 + remove .txt file from /data
-+ add bioc_check for travis
++ remove documents of clinicalData and GeneExpMatrix datasets
 + import grDevices package
++ remove /extdata/gct_cls/
 
-CHANGES IN VERSION 1.17.6 (30 April 2019)
+ CHANGES IN VERSION 1.17.6 (30 April 2019)
 --------------------------------------------
+ + update NEWS format file
  + Remove dependency of RSvgDevice. This package is not available for Windows os.
  + Remove GSEA.1.0.R from /data folder
  
@@ -154,13 +171,11 @@ CHANGES IN VERSION 0.99.3
 
 CHANGES IN VERSION 0.99.2
 -------------------------
-
     + Add documentation for RUN.GSEA() function
     + Remove dependency of RSvgDevice. This package is not available for Windows oS.
 
 CHANGES IN VERSION 0.99.1
 -------------------------
-
     + Add examples in documents
 
 SIGNIFICANT USER-VISIBLE CHANGES
@@ -171,11 +186,10 @@ SIGNIFICANT USER-VISIBLE CHANGES
 
 CHANGES IN VERSION 0.99.1
 --------------------------
-
 SIGNIFICANT USER-VISIBLE CHANGES
 
-    + Add examples in documents
-
+    - Add examples in documents
+    
 NEW FEATURES
-
     + Package released
+
