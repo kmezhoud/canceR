@@ -47,7 +47,7 @@ Lindgren, et al. (2003, Nat Genet 34, 267-273)
 \examples{
 \dontrun{
 ## Load workspace
-load(paste(path.package("canceR"),"/data/ucec_tcga_pubGSEA1021.RData", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/ucec_tcga_pubGSEA1021.rds", sep=""))
 ##Run.GSEA()
 }
 }
