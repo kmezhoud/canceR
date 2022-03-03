@@ -1,10 +1,12 @@
 #' get matrix with gene expression from file
 #' @usage getGeneExpMatrix()
-#' @export
 #' @return dataframe of gene expression
-#' @examples 
-#' readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
+#' @export
+#' 
+#' @examples
+#' myGlobalEnv <- new.env(parent = emptyenv())
 #' \dontrun{
+#' readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 #' getGeneExpMatrix()
 #' }
 getGeneExpMatrix <- function(){

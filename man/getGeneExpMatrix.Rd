@@ -13,8 +13,9 @@ dataframe of gene expression
 get matrix with gene expression from file
 }
 \examples{
-readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
+myGlobalEnv <- new.env(parent = emptyenv())
 \dontrun{
+readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 getGeneExpMatrix()
 }
 }

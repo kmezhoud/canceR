@@ -1,33 +1,42 @@
-CHANGES IN VERSION 1.18.5 (09 June 2019)
+CHANGES IN VERSION 1.28.02 (04 Mars 2022)
+--------------------------------------------
++ Add bugReports link, add Views in DESCRIPTION
++ Link HTML vignette to Help Menu
++ Link to report Issues in github
+
+CHANGES IN VERSION 1.28.01 (03 Mars 2022)
+--------------------------------------------
++ Update DESCRIPTION
++ start to convert vignette from Rnd to Rmd
+
+CHANGES IN VERSION 1.19.05 (13 June 2019)
+--------------------------------------------
++ move vignette to inst/doc
+
+CHANGES IN VERSION 1.19.04 (09 June 2019)
 --------------------------------------------
 + omit GSEAlm dependency
 + include used functions from gsealm to canceR package in gsealm.R file.
 
-CHANGES IN VERSION 1.18.4 (08 May 2019)
+CHANGES IN VERSION 1.19.03 (08 May 2019)
 --------------------------------------------
 + compress RData files to RDS and move them from /data to /extdata/rdata
 + update running examples
 
-CHANGES IN VERSION 1.18.3 (06 May 2019)
+CHANGES IN VERSION 1.19.02 (05 May 2019)
 --------------------------------------------
-+ comment %\VignetteEngine{R.rsp}
-+ update NAMESPACE
-
-CHANGES IN VERSION 1.18.2 (05 May 2019)
---------------------------------------------
-+ add empty line in the end for test functions
++ remove /extdata/gct_cls
 + do not import grDevices::quartz
++ add empty line in test functions
 
-CHANGES IN VERSION 1.18.1 (04 May 2019)
+CHANGES IN VERSION 1.19.01 (02 May 2019)
 --------------------------------------------
-+ remove .txt file from /data
-+ remove documents of clinicalData and GeneExpMatrix datasets
++ remove .txt file from /data.
 + import grDevices package
-+ remove /extdata/gct_cls/
++ Adjust the vignetteEngine package
 
- CHANGES IN VERSION 1.17.6 (30 April 2019)
+CHANGES IN VERSION 1.17.6 (30 April 2019)
 --------------------------------------------
- + update NEWS format file
  + Remove dependency of RSvgDevice. This package is not available for Windows os.
  + Remove GSEA.1.0.R from /data folder
  
@@ -171,11 +180,13 @@ CHANGES IN VERSION 0.99.3
 
 CHANGES IN VERSION 0.99.2
 -------------------------
+
     + Add documentation for RUN.GSEA() function
     + Remove dependency of RSvgDevice. This package is not available for Windows oS.
 
 CHANGES IN VERSION 0.99.1
 -------------------------
+
     + Add examples in documents
 
 SIGNIFICANT USER-VISIBLE CHANGES
@@ -186,10 +197,11 @@ SIGNIFICANT USER-VISIBLE CHANGES
 
 CHANGES IN VERSION 0.99.1
 --------------------------
+
 SIGNIFICANT USER-VISIBLE CHANGES
 
-    - Add examples in documents
-    
-NEW FEATURES
-    + Package released
+    + Add examples in documents
 
+NEW FEATURES
+
+    + Package released

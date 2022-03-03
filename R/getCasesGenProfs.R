@@ -108,8 +108,8 @@ getCasesGenProfs <- function(){
     tkadd(TreeClass, "command", label= "Single", command= function()getGenesTree_SingleCase())
     tkadd(TreeClass, "command", label= "Multiple", command= function()getGenesTree_MultipleCases())
     
-    tkadd(HelpMenu, "command", label="Manual", command= function()canceR_Vignette())
-    tkadd(HelpMenu, "command", label= "Help", command = function() canceRHelp())
+    tkadd(HelpMenu, "command", label="Vignette", command= function()canceR_Vignette())
+    tkadd(HelpMenu, "command", label= "Issue", command = function() canceR_Issue())
     tkadd(HelpMenu, "command", label = "About", command= function() about())
     
     

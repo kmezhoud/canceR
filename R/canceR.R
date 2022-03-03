@@ -64,8 +64,8 @@ canceR <- function(){
     tkadd(fileMenu, "command", label = "Get Gene Exp", command = function() getGeneExpMatrix())
     tkadd(fileMenu, "command", label = "Get Clinical Data", command = function() getClinicalDataMatrix())
     tkadd(fileMenu, "command", label = "Quit", command = function() quit())
-    tkadd(HelpMenu, "command", label="Manual", command= function()canceR_Vignette())
-    tkadd(HelpMenu, "command", label= "Help", command = function() canceRHelp())
+    tkadd(HelpMenu, "command", label= "Vignette", command= function() canceR_Vignette())
+    tkadd(HelpMenu, "command", label= "Issue", command = function() canceR_Issue())
     tkadd(HelpMenu, "command", label = "About", command= function() about())
     
     
