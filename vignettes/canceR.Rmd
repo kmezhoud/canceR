@@ -79,10 +79,12 @@ knitr::opts_chunk$set(tidy = FALSE,
 
 * nuWin32 (for Windows) http://sourceforge.net/projects/getgnuwin32/?source=typ_redirect
 
+
 For Debian distribution (GNU/Linux)
-```{setup, include=FALSE}
+
+```{r eval = FALSE}
 sudo apt-get insall ("r-cran-tcltk2","r-cran-tkrplot")
-sudo apt-get install(✬Tk-table✬, ✬BWidget✬)
+sudo apt-get install(Tk-table, BWidget)
 sudo apt-get install libcurl4-openssl-dev
 sudo apt-get install r-cran-xml
 ```
@@ -91,12 +93,13 @@ For Windows distribution
 
 [LibXml2](http://sourceforge.net/projects/gnuwin32/files/): parser for XML 
 
-For OS X distribution X11: graphics device
-run R and write theses lines in console to install dependancies.
+For OS X distribution [XQuartz](https://www.xquartz.org/): graphics device
+
+run R and write theses lines in console to install dependencies.
 
 ```{r eval=FALSE}
 install.packages("RCurl", "XML")
-install.packages(c("cgdsr","tkrplot","Formula", "RSvgDevice","RCurl" ))
+install.packages(c("cgdsr","tkrplot","Formula","RCurl" ))
 ```
 
 ##  dependencies from Bioconductor
