@@ -14,7 +14,6 @@ myGlobalEnv <- new.env(parent = emptyenv())
 #' @import tkrplot
 #' @import cgdsr
 #' @import tcltk
-#' @import tcltk2
 #' 
 #'@importFrom graphics axis image layout legend lines par plot points text
 #'@importFrom stats as.formula cor density dist hclust median na.exclude p.adjust pnorm sd setNames window

@@ -1,3 +1,7 @@
+CHANGES IN VERSION 1.28.04 (12 Mars 2022)
+--------------------------------------------
++ omit tcltk2
+
 CHANGES IN VERSION 1.28.03 (07 Mars 2022)
 --------------------------------------------
 + Update vignette
