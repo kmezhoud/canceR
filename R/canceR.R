@@ -13,6 +13,8 @@ myGlobalEnv <- new.env(parent = emptyenv())
 #'}
 #' @import tkrplot
 #' @import cgdsr
+#' @import cBioPortalData
+#' @import dplyr
 #' @import tcltk
 #' 
 #'@importFrom graphics axis image layout legend lines par plot points text
@@ -24,10 +26,12 @@ myGlobalEnv <- new.env(parent = emptyenv())
 canceR <- function(){
     
     ## Create project
-    cgds<-CGDS("http://www.cbioportal.org/")
+    #cgds<-CGDS("http://www.cbioportal.org/")
+    cgds<-cBioPortal()
     myGlobalEnv$cgds <- cgds
     ## Get all Cancer Studies using column 2 (description)
-    Studies <- getCancerStudies.CGDS(cgds)[,2]
+    #Studies <- getCancerStudies.CGDS(cgds)[,2]
+    Studies <- getStudies(cgds) %>% pull(name)
     myGlobalEnv$Studies <- Studies
     
     ## first dialog START or CANCEL
@@ -108,8 +112,12 @@ canceR <- function(){
         # select raw with matched "string"
         StudyIndex <- grep(Word, Studies, ignore.case=TRUE) 
         myGlobalEnv$StudyIndex <- StudyIndex
+        #match_Study_All <- getCancerStudies(myGlobalEnv$cgds)[myGlobalEnv$StudyIndex, 2]
         
-        match_Study_All <- getCancerStudies(myGlobalEnv$cgds)[myGlobalEnv$StudyIndex, 2]
+        match_Study_All <- getStudies(myGlobalEnv$cgds) %>% 
+                           filter(grepl(Word, x = name,  ignore.case = TRUE)) %>%
+                           pull(name)
+        
         myGlobalEnv$match_Study_All <- match_Study_All
         
         ##Count the nomber of Matched Studies and return the number.
@@ -188,7 +196,13 @@ canceR <- function(){
         }
         
         #Identify checked Studies and its Index in cgds
-        checked_Studies <- getCancerStudies(myGlobalEnv$cgds)[checked_StudyIndex,1] 
+        #checked_Studies <- getCancerStudies(myGlobalEnv$cgds)[checked_StudyIndex,1] 
+        
+        checked_Studies <- getStudies(myGlobalEnv$cgds) %>%
+                           dplyr::slice(checked_StudyIndex) %>%
+                           pull(studyId)
+        
+        
         myGlobalEnv$checked_Studies <- checked_Studies
         ###tkmessageBox if No Study was selected
         if(length(myGlobalEnv$checked_Studies) ==0){
