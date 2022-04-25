@@ -24,5 +24,4 @@ getListProfData()
 getCor_ExpCNAMet(myGlobalEnv$ListProfData$Expression, dimension="mRNA")
 head(myGlobalEnv$Cor_Exp)
 }
-
 }

@@ -3,6 +3,8 @@
 #' @return dataframe with genetic profil
 #' @export
 #' @examples
+#' 
+#' \dontrun{
 #' cgds<-CGDS("http://www.cbioportal.org/")
 #' # Get list of cancer studies at server
 #' Studies <- getCancerStudies(cgds)[,2]
@@ -11,13 +13,13 @@
 #' mycaselist <- getCaseLists(cgds,mycancerstudy)[1,1]
 #' # Get available genetic profiles
 #' mygeneticprofile <- getGeneticProfiles(cgds,mycancerstudy)[4,1]
-#' \dontrun{
+#' 
 #' getGenProfs()
 #' }
 getGenProfs <- function(){
     
     #get Study Index
-    StudiesRef <- cgdsr::getCancerStudies(myGlobalEnv$cgds)[,1]
+    StudiesRef <- getCancerStudies(myGlobalEnv$cgds)[,1]
 
     ## and we need the cases list of every study
     myGlobalEnv$checked_Studies_forGenProf <- myGlobalEnv$checked_Studies

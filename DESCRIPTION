@@ -1,8 +1,8 @@
 Package: canceR
 Type: Package
 Title: A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC
-Version: 1.28.04
-Date: 2022-03-12
+Version: 1.29.03
+Date: 2022-04-24
 Author: Karim Mezhoud.
     Nuclear Safety & Security Department.
     Nuclear Science Center of Tunisia.
@@ -17,8 +17,7 @@ License: GPL-2
 LazyLoad: yes
 Depends:
     R (>= 4.1),
-    tcltk,
-    cgdsr
+    tcltk
 Imports:
     GSEABase,
     tkrplot,
@@ -34,7 +33,10 @@ Imports:
     graphics,
     stats,
     utils,
-    grDevices
+    grDevices,
+    R.oo,
+    R.methodsS3,
+    httr
 Suggests:
     testthat (>= 3.1),
     knitr,

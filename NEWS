@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.29.03 (24 April 2022)
+--------------------------------------------
++ host cgdsr functions
+
+CHANGES IN VERSION 1.29.01 (20 April 2022)
+--------------------------------------------
++ get cgdsr from github
+
 CHANGES IN VERSION 1.28.04 (12 Mars 2022)
 --------------------------------------------
 + omit tcltk2

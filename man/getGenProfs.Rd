@@ -13,6 +13,8 @@ dataframe with genetic profil
 Get Genetic Profile from selected Studies
 }
 \examples{
+
+\dontrun{
 cgds<-CGDS("http://www.cbioportal.org/")
 # Get list of cancer studies at server
 Studies <- getCancerStudies(cgds)[,2]
@@ -21,7 +23,7 @@ mycancerstudy <- getCancerStudies(cgds)[2,1]
 mycaselist <- getCaseLists(cgds,mycancerstudy)[1,1]
 # Get available genetic profiles
 mygeneticprofile <- getGeneticProfiles(cgds,mycancerstudy)[4,1]
-\dontrun{
+
 getGenProfs()
 }
 }

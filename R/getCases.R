@@ -5,6 +5,8 @@
 #' @return a dataframe with cases
 #' 
 #' @examples
+#' 
+#' \dontrun{
 #'  # Create CGDS object
 #'  cgds<-CGDS("http://www.cbioportal.org/")
 #'  # Get list of cancer studies at server
@@ -12,7 +14,7 @@
 #'  # Get available case lists (collection of samples) for a given cancer study
 #'  mycancerstudy <- getCancerStudies(cgds)[2,1]
 #'  mycaselist <- getCaseLists(cgds,mycancerstudy)[1,1]
-#' \dontrun{
+#' 
 #'   ##getCases()
 #'   }
 #'   

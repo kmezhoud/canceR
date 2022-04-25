@@ -1,12 +1,12 @@
-context("canceR functions")
+testthat::context("canceR functions")
 
 #test_that("set_class", {
 # foo <- . %>% .^2 %>% set_class(c("foo", class(.)))
 #expect_equal(3 %>% foo %>% class,c("foo","numeric"))
 #})
 
-testthat::test_that("cgdsr connection",
+testthat::test_that("cbioportal connection",
                     {
-                        mycgds <- cgdsr::CGDS("http://www.cbioportal.org/")
-                        result <- cgdsr::test(mycgds)
+                        mycgds <- CGDS("http://www.cbioportal.org/")
+                        result <- test.CGDS(mycgds)
                     })

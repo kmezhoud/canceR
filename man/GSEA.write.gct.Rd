@@ -25,7 +25,7 @@ GSEA.Write.gct
 
 \examples{
 ## Load workspace
-readRDS(paste(path.package("canceR"),"/extdata/rdata/gbm_tcgaPlotTwoGenProf.rds", sep=""))
+readRDS(paste(path.package("canceR"),"/extdata/rdata/ucec_tcga_pubGSEA1021.rds", sep=""))
 \dontrun{
 
 ##Run.GSEA()
