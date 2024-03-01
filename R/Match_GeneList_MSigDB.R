@@ -15,14 +15,14 @@ Match_GeneList_MSigDB <- function(){
     
     fromDir <- function(){
         ##Select directory which has MSigDB
-        myGlobalEnv$dirMSigDBPath <- tk_choose.dir()
+        ENV$dirMSigDBPath <- tk_choose.dir()
         tkdestroy(ttdialogMSigDB)
         #return(dirMSigDBPath)
     }
     
     fromExample <- function(){
         ##Or select MSigDB from package
-        myGlobalEnv$dirMSigDBPath <- paste(path.package("canceR"),"/extdata/MSigDB/",sep="")
+        ENV$dirMSigDBPath <- paste(path.package("canceR"),"/extdata/MSigDB/",sep="")
         tkdestroy(ttdialogMSigDB)
         #return(dirMSigDBPath)
     }
@@ -36,11 +36,11 @@ Match_GeneList_MSigDB <- function(){
     
     tkwait.window(ttdialogMSigDB)
     
-    MSigDBList <-  list.files(myGlobalEnv$dirMSigDBPath)  
+    MSigDBList <-  list.files(ENV$dirMSigDBPath)  
     MSigDB_Rate <- 0
     for(i in 1 :length(MSigDBList)){
         
-        MSigDBPath <- paste(myGlobalEnv$dirMSigDBPath,"/",MSigDBList[i] ,sep="")
+        MSigDBPath <- paste(ENV$dirMSigDBPath,"/",MSigDBList[i] ,sep="")
         
         mSigDB<-readLines(MSigDBPath)
         
@@ -60,7 +60,7 @@ Match_GeneList_MSigDB <- function(){
         #allGenes<-unique(unlist(mSigDB))
         
         
-        Matched_GeneSets <- sapply(myGlobalEnv$GeneList, function(x) which(sapply(x, regexpr, mSigDB)!=-1))
+        Matched_GeneSets <- sapply(ENV$GeneList, function(x) which(sapply(x, regexpr, mSigDB)!=-1))
         
         MeanOfGeneSetsHavingGene <- round(length(unlist(Matched_GeneSets))/length(Matched_GeneSets),digits=2)
         

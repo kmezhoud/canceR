@@ -14,16 +14,18 @@ Get cases for selected Studies. The Cases are the descrption of the samples from
 }
 \examples{
 
+cgds <- cBioPortal(
+hostname = "www.cbioportal.org",
+protocol = "https",
+api = "/api/v2/api-docs"
+)
 \dontrun{
- # Create CGDS object
- cgds<-CGDS("http://www.cbioportal.org/")
- # Get list of cancer studies at server
- Studies <- getCancerStudies(cgds)[,2]
- # Get available case lists (collection of samples) for a given cancer study
- mycancerstudy <- getCancerStudies(cgds)[2,1]
- mycaselist <- getCaseLists(cgds,mycancerstudy)[1,1]
-
-  ##getCases()
-  }
+getDataByGenes( api =  cgds,
+studyId = "gbm_tcga_pub",
+genes = c("NF1", "TP53", "ABL1"),
+by = "hugoGeneSymbol",
+molecularProfileIds = "gbm_tcga_pub_mrna"
+)
+}
   
 }

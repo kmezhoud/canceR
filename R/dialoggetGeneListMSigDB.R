@@ -17,8 +17,8 @@
 #'
 dialoggetGeneListMSigDB <- function(MSigDB){   
 
-    if(exists("match_GS", envir = myGlobalEnv)){
-        rm("match_GS", envir=myGlobalEnv)
+    if(exists("match_GS", envir = ENV)){
+        rm("match_GS", envir=ENV)
     }
     
 ## function load matched Gene Sets   
@@ -28,20 +28,20 @@ loadMatchGS <- function(Word){
     # select row with matched "string"
     GSidx <- grep(Word, names(MSigDB), ignore.case=TRUE) 
     
-    myGlobalEnv$match_GS <- names(MSigDB)[GSidx]
+    ENV$match_GS <- names(MSigDB)[GSidx]
     
     
     ##Count the nomber of Matched Studies and return the number.
-    nMatchGS <- paste("Query result: ",length(myGlobalEnv$match_GS), " Gene Sets were Matched.",sep="")
+    nMatchGS <- paste("Query result: ",length(ENV$match_GS), " Gene Sets were Matched.",sep="")
     #tkgrid(tklabel(ttGeneListMSigDB,text= nMatchGS ))
     tkdelete(tlInfo,0,1)
     tkinsert(tlInfo,"end",nMatchGS)
     
     tkdelete(tl1,0,1500)
     #tkdelete(tl1info,0,1)
-    for (i in (1:length(myGlobalEnv$match_GS)))
+    for (i in (1:length(ENV$match_GS)))
     { 
-        tkinsert(tl1,"end",myGlobalEnv$match_GS[i])
+        tkinsert(tl1,"end",ENV$match_GS[i])
     }
     tkselection.set(tl1,2)  # Default selection.  Indexing starts at zero.
 
@@ -94,24 +94,24 @@ tl1info<-tklistbox(ttGeneListMSigDB,height=5, width= 80,selectmode="multiple",xs
 tkconfigure(tl1info, foreground="blue", font=police)
 
 ### function load Gene Sets
-myGlobalEnv$regex <-0
+ENV$regex <-0
 loadGeneSets <- function()
 {  
 
-    if(!exists("match_GS", envir=myGlobalEnv)){
+    if(!exists("match_GS", envir=ENV)){
     #tkdelete(tl1info,0,1)
     curselectGS <- as.numeric(tkcurselection(tl1))+1
     tkinsert(tl1info,"end",names(MSigDB)[curselectGS]) 
-    myGlobalEnv$regex <- c(myGlobalEnv$regex,names(MSigDB)[curselectGS])
+    ENV$regex <- c(ENV$regex,names(MSigDB)[curselectGS])
     }else{
         curselectGS <- as.numeric(tkcurselection(tl1))+1
-        tkinsert(tl1info,"end",myGlobalEnv$match_GS[curselectGS]) 
-        myGlobalEnv$regex <- c(myGlobalEnv$regex,myGlobalEnv$match_GS[curselectGS])
+        tkinsert(tl1info,"end",ENV$match_GS[curselectGS]) 
+        ENV$regex <- c(ENV$regex,ENV$match_GS[curselectGS])
         
     }
     
 }
-myGlobalEnv$regex <- myGlobalEnv$regex[-1]
+ENV$regex <- ENV$regex[-1]
 
 OKon <- function(){
     tkdestroy(ttGeneListMSigDB)

@@ -13,7 +13,7 @@ open the starting windows with cancer studies
 main function
 }
 \examples{
-myGlobalEnv <- new.env(parent = emptyenv())
+ENV <- new.env(parent = emptyenv())
 \dontrun{
 canceR()
 }

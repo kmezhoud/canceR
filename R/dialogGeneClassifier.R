@@ -48,10 +48,10 @@ dialogGeneClassifier <- function(Lchecked_Cases,entryWidth = 10,
     
     for(i in 3:(Lchecked_Cases+2)){
         
-        stdy <- tklabel(frameCases, text=myGlobalEnv$StudyRefCase[i-2])
+        stdy <- tklabel(frameCases, text=ENV$StudyRefCase[i-2])
         tkgrid(stdy)
         tkgrid.configure(stdy, column=0,row=i, sticky="e")
-        SamplesNbr <-tklabel(frameCases, text = paste(": " ,myGlobalEnv$CaseChoice[i-2]))
+        SamplesNbr <-tklabel(frameCases, text = paste(": " ,ENV$CaseChoice[i-2]))
         tkgrid(SamplesNbr)
         tkgrid.configure(SamplesNbr, column=1, row=i,sticky="w")
     }
@@ -74,8 +74,8 @@ dialogGeneClassifier <- function(Lchecked_Cases,entryWidth = 10,
     
     
     onOK <- function() {
-        myGlobalEnv$ReturnSamplesNbr <- as.numeric(tclvalue(textEntryVarTcl))
-        myGlobalEnv$Threshold <- as.numeric(tclvalue(textEntrylpThreshold))
+        ENV$ReturnSamplesNbr <- as.numeric(tclvalue(textEntryVarTcl))
+        ENV$Threshold <- as.numeric(tclvalue(textEntrylpThreshold))
         
         tkgrab.release(dlg)
         tkdestroy(dlg)
@@ -99,7 +99,7 @@ dialogGeneClassifier <- function(Lchecked_Cases,entryWidth = 10,
     tkbind(textEntryWidget, "<Return>", onOK)
     tkwait.window(dlg)
     
-    return(c(myGlobalEnv$ReturnSamplesNbr, myGlobalEnv$Threshold))
+    return(c(ENV$ReturnSamplesNbr, ENV$Threshold))
     
     
 }

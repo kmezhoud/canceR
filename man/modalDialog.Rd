@@ -26,10 +26,10 @@ Dialog box to specify Gene Symbol.
 \examples{
 readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 ## Select Case from Breast Cancer
-myGlobalEnv <- new.env(parent = emptyenv())
-myGlobalEnv$curselectCases <- 9
+ENV <- new.env(parent = emptyenv())
+ENV$curselectCases <- 9
 ##Select Genetic Profile from Breast Cancer
-myGlobalEnv$curselectGenProfs <- 4
+ENV$curselectGenProfs <- 4
 ## get Specific Mutation data for 73 Genes list
 \dontrun{
 getProfilesDataSingleGene()

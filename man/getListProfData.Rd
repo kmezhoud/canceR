@@ -2,20 +2,27 @@
 % Please edit documentation in R/getListProfData.R
 \name{getListProfData}
 \alias{getListProfData}
-\title{get a list of Profile Data of every available dimensions. This function load matrices of every dimension (Exp, CNA, Met, RPPA,miRNA,Mut) and save them in a list for every disease.}
+\title{Get list of data frame with profiles data (CNA,mRNA, Methylation, Mutation...)}
 \usage{
-getListProfData()
+getListProfData(checked_Studies, geneList)
+}
+\arguments{
+\item{checked_Studies}{checked studies in corresponding panel (input$StudiesIDCircos, input$StudiesIDReactome).}
+
+\item{geneList}{GeneList with Hugo Symbol}
 }
 \value{
-a list of data frame with Profiles Data
+A LIST of profiles data (CNA, mRNA, Methylation, Mutation, miRNA, RPPA).
+        Each dimension content a list of studies.
 }
 \description{
-get a list of Profile Data of every available dimensions. This function load matrices of every dimension (Exp, CNA, Met, RPPA,miRNA,Mut) and save them in a list for every disease.
+Get list of data frame with profiles data (CNA,mRNA, Methylation, Mutation...)
 }
 \examples{
 readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 \dontrun{
 getListProfData()
-head(myGlobalEnv$ProfData$Expression)
+head(ENV$ProfData$Expression)
 }
+
 }

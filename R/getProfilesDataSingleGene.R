@@ -5,10 +5,10 @@
 #' @examples 
 #' readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 #' ## Select Case from Breast Cancer
-#'  myGlobalEnv <- new.env(parent = emptyenv())
-#' myGlobalEnv$curselectCases <- 9
+#'  ENV <- new.env(parent = emptyenv())
+#' ENV$curselectCases <- 9
 #' ##Select Genetic Profile from Breast Cancer
-#' myGlobalEnv$curselectGenProfs <- 4
+#' ENV$curselectGenProfs <- 4
 #' ## get Specific Mutation data for 73 Genes list
 #' \dontrun{
 #' getProfilesDataSingleGene()
@@ -18,54 +18,47 @@ getProfilesDataSingleGene <-function(){
     tclRequire("BWidget")
     tclRequire("Tktable")
     
-    testCheckedCaseGenProf()
-    
+    testCheckedCaseGenProf(singleGene=1)
 
-    Lchecked_Studies <- myGlobalEnv$lchecked_Studies_forCases
-    Lchecked_Cases <- length(myGlobalEnv$curselectCases)
-    Lchecked_GenProf <- length(myGlobalEnv$curselectGenProfs)
     
-    ############################
-    ProfDataAll<-0
-    ProfData<-0
-    LengthGenProfs<-0
-    LengthCases<-0
-    
-    for (s in 1:Lchecked_Studies){
-        Si =myGlobalEnv$checked_StudyIndex[s]
-        GenProfS=0
-        GenProfS<- getGeneticProfiles.CGDS(myGlobalEnv$cgds, myGlobalEnv$checked_Studies_forGenProf[s])[,1]
+    for (s in ENV$checked_Studies_id){
         
-        ## Wich Cases are checked and for any study and Genetic Profiles? 
-        LastLengthCases <- LengthCases
-        LengthCases <- LengthCases + myGlobalEnv$LCases[s]+1
-        for(c in 1: Lchecked_Cases){
-            if(myGlobalEnv$curselectCases[c] <= LengthCases && myGlobalEnv$curselectCases[c]>LastLengthCases){
-                print(paste("Case",myGlobalEnv$curselectCases[c],"<",LengthCases,myGlobalEnv$curselectCases[c],">",LastLengthCases ))   
-                
-                CaseS<- myGlobalEnv$CasesRefStudies[myGlobalEnv$curselectCases[c]]
+        for(c in seq(length(ENV$curselectGenProfs))){
+
                 
                 launchDialog <- function(){
                     
-                    Dialog_Title<- paste("STUDY:", Si,"CASE:", myGlobalEnv$curselectCases_forStudy[c], sep=" ")
+                    Dialog_Title<- paste("STUDY:", s ,"CASE:", ENV$curselectCases_forStudy[c], sep=" ")
                     GENE <- modalDialog(Dialog_Title, "Enter HUGO Gene Symbol", "MDM4")
                     if (GENE == "ID_CANCEL") return()
                     
-                    ProfDataS<-getProfileData(myGlobalEnv$cgds,GENE, GenProfS,CaseS)
+                    #ProfDataS<-getProfileData(ENV$cgds, GENE, GenProfS, Study_id)
+                    print(ENV$GenProfsRefStudies[ENV$curselectGenProfs[c]])
+                    print(s)
+                    ProfDataS <- cBioPortalData::getDataByGenes(api =  ENV$cgds,
+                                                                studyId = s,
+                                                                genes = GENE,
+                                                                by = "hugoGeneSymbol", 
+                                                                molecularProfileIds = ENV$GenProfsRefStudies[ENV$curselectGenProfs[c]]) |>
+                        unname() |>
+                        as.data.frame() |>
+                        select("hugoGeneSymbol","sampleId", "value") |>
+                        tidyr::spread("hugoGeneSymbol", "value") 
+                        #data.frame(row.names = 1)
                     
                     
                     ttProfData_cb <- tktoplevel()
-                    tktitle(ttProfData_cb) <- paste(myGlobalEnv$StudyRefCase[c],myGlobalEnv$CaseChoice[c], sep=": ")
+                    tktitle(ttProfData_cb) <- paste(ENV$StudyRefCase[c],ENV$CaseChoice[c], sep=": ")
                     #tkwm.geometry(ttProfData_cb,"300x300")
                     
                     cbAll <- tkcheckbutton(ttProfData_cb)
                     cbAllValue <- tclVar("0")
-                    tkconfigure(cbAll,variable=cbAllValue)
-                    labelAll<- tklabel(ttProfData_cb,text= "All")
+                    tkconfigure(cbAll, variable = cbAllValue)
+                    labelAll<- tklabel(ttProfData_cb, text= "All")
                     tkgrid(labelAll, cbAll)
                     
                     cbIValue=0
-                    for(i in 1: length(names(ProfDataS))){
+                    for(i in seq(ncol(ProfDataS))){
                         
                         cbi <- paste ("cb", i, sep="")  
                         cbi <- tkcheckbutton(ttProfData_cb)
@@ -90,11 +83,11 @@ getProfilesDataSingleGene <-function(){
                                 ProfDataS[,i]<- gsub("\\[Not Available\\]","NA", ProfDataS[,i])
                             }
                             
-                            ProfDataS <- t(t(ProfDataS))
-                            title<-paste(myGlobalEnv$StudyRefCase[c],myGlobalEnv$CaseChoice[c], sep=": ")
-                            getInTable(ProfDataS, title)
-                            
-                            
+                            #ProfDataS <- t(t(ProfDataS))
+                            getInTable(ProfDataS,
+                                       title= paste0(ENV$StudyRefCase[c],": ",
+                                                    ENV$CaseChoice[c]))
+ 
                         } else{
                             
                             for (i in 1: length(names(ProfDataS))){
@@ -108,23 +101,22 @@ getProfilesDataSingleGene <-function(){
                                 if (cbIVal[i]=="1"){
                                     
                                     ## convert metacharacter "[""]" not supported by tclarray()
-                                    ProfDataS[,i]= gsub("\\[Not Available\\]","NA", ProfDataS[,i])
+                                    ProfDataS[,i] <- gsub("\\[Not Available\\]","NA", ProfDataS[,i])
                                     
-                                    ProfDataSSub<- cbind(ProfDataSSub,ProfDataS[i])
-                                    
+                                    ProfDataSSub <- cbind(ProfDataSSub, ProfDataS[i])
                                 }
-                                
                             }
-                            ProfDataSSub<-ProfDataSSub[-1]
+                            ProfDataSSub <- ProfDataSSub[-1]
                             
                             if(length(ProfDataSSub)==0){
                                 tkmessageBox(message= paste("Select at least one data type"), icon="warning")
                                 stop("Select at least one data type")
                             }
-                           
-                            ProfDataSSub <- t(t(ProfDataSSub))
-                            title=paste(myGlobalEnv$StudyRefCase[c],myGlobalEnv$CaseChoice[c], sep=": ")
-                            getInTable(ProfDataSSub, title)
+                            
+                            #ProfDataSSub <- t(t(ProfDataSSub))
+                            getInTable(ProfDataSSub, 
+                                       title= paste0(ENV$StudyRefCase[c],": ",
+                                                     ENV$CaseChoice[c]))
                             
                         }
                         tkdestroy(ttProfData_cb)
@@ -136,13 +128,10 @@ getProfilesDataSingleGene <-function(){
                     
                     ##Waiting to checkbox before to access to the next clinical data
                     tkwait.window(ttProfData_cb)
-                    
-                    
-                    
                 }
                 launchDialog()
                 
-            }
+#            }
         }   
         
     }

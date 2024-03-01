@@ -19,8 +19,8 @@ get Clinical Data for Multiple Cases. User needs to select at least one case to 
 ##Load Session
 readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 ## Select Case
-myGlobalEnv <- new.env(parent = emptyenv())
-myGlobalEnv$curselectCases <- 2
+ENV <- new.env(parent = emptyenv())
+ENV$curselectCases <- 2
 ## get Clinical data
 \dontrun{
 getClinicData_MultipleCases(getSummaryGSEAExists = 0)

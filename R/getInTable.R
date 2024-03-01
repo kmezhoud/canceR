@@ -25,6 +25,6 @@ for (i in (1:length(matrix1[,1]))){
     }
 }
 #Table_Title<- paste("SD:",StudyRefCase[k],"_","GenProf:",curselectGenProfs_forStudy[k],"_","CASE:",curselectCases_forStudy[k],".gct")
-table1 <- displayInTable(tclArray1,title= title ,nrow=nrow(matrix1),ncol=ncol(matrix1),height=30,width=20)
+table1 <- displayInTable(tclArray1,title= title ,nrow=nrow(matrix1),ncol=ncol(matrix1),height=40,width=50)
 
 }

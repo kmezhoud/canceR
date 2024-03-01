@@ -17,7 +17,8 @@
 #' col3 <- cbind.na(col1, col2)
 #'}
 #'
-#'
+#'@export
+
 cbind.na <- function(..., deparse.level = 1) 
 {
     na <- nargs() - (!missing(deparse.level))    

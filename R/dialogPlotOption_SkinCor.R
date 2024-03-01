@@ -15,16 +15,16 @@
 #' 
 dialogPlotOption_SkinCor <- function(s){
     
-    myGlobalEnv$ttDialSkinCor <- tktoplevel()
-    tktitle(myGlobalEnv$ttDialSkinCor) <- paste("Plot Option: Skin, Correlation, X/Y...")
-    #tkwm.geometry(myGlobalEnv$ttDialSkinCor, "300x170")
+    ENV$ttDialSkinCor <- tktoplevel()
+    tktitle(ENV$ttDialSkinCor) <- paste("Plot Option: Skin, Correlation, X/Y...")
+    #tkwm.geometry(ENV$ttDialSkinCor, "300x170")
     
-    frameSkin <- tkframe(myGlobalEnv$ttDialSkinCor,relief="groove",borderwidth=2)
+    frameSkin <- tkframe(ENV$ttDialSkinCor,relief="groove",borderwidth=2)
     
     
-    frameCorrelation <- tkframe(myGlobalEnv$ttDialSkinCor,relief="groove",borderwidth=2)
+    frameCorrelation <- tkframe(ENV$ttDialSkinCor,relief="groove",borderwidth=2)
     
-    frameAxes <- tkframe(myGlobalEnv$ttDialSkinCor,relief="groove",borderwidth=2)
+    frameAxes <- tkframe(ENV$ttDialSkinCor,relief="groove",borderwidth=2)
     
     tkgrid(frameSkin)
     tkgrid.configure(frameSkin, sticky="new")
@@ -75,8 +75,8 @@ dialogPlotOption_SkinCor <- function(s){
     
     #rbValue <- tclVar("pearson") # le choix par défaut
     # config des boutons radio. Une seule variable tcl pour 3 boutons
-    tkconfigure(rb9,variable=rbValue3,value="0", text=myGlobalEnv$GenProfsStudies[(myGlobalEnv$curselectGenProfs)+1][(s*2)+1])
-    tkconfigure(rb10,variable=rbValue3,value="1", text=myGlobalEnv$GenProfsStudies[(myGlobalEnv$curselectGenProfs)+1][(s*2)+2])
+    tkconfigure(rb9,variable=rbValue3,value="0", text=ENV$GenProfsStudies[(ENV$curselectGenProfs)+1][(s*2)+1])
+    tkconfigure(rb10,variable=rbValue3,value="1", text=ENV$GenProfsStudies[(ENV$curselectGenProfs)+1][(s*2)+2])
     
     tkgrid(rb9, rb10, columnspan=3)
     
@@ -87,40 +87,40 @@ dialogPlotOption_SkinCor <- function(s){
         rbVal1 <- as.character(tclvalue(rbValue1))
         rbVal2 <- as.character(tclvalue(rbValue2))
         rbVal3 <- as.character(tclvalue(rbValue3))
-        tkdestroy(myGlobalEnv$ttDialSkinCor)
+        tkdestroy(ENV$ttDialSkinCor)
         if (rbVal1=="cont")
             #tkmessageBox(message=rbVal1)
-            myGlobalEnv$skin<-paste(rbVal1)
+            ENV$skin<-paste(rbVal1)
         
         if (rbVal1=="disc_cont")
             #tkmessageBox(message=rbVal1)
-            myGlobalEnv$skin<-paste(rbVal1)
+            ENV$skin<-paste(rbVal1)
         if (rbVal1=="cna_mrna_mut")
             #tkmessageBox(message=rbVal1)
-            myGlobalEnv$skin<-paste(rbVal1)
+            ENV$skin<-paste(rbVal1)
         if (rbVal2=="pearson")
             #tkmessageBox(message=rbVal2)
-            myGlobalEnv$correlation<-paste(rbVal2)
+            ENV$correlation<-paste(rbVal2)
         if (rbVal2=="kendall")
             #tkmessageBox(message=rbVal2)
-            myGlobalEnv$correlation<-paste(rbVal2)
+            ENV$correlation<-paste(rbVal2)
         if (rbVal2=="spearman")
             #tkmessageBox(message=rbVal2)
-            myGlobalEnv$correlation<-paste(rbVal2)
+            ENV$correlation<-paste(rbVal2)
         if (rbVal2=="NULL")
             #tkmessageBox(message=rbVal2)
-            myGlobalEnv$correlation<-paste("NULL")
+            ENV$correlation<-paste("NULL")
         
         if (rbVal3=="0")
             #tkmessageBox(message=rbVal2)
-            myGlobalEnv$Axes<-paste("0")
+            ENV$Axes<-paste("0")
         
         if (rbVal3=="1")
             #tkmessageBox(message=rbVal2)
-            myGlobalEnv$Axes<-paste("1")
+            ENV$Axes<-paste("1")
     }
     
-    OK.but <- tkbutton(myGlobalEnv$ttDialSkinCor,text="OK",command=OnOK)
+    OK.but <- tkbutton(ENV$ttDialSkinCor,text="OK",command=OnOK)
     tkgrid(OK.but)
     
 }

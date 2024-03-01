@@ -1,3 +1,30 @@
+CHANGES IN VERSION 1.36.5 (26 February 2024)
+--------------------------------------------
++ fix issues with indexing Id of Cases and Genetic Profiles
++ Update functionnnalities of GSEA
++ add an example of GCT and CSL fiiles to use in GSEA
+
+CHANGES IN VERSION 1.36.5 (26 February 2024)
+--------------------------------------------
++ fix phenoTest analysis
+
+CHANGES IN VERSION 1.36.4 (22 February 2024)
+--------------------------------------------
++ modify getCases(), getGenProfs()
++ fix get Clinical data
++ fix get Mutation data
++ fix get specific mutation
++ fix get methylation data
++ fix get Profile Data for a single gene
+
+CHANGES IN VERSION 1.36.3 (18 February 2024)
+--------------------------------------------
++ update welcome panel. get all studies
+
+CHANGES IN VERSION 1.36.2 (05 February 2024)
+--------------------------------------------
++ Start migration to the new WebAPI of cBioPortal
+
 CHANGES IN VERSION 1.29.03 (24 April 2022)
 --------------------------------------------
 + host cgdsr functions

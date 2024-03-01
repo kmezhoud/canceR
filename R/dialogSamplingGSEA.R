@@ -1,9 +1,9 @@
 #' Dialog  Box for Sampling patients from expression profile data used for GSEA-R (Broad Institute)
-#' @usage
-#' dialogSamplingGSEA( Lchecked_Cases,entryWidth = 10,returnValOnCancel = "ID_CANCEL")
-#' @param Lchecked_Cases  Number of checked Cases
+#' @param n_checked_GenProf  Number of checked genetic profiles
 #' @param entryWidth 10
 #' @param returnValOnCancel  "ID_CANCEL"
+#' 
+#' @usage dialogSamplingGSEA(n_checked_GenProf, entryWidth = 10,returnValOnCancel = "ID_CANCEL")
 #' 
 #' @return A vector with sampling size
 #' @export
@@ -15,7 +15,7 @@
 #' #dialogSamplingGSEA(1,entryWidth=10,returnValOnCancel = "ID_CANCEL")
 #' }
 #'  
-dialogSamplingGSEA <- function( Lchecked_Cases,entryWidth = 10,
+dialogSamplingGSEA <- function( n_checked_GenProf, entryWidth = 10,
                                 returnValOnCancel = "ID_CANCEL") {
     
     dlg <- tktoplevel()
@@ -24,12 +24,9 @@ dialogSamplingGSEA <- function( Lchecked_Cases,entryWidth = 10,
     tkfocus(dlg)
     tkwm.title(dlg, "Sampling from Profile Data matrix")
     
-    
     txtMsg <- tklabel(dlg, text = "")
     tkgrid(txtMsg)
     tkgrid.configure(txtMsg, column=0, row=1,sticky="we")
-    
-    
     
     textEntryVarTcl <- tclVar("50")
     textEntryWidget <- tkentry(dlg, width = paste(entryWidth),
@@ -45,12 +42,12 @@ dialogSamplingGSEA <- function( Lchecked_Cases,entryWidth = 10,
     tkgrid(tklabel(frameCases, text="Checked Cases:"))
     tkgrid.configure(frameCases, sticky="new")
     
-    for(i in 3:(Lchecked_Cases+2)){
+    for(i in 3:(n_checked_GenProf+2)){
         
-        stdy <- tklabel(frameCases, text=myGlobalEnv$StudyRefCase[i-2])
+        stdy <- tklabel(frameCases, text=ENV$StudyRefCase[i-2])
         tkgrid(stdy)
         tkgrid.configure(stdy, column=0,row=i, sticky="e")
-        SamplesNbr <-tklabel(frameCases, text = paste(": " ,myGlobalEnv$CaseChoice[i-2]))
+        SamplesNbr <-tklabel(frameCases, text = paste(": " ,ENV$CaseChoice[i-2]))
         tkgrid(SamplesNbr)
         tkgrid.configure(SamplesNbr, column=1, row=i,sticky="w")
     }
@@ -58,22 +55,22 @@ dialogSamplingGSEA <- function( Lchecked_Cases,entryWidth = 10,
     ReturnSamplesNbr <- returnValOnCancel
     
     onOK <- function() {
-        myGlobalEnv$ReturnSamplesNbr <- as.numeric(tclvalue(textEntryVarTcl))
+        ENV$ReturnSamplesNbr <- as.numeric(tclvalue(textEntryVarTcl))
         tkgrab.release(dlg)
         tkdestroy(dlg)
         
     }
     onCancel <- function() {
-        myGlobalEnv$ReturnSamplesNbr <- returnValOnCancel
+        ENV$ReturnSamplesNbr <- returnValOnCancel
         tkgrab.release(dlg)
         tkdestroy(dlg)
     }
     OK.but <- tkbutton(dlg, text = "   OK   ", command = onOK)
     Cancel.but <- tkbutton(dlg, text = " Cancel ", command = onCancel)
     tkgrid(Cancel.but)
-    tkgrid.configure(Cancel.but, column=0,row= (Lchecked_Cases+5), sticky="w")
+    tkgrid.configure(Cancel.but, column=0,row= (n_checked_GenProf+5), sticky="w")
     tkgrid(OK.but)
-    tkgrid.configure(OK.but, column=0,row= (Lchecked_Cases+5), sticky="e")
+    tkgrid.configure(OK.but, column=0,row= (n_checked_GenProf+5), sticky="e")
     
     
     tkfocus(dlg)
@@ -81,7 +78,5 @@ dialogSamplingGSEA <- function( Lchecked_Cases,entryWidth = 10,
     tkbind(textEntryWidget, "<Return>", onOK)
     tkwait.window(dlg)
     
-    return(myGlobalEnv$ReturnSamplesNbr)
-    
-    
+    return(ENV$ReturnSamplesNbr)
 }

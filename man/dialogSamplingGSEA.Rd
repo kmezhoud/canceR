@@ -4,10 +4,10 @@
 \alias{dialogSamplingGSEA}
 \title{Dialog  Box for Sampling patients from expression profile data used for GSEA-R (Broad Institute)}
 \usage{
-dialogSamplingGSEA( Lchecked_Cases,entryWidth = 10,returnValOnCancel = "ID_CANCEL")
+dialogSamplingGSEA(n_checked_GenProf, entryWidth = 10,returnValOnCancel = "ID_CANCEL")
 }
 \arguments{
-\item{Lchecked_Cases}{Number of checked Cases}
+\item{n_checked_GenProf}{Number of checked genetic profiles}
 
 \item{entryWidth}{10}
 

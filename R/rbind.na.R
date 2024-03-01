@@ -17,6 +17,7 @@
 #' row3 <- rbind.na(row1, row2)
 #'}
 #'
+#'@export
 #'
 rbind.na <- function(..., deparse.level = 1) 
 {

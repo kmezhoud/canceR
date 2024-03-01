@@ -27,5 +27,4 @@ col2 <- c("A", "B", "C")
 col3 <- cbind.na(col1, col2)
 }
 
-
 }

@@ -33,14 +33,14 @@ dialogMut <- function(title, question, entryInit, entryWidth = 40,
     ReturnVal <- returnValOnCancel
     
     onOK <- function() {
-        myGlobalEnv$ReturnVal <- tclvalue(textEntryVarTcl)
+        ENV$ReturnVal <- tclvalue(textEntryVarTcl)
         tkgrab.release(dlg)
         tkdestroy(dlg)
         
         #tkfocus(ttMain)
     }
     onCancel <- function() {
-        myGlobalEnv$ReturnVal <- returnValOnCancel
+        ENV$ReturnVal <- returnValOnCancel
         tkgrab.release(dlg)
         tkdestroy(dlg)
         return(ReturnVal)
@@ -53,9 +53,9 @@ dialogMut <- function(title, question, entryInit, entryWidth = 40,
     #tkgrid(tklabel(dlg, text = "    "))
     
     tkfocus(dlg)
-    tkbind(dlg, "<Destroy>", function() {tkgrab.release(dlg); tkfocus(myGlobalEnv$ttCasesGenProfs)})
+    tkbind(dlg, "<Destroy>", function() {tkgrab.release(dlg); tkfocus(ENV$ttCasesGenProfs)})
     tkbind(textEntryWidget, "<Return>", onOK)
     tkwait.window(dlg)
     
-    return(myGlobalEnv$ReturnVal)
+    return(ENV$ReturnVal)
 }

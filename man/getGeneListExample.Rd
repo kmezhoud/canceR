@@ -13,7 +13,7 @@ Gene list path of file
 get Gene List from examples. User can select one from available gene list
 }
 \examples{
-myGlobalEnv <- new.env(parent = emptyenv())
+ENV <- new.env(parent = emptyenv())
 \dontrun{
 getGeneListExample() 
 }

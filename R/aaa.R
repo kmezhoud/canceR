@@ -4,4 +4,6 @@ globalVariables(c("Li","A","EventTime","Category", "Continu", "Category",
                   "GenesDetails", "CaseChoice", "ListProfData", "ListMetData",
                   "ListMutData", "lenght", "myGlobalEnv", "MSigDB", "MSigDBFile",
                   "fname.MSigDB", "age", "CasesStudies", "curselectCases", "devSVG",
-                  "ttCasesGenProfs", "cbind2", "new", "rbind2", "vignette"))
+                  "ttCasesGenProfs", "cbind2", "new", "rbind2", "vignette", "pull",
+                  "select", "across", "left_join", "all_of", "p", "getProfileData",
+                  "getClinicalData", "GSEA", "Run.GSEA", "everything"))

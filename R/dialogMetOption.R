@@ -17,17 +17,12 @@
 #' 
 dialogMetOption <- function(ProfData,k){
     
-    
-    
     ttMethData <- tktoplevel()
     #tkwm.geometry(ttMethData,"180x250")
     
-    tktitle(ttMethData) <- paste(myGlobalEnv$StudyRefCase[k],myGlobalEnv$GenProfChoice[k], sep=" ")
-    
+    tktitle(ttMethData) <- paste(ENV$StudyRefCase[k],ENV$GenProfChoice[k], sep=" ")
     
     rEntry  = tclVar(.8)
-    
-    
     
     frameTHRESHOLD<- tkframe(ttMethData,relief="groove",borderwidth=2)
     tkgrid(tklabel(frameTHRESHOLD, text="Specify Threshold of correlation rate:"))
@@ -38,10 +33,8 @@ dialogMetOption <- function(ProfData,k){
                    variable=rEntry,resolution=.05,orient='horiz'))
     
     
-    
     okOn <- function(){
-        
-        
+    
         #Compute mean of correlation
         meanProfData <-as.matrix(round(colMeans(ProfData), digits=3))
         #Compute median of correlation
@@ -49,14 +42,17 @@ dialogMetOption <- function(ProfData,k){
         #Entry Threshold of correlation
         seuilRVal <- as.numeric(tclvalue(rEntry))
         
-        MeanTable <- subset(meanProfData, meanProfData[,1]>seuilRVal)
-        MedianTable <- subset(medianProfData, medianProfData[,1]> seuilRVal)
+        MeanTable <- subset(meanProfData, meanProfData[,1] > seuilRVal)
+        MedianTable <- subset(medianProfData, medianProfData[,1] > seuilRVal)
         
         mergeTable <- merge(MeanTable, MedianTable, by="row.names")
         
         colnames(mergeTable) <- c("Gene","Mean", "Median")
         
-        title <- paste (myGlobalEnv$StudyRefCase[k],":","Correlation of silencing gene expression by Methylation","r(met/mRNA)>",seuilRVal,myGlobalEnv$GenProfChoice[k], sep=" " )
+        title <- paste (ENV$StudyRefCase[k],":",
+                        "Correlation of silencing gene expression by Methylation",
+                        "r(met/mRNA)>",
+                        seuilRVal,ENV$GenProfChoice[k], sep=" " )
         
         getInTable(mergeTable, title=title)
         

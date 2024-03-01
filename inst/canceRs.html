@@ -1,0 +1,671 @@
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a>canceR:&#160;A&#160;Graphical&#160;User&#160;Interface&#160;for&#160;accessing&#160;and&#160;modeling<br/>
+the&#160;Cancer&#160;Genomics&#160;Data&#160;of&#160;MSKCC<br/>
+Karim&#160;Mezhoud<br/>
+January&#160;5,&#160;2015<br/>
+Contents<br/>
+<a href="canceRs.html#2">1&#160;Introduction</a><br/>
+2<br/>
+<a href="canceRs.html#2">2&#160;Installation</a><br/>
+2<br/>
+<a href="canceRs.html#3">3&#160;Starting&#160;Window</a><br/>
+3<br/>
+<a href="canceRs.html#4">3.1</a><br/>
+<a href="canceRs.html#4">Setting&#160;Workspace&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+4<br/>
+<a href="canceRs.html#4">4&#160;Main&#160;Window</a><br/>
+4<br/>
+<a href="canceRs.html#4">4.1</a><br/>
+<a href="canceRs.html#4">Gene&#160;List&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+4<br/>
+<a href="canceRs.html#5">4.2</a><br/>
+<a href="canceRs.html#5">Clinical&#160;Data&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+5<br/>
+<a href="canceRs.html#5">4.3</a><br/>
+<a href="canceRs.html#5">Mutation&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+5<br/>
+<a href="canceRs.html#5">4.4</a><br/>
+<a href="canceRs.html#5">Methylation&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+5<br/>
+<a href="canceRs.html#6">4.5</a><br/>
+<a href="canceRs.html#6">Profiles&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+6<br/>
+<a href="canceRs.html#7">4.6</a><br/>
+<a href="canceRs.html#7">PhenoTest&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+7<br/>
+<a href="canceRs.html#12">4.7</a><br/>
+<a href="canceRs.html#12">GSEA-R&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+12<br/>
+<a href="canceRs.html#13">4.7.1</a><br/>
+<a href="canceRs.html#13">Preprocessing&#160;of&#160;Exprimental&#160;Data&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+13<br/>
+<a href="canceRs.html#13">4.7.2</a><br/>
+<a href="canceRs.html#13">Molecular&#160;Signatures&#160;DataBase&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+13<br/>
+<a href="canceRs.html#14">4.7.3</a><br/>
+<a href="canceRs.html#14">Examples&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+14<br/>
+<a href="canceRs.html#16">4.7.4</a><br/>
+<a href="canceRs.html#16">GSEA-R&#160;Result&#160;Interpretation&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+16<br/>
+<a href="canceRs.html#17">4.8</a><br/>
+<a href="canceRs.html#17">Linear&#160;Modeling&#160;of&#160;GSEA&#160;(GSEAlm)&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+17<br/>
+<a href="canceRs.html#18">4.8.1</a><br/>
+<a href="canceRs.html#18">Which&#160;Molecular&#160;Signature&#160;Data&#160;base&#160;(MSigDB)&#160;for&#160;gene&#160;list&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+18<br/>
+<a href="canceRs.html#18">4.8.2</a><br/>
+<a href="canceRs.html#18">get&#160;SubMSigDb&#160;for&#160;genes&#160;list&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+18<br/>
+<a href="canceRs.html#18">4.8.3</a><br/>
+<a href="canceRs.html#18">GSEAlm:&#160;Phenotypes&#160;into&#160;Disease&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+18<br/>
+<a href="canceRs.html#20">4.8.4</a><br/>
+<a href="canceRs.html#20">GSEAlm:&#160;Disease&#160;vs&#160;Disease&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+20<br/>
+<a href="canceRs.html#21">4.9</a><br/>
+<a href="canceRs.html#21">Genes&#160;Classification&#160;using&#160;mRNA&#160;expression&#160;(Classification)&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+21<br/>
+<a href="canceRs.html#21">4.9.1</a><br/>
+<a href="canceRs.html#21">Genes&#160;vs&#160;Diseases&#160;(inter-diseases)&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+21<br/>
+<a href="canceRs.html#23">4.9.2</a><br/>
+<a href="canceRs.html#23">Genes&#160;vs&#160;Phenotypes&#160;(intra-disease)&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+23<br/>
+<a href="canceRs.html#25">4.10&#160;Plots&#160;</a>.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.&#160;.<br/>
+26<br/>
+<a href="canceRs.html#29">5&#160;Perspectives</a><br/>
+29<br/>
+1<br/>
+<hr/>
+<a name=2></a>1<br/>
+Introduction<br/>
+canceR&#160;is&#160;a&#160;graphical&#160;user&#160;friendly&#160;interface&#160;to&#160;explore,&#160;compare,&#160;and&#160;analyse&#160;all&#160;available&#160;Cancer&#160;Data<br/>(Clinical&#160;data,&#160;Gene&#160;Mutation,&#160;Gene&#160;Methylation,&#160;Gene&#160;Expression,&#160;Protein&#160;Phosphorylation,&#160;Copy<br/>Number&#160;Alteration)&#160;hosted&#160;by&#160;the&#160;Computational&#160;Biology&#160;Center&#160;(cBio)&#160;at&#160;Memorial-Sloan-Kettering<br/>Cancer&#160;Center&#160;(MSKCC).&#160;canceR&#160;implements&#160;functions&#160;from&#160;various&#160;packages:<br/>
+1.&#160;to&#160;acces,&#160;explore&#160;and&#160;extract&#160;Genomics&#160;Cancers&#160;Data&#160;Base&#160;of&#160;MSKCC&#160;(cgdsr,<a href="canceRs.html#30">[2,&#160;4]</a>),<br/>
+2.&#160;to&#160;associate&#160;phenotypes&#160;with&#160;gene&#160;expression&#160;(phenoTest,&#160;<a href="canceRs.html#30">[8]</a>),<br/>
+3.&#160;to&#160;predict&#160;which&#160;biological&#160;process&#160;or&#160;pathway&#160;or&#160;immune&#160;system&#160;are&#160;significantly&#160;different&#160;under<br/>
+the&#160;phenotypes&#160;and&#160;which&#160;genes&#160;are&#160;associated&#160;((GSEA-R)&#160;<a href="canceRs.html#30">[10,&#160;9]</a>),<br/>
+4.&#160;to&#160;predict&#160;the&#160;most&#160;up/down&#160;regulated&#160;gene&#160;sets&#160;belonging&#160;to&#160;one&#160;of&#160;MSigDB&#160;collections&#160;<a href="canceRs.html#30">[10]</a><br/>
+(GSEAlm,<a href="canceRs.html#30">[7]</a>),<br/>
+5.&#160;to&#160;classify&#160;genes&#160;by&#160;diseases&#160;(geNetClassifier,<a href="canceRs.html#30">[1]</a>),&#160;or<br/>
+6.&#160;to&#160;classify&#160;genes&#160;by&#160;variable&#160;or&#160;phenotype&#160;(rpart,&#160;<a href="canceRs.html#30">[11]</a>),<br/>
+7.&#160;to&#160;plot&#160;genes&#160;correlations.<br/>
+2<br/>
+Installation<br/>
+No&#160;R&#160;packages:<br/>
+❼&#160;tktable&#160;<a href="http://tktable.sourceforge.net/">http://tktable.sourceforge.net/</a><br/>
+❼&#160;BWidget&#160;<a href="http://sourceforge.net/projects/tcllib/files/BWidget/">http://sourceforge.net/projects/tcllib/files/BWidget/</a><br/>
+❼&#160;GnuWin32&#160;(for&#160;Windows)&#160;<a href="http://sourceforge.net/projects/getgnuwin32/?source=typ_redirect">http://sourceforge.net/projects/getgnuwin32/?source=typ_redirect</a><br/>
+For&#160;Debian&#160;distribution&#160;(GNU/Linux)<br/>
+<i>sudo&#160;apt-get&#160;insall&#160;(&#34;r-cran-tcltk2&#34;,&#34;r-cran-tkrplot&#34;)<br/>sudo&#160;apt-get&#160;install(</i>✬<i>Tk-table</i>✬<i>,&#160;</i>✬<i>BWidget</i>✬<i>)<br/>sudo&#160;apt-get&#160;install&#160;libcurl4-openssl-dev<br/>sudo&#160;apt-get&#160;install</i><br/>
+<i>r-cran-xml</i><br/>
+For&#160;Windows&#160;distribution<br/>LibXml2:&#160;parser&#160;for&#160;XML&#160;<a href="http://sourceforge.net/projects/gnuwin32/files/">http://sourceforge.net/projects/gnuwin32/files/<br/></a>For&#160;OS&#160;X&#160;distribution&#160;X11:&#160;graphics&#160;device<br/>
+run&#160;R&#160;and&#160;write&#160;theses&#160;lines&#160;in&#160;console&#160;to&#160;install&#160;dependancies.<br/>
+<i>##&#160;dependencies&#160;from&#160;CRAN<br/>install.packages(&#34;RCurl&#34;,&#160;&#34;XML&#34;)<br/>install.packages(c(&#34;cgdsr&#34;,</i><br/>
+<i>&#34;tkrplot&#34;,</i><br/>
+<i>&#34;Formula&#34;,&#160;&#34;RSvgDevice&#34;,&#34;RCurl&#34;&#160;))</i><br/>
+<i>##&#160;dependencies&#160;from&#160;Bioconductor<br/>source(&#34;http://bioconductor.org/biocLite.R&#34;)<br/>biocLite(&#34;GSEABase&#34;,&#160;&#34;GSEAlm&#34;,&#34;geNetClassifier&#34;,&#34;Biobase&#34;,&#160;&#34;phenoTest&#34;)<br/>biocLite(&#34;canceR&#34;)<br/>library(canceR)<br/>canceR()</i><br/>
+Get&#160;the&#160;development&#160;version&#160;from&#160;github<br/>
+<i>devtools::install\_git(&#34;kmezhoud/canceR&#34;)</i><br/>
+2<br/>
+<hr/>
+<a name=3></a><img src="canceR-3_1.jpg"/><br/>
+3<br/>
+Starting&#160;Window<br/>
+run&#160;R&#160;and&#160;write&#160;theses&#160;lines&#160;in&#160;console&#160;to&#160;run&#160;canceR&#160;package.<br/>
+<i>library(canceR)<br/>canceR()</i><br/>
+The&#160;starting&#160;window&#160;(Figure&#160;<a href="canceRs.html#3">1)&#160;</a>loads&#160;all&#160;available&#160;Cancer&#160;Studies&#160;(Figure&#160;<a href="canceRs.html#3">1&#160;</a>3)&#160;or&#160;search&#160;some&#160;ones&#160;by<br/>key&#160;word&#160;(Figure&#160;<a href="canceRs.html#3">1&#160;</a>4).&#160;Before&#160;to&#160;get&#160;Cancers&#160;Data&#160;(Figure&#160;<a href="canceRs.html#3">1&#160;</a>7),&#160;it&#160;is&#160;important&#160;to&#160;set&#160;workspace&#160;for<br/>output&#160;files&#160;(Figure&#160;<a href="canceRs.html#3">1&#160;</a>1).&#160;The&#160;starting&#160;window&#160;displays&#160;Help&#160;menu&#160;where&#160;user&#160;can&#160;get&#160;this&#160;vignette<br/>(Figure&#160;<a href="canceRs.html#3">1&#160;</a>2).<br/>
+Figure&#160;1:&#160;Starting&#160;Windows.&#160;1,&#160;File&#160;Menu;&#160;2,&#160;Help&#160;Menu;&#160;3,&#160;Button&#160;to&#160;get&#160;all&#160;available&#160;studies;&#160;4,&#160;Button<br/>to&#160;get&#160;only&#160;matched&#160;studies&#160;using&#160;key&#160;words;&#160;5,&#160;list&#160;box&#160;that&#160;displays&#160;the&#160;number&#160;of&#160;studies&#160;listed&#160;in&#160;6;<br/>6,&#160;list&#160;box&#160;that&#160;displays&#160;the&#160;result&#160;of&#160;quering&#160;the&#160;Cancer&#160;Genomics&#160;Data&#160;Server.&#160;User&#160;can&#160;select&#160;one&#160;or<br/>multiple&#160;Studies;&#160;7,&#160;Button&#160;to&#160;get&#160;Genetic&#160;Profiles&#160;and&#160;Clinical&#160;data&#160;for&#160;selected&#160;Studies.<br/>
+3<br/>
+<hr/>
+<a name=4></a><img src="canceR-4_1.jpg"/><br/>
+<img src="canceR-4_2.jpg"/><br/>
+3.1<br/>
+Setting&#160;Workspace<br/>
+canceR&#160;package&#160;uses&#160;input&#160;files&#160;to&#160;compute&#160;models&#160;and&#160;generates&#160;output&#160;files&#160;for&#160;biological&#160;knowledges.<br/>It&#160;is&#160;important&#160;to&#160;set&#160;workspace&#160;and&#160;know&#160;the&#160;location&#160;of&#160;used&#160;files&#160;and&#160;results.&#160;The&#160;Button&#160;”Set<br/>Workspace”&#160;allows&#160;user&#160;to&#160;set&#160;easily&#160;workspace&#160;(Figure&#160;<a href="canceRs.html#4">2)</a>.&#160;User&#160;needs&#160;just&#160;to&#160;browse&#160;workspace&#160;folder<br/>or&#160;creates&#160;a&#160;new&#160;one.&#160;The&#160;others&#160;necessary&#160;folders&#160;would&#160;be&#160;created&#160;by&#160;simple&#160;pressing&#160;”Set”&#160;buttons.<br/>
+Figure&#160;2:&#160;Setting&#160;Workspace<br/>
+4<br/>
+Main&#160;Window<br/>
+After&#160;selecting&#160;studies&#160;and&#160;pressing&#160;on&#160;”Get&#160;Cases&#160;and&#160;Genetic&#160;Profiles”&#160;Button,&#160;the&#160;main&#160;window&#160;appears<br/>(Figure&#160;<a href="canceRs.html#4">3)&#160;</a>and&#160;displays&#160;the&#160;progress&#160;of&#160;loading&#160;data&#160;of&#160;selected&#160;studies.&#160;The&#160;Main&#160;Window&#160;has&#160;a&#160;Toolbar<br/>with&#160;Menus&#160;(see&#160;following&#160;paragraphs).&#160;It&#160;is&#160;subdivised&#160;in&#160;two&#160;columns.&#160;The&#160;first&#160;column&#160;lists&#160;Cases<br/>for&#160;all&#160;selected&#160;studies.&#160;The&#160;first&#160;line&#160;of&#160;every&#160;study&#160;indicates&#160;its&#160;Index&#160;and&#160;its&#160;short&#160;description.&#160;The<br/>remain&#160;lines&#160;enumerate&#160;Cases&#160;with&#160;short&#160;description&#160;of&#160;data&#160;type&#160;and&#160;the&#160;number&#160;of&#160;samples.&#160;The&#160;second<br/>list&#160;box&#160;shows&#160;selected&#160;Cases.&#160;Similarly,&#160;the&#160;second&#160;column&#160;displays&#160;informations&#160;of&#160;Genetic&#160;Profiles.<br/>User&#160;can&#160;select&#160;a&#160;single&#160;or&#160;multiple&#160;lines&#160;with&#160;attention&#160;to&#160;correspond&#160;the&#160;Case&#160;with&#160;appropriate&#160;Genetic<br/>Profile.<br/>
+Figure&#160;3:&#160;Main&#160;Window&#160;of&#160;canceR&#160;package.&#160;1,&#160;Toolbar,&#160;2,&#160;list&#160;box&#160;of&#160;loaded&#160;Cases;&#160;3,&#160;list&#160;box&#160;of&#160;selected<br/>Cases;&#160;4,&#160;list&#160;box&#160;of&#160;loaded&#160;Genetic&#160;Profiles;&#160;5,&#160;list&#160;box&#160;of&#160;selected&#160;Genetic&#160;Profiles<br/>
+4.1<br/>
+Gene&#160;List<br/>
+The&#160;first&#160;step&#160;to&#160;get&#160;genomics&#160;data&#160;is&#160;to&#160;specify&#160;what&#160;are&#160;interesting&#160;genes&#160;for&#160;user.&#160;The&#160;Gene&#160;List<br/>button&#160;browses&#160;folders&#160;to&#160;load&#160;Gene&#160;list&#160;file&#160;or&#160;displays&#160;examples&#160;of&#160;genes&#160;list.&#160;The&#160;genes&#160;could&#160;be&#160;in<br/>text&#160;file&#160;(.txt)&#160;with&#160;one&#160;gene&#160;by&#160;line&#160;using&#160;HUGO&#160;gene&#160;Symbol.&#160;The&#160;function&#160;removes&#160;automatically<br/>duplicate&#160;genes.<br/>
+4<br/>
+<hr/>
+<a name=5></a><img src="canceR-5_1.jpg"/><br/>
+4.2<br/>
+Clinical&#160;Data<br/>
+The&#160;Multiple&#160;Cases&#160;button&#160;displays&#160;successively&#160;selected&#160;Cases.&#160;Results&#160;are&#160;returned&#160;in&#160;a&#160;table&#160;with<br/>row&#160;for&#160;each&#160;case&#160;and&#160;a&#160;column&#160;for&#160;each&#160;clinical&#160;attribute&#160;(Figure&#160;<a href="canceRs.html#5">4B</a>).&#160;User&#160;could&#160;select&#160;all&#160;or&#160;some<br/>clinical&#160;data&#160;by&#160;checking&#160;dialog&#160;box&#160;(Figure&#160;<a href="canceRs.html#5">4A)</a>.&#160;For&#160;example,&#160;we&#160;select&#160;clinical&#160;attributes:<br/>
+❼&#160;Overall&#160;Survival&#160;months:&#160;Overall&#160;survival,&#160;in&#160;months.<br/>
+❼&#160;Overall&#160;Survival&#160;Status:&#160;Overall&#160;survival&#160;status,&#160;usually&#160;indicated&#160;as&#160;”LIVING”&#160;or&#160;”DECEASED”.<br/>
+❼&#160;Disease&#160;Free&#160;Survival&#160;months:&#160;Disease&#160;free&#160;survival,&#160;in&#160;months.<br/>
+❼&#160;Disease&#160;Free&#160;Survival&#160;status:&#160;Disease&#160;free&#160;survival&#160;status,&#160;usually&#160;indicated&#160;as&#160;”DiseaseFree”&#160;or<br/>
+”Recurred/Progressed”.<br/>
+❼&#160;Age&#160;at&#160;diagnosis:&#160;Age&#160;at&#160;diagnosis.<br/>
+Figure&#160;4:&#160;Getting&#160;clinical&#160;data&#160;for&#160;Breast&#160;Invasive&#160;Carcinoma.&#160;A,&#160;Dialog&#160;Check&#160;Box&#160;to&#160;select&#160;clinical<br/>data;&#160;B,&#160;Results&#160;of&#160;quering&#160;clinical&#160;data&#160;of&#160;Breast&#160;Invasive&#160;Carcinoma&#160;(TCGA,&#160;Nature&#160;2012).<br/>
+4.3<br/>
+Mutation<br/>
+User&#160;can&#160;search&#160;all&#160;mutation&#160;in&#160;gene&#160;list&#160;of&#160;all&#160;selected&#160;studies.&#160;He&#160;needs&#160;to&#160;select&#160;All&#160;tumors&#160;samples<br/>in&#160;Cases&#160;and&#160;Mutations&#160;in&#160;gentics&#160;profiles&#160;to&#160;get&#160;mutations&#160;(Figure&#160;<a href="canceRs.html#6">5)</a>.<br/>
+Mutation&#160;function&#160;allows&#160;user&#160;to&#160;select&#160;about&#160;15&#160;informations&#160;corresponding&#160;to&#160;mutations&#160;(Fig-<br/>
+ure&#160;<a href="canceRs.html#6">6A)</a>.&#160;The&#160;results&#160;is&#160;a&#160;table&#160;with&#160;rows&#160;for&#160;each&#160;sample/case,&#160;and&#160;columns&#160;corresponding&#160;to&#160;the<br/>informations&#160;cheched&#160;in&#160;dialog&#160;mutation&#160;check&#160;box&#160;(Figure&#160;<a href="canceRs.html#6">6B</a>).<br/>
+User&#160;can&#160;filter&#160;mutation&#160;result&#160;only&#160;for&#160;specific&#160;amino&#160;acid&#160;change&#160;(Figure&#160;<a href="canceRs.html#7">7)</a>.<br/>
+4.4<br/>
+Methylation<br/>
+User&#160;can&#160;search&#160;gene&#160;methylation&#160;and&#160;its&#160;correlation&#160;with&#160;mRNA&#160;expression.&#160;User&#160;needs&#160;to&#160;select&#160;Cases<br/>and&#160;Genetic&#160;Profiles&#160;with&#160;same&#160;methylation&#160;assay&#160;(HM450&#160;or&#160;HM27)&#160;for&#160;the&#160;same&#160;study.&#160;Multiple&#160;Cases<br/>selection&#160;is&#160;allowed&#160;for&#160;one&#160;gene&#160;list&#160;(Figure&#160;<a href="canceRs.html#7">8)</a>.<br/>
+5<br/>
+<hr/>
+<a name=6></a><img src="canceR-6_1.jpg"/><br/>
+<img src="canceR-6_2.jpg"/><br/>
+Figure&#160;5:&#160;Get&#160;all/specific&#160;mutations&#160;for&#160;selected&#160;Cases<br/>
+Figure&#160;6:&#160;A,&#160;mutation&#160;dialog;&#160;B,&#160;mutation&#160;data<br/>
+The&#160;dialog&#160;box&#160;of&#160;methylation&#160;function&#160;allows&#160;user&#160;to&#160;specify&#160;the&#160;threshold&#160;of&#160;the&#160;correlation&#160;rate<br/>
+(Figure&#160;<a href="canceRs.html#8">9A)</a>.&#160;cBioportal&#160;<a href="canceRs.html#30">[2,&#160;4]&#160;</a>includes&#160;only&#160;methylation&#160;data&#160;from&#160;the&#160;probe&#160;with&#160;the&#160;strongest&#160;negative<br/>correlation&#160;between&#160;the&#160;methylation&#160;signal&#160;and&#160;the&#160;gene’s&#160;expression.&#160;The&#160;result&#160;table&#160;(Figure&#160;<a href="canceRs.html#8">9B</a>)&#160;lists<br/>genes&#160;with&#160;median&#160;of&#160;rate&#160;upper&#160;than&#160;0.8.<br/>
+4.5<br/>
+Profiles<br/>
+The&#160;function&#160;get&#160;Profile&#160;Data&#160;depends&#160;on&#160;gene&#160;list,&#160;cases,&#160;and&#160;genetic&#160;profiles.&#160;If&#160;a&#160;Single&#160;gene&#160;option<br/>is&#160;done,&#160;dialog&#160;box&#160;appears&#160;to&#160;specify&#160;gene&#160;symbol&#160;(Figure&#160;<a href="canceRs.html#8">10A)</a>.&#160;The&#160;returned&#160;dialog&#160;check&#160;box&#160;allows<br/>user&#160;to&#160;choose&#160;some/all&#160;profiles&#160;data&#160;(Figure&#160;<a href="canceRs.html#8">10B</a>).&#160;The&#160;result&#160;(table)&#160;lists&#160;some/all&#160;genetic&#160;profiles&#160;data<br/>in&#160;columns&#160;(CNA,&#160;Met,&#160;Mut,&#160;mRNA,RPPA)&#160;and&#160;all&#160;available&#160;samples&#160;in&#160;rows&#160;(Figure&#160;<a href="canceRs.html#8">10C</a>).&#160;Oppositely,<br/>
+6<br/>
+<hr/>
+<a name=7></a><img src="canceR-7_1.jpg"/><br/>
+<img src="canceR-7_2.jpg"/><br/>
+Figure&#160;7:&#160;Filtering&#160;mutation&#160;by&#160;specific&#160;amino&#160;acid&#160;change.&#160;A,&#160;the&#160;search&#160;is&#160;done&#160;using&#160;regular&#160;express<br/>language.&#160;In&#160;this&#160;case&#160;the&#160;query&#160;specify&#160;3&#160;options:&#160;D438.,&#160;search&#160;all&#160;mutation&#160;of&#160;D&#160;Amino&#160;acid&#160;at&#160;position<br/>438&#160;or&#160;D.*K&#160;search&#160;the&#160;position&#160;of&#160;amino&#160;acid&#160;change&#160;of&#160;D&#160;to&#160;K&#160;or&#160;D.*.&#160;search&#160;for&#160;all&#160;D&#160;amino&#160;acid<br/>changes;&#160;B,&#160;Results&#160;of&#160;the&#160;merge&#160;of&#160;the&#160;3&#160;options&#160;filter&#160;of&#160;D&#160;amino&#160;acid&#160;changes.<br/>
+Figure&#160;8:&#160;Selecting&#160;methylation&#160;data<br/>
+if&#160;Multiple&#160;genes&#160;option&#160;is&#160;done,&#160;the&#160;returned&#160;table&#160;displays&#160;genes&#160;expression&#160;for&#160;gene&#160;list&#160;(column)&#160;for<br/>all&#160;samples&#160;(rows).&#160;In&#160;the&#160;case&#160;of&#160;multiple&#160;genes,&#160;the&#160;tables&#160;are&#160;saved&#160;in&#160;Results/ProfilesData&#160;folder.<br/>
+4.6<br/>
+PhenoTest<br/>
+The&#160;function&#160;was&#160;implemented&#160;from&#160;package&#160;PhenoTest&#160;<a href="canceRs.html#30">[8]</a>.&#160;The&#160;object&#160;of&#160;this&#160;function&#160;is&#160;to&#160;predict<br/>the&#160;association&#160;between&#160;a&#160;list&#160;of&#160;phenotype&#160;variables&#160;(Survival,&#160;DFS&#160;Status,&#160;OS&#160;Status)&#160;and&#160;the&#160;gene<br/>expression.&#160;There&#160;are&#160;two&#160;possible&#160;formula&#160;to&#160;get&#160;associations:<br/>
+1.&#160;Three&#160;variables:&#160;Survival&#160;status&#160;(event/time&#160;as&#160;Dead-Living&#160;/&#160;30&#160;Months),&#160;Categorical&#160;or&#160;ordinal<br/>
+description&#160;(DSF&#160;STATUS&#160;or&#160;Tumor&#160;stage),&#160;and&#160;Continuous&#160;value&#160;(DFS&#160;MONTHS,&#160;Tumor&#160;size).<br/>
+2.&#160;Two&#160;variables:&#160;Categorical&#160;or&#160;ordinal&#160;description&#160;(DSF&#160;STATUS&#160;or&#160;Tumor&#160;stage),&#160;and&#160;Continuous<br/>
+value&#160;(DFS&#160;MONTHS,&#160;Tumor&#160;size).&#160;In&#160;this&#160;case&#160;user&#160;does&#160;not&#160;need&#160;to&#160;select&#160;any&#160;variables&#160;for<br/>
+7<br/>
+<hr/>
+<a name=8></a><img src="canceR-8_1.jpg"/><br/>
+<img src="canceR-8_2.jpg"/><br/>
+Figure&#160;9:&#160;A,&#160;Methylation&#160;dialog&#160;box;&#160;B,&#160;Methylation&#160;results.&#160;Correlation&#160;of&#160;silensing&#160;gene&#160;expression&#160;by<br/>methylation&#160;(HM27)&#160;with&#160;correlation&#160;rate&#160;r&#160;&gt;&#160;0.8&#160;for&#160;gene&#160;list&#160;in&#160;Breast&#160;Invasive&#160;Carcinoma&#160;(TCGA,<br/>Nature&#160;2012).<br/>
+Figure&#160;10:&#160;Getting&#160;profile&#160;data&#160;of&#160;a&#160;single&#160;gene<br/>
+survival&#160;variable&#160;in&#160;the&#160;phenoTest&#160;dialog&#160;box&#160;(Figure&#160;<a href="canceRs.html#10">12A)</a>.<br/>
+The&#160;output&#160;of&#160;this&#160;function&#160;does&#160;not&#160;expect&#160;to&#160;give&#160;systematically&#160;a&#160;relevant&#160;association&#160;between&#160;all<br/>
+formula&#160;of&#160;the&#160;chosen&#160;variables,&#160;although&#160;in&#160;some&#160;cases&#160;it&#160;is&#160;possible&#160;to&#160;cluster&#160;a&#160;list&#160;of&#160;genes&#160;significantly<br/>regulated&#160;(gene&#160;expression)&#160;at&#160;a&#160;range&#160;of&#160;tumor&#160;size&#160;(continuous)&#160;or&#160;tumoral&#160;stage&#160;(ordinal)&#160;for&#160;recurred<br/>or&#160;DiseaseFree&#160;cases&#160;(survival&#160;and&#160;categorical).&#160;The&#160;type&#160;of&#160;variables&#160;could&#160;be&#160;explored&#160;with&#160;Clinical&#160;Data<br/>tables&#160;and&#160;selected&#160;in&#160;the&#160;phenoTest&#160;dialog&#160;box&#160;(Figure&#160;<a href="canceRs.html#10">12A)</a>.&#160;The&#160;effect&#160;of&#160;both&#160;continuous,&#160;categorical<br/>and&#160;ordinal&#160;phenotype&#160;variables&#160;on&#160;gene&#160;expression&#160;levels&#160;are&#160;tested&#160;via&#160;lmFit&#160;from&#160;limma&#160;package&#160;<a href="canceRs.html#30">[12]</a>.<br/>
+8<br/>
+<hr/>
+<a name=9></a><img src="canceR-9_1.jpg"/><br/>
+Figure&#160;11:&#160;Profile&#160;data&#160;of&#160;a&#160;multiple&#160;genes<br/>
+Gene&#160;expression&#160;effects&#160;on&#160;survival&#160;are&#160;tested&#160;via&#160;Cox&#160;proportional&#160;hazards&#160;model&#160;<a href="canceRs.html#30">[3]</a>,&#160;as&#160;implemented<br/>in&#160;function&#160;coxph&#160;from&#160;survival&#160;package.<br/>
+NB:&#160;Continuous&#160;or&#160;Categories&#160;can&#160;not&#160;have&#160;more&#160;than&#160;4&#160;classes.<br/>
+Examples<br/>
+Study:&#160;Prostate&#160;Adenocarcinoma&#160;(Broad/Cornal,&#160;Call&#160;2013)<br/>
+❼&#160;Cases:&#160;All&#160;tumor&#160;samples&#160;(57&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression,<br/>
+❼&#160;Gene&#160;list:&#160;1021.txt&#160;file<br/>
+❼&#160;Survival&#160;variable:&#160;empty<br/>
+❼&#160;Categorical&#160;variable:&#160;Pathology&#160;Tumor&#160;Stage<br/>
+❼&#160;Numeric&#160;variable:&#160;Serum&#160;PSA&#160;level<br/>
+❼&#160;pVal&#160;adjust&#160;method:&#160;BH<br/>
+❼&#160;PhenoTest&#160;with&#160;Two&#160;variables&#160;(Figure&#160;<a href="canceRs.html#10">12)</a><br/>
+9<br/>
+<hr/>
+<a name=10></a><img src="canceR-10_1.jpg"/><br/>
+After&#160;running&#160;Pheno/Exp,&#160;PhenoTest&#160;function&#160;returns&#160;two&#160;tables.&#160;The&#160;first&#160;table&#160;ranks&#160;gene&#160;list&#160;by<br/>
+pval&#160;(Figure&#160;<a href="canceRs.html#10">12B</a>).&#160;The&#160;first&#160;part&#160;(red&#160;square)&#160;displays&#160;pValues&#160;of&#160;the&#160;association&#160;between&#160;gene&#160;expression<br/>and&#160;Tumor&#160;stage.&#160;The&#160;second&#160;part&#160;(blue&#160;square)&#160;displays&#160;the&#160;fold&#160;change&#160;(fc)&#160;by&#160;PSA&#160;level&#160;rang.<br/>Interpretation:&#160;Notice&#160;that&#160;a&#160;single&#160;pValue&#160;is&#160;reported&#160;for&#160;each&#160;phenotype&#160;variable.&#160;For&#160;categorical<br/>variables&#160;these&#160;corresponds&#160;to&#160;the&#160;overall&#160;null&#160;hypothesis&#160;that&#160;there&#160;are&#160;no&#160;differences&#160;between&#160;groups.<br/>In&#160;the&#160;second&#160;table,&#160;PhenoTest&#160;function&#160;filters&#160;only&#160;gene&#160;that&#160;has&#160;significant&#160;pval&#160;(pval&#160;&lt;0.05,&#160;Figure&#160;<a href="canceRs.html#10">12C<br/></a>red).&#160;Here&#160;we&#160;see&#160;that&#160;tumor&#160;stage&#160;has&#160;been&#160;categorized&#160;into&#160;2&#160;groups&#160;(pT2c,&#160;pT3c)&#160;and&#160;PSA&#160;level&#160;has<br/>been&#160;ranged&#160;into&#160;2&#160;groups&#160;(7.3-12.9,&#160;12.9-16.7).&#160;This&#160;results&#160;shows&#160;that&#160;ANO3&#160;gene&#160;is&#160;significantly&#160;down<br/>regulated&#160;(negative&#160;fold&#160;change)&#160;for&#160;the&#160;two&#160;pathology&#160;tumor&#160;stages&#160;(pT2c,&#160;pT3c).<br/>
+Figure&#160;12:&#160;PhenoTest;&#160;A,&#160;Dialog&#160;Boxused&#160;to&#160;select&#160;variables;&#160;B,&#160;Results;&#160;C,&#160;Only&#160;significant&#160;pValues.<br/>
+Heteroneous&#160;Clinical&#160;Data<br/>
+In&#160;some&#160;cases&#160;it&#160;is&#160;possible&#160;to&#160;have&#160;digital&#160;(0-9)&#160;and&#160;character&#160;(a-z)&#160;data<br/>
+in&#160;the&#160;same&#160;variable.&#160;in&#160;this&#160;case&#160;phenoTest&#160;function&#160;considers&#160;it&#160;as&#160;Categorical&#160;variable&#160;(Figure&#160;<a href="canceRs.html#11">13)</a>.<br/>
+Study:&#160;Prostate&#160;Adenocarcinoma,&#160;Metastatic&#160;(Michigan,&#160;Nature&#160;2012)<br/>
+❼&#160;Cases:&#160;All&#160;tumor&#160;samples&#160;(61&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression<br/>
+❼&#160;Gene&#160;list:&#160;1021.txt&#160;file<br/>
+❼&#160;Survival&#160;variable:&#160;OS&#160;MONTHS,&#160;OS&#160;STATUS<br/>
+❼&#160;Categorical&#160;variable:&#160;OS&#160;STATUS<br/>
+❼&#160;Numeric&#160;variable:&#160;Serum&#160;PSA&#160;level<br/>
+❼&#160;pVal&#160;adjust&#160;method:&#160;BH<br/>
+10<br/>
+<hr/>
+<a name=11></a><img src="canceR-11_1.jpg"/><br/>
+Figure&#160;13:&#160;Clinical&#160;Data&#160;heterogeneity.&#160;In&#160;PURITY&#160;ABSOLUTE&#160;column&#160;is&#160;there&#160;digital&#160;and&#160;character<br/>values.&#160;in&#160;this&#160;cas&#160;PhenoTest&#160;consider&#160;this&#160;variable&#160;as&#160;Categoric.<br/>
+❼&#160;PhenoTest&#160;with&#160;three&#160;variables&#160;(Figure&#160;<a href="canceRs.html#12">14)</a><br/>
+In&#160;This&#160;test,&#160;Overall&#160;Survival&#160;(OS&#160;STATUS)&#160;was&#160;used&#160;in&#160;survival&#160;and&#160;caterogical&#160;variables.&#160;The<br/>
+Clinical&#160;Data&#160;does&#160;not&#160;have&#160;enougth&#160;categorical&#160;variables.&#160;Figure&#160;<a href="canceRs.html#12">14&#160;</a>B&#160;and&#160;C&#160;shows&#160;signicant&#160;association<br/>between&#160;7&#160;genes&#160;and&#160;Living&#160;Status&#160;(OS&#160;STATUS.Living.pval&#160;column).&#160;The&#160;two&#160;last&#160;columns&#160;show<br/>opposite&#160;regulation&#160;of&#160;the&#160;7&#160;genes&#160;expression&#160;in&#160;living&#160;patient&#160;with&#160;serum&#160;PSA&#160;level.&#160;The&#160;Cox&#160;proportion<br/>hazard&#160;model&#160;does&#160;not&#160;give&#160;results&#160;with&#160;survival&#160;variables&#160;(OS&#160;STATUS&#160;column).<br/>
+Study:Lung&#160;Adenocarcinoma&#160;(TCGA,&#160;Nature,&#160;in&#160;press)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA&#160;expression&#160;data&#160;(230&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;z-Scores&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;Gene&#160;list:&#160;1021.txt&#160;file<br/>
+❼&#160;Survival&#160;variable:&#160;empty<br/>
+❼&#160;Categorical&#160;variable:&#160;OS&#160;STATUS<br/>
+❼&#160;Numeric&#160;variable:&#160;OS&#160;MONTHS<br/>
+❼&#160;pVal&#160;adjust&#160;method:&#160;BH<br/>
+❼&#160;PhenoTest&#160;with&#160;two&#160;variables.<br/>
+In&#160;this&#160;Lung&#160;cancer&#160;Study,&#160;the&#160;test&#160;shows&#160;significant&#160;association&#160;between&#160;living&#160;patient&#160;and&#160;10&#160;genes<br/>expression&#160;(Figure&#160;<a href="canceRs.html#13">15)</a>.<br/>
+11<br/>
+<hr/>
+<a name=12></a><img src="canceR-12_1.jpg"/><br/>
+Figure&#160;14:&#160;PhenoTest:&#160;Prostate&#160;Adenocarcinoma,&#160;Metastatic&#160;(Michigan,&#160;Nature&#160;2012)<br/>
+4.7<br/>
+GSEA-R<br/>
+Gene&#160;Set&#160;Enrichment&#160;Analysis&#160;(GSEA)&#160;is&#160;computational&#160;method&#160;that&#160;uses&#160;expression&#160;matrix&#160;of&#160;thousands<br/>of&#160;genes&#160;with&#160;phenotypes&#160;data&#160;(two&#160;biological&#160;states)&#160;and&#160;Molecular&#160;Signatures&#160;DataBase&#160;(MSigDB)<br/>to&#160;define&#160;which&#160;biological&#160;process&#160;or&#160;pathway&#160;or&#160;immune&#160;system&#160;are&#160;significantly&#160;different&#160;under&#160;the<br/>phenotypes&#160;and&#160;which&#160;genes&#160;are&#160;associated&#160;<a href="canceRs.html#30">[10]</a>.<br/>
+12<br/>
+<hr/>
+<a name=13></a><img src="canceR-13_1.jpg"/><br/>
+Figure&#160;15:&#160;PhenoTest:&#160;Lung&#160;Adenocarcinoma&#160;(TCGA,&#160;Nature,&#160;in&#160;press)<br/>
+4.7.1<br/>
+Preprocessing&#160;of&#160;Exprimental&#160;Data<br/>
+getGCT_CLS&#160;function&#160;loads&#160;Profile&#160;and&#160;Clinical&#160;data&#160;of&#160;selected&#160;study&#160;and&#160;saves&#160;two&#160;files&#160;into&#160;”gct&#160;cls”<br/>folder&#160;(Figure&#160;<a href="canceRs.html#15">16C</a>).<br/>
+The&#160;GCT&#160;file&#160;contents&#160;genes&#160;expression&#160;values&#160;with&#160;genes&#160;in&#160;the&#160;rows&#160;and&#160;samples&#160;in&#160;the&#160;columns.<br/>
+The&#160;CLS&#160;file&#160;contents&#160;the&#160;two&#160;biological&#160;phenotypes&#160;selected&#160;from&#160;Clincical&#160;data.&#160;User&#160;needs&#160;to&#160;select<br/>
+clinical&#160;phenotype&#160;only&#160;with&#160;two&#160;classes.<br/>
+4.7.2<br/>
+Molecular&#160;Signatures&#160;DataBase<br/>
+The&#160;Molecular&#160;Signatures&#160;DataBase&#160;(MSigDB)&#160;is&#160;a&#160;collection&#160;of&#160;annotated&#160;gene&#160;sets&#160;for&#160;use&#160;with&#160;GSEA<br/>computational&#160;method.&#160;The&#160;MSigDB&#160;gene&#160;sets&#160;are&#160;divided&#160;into&#160;7&#160;collections&#160;(positional&#160;gene&#160;sets,<br/>
+13<br/>
+<hr/>
+<a name=14></a>curated&#160;gene&#160;sets,&#160;motif&#160;gene&#160;sets,&#160;computational&#160;gene&#160;sets,&#160;GO&#160;gene&#160;sets,&#160;oncogenic&#160;signatures,&#160;and<br/>immunological&#160;signatures).&#160;All&#160;these&#160;collections&#160;are&#160;available&#160;at&#160;<a href="http://www.broadinstitute.org/gsea/msigdb/index.jsp">(http://www.broadinstitute.org/<br/>gsea/msigdb/index.jsp)</a>.&#160;Every&#160;collections&#160;consists&#160;in&#160;a&#160;tab&#160;delimited&#160;file&#160;format&#160;(.GMT&#160;file)&#160;that<br/>describes&#160;gene&#160;sets.&#160;Each&#160;row&#160;shows&#160;annotation&#160;terme&#160;with&#160;associated&#160;genes.&#160;User&#160;needs&#160;to&#160;download<br/>.gmt&#160;file&#160;with&#160;genes&#160;Symbols&#160;and&#160;saves&#160;them&#160;into&#160;”workspace/MSigDB/”&#160;folder.&#160;The&#160;MSigDB&#160;folder&#160;is<br/>created&#160;with&#160;the&#160;file&#160;menu&#160;in&#160;the&#160;starting&#160;windows&#160;(Figure&#160;<a href="canceRs.html#3">1)</a>.<br/>
+For&#160;more&#160;detail&#160;about&#160;GCT,&#160;CLS,&#160;GMT&#160;files,&#160;see&#160;this&#160;link&#160;<a href="http://www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats">(http://www.broadinstitute.org/cancer/</a><br/>
+<a href="http://www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats">software/gsea/wiki/index.php/Data_formats)</a>.<br/>
+MSigDB&#160;Collection<br/>
+C1:&#160;Positional&#160;Gene&#160;Sets&#160;Gene&#160;sets&#160;corresponding&#160;to&#160;each&#160;human&#160;chromosome&#160;and&#160;each&#160;cytogenetic<br/>
+band&#160;that&#160;has&#160;at&#160;least&#160;one&#160;gene.&#160;These&#160;gene&#160;sets&#160;are&#160;helpful&#160;in&#160;identifying&#160;effects&#160;related&#160;to<br/>chromosomal&#160;deletions&#160;or&#160;amplification,&#160;epigenetic&#160;silencing,&#160;and&#160;other&#160;region&#160;effects.<br/>
+C2:&#160;Curated&#160;Gene&#160;Sets&#160;into&#160;Pathways&#160;Gene&#160;sets&#160;collected&#160;from&#160;various&#160;sources&#160;such&#160;as&#160;online<br/>
+pathway&#160;databases.<br/>
+CGP:&#160;Chemical&#160;and&#160;Genetic&#160;Perturbation&#160;Gene&#160;sets&#160;represent&#160;expression&#160;signatures&#160;of&#160;ge-<br/>
+netic&#160;and&#160;chemical&#160;perturbations.<br/>
+CP:&#160;Reactome&#160;gene&#160;sets&#160;Gene&#160;sets&#160;derived&#160;from&#160;the&#160;Reactome&#160;pathway&#160;database.<br/>
+C3:&#160;Motifs&#160;Gene&#160;Sets&#160;Gene&#160;sets&#160;that&#160;contain&#160;genes&#160;that&#160;share:<br/>
+MIR:&#160;microRNA&#160;targets&#160;A&#160;3’-UTR&#160;microRNA&#160;binding&#160;motif.<br/>
+TFT:&#160;tanscription&#160;factor&#160;targets&#160;A&#160;transcription&#160;factor&#160;binding&#160;site&#160;defined&#160;in&#160;the&#160;TRANS-<br/>
+FAC&#160;(version&#160;7.4,&#160;<a href="http://www.gene-regulation.com/">http://www.gene-regulation.com/)&#160;</a>database.<br/>
+C4:&#160;Computational&#160;Gene&#160;Sets&#160;Computational&#160;gene&#160;sets&#160;defined&#160;by&#160;mining&#160;large&#160;collections&#160;of&#160;cancer-<br/>
+oriented&#160;microarray&#160;data.<br/>
+C5:&#160;GO&#160;Gene&#160;Sets&#160;Gene&#160;sets&#160;are&#160;named&#160;by&#160;GO&#160;term&#160;<a href="http://geneontology.org/">(http://geneontology.org/)&#160;</a>and&#160;contain<br/>
+genes&#160;annotated&#160;by&#160;that&#160;term:&#160;Biological&#160;Process,&#160;Cellular&#160;Component,&#160;and&#160;Molecular&#160;Function.<br/>
+C6:&#160;Oncogenic&#160;Signatures&#160;Gene&#160;sets&#160;represent&#160;signatures&#160;of&#160;cellular&#160;pathways&#160;which&#160;are&#160;often&#160;dis-<br/>
+regulated&#160;in&#160;cancer.&#160;The&#160;majority&#160;of&#160;signatures&#160;were&#160;generated&#160;directly&#160;from&#160;microarray&#160;data&#160;from<br/>NCBI&#160;GEO.<br/>
+C7:&#160;Immunologic&#160;Signatures&#160;Gene&#160;sets&#160;that&#160;represent&#160;cell&#160;states&#160;and&#160;perturbations&#160;within&#160;the&#160;im-<br/>
+mune&#160;system.&#160;This&#160;resource&#160;is&#160;generated&#160;as&#160;part&#160;of&#160;the&#160;Human&#160;Immunology&#160;Project&#160;Consortium<br/>(HIPC;&#160;<a href="http://www.immuneprofiling.org/">http://www.immuneprofiling.org/)</a>.<br/>
+4.7.3<br/>
+Examples<br/>
+Study:&#160;Uterine&#160;Corpus&#160;Endometrioid&#160;Carcinoma&#160;(TCGA,&#160;Nature&#160;2013)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA,&#160;CNA,&#160;and&#160;sequencing&#160;data&#160;(232&#160;samples),<br/>❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>❼&#160;MSigDB:&#160;c5.bp.v4.0.symbols<br/>❼&#160;Gene&#160;list:&#160;1021.txt&#160;file<br/>❼&#160;Nbr&#160;of&#160;Samples:&#160;100<br/>❼&#160;Phenotype:&#160;DFS&#160;STATUS<br/>
+Based&#160;only&#160;on&#160;Gene&#160;list&#160;the&#160;function&#160;getGCT,CLS&#160;files&#160;builts&#160;the&#160;.gct&#160;and&#160;.cls&#160;files&#160;and&#160;save&#160;them<br/>
+under&#160;the&#160;folder&#160;”/gct&#160;cls/”.&#160;The&#160;Figure&#160;<a href="canceRs.html#15">16&#160;</a>shows&#160;the&#160;preporcessing&#160;steps&#160;to&#160;get&#160;gct&#160;and&#160;cls&#160;files.<br/>
+For&#160;enrichment,&#160;GSEA&#160;function&#160;needs&#160;three&#160;files.&#160;The&#160;gct&#160;file&#160;with&#160;gene&#160;expression,&#160;the&#160;cls&#160;with&#160;pheno-<br/>
+types&#160;and&#160;gmt&#160;file&#160;with&#160;Molecular&#160;signature&#160;of&#160;Gene&#160;Sets.&#160;There&#160;are&#160;two&#160;options&#160;to&#160;load&#160;gmt&#160;file,&#160;from&#160;ex-<br/>amples&#160;(Figure&#160;<a href="canceRs.html#15">17A,&#160;</a>MSigDB.gmt&#160;button)&#160;available&#160;into&#160;canceR&#160;package&#160;or&#160;from&#160;”workspace/MSigDB/”<br/>folder&#160;(Figure&#160;<a href="canceRs.html#15">17A,&#160;</a>browse&#160;button)&#160;.&#160;In&#160;the&#160;two&#160;ways&#160;the&#160;gmt&#160;files&#160;must&#160;be&#160;from&#160;Broad&#160;Institute<br/><a href="http://www.broadinstitute.org/gsea/index.jsp">(http://www.broadinstitute.org/gsea/index.jsp)&#160;</a>and&#160;has&#160;gene&#160;Symbols.<br/>
+14<br/>
+<hr/>
+<a name=15></a><img src="canceR-15_1.jpg"/><br/>
+<img src="canceR-15_2.jpg"/><br/>
+Figure&#160;16:&#160;Preprocessing&#160;of&#160;gct&#160;and&#160;cls&#160;files.&#160;A,&#160;Sampling&#160;the&#160;Cases&#160;from&#160;Uterine&#160;Corpus&#160;Endometrioid<br/>Carcinoma&#160;study;&#160;B,&#160;selecting&#160;phenotype&#160;variable&#160;with&#160;only&#160;two&#160;classes;&#160;C,&#160;Displaying&#160;cls&#160;and&#160;gct&#160;files.<br/>The&#160;names&#160;of&#160;the&#160;two&#160;files&#160;are&#160;indicated&#160;in&#160;the&#160;title&#160;of&#160;the&#160;windows.<br/>
+Figure&#160;17:&#160;Gene&#160;Set&#160;Enrichment&#160;Analysis&#160;of&#160;Uterine&#160;Corpus&#160;Endometrioid&#160;Carcinoma&#160;study&#160;using&#160;”Dis-<br/>easeFree/Recurred”&#160;phenotypes.&#160;A,&#160;Selecting&#160;cls,&#160;gmt,&#160;gmt&#160;files&#160;ans&#160;setting&#160;output&#160;folder;&#160;B,&#160;Specifying<br/>the&#160;phenotype;&#160;C,&#160;displying&#160;the&#160;classes&#160;of&#160;the&#160;selected&#160;phenotype;&#160;D,&#160;Selecting&#160;Summary&#160;results&#160;files&#160;of<br/>the&#160;output&#160;and&#160;setting&#160;FDR;&#160;E,&#160;displying&#160;specific&#160;(FDR=0.25)&#160;Gene&#160;Sets&#160;(GS)&#160;involved&#160;in&#160;DiseaseFree<br/>phenotype.&#160;In&#160;this&#160;GSEA&#160;there&#160;is&#160;not&#160;significant&#160;GS&#160;involved&#160;specifically&#160;for&#160;Recurred&#160;phenotype.<br/>
+Study:&#160;Breast&#160;Invasive&#160;Carcinoma&#160;(TCGA,&#160;Provosional)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA&#160;expression&#160;data&#160;(562&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;MSigDB:&#160;c5.bp.v4.0.symbols<br/>
+❼&#160;Gene&#160;list:&#160;1021.txt&#160;file<br/>
+❼&#160;Nbr&#160;of&#160;Samples:&#160;100<br/>
+❼&#160;Phenotype:&#160;OS&#160;STATUS<br/>
+The&#160;Figure&#160;<a href="canceRs.html#16">18&#160;</a>summarizes&#160;the&#160;gene&#160;sets&#160;enrichment&#160;analysis&#160;of&#160;Breast&#160;Invasive&#160;Carcinoma&#160;study<br/>
+using&#160;”Deceased/living”&#160;phenotypes.<br/>
+The&#160;Figure&#160;<a href="canceRs.html#16">18C&#160;</a>shows&#160;4&#160;vs&#160;1&#160;biological&#160;process&#160;involved&#160;re-<br/>
+spectively&#160;into&#160;Deceased/Living&#160;phenotypes.&#160;The&#160;size&#160;and&#160;the&#160;genes&#160;of&#160;appropriate&#160;GS&#160;are&#160;indicated<br/>in&#160;the&#160;second&#160;(size)&#160;and&#160;third&#160;(source)&#160;columns.&#160;The&#160;report&#160;of&#160;significant&#160;GS&#160;are&#160;saved&#160;into&#160;”/Re-<br/>sults/GSEA/name&#160;of&#160;folder/”.&#160;Every&#160;GS&#160;has&#160;a&#160;report&#160;(.txt&#160;file)&#160;indicating&#160;the&#160;gene&#160;list&#160;and&#160;which<br/>
+15<br/>
+<hr/>
+<a name=16></a><img src="canceR-16_1.jpg"/><br/>
+genes&#160;(CORE&#160;ENRICHMENT&#160;column:&#160;YES)&#160;are&#160;involved&#160;in&#160;the&#160;specific&#160;phenotype&#160;(DECEASED&#160;for<br/>RESPONSE&#160;To&#160;STRESS).&#160;The&#160;plots&#160;of&#160;significant&#160;GS&#160;are&#160;save&#160;with&#160;.pdf&#160;format&#160;file.&#160;In&#160;a&#160;heat&#160;map,<br/>expression&#160;values&#160;are&#160;represented&#160;as&#160;colors&#160;for&#160;every&#160;patient,&#160;where&#160;the&#160;range&#160;of&#160;colors&#160;(red,&#160;pink,&#160;light<br/>blue,&#160;dark&#160;blue)&#160;shows&#160;the&#160;range&#160;of&#160;expression&#160;values&#160;(high,&#160;moderate,&#160;low,&#160;lowest).&#160;For&#160;more&#160;de-<br/>tails&#160;about&#160;result&#160;interpretation&#160;see&#160;user&#160;guide&#160;of&#160;GSEA&#160;<a href="http://www. broadinstitute.org/gsea/doc/GSEAUserGuideFrame.html">(http://www.broadinstitute.org/gsea/doc/<br/>GSEAUserGuideFrame.html)</a>.<br/>
+Figure&#160;18:&#160;Gene&#160;Sets&#160;Enrichment&#160;Analysis&#160;of&#160;Breast&#160;Invasive&#160;Carcinoma&#160;(TCGA,&#160;Provosional)&#160;study<br/>using&#160;”Deceased/Living”&#160;phenotypes.&#160;A,&#160;Selecting&#160;cls,&#160;gmt,&#160;gmt&#160;files&#160;ans&#160;setting&#160;output&#160;folder;&#160;B,<br/>Selecting&#160;Summary&#160;results&#160;files&#160;of&#160;the&#160;output&#160;and&#160;setting&#160;FDR;&#160;C,&#160;displying&#160;specific&#160;(FDR=0.25)&#160;Gene<br/>Sets&#160;(GS)&#160;involved&#160;in&#160;Deceased&#160;and&#160;Living&#160;phenotypes.<br/>
+4.7.4<br/>
+GSEA-R&#160;Result&#160;Interpretation<br/>
+The&#160;primary&#160;result&#160;of&#160;the&#160;gene&#160;set&#160;enrichment&#160;analysis&#160;is&#160;the&#160;enrichment&#160;score&#160;(ES),&#160;which&#160;reflects&#160;the<br/>degree&#160;to&#160;which&#160;a&#160;gene&#160;set&#160;is&#160;overrepresented&#160;at&#160;the&#160;top&#160;or&#160;bottom&#160;of&#160;a&#160;ranked&#160;list&#160;of&#160;genes.&#160;A&#160;positive<br/>value&#160;indicates&#160;correlation&#160;with&#160;the&#160;first&#160;phenotype&#160;and&#160;a&#160;negative&#160;value&#160;indicates&#160;correlation&#160;with&#160;the<br/>second&#160;phenotype.&#160;For&#160;continuous&#160;phenotypes&#160;(time&#160;series&#160;or&#160;PSA&#160;level),&#160;a&#160;positive&#160;value&#160;indicates<br/>correlation&#160;with&#160;the&#160;phenotype&#160;profile&#160;and&#160;a&#160;negative&#160;value&#160;indicates&#160;no&#160;correlation&#160;or&#160;inverse&#160;correlation<br/>with&#160;the&#160;profile&#160;<a href="canceRs.html#30">[10]</a>.<br/>
+The&#160;number&#160;of&#160;enriched&#160;gene&#160;sets&#160;that&#160;are&#160;significant,&#160;as&#160;indicated&#160;by&#160;a&#160;false&#160;discovery&#160;rate&#160;(FDR)<br/>
+of&#160;less&#160;than&#160;25%.&#160;Typically,&#160;these&#160;are&#160;the&#160;gene&#160;sets&#160;most&#160;likely&#160;to&#160;generate&#160;interesting&#160;hypotheses&#160;and<br/>drive&#160;further&#160;research.<br/>
+The&#160;number&#160;of&#160;enriched&#160;gene&#160;sets&#160;with&#160;a&#160;nominal&#160;p-value&#160;of&#160;less&#160;than&#160;1%&#160;and&#160;of&#160;less&#160;than&#160;5%.&#160;The<br/>
+nominal&#160;p-value&#160;is&#160;not&#160;adjusted&#160;for&#160;gene&#160;set&#160;size&#160;or&#160;multiple&#160;hypothesis&#160;testing;&#160;therefore,&#160;it&#160;is&#160;of&#160;limited<br/>value&#160;for&#160;comparing&#160;gene&#160;sets.<br/>
+The&#160;false&#160;discovery&#160;rate&#160;(FDR)&#160;is&#160;the&#160;estimated&#160;probability&#160;that&#160;a&#160;gene&#160;set&#160;with&#160;a&#160;given&#160;NES&#160;represents<br/>
+a&#160;false&#160;positive&#160;finding.&#160;For&#160;example,&#160;an&#160;FDR&#160;of&#160;25%&#160;indicates&#160;that&#160;the&#160;result&#160;is&#160;likely&#160;to&#160;be&#160;valid&#160;3&#160;out<br/>of&#160;4&#160;times.&#160;The&#160;GSEA&#160;analysis&#160;report&#160;highlights&#160;enrichment&#160;gene&#160;sets&#160;with&#160;an&#160;FDR&#160;of&#160;less&#160;than&#160;25%<br/>as&#160;those&#160;most&#160;likely&#160;to&#160;generate&#160;interesting&#160;hypotheses&#160;and&#160;drive&#160;further&#160;research,&#160;but&#160;provides&#160;analysis<br/>results&#160;for&#160;all&#160;analyzed&#160;gene&#160;sets.&#160;In&#160;general,&#160;given&#160;the&#160;lack&#160;of&#160;coherence&#160;in&#160;most&#160;expression&#160;datasets&#160;and<br/>the&#160;relatively&#160;small&#160;number&#160;of&#160;gene&#160;sets&#160;being&#160;analyzed,&#160;an&#160;FDR&#160;cutoff&#160;of&#160;25%&#160;is&#160;appropriate.&#160;However,<br/>if&#160;you&#160;have&#160;a&#160;small&#160;number&#160;of&#160;samples&#160;and&#160;use&#160;geneset&#160;permutation&#160;(rather&#160;than&#160;phenotype&#160;permutation)<br/>
+16<br/>
+<hr/>
+<a name=17></a>for&#160;your&#160;analysis,&#160;you&#160;are&#160;using&#160;a&#160;less&#160;stringent&#160;assessment&#160;of&#160;significance&#160;and&#160;would&#160;then&#160;want&#160;to&#160;use&#160;a<br/>more&#160;stringent&#160;FDR&#160;cutoff,&#160;such&#160;as&#160;5%&#160;<a href="canceRs.html#30">[10]</a>.<br/>
+Resolved&#160;limits<br/>
+❼&#160;GSEA&#160;does&#160;not&#160;accept&#160;negative&#160;values&#160;from&#160;Profile&#160;data.&#160;In&#160;this&#160;case&#160;the&#160;adding&#160;of&#160;absolute&#160;of&#160;less<br/>
+negative&#160;value&#160;to&#160;all&#160;the&#160;matrix&#160;is&#160;done.<br/>
+❼&#160;GSEA&#160;does&#160;not&#160;accept&#160;missing&#160;value&#160;in&#160;cls&#160;file.&#160;The&#160;sampling&#160;is&#160;done&#160;only&#160;on&#160;existing&#160;phenotype<br/>
+information.<br/>
+❼&#160;GSEA&#160;needs&#160;more&#160;than&#160;10000&#160;to&#160;be&#160;robust&#160;but&#160;url/gcds-r&#160;package&#160;accept&#160;less&#160;that&#160;1000&#160;genes.<br/>
+❼&#160;The&#160;size&#160;of&#160;samples&#160;is&#160;between&#160;50&#160;and&#160;100<br/>
+❼&#160;Removing&#160;and&#160;cleaning&#160;the&#160;heterogeneity&#160;of&#160;the&#160;data&#160;frames&#160;of&#160;gene&#160;expression:&#160;space,&#160;character,<br/>
+empty&#160;boxes&#160;and&#160;convert&#160;them&#160;to&#160;readable&#160;form&#160;by&#160;GSEA-R&#160;function.<br/>
+4.8<br/>
+Linear&#160;Modeling&#160;of&#160;GSEA&#160;(GSEAlm)<br/>
+GSEAlm&#160;is&#160;a&#160;function&#160;implemented&#160;from&#160;GSEAlm&#160;package&#160;<a href="canceRs.html#30">[7]</a>.&#160;GSEAlm&#160;function&#160;is&#160;a&#160;Linear&#160;Model&#160;inference<br/>and&#160;diagnostics&#160;for&#160;Gene&#160;Set&#160;Enrichment&#160;Analysis.&#160;It&#160;uses&#160;mRNA&#160;expression&#160;matrix&#160;of&#160;gene&#160;list,&#160;vari-<br/>able(s)&#160;from&#160;clinical&#160;data&#160;(phenotype)&#160;and&#160;Molecular&#160;Signature&#160;Data&#160;Base&#160;(MSigDB)&#160;that&#160;groups&#160;genes<br/>sharing&#160;common&#160;biological&#160;function,&#160;chromosomal&#160;location,&#160;pathway&#160;or&#160;regulation&#160;<a href="canceRs.html#30">[10]</a>.&#160;The&#160;result&#160;is&#160;a<br/>prediction&#160;of&#160;the&#160;most&#160;up/down&#160;regulated&#160;gene&#160;sets&#160;belonging&#160;to&#160;one&#160;of&#160;MSigDB&#160;collections&#160;<a href="canceRs.html#30">[10,&#160;6]</a>.<br/>
+The&#160;linear&#160;model&#160;assumes&#160;that&#160;the&#160;mean&#160;of&#160;the&#160;response&#160;variable&#160;has&#160;a&#160;linear&#160;relationship&#160;with&#160;the<br/>
+explanatory&#160;variable(s).&#160;The&#160;data&#160;and&#160;the&#160;model&#160;are&#160;used&#160;to&#160;calculate&#160;a&#160;fitted&#160;value&#160;for&#160;each&#160;observation<br/>(gene&#160;expression).&#160;It&#160;is&#160;strongly&#160;recommanded&#160;to&#160;use&#160;crude&#160;gene&#160;expression&#160;data&#160;and&#160;avoid&#160;z-score&#160;or<br/>standardized&#160;preprocessing&#160;data.&#160;we&#160;recommend&#160;to&#160;use&#160;the&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM).<br/>
+Two&#160;options&#160;are&#160;available&#160;to&#160;get&#160;linear&#160;model.&#160;In&#160;the&#160;first&#160;option&#160;(phenotypes&#160;into&#160;disease)&#160;the<br/>
+model&#160;predicts&#160;which&#160;gene&#160;sets&#160;are&#160;modulated&#160;between&#160;patients&#160;having&#160;the&#160;same&#160;disease&#160;and&#160;different<br/>phenotypes&#160;(OS&#160;STATUS,&#160;DFS&#160;STATUS).&#160;In&#160;the&#160;second&#160;option&#160;(disease&#160;vs&#160;disease)&#160;the&#160;model&#160;predicts<br/>which&#160;gene&#160;sets&#160;are&#160;modulated&#160;between&#160;patient&#160;having&#160;different&#160;disease.<br/>
+The&#160;output&#160;is&#160;saved&#160;in&#160;/Results/GSEAlm/selected-disease-name&#160;folder.&#160;The&#160;names&#160;of&#160;output<br/>
+files&#160;describe&#160;their&#160;content.&#160;Three&#160;files&#160;are&#160;saved&#160;by&#160;model.&#160;The&#160;pVal_MSigDB_GeneList_Disease.txt<br/>file&#160;lists&#160;full&#160;results.&#160;The&#160;down/upRegulated_MSigDB_GeneList_Disease.txt&#160;files&#160;filter&#160;only&#160;significant<br/>gene&#160;sets.&#160;The&#160;filtered&#160;result&#160;is&#160;merged&#160;in&#160;one&#160;table&#160;and&#160;displayed&#160;in&#160;the&#160;screen.<br/>
+Results&#160;interpretation:<br/>
+❼&#160;NA&#160;NA:&#160;The&#160;gene&#160;set&#160;is&#160;unrepresentative&#160;in&#160;the&#160;used&#160;gene&#160;list<br/>
+❼&#160;1&#160;1:&#160;No&#160;significant&#160;different&#160;of&#160;mRNA&#160;expression&#160;between&#160;the&#160;two&#160;phenotypes<br/>
+Limitations:<br/>
+❼&#160;Use&#160;categorical&#160;phenotype&#160;(not&#160;numeric)&#160;only&#160;with&#160;TWO&#160;classes<br/>
+❼&#160;Use&#160;crude&#160;and&#160;not&#160;normalised&#160;mRNA&#160;expression&#160;data<br/>
+❼&#160;The&#160;accuracy&#160;of&#160;the&#160;results&#160;is&#160;better&#160;with&#160;high&#160;number&#160;of&#160;genes&#160;(1000&#160;-&#160;10000)&#160;and&#160;1000&#160;permuta-<br/>
+tions.&#160;This&#160;request&#160;takes&#160;a&#160;while&#160;to&#160;run.&#160;User&#160;is&#160;recommended&#160;to&#160;reduce&#160;the&#160;permutation&#160;to&#160;100<br/>instead&#160;1000&#160;and/or&#160;reduce&#160;the&#160;size&#160;of&#160;gene&#160;list.<br/>
+❼&#160;If&#160;two&#160;or&#160;more&#160;phenotypes&#160;are&#160;checked,&#160;only&#160;the&#160;latter&#160;is&#160;taken.<br/>
+17<br/>
+<hr/>
+<a name=18></a><img src="canceR-18_1.jpg"/><br/>
+4.8.1<br/>
+Which&#160;Molecular&#160;Signature&#160;Data&#160;base&#160;(MSigDB)&#160;for&#160;gene&#160;list<br/>
+This&#160;function&#160;matches&#160;genes&#160;list&#160;with&#160;MSigDB&#160;files&#160;selected&#160;from&#160;example&#160;or&#160;directory&#160;(Figure&#160;<a href="canceRs.html#18">19)&#160;</a>and<br/>computes&#160;the&#160;mean&#160;of&#160;matched&#160;Genes&#160;by&#160;Gene&#160;Sets&#160;as:<br/>
+I,J&#160;Genei&#160;∈&#160;GeneSetj<br/>
+M&#160;ean<br/>
+1,1<br/>
+(Gene∈GeneSet)&#160;=<br/>
+I&#160;Gene<br/>
+1<br/>
+i<br/>
+With&#160;I&#160;is&#160;the&#160;number&#160;of&#160;genes&#160;in&#160;the&#160;list&#160;and&#160;J&#160;is&#160;the&#160;number&#160;of&#160;Gene&#160;Sets&#160;in&#160;the&#160;MSigDB&#160;file.<br/>
+The&#160;returned&#160;table&#160;indicates&#160;the&#160;mean&#160;of&#160;gene&#160;number&#160;that&#160;matched&#160;for&#160;every&#160;Gene&#160;Set.&#160;For&#160;ex-<br/>ample&#160;in&#160;the&#160;first&#160;row&#160;(Figure&#160;<a href="canceRs.html#18">19)</a>,&#160;there&#160;are&#160;about&#160;10&#160;genes&#160;that&#160;mached&#160;for&#160;every&#160;Genes&#160;Set&#160;in<br/>c2.cp.reactome.v4.0.Symbol.gmt.<br/>
+Figure&#160;19:&#160;Match&#160;gene&#160;list&#160;with&#160;MSigDB&#160;folder.<br/>
+4.8.2<br/>
+get&#160;SubMSigDb&#160;for&#160;genes&#160;list<br/>
+The&#160;SubMSigDb&#160;is&#160;a&#160;subset&#160;of&#160;MSigDB&#160;generated&#160;from&#160;gene&#160;list&#160;in&#160;the&#160;expression&#160;Set&#160;(eSet).&#160;This&#160;specific<br/>subsetting&#160;reduces&#160;the&#160;time&#160;of&#160;GSEA&#160;computing.&#160;User&#160;needs&#160;to&#160;run&#160;before&#160;eSet&#160;from&#160;phenoTest&#160;menu.<br/>
+4.8.3<br/>
+GSEAlm:&#160;Phenotypes&#160;into&#160;Disease<br/>
+Disease&#160;Free&#160;Status&#160;(DFS&#160;STATUS)&#160;into&#160;Prostate&#160;Cancer:<br/>
+❼&#160;Study:&#160;Prostate&#160;Adenocarcinoma&#160;(TCGA,&#160;Provisional)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA&#160;expression&#160;data&#160;(246&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;MSigDB:&#160;c2.cp.reactome.v4.0.symbols.gmt<br/>
+❼&#160;Gene&#160;list:&#160;73.txt&#160;file<br/>
+❼&#160;Phenotype:&#160;DFS&#160;STATUS<br/>
+❼&#160;Permutation:&#160;1000<br/>
+❼&#160;pVal:&#160;0.05<br/>
+This&#160;example&#160;uses&#160;Reactome&#160;pathways&#160;gene&#160;sets&#160;(Figure&#160;<a href="canceRs.html#19">20A,&#160;</a><a href="http://www.reactome.org/">http://www.reactome.org/)&#160;</a>to&#160;com-<br/>
+pare&#160;the&#160;gene&#160;expression&#160;of&#160;patients&#160;with&#160;reccured&#160;prostate&#160;disease&#160;versus&#160;patient&#160;with&#160;free&#160;prostate<br/>disease.&#160;The&#160;run&#160;was&#160;done&#160;with&#160;1000&#160;permuattion&#160;and&#160;pVal&#160;0.05&#160;(Figure&#160;<a href="canceRs.html#19">20B</a>).&#160;The&#160;result&#160;(Figure&#160;<a href="canceRs.html#19">20C</a>)<br/>shows&#160;only&#160;up&#160;regulated&#160;gene&#160;sets&#160;from&#160;Reactome&#160;pathways&#160;were&#160;observed&#160;in&#160;disease&#160;free&#160;patients.<br/>
+18<br/>
+<hr/>
+<a name=19></a><img src="canceR-19_1.jpg"/><br/>
+Figure&#160;20:&#160;Linear&#160;model&#160;of&#160;GSEA&#160;of&#160;Prostate&#160;Adenocarcinoma&#160;(TCGA,&#160;Provosional)&#160;study&#160;using&#160;”Dis-<br/>easeFree/Reccured”&#160;phenotypes.&#160;A,&#160;Selecting&#160;MSigDB&#160;file;&#160;B,&#160;Selecting&#160;Phenotypes,&#160;permutation,&#160;and<br/>pVal&#160;parameters;&#160;C,&#160;displying&#160;down&#160;and&#160;up&#160;regulated&#160;gene&#160;sets&#160;in&#160;table.<br/>
+Copy&#160;Number&#160;Cluster&#160;Level&#160;into&#160;Stomach&#160;Adenocarcinoma:<br/>
+❼&#160;Study:&#160;Stomach&#160;Adenocarcinoma&#160;(TCGA,&#160;Nature&#160;2014)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;that&#160;have&#160;mRNA,&#160;CNA,&#160;and&#160;sequencing&#160;data&#160;(258&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;MSigDB:&#160;c5.bp.reactome.v4.0.symbols.gmt<br/>
+❼&#160;Gene&#160;list:&#160;73.txt&#160;file<br/>
+❼&#160;Phenotype:&#160;Copy&#160;Number&#160;Cluster&#160;(Low,&#160;High)<br/>
+❼&#160;Permutation:&#160;1000<br/>
+❼&#160;pVal:&#160;0.05<br/>
+The&#160;losses&#160;and&#160;the&#160;gains&#160;of&#160;DNA&#160;can&#160;contribute&#160;to&#160;alterations&#160;in&#160;the&#160;expression&#160;of&#160;tumor&#160;suppressor<br/>
+genes&#160;and&#160;oncogenes.&#160;Therefore,&#160;the&#160;identification&#160;of&#160;DNA&#160;copy&#160;number&#160;alterations&#160;in&#160;tumor&#160;genomes<br/>may&#160;help&#160;to&#160;discover&#160;critical&#160;genes&#160;associated&#160;with&#160;cancers&#160;and,&#160;eventually,&#160;to&#160;improve&#160;therapeutic<br/>approaches.&#160;In&#160;this&#160;study&#160;we&#160;test&#160;GSEAlm&#160;algorithm&#160;with&#160;the&#160;level&#160;of&#160;the&#160;Copy&#160;Number&#160;cluster&#160;using<br/>Biological&#160;Process&#160;gene&#160;sets&#160;from&#160;Reactome.&#160;The&#160;Figure&#160;<a href="canceRs.html#20">21C&#160;</a>shows&#160;significant&#160;down/up&#160;regulated&#160;gene<br/>sets&#160;in&#160;patients&#160;with&#160;low&#160;level&#160;compared&#160;to&#160;patients&#160;with&#160;high&#160;level&#160;of&#160;copy&#160;number&#160;cluster.<br/>
+This&#160;finding&#160;suggests&#160;to&#160;repeat&#160;modeling&#160;with&#160;copy&#160;number&#160;alteration&#160;profile&#160;to&#160;predict&#160;which&#160;bio-<br/>
+logical&#160;process&#160;(gene&#160;set)&#160;could&#160;be&#160;with&#160;low&#160;level&#160;of&#160;copy&#160;number&#160;cluster.&#160;The&#160;Figure&#160;<a href="canceRs.html#20">22D&#160;</a>lists&#160;gene&#160;sets<br/>with&#160;low&#160;level&#160;of&#160;copy&#160;number&#160;cluster&#160;in&#160;the&#160;case&#160;of&#160;stomach&#160;adenocarcinoma.<br/>
+19<br/>
+<hr/>
+<a name=20></a><img src="canceR-20_1.jpg"/><br/>
+<img src="canceR-20_2.jpg"/><br/>
+Figure&#160;21:&#160;Linear&#160;model&#160;of&#160;GSEA&#160;of&#160;Stomach&#160;Adenocarcinoma&#160;(TCGA,&#160;Nature&#160;2014)&#160;study&#160;using<br/>”Low/High”&#160;level&#160;of&#160;copy&#160;number&#160;cluster&#160;phenotypes.&#160;A,&#160;Selecting&#160;MSigDB&#160;file;&#160;B,&#160;Selecting&#160;Phenotypes,<br/>permutation,&#160;and&#160;pVal&#160;parameters;&#160;C,&#160;displying&#160;down&#160;and&#160;up&#160;regulated&#160;gene&#160;sets&#160;in&#160;table.<br/>
+Figure&#160;22:&#160;Linear&#160;model&#160;of&#160;GSEA&#160;of&#160;Stomach&#160;Adenocarcinoma&#160;(TCGA,&#160;Nature&#160;2014)&#160;study&#160;using&#160;copy<br/>number&#160;alteration&#160;data&#160;(GISTIC&#160;algorithm)&#160;as&#160;matrix&#160;and&#160;copy&#160;number&#160;cluster&#160;level&#160;(Low/High)&#160;as<br/>phenotypes.&#160;A,&#160;Selecting&#160;genetic&#160;profile;&#160;B,&#160;Selecting&#160;MSigDB&#160;file;&#160;c,&#160;Selecting&#160;Phenotypes,&#160;permutation,<br/>and&#160;pVal&#160;parameters;&#160;D,&#160;displying&#160;gene&#160;sets&#160;with&#160;low&#160;copy&#160;number&#160;cluster&#160;level.<br/>
+4.8.4<br/>
+GSEAlm:&#160;Disease&#160;vs&#160;Disease<br/>
+Breast&#160;vs&#160;Prostate&#160;Cancers:&#160;In&#160;this&#160;function,&#160;the&#160;linear&#160;modeling&#160;uses&#160;the&#160;disease&#160;type&#160;as&#160;phenotype<br/>for&#160;the&#160;run.&#160;User&#160;needs&#160;to&#160;select&#160;two&#160;diseases&#160;and&#160;a&#160;gene&#160;list.<br/>
+20<br/>
+<hr/>
+<a name=21></a><img src="canceR-21_1.jpg"/><br/>
+❼&#160;Studies:&#160;Breast&#160;Invasive&#160;Carcinoma&#160;(TCGA,&#160;Provisional)&#160;versus&#160;Prostate&#160;Adenocarcinoma&#160;(TCGA,<br/>
+Provisional)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA&#160;expression&#160;data&#160;(959/257&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;MSigDB:&#160;c2.cp.reactome.v4.0.symbols.gmt<br/>
+❼&#160;Gene&#160;list:&#160;73.txt&#160;file<br/>
+❼&#160;Phenotype:&#160;Diseases&#160;type<br/>
+❼&#160;Permutation:&#160;1000<br/>
+❼&#160;pVal:&#160;0.05<br/>
+❼&#160;Samples&#160;number:&#160;50<br/>
+The&#160;Figure&#160;<a href="canceRs.html#21">23&#160;</a>shows&#160;the&#160;results&#160;of&#160;the&#160;linear&#160;modeling.<br/>
+Figure&#160;23:&#160;Linear&#160;model&#160;of&#160;GSEA&#160;of&#160;Breast&#160;Invasive&#160;carcinoma&#160;(TCGA,&#160;Provisional)&#160;and&#160;Prostate<br/>Adenocarcinoma&#160;(TCGA,&#160;Provitional)&#160;studies.&#160;A,&#160;Sampling;&#160;B,&#160;Selecting&#160;MSigDB&#160;file;&#160;c,&#160;Selecting<br/>Phenotypes,&#160;permutation,&#160;and&#160;pVal&#160;parameters;&#160;D,&#160;displying&#160;gene&#160;sets&#160;upregulated&#160;in&#160;prostate&#160;cancer.<br/>
+4.9<br/>
+Genes&#160;Classification&#160;using&#160;mRNA&#160;expression&#160;(Classification)<br/>
+The&#160;Classification&#160;menu&#160;displays&#160;two&#160;functions&#160;to&#160;rank&#160;genes&#160;by&#160;phenotypes&#160;into-&#160;and&#160;inter-diseases,<br/>depending&#160;on&#160;mRNA&#160;expression&#160;data.<br/>
+4.9.1<br/>
+Genes&#160;vs&#160;Diseases&#160;(inter-diseases)<br/>
+The&#160;first&#160;classifier&#160;is&#160;implemented&#160;from&#160;geNetClassifier&#160;package&#160;<a href="canceRs.html#30">[1]</a>.&#160;It&#160;uses&#160;calculateGenesRanking<br/>function&#160;which&#160;based&#160;on&#160;Parametric&#160;Empirical&#160;Bayes&#160;method&#160;included&#160;in&#160;EBarrays&#160;package&#160;<a href="canceRs.html#30">[5]</a>.&#160;This<br/>method&#160;implements&#160;an&#160;expectation-maximization&#160;(EM)&#160;algorithm&#160;for&#160;gene&#160;expression&#160;mixture&#160;models,<br/>which&#160;compares&#160;the&#160;patterns&#160;of&#160;differential&#160;expression&#160;across&#160;multiple&#160;conditions&#160;and&#160;provides&#160;a&#160;posterior<br/>probability.&#160;The&#160;posterior&#160;probability&#160;is&#160;calculated&#160;for&#160;each&#160;gene-class&#160;pair,&#160;and&#160;represents&#160;how&#160;much<br/>each&#160;gene&#160;differentiates&#160;a&#160;class&#160;from&#160;the&#160;other&#160;classes;&#160;being&#160;1&#160;the&#160;best&#160;value,&#160;and&#160;0&#160;the&#160;worst.&#160;In&#160;this<br/>
+21<br/>
+<hr/>
+<a name=22></a>way,&#160;the&#160;posterior&#160;probability&#160;allows&#160;to&#160;find&#160;the&#160;genes&#160;that&#160;show&#160;significant&#160;differential&#160;expression&#160;when<br/>comparing&#160;the&#160;samples&#160;of&#160;one&#160;class&#160;versus&#160;all&#160;the&#160;other&#160;samples&#160;(One-versus-Rest&#160;comparison)&#160;<a href="canceRs.html#30">[1]</a>.<br/>
+In&#160;the&#160;following&#160;examples,&#160;we&#160;would&#160;like&#160;to&#160;predict&#160;specific&#160;modulated&#160;genes&#160;by&#160;cancer&#160;type.&#160;The<br/>
+features&#160;of&#160;the&#160;runs&#160;are:<br/>
+Example&#160;1:&#160;Breast&#160;vs&#160;Glioblastoma&#160;vs&#160;Liver&#160;vs&#160;Lung&#160;Cancers&#160;(Figure&#160;<a href="canceRs.html#23">24A</a>):<br/>
+❼&#160;Studies:<br/>
+–&#160;Breast&#160;Invasive&#160;Carcinoma&#160;(TCGA,&#160;Provisional)<br/>
+–&#160;Glioblastoma&#160;Multiforme&#160;(TCGA,&#160;Provisional)<br/>
+–&#160;Liver&#160;Hepatocellular&#160;Carcinoma&#160;(TCGA,&#160;Provisional)<br/>
+–&#160;Lung&#160;Squamous&#160;Cell&#160;Carcinoma&#160;(TCGA,&#160;Provisional)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA&#160;expression&#160;data,<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;Samples:&#160;50<br/>
+❼&#160;Gene&#160;list:&#160;223.txt&#160;file<br/>
+❼&#160;lpThreshold:&#160;0.95<br/>
+Example&#160;2:&#160;Bladder&#160;vs&#160;Breast&#160;vs&#160;Glioblastoma&#160;vs&#160;Lung&#160;vs&#160;Ovarian&#160;vs&#160;Prostate&#160;Cancers<br/>(Figure&#160;<a href="canceRs.html#23">24A</a>’):<br/>
+❼&#160;Studies:<br/>
+–&#160;Bladder&#160;Urothelial&#160;Carcinoma(TCGA,&#160;Provisional)<br/>
+–&#160;Breast&#160;Invasive&#160;Carcinoma&#160;(TCGA,&#160;Provisional)<br/>
+–&#160;Glioblastoma&#160;Multiforme&#160;(TCGA,&#160;Provisional)<br/>
+–&#160;Lung&#160;Adenocarcinoma&#160;(TCGA,&#160;Provisional)<br/>
+–&#160;Ovarian&#160;Serous&#160;Cystadenocarcinoma&#160;(TCGA,&#160;Provisional)<br/>
+–&#160;Prostate&#160;Adenocarcinoma&#160;(TCGA,&#160;Provisional)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA&#160;expression&#160;data,<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;Samples:&#160;50<br/>
+❼&#160;Gene&#160;list:&#160;73.txt&#160;file<br/>
+❼&#160;lpThreshold:&#160;0.95<br/>
+The&#160;significant&#160;genes&#160;(dots)&#160;are&#160;over&#160;the&#160;threshold&#160;of&#160;posterior&#160;probability&#160;(Figure&#160;<a href="canceRs.html#23">24B</a>,&#160;B’).&#160;Their<br/>
+number&#160;are&#160;listed&#160;in&#160;the&#160;legend.&#160;The&#160;details&#160;are&#160;displayed&#160;in&#160;table&#160;(Figure&#160;<a href="canceRs.html#23">24C</a>,&#160;C’)&#160;and&#160;saved&#160;in<br/>/Results/Classifier&#160;folder.<br/>
+22<br/>
+<hr/>
+<a name=23></a><img src="canceR-23_1.jpg"/><br/>
+Figure&#160;24:&#160;Genes/Disease&#160;Classification.&#160;A,&#160;A’&#160;Sampling&#160;and&#160;lpThreshold&#160;choice;&#160;B,&#160;B’&#160;Plot&#160;of&#160;the<br/>posterior&#160;probabilities&#160;of&#160;the&#160;genes&#160;of&#160;Disease&#160;classes,&#160;ordering&#160;the&#160;genes&#160;according&#160;to&#160;their&#160;rank.&#160;brca:<br/>breast;&#160;gbm:&#160;Glioblastoma;&#160;lihc:&#160;Liver;&#160;lusc:&#160;Lung;&#160;blca:&#160;Bladder;&#160;luad:&#160;Lung;&#160;ov:&#160;Ovary;&#160;prad:<br/>Prostate.&#160;C,&#160;C’&#160;The&#160;table&#160;lists&#160;the&#160;significant&#160;genes&#160;ranked&#160;by&#160;class&#160;(disease).&#160;The&#160;columns&#160;are&#160;ordered<br/>as&#160;Gene&#160;Symbols,&#160;Ranking,&#160;Class,&#160;PostProb,&#160;ExprsMeanDiff,&#160;ExprsUpDw.<br/>
+4.9.2<br/>
+Genes&#160;vs&#160;Phenotypes&#160;(intra-disease)<br/>
+The&#160;second&#160;function&#160;of&#160;genes&#160;classification&#160;is&#160;implemented&#160;from&#160;rpart&#160;package&#160;<a href="canceRs.html#30">[11]</a>.&#160;The&#160;resulting&#160;models<br/>can&#160;be&#160;represented&#160;as&#160;binary&#160;trees&#160;with&#160;gene&#160;expression&#160;profile&#160;threshold&#160;(P53&#160;&gt;&#160;2.56)&#160;is&#160;in&#160;node&#160;and<br/>classes&#160;(Living/Deceased)&#160;of&#160;selected&#160;variable&#160;in&#160;branch.&#160;The&#160;root&#160;of&#160;the&#160;tree&#160;is&#160;the&#160;best&#160;gene&#160;divisor&#160;of<br/>classes.&#160;The&#160;goal&#160;is&#160;to&#160;pedict&#160;which&#160;genes&#160;combinaison&#160;(P53&gt;&#160;2.56&#160;+&#160;CAD&#160;&lt;&#160;-0.45&#160;+&#160;MDM4&#160;&gt;&#160;1.92<br/>lead&#160;to&#160;80%&#160;Diseased)&#160;could&#160;be&#160;split&#160;classes&#160;in&#160;two&#160;or&#160;more&#160;groups.&#160;The&#160;tree&#160;is&#160;built&#160;by&#160;the&#160;following<br/>process:&#160;first&#160;the&#160;single&#160;variable&#160;is&#160;found&#160;which&#160;gene&#160;level&#160;splits&#160;the&#160;data&#160;into&#160;two&#160;groups.&#160;The&#160;data&#160;is<br/>separated,&#160;and&#160;then&#160;this&#160;process&#160;is&#160;applied&#160;separately&#160;to&#160;each&#160;sub-group,&#160;and&#160;so&#160;on&#160;recursively&#160;until&#160;the<br/>subgroups&#160;either&#160;reach&#160;a&#160;minimum&#160;size&#160;or&#160;until&#160;no&#160;improvement&#160;can&#160;be&#160;made&#160;<a href="canceRs.html#30">[11]</a>.<br/>
+There&#160;are&#160;3&#160;methods&#160;of&#160;splitting&#160;rule&#160;:&#160;classification,&#160;anova,&#160;and&#160;Poisson.<br/>The&#160;Classification&#160;used&#160;either&#160;Gini&#160;or&#160;log-likelihood&#160;function&#160;rules.&#160;It&#160;is&#160;used&#160;when&#160;there&#160;are&#160;only<br/>
+two&#160;categories&#160;into&#160;the&#160;selected&#160;variable.&#160;The&#160;dependent&#160;variable&#160;is&#160;nominal&#160;(factor).&#160;At&#160;each&#160;splitting<br/>step,&#160;the&#160;rule&#160;tries&#160;to&#160;reduce&#160;the&#160;total&#160;impurity&#160;of&#160;the&#160;two&#160;son&#160;nodes&#160;relative&#160;to&#160;the&#160;parent&#160;node.<br/>
+In&#160;the&#160;anova,&#160;the&#160;variable&#160;is&#160;numeric&#160;and&#160;it&#160;used&#160;to&#160;predict&#160;the&#160;closest&#160;value&#160;to&#160;the&#160;true&#160;one.&#160;The<br/>
+method&#160;uses&#160;splitting&#160;criteria&#160;SS<br/>
+¯<br/>
+T&#160;−&#160;(SSL&#160;+&#160;SSR),&#160;where&#160;SST&#160;=<br/>
+(yi&#160;−(y)2&#160;is&#160;the&#160;sum&#160;of&#160;squares&#160;for&#160;the<br/>
+node,&#160;and&#160;SSR,&#160;SSL&#160;are&#160;the&#160;sums&#160;of&#160;squares&#160;for&#160;the&#160;right&#160;a,d&#160;left&#160;son&#160;respectively.&#160;This&#160;is&#160;equivalent&#160;to<br/>choosing&#160;the&#160;split&#160;to&#160;maximize&#160;the&#160;between-groups&#160;sum-of-squares&#160;in&#160;a&#160;simple&#160;analysis&#160;of&#160;variance&#160;<a href="canceRs.html#30">[11]</a>.<br/>
+The&#160;poisson&#160;splitting&#160;method&#160;attempts&#160;to&#160;extend&#160;rpart&#160;models&#160;to&#160;event&#160;rate&#160;data.&#160;The&#160;model&#160;in<br/>
+this&#160;case&#160;is&#160;λ&#160;=&#160;f&#160;(x),&#160;where&#160;λ&#160;is&#160;an&#160;event&#160;rate&#160;and&#160;x&#160;is&#160;some&#160;set&#160;of&#160;predictors.<br/>
+23<br/>
+<hr/>
+<a name=24></a>Example&#160;1:&#160;Genes&#160;classification&#160;vs&#160;OS&#160;STATUS&#160;(Living/Deceased)<br/>
+❼&#160;Studies:&#160;Breast&#160;Invasive&#160;Carcinoma&#160;(TCGA,&#160;Provisional)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA&#160;expression&#160;data&#160;(526&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;z-score&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;Gene&#160;list:&#160;223.txt&#160;file<br/>
+❼&#160;Variable:&#160;OS&#160;STATUS<br/>
+❼&#160;Split&#160;method:&#160;class<br/>
+In&#160;this&#160;example,&#160;the&#160;main&#160;clinical&#160;endpoint&#160;of&#160;interest&#160;is&#160;the&#160;Living/Deceased&#160;Status&#160;of&#160;patient&#160;having<br/>
+breast&#160;cancer.&#160;We&#160;run&#160;classification&#160;to&#160;predict&#160;which&#160;genes&#160;from&#160;223&#160;that&#160;make&#160;the&#160;difference&#160;between<br/>deceased&#160;and&#160;living&#160;patient&#160;having&#160;breast&#160;cancer.&#160;The&#160;tree&#160;in&#160;Figure&#160;<a href="canceRs.html#25">25B&#160;</a>indicates&#160;that&#160;all&#160;deceased<br/>patients&#160;have&#160;the&#160;following&#160;z-score&#160;gene&#160;expression&#160;profile:&#160;RAD51&lt;-1.091,&#160;HSPA1A&gt;1.424,&#160;JUN&gt;&#160;-<br/>0.4016.&#160;All&#160;remain&#160;patient&#160;are&#160;living.<br/>
+Example&#160;2:&#160;Genes&#160;regression&#160;vs&#160;OS&#160;STATUS&#160;(Living/Deceased)<br/>
+❼&#160;Studies:&#160;Breast&#160;Invasive&#160;Carcinoma&#160;(TCGA,&#160;Provisional)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA&#160;expression&#160;data&#160;(526&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;z-score&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;Gene&#160;list:&#160;223.txt&#160;file<br/>
+❼&#160;Variable:&#160;OS&#160;STATUS<br/>
+❼&#160;Split&#160;method:&#160;anova<br/>
+When&#160;we&#160;split&#160;the&#160;same&#160;clinical&#160;data&#160;used&#160;in&#160;the&#160;first&#160;example&#160;(Living/Deceased)&#160;using&#160;regression<br/>
+method&#160;(anova),&#160;we&#160;see&#160;in&#160;the&#160;Figure&#160;<a href="canceRs.html#26">26C&#160;</a>the&#160;same&#160;genes&#160;and&#160;split&#160;points&#160;with&#160;further&#160;splitting&#160;nodes.<br/>For&#160;example,&#160;the&#160;gene&#160;HSPA11&#160;has&#160;124&#160;patients&#160;with&#160;109&#160;are&#160;living.&#160;In&#160;classification&#160;method,&#160;all&#160;patient<br/>have&#160;the&#160;same&#160;predicted&#160;value&#160;(0.846,&#160;Figure&#160;<a href="canceRs.html#25">25C</a>)&#160;because&#160;the&#160;error&#160;(misclassification)&#160;with&#160;and&#160;without<br/>the&#160;split&#160;is&#160;identical.&#160;In&#160;the&#160;regression&#160;context&#160;the&#160;two&#160;predicted&#160;values&#160;of&#160;16.08&#160;and&#160;1.84&#160;(Figure&#160;<a href="canceRs.html#26">26B</a>)<br/>are&#160;different.&#160;The&#160;split&#160;has&#160;identified&#160;a&#160;nearly&#160;pure&#160;subgroup&#160;of&#160;significant&#160;size.<br/>
+Example&#160;3:&#160;Genes&#160;classification&#160;vs&#160;tumor&#160;grade&#160;(grade1/2/3)<br/>
+❼&#160;Studies:&#160;Uterine&#160;Corpus&#160;Endometrioid&#160;Carcinoma&#160;(TCGA,&#160;Nature&#160;2013)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA&#160;expression&#160;data&#160;(333&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;z-score&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;Gene&#160;list:&#160;223.txt&#160;file<br/>
+❼&#160;Variable:&#160;Tumor&#160;Grade<br/>
+❼&#160;Split&#160;method:&#160;class<br/>
+Classification&#160;method&#160;could&#160;work&#160;with&#160;phenotype&#160;with&#160;more&#160;than&#160;two&#160;classes.&#160;In&#160;this&#160;case,&#160;the<br/>
+tumor&#160;grades&#160;are&#160;splitted&#160;following&#160;this&#160;order&#160;from&#160;left&#160;to&#160;right&#160;Grade1/Grade2/Grade3.&#160;The&#160;nodes&#160;are<br/>named&#160;by&#160;the&#160;must&#160;frequent&#160;grade&#160;(Figure&#160;<a href="canceRs.html#27">27)</a>.<br/>
+24<br/>
+<hr/>
+<a name=25></a><img src="canceR-25_1.jpg"/><br/>
+Figure&#160;25:&#160;Genes/phenotype&#160;Classification.&#160;A,&#160;Selecting&#160;variable&#160;and&#160;the&#160;splitting&#160;method;&#160;B,&#160;Tree<br/>result,&#160;In&#160;any&#160;node&#160;(ellipse&#160;or&#160;rectangle)&#160;the&#160;ratio&#160;indicates&#160;in&#160;numerator/Deceased&#160;and&#160;in&#160;the&#160;denomi-<br/>nator/Living&#160;patients.&#160;The&#160;condition&#160;RAD51&#160;z-score&#160;&lt;&#160;-&#160;1.091&#160;descriminates&#160;12&#160;cases&#160;with&#160;7&#160;deceased<br/>and&#160;so&#160;on.&#160;The&#160;Deceased&#160;cases&#160;go&#160;to&#160;the&#160;left&#160;an&#160;the&#160;living&#160;cases&#160;go&#160;to&#160;the&#160;right.&#160;The&#160;plot&#160;could&#160;be&#160;saved<br/>as&#160;svg,&#160;png&#160;or&#160;jpg&#160;format&#160;and&#160;scaled&#160;in&#160;vertical&#160;and&#160;horizontal;&#160;C,&#160;The&#160;reading&#160;of&#160;the&#160;tree.<br/>
+25<br/>
+<hr/>
+<a name=26></a><img src="canceR-26_1.jpg"/><br/>
+Figure&#160;26:&#160;Genes/phenotype&#160;Regression.&#160;A,&#160;Selecting&#160;variable&#160;and&#160;the&#160;splitting&#160;method;&#160;B,&#160;The&#160;reading<br/>of&#160;the&#160;tree;&#160;C,&#160;Tree&#160;result,&#160;In&#160;any&#160;node&#160;(ellipse&#160;or&#160;rectangle)&#160;the&#160;ratio&#160;indicates&#160;in&#160;numerator/Deceased<br/>and&#160;in&#160;the&#160;denominator/Living&#160;patients.<br/>
+4.10<br/>
+Plots<br/>
+Their&#160;are&#160;two&#160;plotting&#160;functions.The&#160;first&#160;one&#160;(1&#160;Gene/&#160;2&#160;Gen.&#160;Profiles)&#160;plots&#160;gene&#160;data&#160;for&#160;specified<br/>case&#160;and&#160;two&#160;genetic&#160;profiles&#160;from&#160;the&#160;same&#160;study.&#160;It&#160;associates&#160;between&#160;the&#160;two&#160;selected&#160;genetic&#160;profiles.<br/>The&#160;dialog&#160;box&#160;allows&#160;user&#160;to&#160;specify:<br/>
+❼&#160;Layout&#160;Skin<br/>
+–&#160;cont:&#160;This&#160;is&#160;the&#160;default&#160;skin.&#160;It&#160;treats&#160;all&#160;data&#160;as&#160;being&#160;continuous<br/>
+–&#160;disc&#160;cont:&#160;Requires&#160;two&#160;genetic&#160;profiles.&#160;The&#160;first&#160;datasetin&#160;handled&#160;as&#160;being&#160;discrete&#160;data,<br/>
+and&#160;the&#160;function&#160;generates&#160;a&#160;boxplot&#160;with&#160;distributions&#160;for&#160;each&#160;level&#160;of&#160;the&#160;discrete&#160;genetic<br/>profile.<br/>
+–&#160;cna&#160;mrna&#160;mut&#160;:&#160;This&#160;skin&#160;plots&#160;mRNA&#160;expression&#160;level&#160;as&#160;function&#160;of&#160;CNA&#160;or&#160;DNA&#160;methy-<br/>
+lation&#160;status&#160;for&#160;given&#160;gene.&#160;Data&#160;points&#160;are&#160;colored&#160;respectively&#160;by&#160;mutation&#160;status&#160;or&#160;CNA<br/>and&#160;mutation&#160;status.<br/>
+❼&#160;Correlation&#160;Method<br/>
+26<br/>
+<hr/>
+<a name=27></a><img src="canceR-27_1.jpg"/><br/>
+Figure&#160;27:&#160;Genes/phenotype&#160;Classification.&#160;A,&#160;Selecting&#160;Tumor&#160;Grade&#160;as&#160;phenotype&#160;and&#160;the&#160;class&#160;as<br/>splitting&#160;method;&#160;B,&#160;The&#160;reading&#160;of&#160;the&#160;tree;&#160;C,&#160;Tree&#160;result,&#160;In&#160;any&#160;node&#160;(ellipse&#160;or&#160;rectangle)&#160;the&#160;ratio<br/>indicates&#160;in&#160;numerator/Deceased&#160;and&#160;in&#160;the&#160;denominator/Living&#160;patients.<br/>
+–&#160;Pearson&#160;correlationis&#160;is&#160;used&#160;for&#160;parametric&#160;distribution&#160;(more&#160;than&#160;30&#160;samples&#160;by&#160;genetic<br/>
+profile)<br/>
+–&#160;Spearman&#160;correlation&#160;is&#160;used&#160;for&#160;non-parametric&#160;data.<br/>
+–&#160;Kendall&#160;tau&#160;is&#160;non-parametric&#160;test&#160;that&#160;mesures&#160;the&#160;rank&#160;correlation.<br/>
+Example:&#160;Association&#160;of&#160;P53&#160;copy&#160;number&#160;alteration&#160;and&#160;mRNA&#160;exprssion&#160;in&#160;glioblastoma<br/>
+❼&#160;Study:&#160;Glioblastoma&#160;Multiforme&#160;(TCGA,&#160;Provisional)<br/>
+❼&#160;Cases:&#160;All&#160;tumor&#160;Samples&#160;that&#160;have&#160;mRNA,CNA&#160;and&#160;sequencing&#160;data&#160;(135&#160;samples),<br/>
+❼&#160;Genetic&#160;Profiles&#160;1:&#160;Putative&#160;copy-number&#160;alterations&#160;from&#160;GISTIC<br/>
+❼&#160;Genetic&#160;Profiles&#160;2:&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;Gene:&#160;P53<br/>
+❼&#160;Skin:&#160;cna&#160;mrna&#160;mut<br/>
+❼&#160;correlation&#160;method:&#160;pearson<br/>
+No&#160;significant&#160;pearson&#160;correlation&#160;was&#160;observed&#160;between&#160;P53&#160;Copy&#160;Number&#160;Variation&#160;(CNV)&#160;and<br/>
+P53&#160;mRNA&#160;expression&#160;(r=0.23,&#160;Figure&#160;<a href="canceRs.html#28">28B</a>).&#160;The&#160;CNV&#160;is&#160;ranged&#160;into&#160;4&#160;levels&#160;that&#160;derived&#160;from&#160;the<br/>copy-number&#160;analysis&#160;algorithms&#160;GISTIC&#160;or&#160;RAE,&#160;and&#160;indicate&#160;the&#160;copy-number&#160;level&#160;per&#160;gene.&#160;”-2”&#160;is<br/>a&#160;deep&#160;loss,&#160;possibly&#160;a&#160;homozygous&#160;deletion&#160;(Homdel),&#160;”-1”&#160;is&#160;a&#160;single-copy&#160;loss&#160;(heterozygous&#160;deletion:<br/>Hetloss),&#160;”0”&#160;is&#160;Diploid,&#160;”1”&#160;indicates&#160;a&#160;low-level&#160;gain,&#160;and&#160;”2”&#160;is&#160;a&#160;high-level&#160;amplification.&#160;Note&#160;that<br/>these&#160;calls&#160;are&#160;putative.<br/>
+27<br/>
+<hr/>
+<a name=28></a><img src="canceR-28_1.jpg"/><br/>
+Figure&#160;28:&#160;P53:&#160;CNA&#160;status&#160;vs&#160;mRNA&#160;expression.&#160;Homdel,&#160;homozygous&#160;deletion;&#160;Hetloss,&#160;heterozygous<br/>deletion;&#160;Diploid,&#160;No&#160;modification;&#160;Gain,&#160;ADN&#160;amplification.<br/>
+The&#160;second&#160;plot&#160;function&#160;evaluates&#160;the&#160;relationship&#160;of&#160;two&#160;genes&#160;expression&#160;levels&#160;in&#160;the&#160;same&#160;study<br/>
+(Figure&#160;<a href="canceRs.html#29">29)</a>.<br/>
+Example:&#160;MAP2K2&#160;and&#160;ABHD17A&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)&#160;levels&#160;in<br/>Uterine&#160;Corpus&#160;Endometrioid&#160;Carcinoma&#160;(TCGA,&#160;Nature&#160;2013)<br/>
+❼&#160;Study:&#160;Uterine&#160;Corpus&#160;Endometrioid&#160;Carcinoma&#160;(TCGA,&#160;Nature&#160;2013)<br/>
+❼&#160;Cases:&#160;All&#160;Samples&#160;with&#160;mRNA&#160;expression&#160;data&#160;(333&#160;samples),<br/>
+28<br/>
+<hr/>
+<a name=29></a><img src="canceR-29_1.jpg"/><br/>
+❼&#160;Genetic&#160;Profiles:&#160;mRNA&#160;expression&#160;(RNA&#160;Seq&#160;V2&#160;RSEM)<br/>
+❼&#160;Genes:&#160;MAP2K2&#160;and&#160;ABHD17A<br/>
+❼&#160;correlation&#160;method:&#160;pearson<br/>
+Figure&#160;29:&#160;MAP2K2&#160;and&#160;ABHD17A&#160;mRNA&#160;expression&#160;levels&#160;correlation&#160;in&#160;Uterine&#160;Corpus&#160;Endometrioid<br/>Carcinoma<br/>
+5<br/>
+Perspectives<br/>
+1.&#160;Pairwise,&#160;Multiple&#160;comparative&#160;of&#160;Genetics&#160;Profiles<br/>
+2.&#160;search&#160;nearest&#160;Cancer&#160;by&#160;Matching&#160;Genetic&#160;Profile&#160;for&#160;gene&#160;list.<br/>
+3.&#160;Onco&#160;Query&#160;Language<br/>
+29<br/>
+<hr/>
+<a name=30></a>References<br/>
+[1]&#160;S.&#160;Aibar,&#160;C.&#160;Fontanillo,&#160;J.&#160;D.&#160;L.&#160;R.&#160;Bioinformatics,&#160;and&#160;F.&#160;G.&#160;G.&#160;C.&#160;R.&#160;C.&#160;S.&#160;Spain.&#160;geNetClassifier:<br/>
+classify&#160;diseases&#160;and&#160;build&#160;associated&#160;gene&#160;networks&#160;using&#160;gene&#160;expression&#160;profiles,&#160;2013.&#160;R&#160;package<br/>version&#160;1.2.0.<br/>
+[2]&#160;E.&#160;Cerami,&#160;J.&#160;Gao,&#160;U.&#160;Dogrusoz,&#160;B.&#160;E.&#160;Gross,&#160;S.&#160;O.&#160;Sumer,&#160;B.&#160;A.&#160;Aksoy,&#160;A.&#160;Jacobsen,&#160;C.&#160;J.&#160;Byrne,<br/>
+M.&#160;L.&#160;Heuer,&#160;E.&#160;Larsson,&#160;Y.&#160;Antipin,&#160;B.&#160;Reva,&#160;A.&#160;P.&#160;Goldberg,&#160;C.&#160;Sander,&#160;and&#160;N.&#160;Schultz.&#160;The&#160;cbio<br/>cancer&#160;genomics&#160;portal:&#160;an&#160;open&#160;platform&#160;for&#160;exploring&#160;multidimensional&#160;cancer&#160;genomics&#160;data.<br/>Cancer&#160;Discov,&#160;2(5):401–404,&#160;May&#160;2012.<br/>
+[3]&#160;D.&#160;R.&#160;Cox.&#160;Regression&#160;models&#160;and&#160;life&#160;tables.&#160;Journal&#160;of&#160;the&#160;Royal&#160;Statistical&#160;Society&#160;Series&#160;B,<br/>
+34(2):187–220,&#160;1972.<br/>
+[4]&#160;J.&#160;Gao,&#160;B.&#160;A.&#160;Aksoy,&#160;U.&#160;Dogrusoz,&#160;G.&#160;Dresdner,&#160;B.&#160;Gross,&#160;S.&#160;O.&#160;Sumer,&#160;Y.&#160;Sun,&#160;A.&#160;Jacobsen,<br/>
+R.&#160;Sinha,&#160;E.&#160;Larsson,&#160;E.&#160;Cerami,&#160;C.&#160;Sander,&#160;and&#160;N.&#160;Schultz.&#160;Integrative&#160;analysis&#160;of&#160;complex&#160;cancer<br/>genomics&#160;and&#160;clinical&#160;profiles&#160;using&#160;the&#160;cbioportal.&#160;Sci&#160;Signal,&#160;6(269):pl1,&#160;Apr&#160;2013.<br/>
+[5]&#160;C.&#160;M.&#160;Kendziorski,&#160;M.&#160;A.&#160;Newton,&#160;H.&#160;Lan,&#160;and&#160;M.&#160;N.&#160;Gould.&#160;On&#160;parametric&#160;empirical&#160;bayes&#160;methods<br/>
+for&#160;comparing&#160;multiple&#160;groups&#160;using&#160;replicated&#160;gene&#160;expression&#160;profiles.&#160;Stat&#160;Med,&#160;22(24):3899–3914,<br/>Dec&#160;2003.<br/>
+[6]&#160;A.&#160;Liberzon,&#160;A.&#160;Subramanian,&#160;R.&#160;Pinchback,&#160;H.&#160;Thorvaldsd´<br/>
+ottir,&#160;P.&#160;Tamayo,&#160;and&#160;J.&#160;P.&#160;Mesirov.<br/>
+Molecular&#160;signatures&#160;database&#160;(msigdb)&#160;3.0.&#160;Bioinformatics,&#160;27(12):1739–1740,&#160;Jun&#160;2011.<br/>
+[7]&#160;A.&#160;P.&#160;Oron,&#160;Z.&#160;Jiang,&#160;and&#160;R.&#160;Gentleman.&#160;Gene&#160;set&#160;enrichment&#160;analysis&#160;using&#160;linear&#160;models&#160;and<br/>
+diagnostics.&#160;Bioinformatics,&#160;24(22):2586–2591,&#160;Nov&#160;2008.<br/>
+[8]&#160;E.&#160;Planet.&#160;phenotest:&#160;Tools&#160;to&#160;test&#160;association&#160;between&#160;gene&#160;expression&#160;and&#160;phenotype&#160;in&#160;a&#160;way<br/>
+that&#160;is&#160;efficient,&#160;structured,&#160;fast&#160;and&#160;scalable,&#160;2013.<br/>
+[9]&#160;A.&#160;Subramanian,&#160;H.&#160;Kuehn,&#160;J.&#160;Gould,&#160;P.&#160;Tamayo,&#160;and&#160;J.&#160;P.&#160;Mesirov.&#160;Gsea-p:&#160;a&#160;desktop&#160;application<br/>
+for&#160;gene&#160;set&#160;enrichment&#160;analysis.&#160;Bioinformatics,&#160;23(23):3251–3253,&#160;Dec&#160;2007.<br/>
+[10]&#160;A.&#160;Subramanian,&#160;P.&#160;Tamayo,&#160;V.&#160;K.&#160;Mootha,&#160;S.&#160;Mukherjee,&#160;B.&#160;L.&#160;Ebert,&#160;M.&#160;A.&#160;Gillette,&#160;A.&#160;Paulovich,<br/>
+S.&#160;L.&#160;Pomeroy,&#160;T.&#160;R.&#160;Golub,&#160;E.&#160;S.&#160;Lander,&#160;and&#160;J.&#160;P.&#160;Mesirov.&#160;Gene&#160;set&#160;enrichment&#160;analysis:&#160;a<br/>knowledge-based&#160;approach&#160;for&#160;interpreting&#160;genome-wide&#160;expression&#160;profiles.&#160;Proc&#160;Natl&#160;Acad&#160;Sci&#160;U<br/>S&#160;A,&#160;102(43):15545–15550,&#160;Oct&#160;2005.<br/>
+[11]&#160;T.&#160;Therneau,&#160;B.&#160;Atkinson,&#160;and&#160;B.&#160;Ripley.&#160;rpart:&#160;Recursive&#160;partitioning&#160;and&#160;regression&#160;trees,&#160;2014.<br/>
+[12]&#160;J.&#160;M.&#160;Wettenhall&#160;and&#160;G.&#160;K.&#160;Smyth.&#160;limmagui:&#160;a&#160;graphical&#160;user&#160;interface&#160;for&#160;linear&#160;modeling&#160;of<br/>
+microarray&#160;data.&#160;Bioinformatics,&#160;20(18):3705–3706,&#160;Dec&#160;2004.<br/>
+30<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="canceRs.html#2">Introduction</a></li>
+<li><a href="canceRs.html#2">Installation</a></li>
+<li><a href="canceRs.html#3">Starting Window</a>
+<ul>
+<li><a href="canceRs.html#4">Setting Workspace</a></li>
+</ul>
+</li>
+<li><a href="canceRs.html#4">Main Window</a>
+<ul>
+<li><a href="canceRs.html#4">Gene List</a></li>
+<li><a href="canceRs.html#5">Clinical Data</a></li>
+<li><a href="canceRs.html#5">Mutation</a></li>
+<li><a href="canceRs.html#5">Methylation</a></li>
+<li><a href="canceRs.html#6">Profiles</a></li>
+<li><a href="canceRs.html#7">PhenoTest</a></li>
+<li><a href="canceRs.html#12">GSEA-R</a>
+<ul>
+<li><a href="canceRs.html#13">Preprocessing of Exprimental Data</a></li>
+<li><a href="canceRs.html#13">Molecular Signatures DataBase</a></li>
+<li><a href="canceRs.html#14">Examples</a></li>
+<li><a href="canceRs.html#16">GSEA-R Result Interpretation</a></li>
+</ul>
+</li>
+<li><a href="canceRs.html#17">Linear Modeling of GSEA (GSEAlm)</a>
+<ul>
+<li><a href="canceRs.html#18">Which Molecular Signature Data base (MSigDB) for gene list</a></li>
+<li><a href="canceRs.html#18">get SubMSigDb for genes list</a></li>
+<li><a href="canceRs.html#18">GSEAlm: Phenotypes into Disease</a></li>
+<li><a href="canceRs.html#20">GSEAlm: Disease vs Disease</a></li>
+</ul>
+</li>
+<li><a href="canceRs.html#21">Genes Classification using mRNA expression (Classification)</a>
+<ul>
+<li><a href="canceRs.html#21">Genes vs Diseases (inter-diseases)</a></li>
+<li><a href="canceRs.html#23">Genes vs Phenotypes (intra-disease)</a></li>
+</ul>
+</li>
+<li><a href="canceRs.html#25">Plots</a></li>
+</ul>
+</li>
+<li><a href="canceRs.html#29">Perspectives</a></li>
+</ul>
+<hr/>
+</body>
+</html>

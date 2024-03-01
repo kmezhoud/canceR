@@ -17,37 +17,37 @@ getGenesTree_MultipleCases <- function(entryWidth = 10){
              testCheckedCaseGenProf()
             
             ##Checking Genes list, Cases GeneProf
-            if(length(myGlobalEnv$curselectCases)==1||length(myGlobalEnv$curselectGenProfs)==1){
+            if(length(ENV$curselectCases)==1||length(ENV$curselectGenProfs)==1){
                 msgNoOneStudy = "Select more than one Case/Genetic Profile or use single Case function"
                 tkmessageBox(message=msgNoOneStudy, icon="warning")
                 stop(msgNoOneStudy)
                 
             }
             
-            Lchecked_Studies <- myGlobalEnv$lchecked_Studies_forCases
-            Lchecked_Cases <- length(myGlobalEnv$curselectCases)
-            Lchecked_GenProf <- length(myGlobalEnv$curselectGenProfs)
+            Lchecked_Studies <- ENV$lchecked_Studies_forCases
+            Lchecked_Cases <- length(ENV$curselectCases)
+            Lchecked_GenProf <- length(ENV$curselectGenProfs)
             ###Starting function of dialoGenesTree
             d <- 0
             ProfDataAll<-0
             ProfData<-0
             LengthGenProfs<-0
             LengthCases<-0
-            for (i in 1:length(myGlobalEnv$CaseChoice)){
-                Si <- myGlobalEnv$checked_StudyIndex[i]
-                progressBar_ProfilesData <- tkProgressBar(title = myGlobalEnv$Studies[Si], min = 0,
+            for (i in 1:length(ENV$CaseChoice)){
+                Si <- ENV$checked_StudyIndex[i]
+                progressBar_ProfilesData <- tkProgressBar(title = ENV$Studies[Si], min = 0,
                                                           max = Lchecked_GenProf, width = 400)
                 
-                if(exists('ttGeneTree', envir = myGlobalEnv)){
-                    tkdestroy(myGlobalEnv$ttGeneTree)
+                if(exists('ttGeneTree', envir = ENV)){
+                    tkdestroy(ENV$ttGeneTree)
                     
                 }
                 
                 
                 LastLengthGenProfs <- LengthGenProfs
-                LengthGenProfs <- LengthGenProfs + myGlobalEnv$LGenProfs[i]+1
+                LengthGenProfs <- LengthGenProfs + ENV$LGenProfs[i]+1
                 LastLengthCases <- LengthCases
-                LengthCases <- LengthCases + myGlobalEnv$LCases[i]+1
+                LengthCases <- LengthCases + ENV$LCases[i]+1
                 
                 Sys.sleep(0.1)
                 setTkProgressBar(progressBar_ProfilesData, i, label=paste( round(i/Lchecked_GenProf*100, 0),
@@ -55,7 +55,7 @@ getGenesTree_MultipleCases <- function(entryWidth = 10){
                 ##########
                 ttGeneTree <- tktoplevel()
                 #tkwm.geometry(ttGeneTree,"180x250")
-                tktitle(ttGeneTree) <- paste(myGlobalEnv$Studies[Si],": Classify genes by variable")
+                tktitle(ttGeneTree) <- paste(ENV$Studies[Si],": Classify genes by variable")
                 
                 ##Image Horizontal scale option
                 textEntryHscale <- tclVar("2")
@@ -99,8 +99,8 @@ getGenesTree_MultipleCases <- function(entryWidth = 10){
                 
                 
                 #getClinicData_SingleCase()
-                Case<-myGlobalEnv$CasesRefStudies[myGlobalEnv$curselectCases[i]]
-                ClinicalData<-getClinicalData(myGlobalEnv$cgds,Case)
+                Case<-ENV$CasesRefStudies[ENV$curselectCases[i]]
+                ClinicalData<-getClinicalData(ENV$cgds,Case)
                 
                 
                 loadVariable <- function()
@@ -108,9 +108,9 @@ getGenesTree_MultipleCases <- function(entryWidth = 10){
                     curselectVariable <- as.numeric(tkcurselection(tl1))+1
                     lcurselectVariable <- length(curselectVariable)
                     
-                    myGlobalEnv$variable <-  names(ClinicalData)[curselectVariable]
+                    ENV$variable <-  names(ClinicalData)[curselectVariable]
                     tkdelete(tl1info,0,1)
-                    tkinsert(tl1info,"end",myGlobalEnv$variable)
+                    tkinsert(tl1info,"end",ENV$variable)
                     
                 }
                 
@@ -125,13 +125,13 @@ getGenesTree_MultipleCases <- function(entryWidth = 10){
                 tkgrid(xscr1Info)
                 tkgrid.configure(xscr1Info,rowspan=4, column=1,sticky="we")
                 
-                print(paste("testing which Genenic Profile: ", myGlobalEnv$curselectGenProfs[i],"<=", LengthGenProfs))
-                print(paste("testing last Genenic Profile: ",myGlobalEnv$curselectGenProfs[i],">",LastLengthGenProfs))
-                if (myGlobalEnv$curselectGenProfs[i] <= LengthGenProfs && myGlobalEnv$curselectGenProfs[i]>LastLengthGenProfs){    
+                print(paste("testing which Genenic Profile: ", ENV$curselectGenProfs[i],"<=", LengthGenProfs))
+                print(paste("testing last Genenic Profile: ",ENV$curselectGenProfs[i],">",LastLengthGenProfs))
+                if (ENV$curselectGenProfs[i] <= LengthGenProfs && ENV$curselectGenProfs[i]>LastLengthGenProfs){    
                     
-                    GenProf<-myGlobalEnv$GenProfsRefStudies[myGlobalEnv$curselectGenProfs[i]]
+                    GenProf<-ENV$GenProfsRefStudies[ENV$curselectGenProfs[i]]
                     
-                    ProfData<-getProfileData(myGlobalEnv$cgds,myGlobalEnv$GeneList, GenProf,Case)
+                    ProfData<-getProfileData(ENV$cgds,ENV$GeneList, GenProf,Case)
                     
                     ##Convert data frame to numeric structure
 #                     print("converting data frame of Profile data to numeric stucture...")
@@ -181,16 +181,16 @@ getGenesTree_MultipleCases <- function(entryWidth = 10){
                     
                     d<-d+1
                     onOK <- function(){
-                        if(exists("variable", envir = myGlobalEnv)){
+                        if(exists("variable", envir = ENV)){
                             print(paste("d",d))
                             HorScale <- as.numeric(tclvalue(textEntryHscale))
                             VerScale <- as.numeric(tclvalue(textEntryVscale))
-                            myGlobalEnv$ProfData <- cbind(ClinicalData[,myGlobalEnv$variable], ProfData[,-1])
+                            ENV$ProfData <- cbind(ClinicalData[,ENV$variable], ProfData[,-1])
                             
-                            colnames(myGlobalEnv$ProfData)[1] <- myGlobalEnv$variable
-                            frmla <- paste0(myGlobalEnv$variable, "~.", sep="")
-                            myGlobalEnv$frmla <- as.formula(frmla)
-                            print(myGlobalEnv$frmla)
+                            colnames(ENV$ProfData)[1] <- ENV$variable
+                            frmla <- paste0(ENV$variable, "~.", sep="")
+                            ENV$frmla <- as.formula(frmla)
+                            print(ENV$frmla)
                             
                             
                             ##selected mathod
@@ -200,15 +200,15 @@ getGenesTree_MultipleCases <- function(entryWidth = 10){
                             plotCommand<- function(){
                                 
                                 
-                                fit <- rpart::rpart(myGlobalEnv$frmla, method=selectedMethod, data=myGlobalEnv$ProfData)
-                                plot(fit, uniform=TRUE, compress=TRUE,main= paste(myGlobalEnv$StudyChoice[d],"\n ",myGlobalEnv$GenProfChoice[d],"vs",myGlobalEnv$variable ))
+                                fit <- rpart::rpart(ENV$frmla, method=selectedMethod, data=ENV$ProfData)
+                                plot(fit, uniform=TRUE, compress=TRUE,main= paste(ENV$StudyChoice[d],"\n ",ENV$GenProfChoice[d],"vs",ENV$variable ))
                                 text(fit, use.n=TRUE, all=TRUE, cex=0.6, fancy=FALSE)
                                 ##capture print(fit) for editing
                                 summary <- capture.output(print(fit))
                                 ## Edit summary fit
                                 getTextWin(paste(summary,collapse="\n"))
                             }
-                            plotModel(plotCommand, title=paste(myGlobalEnv$checked_Studies[d],":",myGlobalEnv$CaseChoice[d],"vs" ,myGlobalEnv$variable, sep=""), vscale=VerScale, hscale=HorScale)
+                            plotModel(plotCommand, title=paste(ENV$checked_Studies[d],":",ENV$CaseChoice[d],"vs" ,ENV$variable, sep=""), vscale=VerScale, hscale=HorScale)
                             tkdestroy(ttGeneTree)
                         }else{
                             msgNoFrmla <- "Select one variable"

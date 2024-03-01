@@ -12,13 +12,13 @@
 #' }
 dialogSpecificMut <- function(MutData, c) {
     
-    Word <- dialogMut(myGlobalEnv$StudyRefCase[c], "AA change", "G438C|G...C|G.*.")
+    Word <- dialogMut(ENV$StudyRefCase[c], "AA change", "G438C|G...C|G.*.")
     if (Word == "ID_CANCEL") return()
     
     
     MutIndex <- grep(Word, MutData$amino_acid_change)
     if(length(MutIndex)==0){
-        msgNoMut=paste ("No Mutation found with genes list for",myGlobalEnv$StudyChoice[c])
+        msgNoMut=paste ("No Mutation found with genes list for", ENV$StudyChoice[c])
         tkmessageBox(message=msgNoMut, icon="info")
         
     } else { 
@@ -27,7 +27,8 @@ dialogSpecificMut <- function(MutData, c) {
         MutList<-cbind(MutData$gene_symbol[MutIndex],MutData$amino_acid_change[MutIndex])
         colnames(MutList) <- c("Gene", "Mutation")
         
-        title=paste(myGlobalEnv$StudyRefCase[c],myGlobalEnv$CasesStudies[myGlobalEnv$curselectCases[c]+1], myGlobalEnv$GenProfsStudies[myGlobalEnv$curselectGenProfs[c]+1], sep=": ")
+        title=paste(ENV$StudyRefCase[c],ENV$CasesStudies[ENV$curselectCases[c]+1], 
+                    ENV$GenProfsStudies[ENV$curselectGenProfs[c]+1], sep=": ")
         getInTable(MutList, title=title)
         
         

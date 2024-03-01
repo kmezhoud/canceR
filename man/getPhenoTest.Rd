@@ -15,6 +15,6 @@ Associate phenotype to Studies (cancers)
 \examples{
 readRDS(paste(path.package("canceR"),"/extdata/rdata/prad_michPhenoTest1021.rds", sep=""))
 \dontrun{
-getPhenoTest(myGlobalEnv$eSet)
+getPhenoTest(ENV$eSet)
 }
 }

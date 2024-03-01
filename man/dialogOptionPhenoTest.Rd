@@ -18,7 +18,7 @@ Checkbox to select variables from clinical data
 \examples{
 readRDS(paste(path.package("canceR"),"/extdata/rdata/prad_michPhenoTest1021.rds", sep=""))
 \dontrun{
-dialogOptionPhenoTest(myGlobalEnv$eSet)
+dialogOptionPhenoTest(ENV$eSet)
 }
 
 }

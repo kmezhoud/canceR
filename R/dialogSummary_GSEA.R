@@ -12,7 +12,7 @@
 #' #Run.GSEA()
 #' #getSummaryGSEA()
 #' }
-dialogSummary_GSEA <- function(Variable,returnValOnCancel = "ID_CANCEL") {
+dialogSummary_GSEA <- function(Variable, returnValOnCancel = "ID_CANCEL") {
     
     dlg <- tktoplevel()
     tkwm.deiconify(dlg)
@@ -35,18 +35,21 @@ dialogSummary_GSEA <- function(Variable,returnValOnCancel = "ID_CANCEL") {
     
     getSummary_location1 <- function(Variable){
         tkfocus(dlg)
-        if(exists("location1", envir = myGlobalEnv)){
+        if(exists("location1", envir = ENV)){
             tkdelete(tl1,0,1)
         } 
         
-        myGlobalEnv$location1 <- tclvalue(tkgetOpenFile(filetypes = "{{TXT Files} {.txt}} {{All files} *}", title="Select Summary Results file")) # Very simple, isn't it?
+        ENV$location1 <- tclvalue(tkgetOpenFile(filetypes = "{{TXT Files} {.txt}} {{All files} *}", 
+                                                title="Select Summary Results file"))
         
-        if(length(grep(paste(".SUMMARY.RESULTS.REPORT.", Classes[1], sep=""), myGlobalEnv$location1))==0){
-            tkmessageBox(message= paste("Select Summary Results Report of",names(table(myGlobalEnv$PhenoData[,myGlobalEnv$curselect])[1])), icon="warning")
+        if(length(grep(paste(".SUMMARY.RESULTS.REPORT.", Classes[1], sep=""), ENV$location1))==0){
+            tkmessageBox(message= paste("Select Summary Results Report of",
+                                        names(table(ENV$PhenoData[,ENV$curselect])[1])), 
+                         icon="warning")
             stop(paste("Select Summary Results Report of ",Classes[1]))
             tkfocus(dlg)
         } else
-            tkinsert(tl1,"end",myGlobalEnv$location1)
+            tkinsert(tl1,"end",ENV$location1)
         tkfocus(dlg)
     }
     
@@ -64,17 +67,18 @@ dialogSummary_GSEA <- function(Variable,returnValOnCancel = "ID_CANCEL") {
     
     getSummary_location2 <- function(){
         tkfocus(dlg)
-        if(exists("location2", envir = myGlobalEnv)){
+        if(exists("location2", envir = ENV)){
             tkdelete(tl2,0,1)
         }
-        myGlobalEnv$location2 <- tclvalue(tkgetOpenFile(filetypes = "{{TXT Files} {.txt}} {{All files} *}", title="Select Summary Results file")) # Very simple, isn't it?
+        ENV$location2 <- tclvalue(tkgetOpenFile(filetypes = "{{TXT Files} {.txt}} {{All files} *}", 
+                                                title="Select Summary Results file")) # Very simple, isn't it?
         
-        if(length(grep(paste(".SUMMARY.RESULTS.REPORT.", Classes[2], sep=""), myGlobalEnv$location2))==0){
+        if(length(grep(paste(".SUMMARY.RESULTS.REPORT.", Classes[2], sep=""), ENV$location2))==0){
             tkmessageBox(message= paste("Select Summary Results Report of",Classes[2]), icon="warning")
             stop(paste("Select Summary Results Report of ",Classes[2]))
             tkfocus(dlg)
         } else
-            tkinsert(tl2,"end",myGlobalEnv$location2)
+            tkinsert(tl2,"end",ENV$location2)
         tkfocus(dlg)
     }
     
@@ -85,7 +89,7 @@ dialogSummary_GSEA <- function(Variable,returnValOnCancel = "ID_CANCEL") {
     tkgrid(tklabellocation2,tl2,location2.but, columnspan=1)
     tkgrid.configure(tklabellocation2,rowspan=20, columnspan=1,sticky="nsw")
     
-    ###############
+
     entryWidth = 20
     entryInit <- "0.25"
     
@@ -98,14 +102,14 @@ dialogSummary_GSEA <- function(Variable,returnValOnCancel = "ID_CANCEL") {
     ReturnVal <- returnValOnCancel
     
     onOK <- function() {
-        myGlobalEnv$ReturnVal <- tclvalue(textEntryVarTcl)
+        ENV$ReturnVal <- tclvalue(textEntryVarTcl)
         tkgrab.release(dlg)
         
         tkdestroy(dlg)
         
     }
     onCancel <- function() {
-        myGlobalEn$vReturnVal <- returnValOnCancel
+        ENV$vReturnVal <- returnValOnCancel
         tkgrab.release(dlg)
         tkdestroy(dlg)
         
@@ -117,6 +121,6 @@ dialogSummary_GSEA <- function(Variable,returnValOnCancel = "ID_CANCEL") {
     
     tkwait.window(dlg)
     
-    return(myGlobalEnv$ReturnVal)
+    return(ENV$ReturnVal)
     
 }

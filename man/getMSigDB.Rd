@@ -21,7 +21,7 @@ Reduce MSigDB size for only gene list
  d <- 7
 \dontrun{
 setWorkspace()
-getMSigDB(eSet = myGlobalEnv$eSetClassifier,k = 1)
+getMSigDB(eSet = ENV$eSetClassifier,k = 1)
 }
 
 }

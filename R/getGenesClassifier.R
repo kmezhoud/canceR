@@ -24,7 +24,7 @@
 getGenesClassifier <- function(){
     
     ## function to remove existant object
-    ifrm <- function(obj, env = myGlobalEnv()) {
+    ifrm <- function(obj, env = ENV()) {
         obj <- deparse(substitute(obj))
         if(exists(obj, envir = env)) {
             rm(list = obj, envir = env)
@@ -43,13 +43,13 @@ getGenesClassifier <- function(){
     }
             testCheckedCaseGenProf()
         
-        Lchecked_Studies <- myGlobalEnv$lchecked_Studies_forCases
-        Lchecked_Cases <- length(myGlobalEnv$curselectCases)
-        Lchecked_GenProf <- length(myGlobalEnv$curselectGenProfs)
+        Lchecked_Studies <- ENV$lchecked_Studies_forCases
+        Lchecked_Cases <- length(ENV$curselectCases)
+        Lchecked_GenProf <- length(ENV$curselectGenProfs)
         
         #dialog function to select the number of samples
-        myGlobalEnv$ReturnDialogGeneClasses<- dialogGeneClassifier(Lchecked_Cases)
-        if(myGlobalEnv$ReturnDialogGeneClasses[1] == "ID_CANCEL"){
+        ENV$ReturnDialogGeneClasses<- dialogGeneClassifier(Lchecked_Cases)
+        if(ENV$ReturnDialogGeneClasses[1] == "ID_CANCEL"){
             stop()
         } else{
             
@@ -61,15 +61,15 @@ getGenesClassifier <- function(){
             LengthGenProfs<-0
             LengthCases<-0
             for (i in 1:Lchecked_Studies){
-                Si <- myGlobalEnv$checked_StudyIndex[i]
-                progressBar_ProfilesData <- tkProgressBar(title = myGlobalEnv$Studies[Si], min = 0,
+                Si <- ENV$checked_StudyIndex[i]
+                progressBar_ProfilesData <- tkProgressBar(title = ENV$Studies[Si], min = 0,
                                                           max = Lchecked_GenProf, width = 400)
                 
                 #tkfocus(progressBar_ProfilesData)
                 LastLengthGenProfs <- LengthGenProfs
-                LengthGenProfs <- LengthGenProfs + myGlobalEnv$LGenProfs[i]+1
+                LengthGenProfs <- LengthGenProfs + ENV$LGenProfs[i]+1
                 LastLengthCases <- LengthCases
-                LengthCases <- LengthCases + myGlobalEnv$LCases[i]+1
+                LengthCases <- LengthCases + ENV$LCases[i]+1
                 
                 for (k in 1:Lchecked_Cases){
                     
@@ -77,13 +77,13 @@ getGenesClassifier <- function(){
                     setTkProgressBar(progressBar_ProfilesData, k, label=paste( round(k/Lchecked_GenProf*100, 0),
                                                                                "% of Expression Set"))
                     
-                    if (myGlobalEnv$curselectGenProfs[k] <= LengthGenProfs && myGlobalEnv$curselectGenProfs[k]>LastLengthGenProfs){    
+                    if (ENV$curselectGenProfs[k] <= LengthGenProfs && ENV$curselectGenProfs[k]>LastLengthGenProfs){    
                         
-                        GenProf<- myGlobalEnv$GenProfsRefStudies[myGlobalEnv$curselectGenProfs[k]]
+                        GenProf<- ENV$GenProfsRefStudies[ENV$curselectGenProfs[k]]
                         
-                        Case<- myGlobalEnv$CasesRefStudies[myGlobalEnv$curselectCases[k]]
+                        Case<- ENV$CasesRefStudies[ENV$curselectCases[k]]
                         
-                        ProfData<- getProfileData(myGlobalEnv$cgds,myGlobalEnv$GeneList, GenProf,Case)
+                        ProfData<- getProfileData(ENV$cgds,ENV$GeneList, GenProf,Case)
                         
                         ProfData <- t(ProfData)
                         
@@ -104,24 +104,24 @@ getGenesClassifier <- function(){
                         
                         
                                             
-                        title <- paste(myGlobalEnv$StudyRefGenProf[k],":",myGlobalEnv$GenProfChoice[k])
+                        title <- paste(ENV$StudyRefGenProf[k],":",ENV$GenProfChoice[k])
                         
-                        if(ncol(ProfData)<myGlobalEnv$ReturnDialogGeneClasses[1]){
-                            msgBigSampl <- paste(myGlobalEnv$StudyRefCase[k], "has only", ncol(ProfData),"samples.","\nSelect at Max: ",ncol(ProfData), "samples")
+                        if(ncol(ProfData)<ENV$ReturnDialogGeneClasses[1]){
+                            msgBigSampl <- paste(ENV$StudyRefCase[k], "has only", ncol(ProfData),"samples.","\nSelect at Max: ",ncol(ProfData), "samples")
                             tkmessageBox(message=msgBigSampl, icon="info")
                             close(progressBar_ProfilesData)
                             stop(msgBigSampl)
                         }
                         set.seed(1234)
-                        SamplingProfData <- t(apply(ProfData, 1,function(x)sample(x[!is.na(x)],myGlobalEnv$ReturnDialogGeneClasses[1])))
+                        SamplingProfData <- t(apply(ProfData, 1,function(x)sample(x[!is.na(x)],ENV$ReturnDialogGeneClasses[1])))
                         
-                        SamplingColnamesProfData <- sample(colnames(ProfData), myGlobalEnv$ReturnDialogGeneClasses[1])
+                        SamplingColnamesProfData <- sample(colnames(ProfData), ENV$ReturnDialogGeneClasses[1])
                         
                         colnames(SamplingProfData) <- SamplingColnamesProfData
                         SamplingProfsData <- cbind.na(SamplingProfsData,SamplingProfData)
-                        print(paste("Sampling from ",myGlobalEnv$StudyRefCase[k]))
+                        print(paste("Sampling from ",ENV$StudyRefCase[k]))
                         ##Extracting Disease Type
-                        DiseaseType<- as.matrix(rep(myGlobalEnv$StudyRefGenProf[k],times=myGlobalEnv$ReturnDialogGeneClasses[1]))
+                        DiseaseType<- as.matrix(rep(ENV$StudyRefGenProf[k],times=ENV$ReturnDialogGeneClasses[1]))
                         DiseasesType <- c(DiseasesType, DiseaseType)  
                         
                        } 
@@ -168,9 +168,9 @@ getGenesClassifier <- function(){
                 Biobase::exprs(eSetClassifier) <- Biobase::exprs(eSetClassifier)+(abs(min(Biobase::exprs(eSetClassifier), na.rm=TRUE)))
             }
             
-            myGlobalEnv$eSetClassifier <- eSetClassifier
+            ENV$eSetClassifier <- eSetClassifier
             
-            if (inherits(try(signGenesRank_DiseaseType<- geNetClassifier::calculateGenesRanking(myGlobalEnv$eSetClassifier[,1:(myGlobalEnv$ReturnDialogGeneClasses[1]*Lchecked_Cases)], sampleLabels="DiseasesType", lpThreshold=myGlobalEnv$ReturnDialogGeneClasses[2], returnRanking="significant", plotLp = FALSE), silent=TRUE),"try-error"))
+            if (inherits(try(signGenesRank_DiseaseType<- geNetClassifier::calculateGenesRanking(ENV$eSetClassifier[,1:(ENV$ReturnDialogGeneClasses[1]*Lchecked_Cases)], sampleLabels="DiseasesType", lpThreshold=ENV$ReturnDialogGeneClasses[2], returnRanking="significant", plotLp = FALSE), silent=TRUE),"try-error"))
             {
                 msgNoSignificantDiff <- paste("The current genes don't differentiate the classes..")
                 tkmessageBox(message=msgNoSignificantDiff , icon="warning")
@@ -178,11 +178,11 @@ getGenesClassifier <- function(){
                 stop(msgNoSignificantDiff )
             } else{ 
                 
-                signGenesRank_DiseaseType<- geNetClassifier::calculateGenesRanking(myGlobalEnv$eSetClassifier[,1:(myGlobalEnv$ReturnDialogGeneClasses[1]*Lchecked_Cases)], sampleLabels="DiseasesType", lpThreshold=myGlobalEnv$ReturnDialogGeneClasses[2], returnRanking="significant", plotLp = FALSE)
+                signGenesRank_DiseaseType<- geNetClassifier::calculateGenesRanking(ENV$eSetClassifier[,1:(ENV$ReturnDialogGeneClasses[1]*Lchecked_Cases)], sampleLabels="DiseasesType", lpThreshold=ENV$ReturnDialogGeneClasses[2], returnRanking="significant", plotLp = FALSE)
             }
             
             plotCommand<- function(){
-                signGenesRank_DiseaseType<- geNetClassifier::calculateGenesRanking(myGlobalEnv$eSetClassifier[,1:(myGlobalEnv$ReturnDialogGeneClasses[1]*Lchecked_Cases)], sampleLabels="DiseasesType", lpThreshold=myGlobalEnv$ReturnDialogGeneClasses[2], returnRanking="significant", plotLp = TRUE)
+                signGenesRank_DiseaseType<- geNetClassifier::calculateGenesRanking(ENV$eSetClassifier[,1:(ENV$ReturnDialogGeneClasses[1]*Lchecked_Cases)], sampleLabels="DiseasesType", lpThreshold=ENV$ReturnDialogGeneClasses[2], returnRanking="significant", plotLp = TRUE)
                 
                 
             }
@@ -191,10 +191,10 @@ getGenesClassifier <- function(){
             print("plotting model...")
             
             
-            myGlobalEnv$GenesDetails <- geNetClassifier::genesDetails(signGenesRank_DiseaseType)
+            ENV$GenesDetails <- geNetClassifier::genesDetails(signGenesRank_DiseaseType)
             print("getting Genes Details...")
             
-            GenesDetailsTab <- do.call(rbind.data.frame, myGlobalEnv$GenesDetails)
+            GenesDetailsTab <- do.call(rbind.data.frame, ENV$GenesDetails)
             GenesDetailsTab <- t(t(as.data.frame.matrix(GenesDetailsTab)))
             
             
@@ -204,8 +204,8 @@ getGenesClassifier <- function(){
             
             Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)
             
-            name1 <- paste(myGlobalEnv$StudyRefCase, collapse='_', sep="_")
-            name2 <- basename(gsub(".txt","",myGlobalEnv$GeneListfile))
+            name1 <- paste(ENV$StudyRefCase, collapse='_', sep="_")
+            name2 <- basename(gsub(".txt","",ENV$GeneListfile))
             name3 <- paste(name2,"_" ,name1,".txt",sep="")
             path  <- paste("./Results/Classifier/", name3, sep="")
             write.table(GenesDetailsTab,file=path, col.names=TRUE, quote=FALSE, row.names=TRUE, sep="\t")
@@ -217,6 +217,6 @@ getGenesClassifier <- function(){
         }
     
     
-    ifrm(GenesDetails, myGlobalEnv)
+    ifrm(GenesDetails, ENV)
     
 }

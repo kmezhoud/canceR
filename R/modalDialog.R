@@ -11,10 +11,10 @@
 #' @examples 
 #' readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 #' ## Select Case from Breast Cancer
-#' myGlobalEnv <- new.env(parent = emptyenv())
-#' myGlobalEnv$curselectCases <- 9
+#' ENV <- new.env(parent = emptyenv())
+#' ENV$curselectCases <- 9
 #' ##Select Genetic Profile from Breast Cancer
-#' myGlobalEnv$curselectGenProfs <- 4
+#' ENV$curselectGenProfs <- 4
 #' ## get Specific Mutation data for 73 Genes list
 #' \dontrun{
 #' getProfilesDataSingleGene()
@@ -36,13 +36,13 @@ modalDialog <- function(title, question, entryInit, entryWidth = 40,
     ReturnVal <- returnValOnCancel
     
     onOK <- function() {
-        myGlobalEnv$ReturnVal <- tclvalue(textEntryVarTcl)
+        ENV$ReturnVal <- tclvalue(textEntryVarTcl)
         tkgrab.release(dlg)
         tkdestroy(dlg)
         #tkfocus(ttMain)
     }
     onCancel <- function() {
-        myGlobalEnv$ReturnVal <- returnValOnCancel
+        ENV$ReturnVal <- returnValOnCancel
         tkgrab.release(dlg)
         tkdestroy(dlg)
         #tkfocus(ttMain)
@@ -53,9 +53,9 @@ modalDialog <- function(title, question, entryInit, entryWidth = 40,
     tkgrid(tklabel(dlg, text = "    "))
     
     tkfocus(dlg)
-    tkbind(dlg, "<Destroy>", function() {tkgrab.release(dlg); tkfocus(myGlobalEnv$ttMain)})
+    tkbind(dlg, "<Destroy>", function() {tkgrab.release(dlg); tkfocus(ENV$ttMain)})
     tkbind(textEntryWidget, "<Return>", onOK)
     tkwait.window(dlg)
     
-    return(myGlobalEnv$ReturnVal)
+    return(ENV$ReturnVal)
 }

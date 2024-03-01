@@ -1,69 +1,69 @@
 #' Get Genetic Profile from selected Studies
 #' @usage getGenProfs()
 #' @return dataframe with genetic profil
-#' @export
 #' @examples
 #' 
+#' cgds <- cBioPortal(
+#' hostname = "www.cbioportal.org",
+#' protocol = "https",
+#' api = "/api/v2/api-docs"
+#' )
 #' \dontrun{
-#' cgds<-CGDS("http://www.cbioportal.org/")
-#' # Get list of cancer studies at server
-#' Studies <- getCancerStudies(cgds)[,2]
-#' # Get available case lists (collection of samples) for a given cancer study
-#' mycancerstudy <- getCancerStudies(cgds)[2,1]
-#' mycaselist <- getCaseLists(cgds,mycancerstudy)[1,1]
-#' # Get available genetic profiles
-#' mygeneticprofile <- getGeneticProfiles(cgds,mycancerstudy)[4,1]
-#' 
-#' getGenProfs()
-#' }
+#' getDataByGenes( api =  cgds,
+#' studyId = "gbm_tcga_pub",
+#' genes = c("NF1", "TP53", "ABL1"),
+#' by = "hugoGeneSymbol",
+#' molecularProfileIds = "gbm_tcga_pub_mrna"
+#' )
+#'}
+#' @export
 getGenProfs <- function(){
     
     #get Study Index
-    StudiesRef <- getCancerStudies(myGlobalEnv$cgds)[,1]
+    #StudiesRef <- ENV$Studies |> pull("studyId")
 
     ## and we need the cases list of every study
-    myGlobalEnv$checked_Studies_forGenProf <- myGlobalEnv$checked_Studies
-    myGlobalEnv$lchecked_Studies_forGenProf <- length(myGlobalEnv$checked_Studies_forGenProf)
+    #ENV$checked_Studies_forGenProf <- ENV$checked_Studies
+    #ENV$lchecked_Studies_forGenProf <- length(ENV$checked_Studies_forGenProf)
 
    police <- tkfont.create(family="arial", size=11)
-   tkconfigure(myGlobalEnv$tl, foreground="black", font=police)
+   tkconfigure(ENV$tl, foreground="black", font=police)
 
+    GenProfsStudies <- 0
+    GenProfsRefStudies <- NULL
+    for (i in seq(length(ENV$checked_StudyIndex))){
 
-    GenProfsStudies = 0
-    GenProfsRefStudies = 0
-    LGenProfs= 0
-    for (i in 1:(myGlobalEnv$lchecked_Studies_forGenProf)){
+        Si = ENV$checked_StudyIndex[i]
 
-        Si = myGlobalEnv$checked_StudyIndex[i]
+        tkinsert(ENV$tl,"end", paste("***** Study ", Si ," : ", ENV$Studies$name[Si],"******"))
+        
+        ENV$GenProfs[[i]] <- cBioPortalData::molecularProfiles(ENV$cgds, ENV$checked_Studies_id[i])
+        
+        ENV$n_GenProfs[i] <- nrow(ENV$GenProfs[[i]])
 
-        tkinsert(myGlobalEnv$tl,"end",paste("***** Study ", Si ," : ", myGlobalEnv$Studies[Si],"******"))
-
-        LGenProfs[i]<- length(getGeneticProfiles.CGDS(myGlobalEnv$cgds, StudiesRef[Si])[,1])
-
-        myGlobalEnv$LGenProfs[i] <- LGenProfs[i]
-        print(paste("There are",myGlobalEnv$LGenProfs[i],"Genetics Profiles in", myGlobalEnv$Studies[Si],sep=" "))
+        print(paste0("There are ", ENV$n_GenProfs[i], " Genetics Profiles in ", ENV$checked_Studies_id[i]))
 
         # create progress bar
-        progressBar_GenProfs <- tkProgressBar(title = myGlobalEnv$Studies[Si], min = 0,
-                                              max = LGenProfs[i], width = 400)
-
-
-        GenProfRefStudy =0
-        GenProfsStudy = 0
-        GenProfsRefStudy =0
+        progressBar_GenProfs <- tkProgressBar(title = ENV$Studies$name[Si], min = 0,
+                                              max = ENV$n_GenProfs[i], width = 400)
         j=0
-        for (j in 1:LGenProfs[i]){
+        GenProfsStudy <- 0
+        GenProfRefStudy <- NULL
+        GenProfsRefStudy <- NULL
+        for(j in seq(ENV$n_GenProfs[i])){
 
             Sys.sleep(0.1)
             setTkProgressBar(progressBar_GenProfs, j,
-                             label=paste( round(j/LGenProfs[i]*100, 0),"% of Genetic Profiles"))
+                             label=paste(round(j/ENV$n_GenProfs[i]*100, 0),
+                                          "% of Genetic Profiles"))
 
+            GenProfStudy <- ENV$GenProfs[[i]][["description"]][j]
+            #GenProfStudy <- getGeneticProfiles.CGDS(ENV$cgds, ENV$checked_Studies_forGenProf[i])[,2][j]
+            GenProfRefStudy <- ENV$GenProfs[[i]][["molecularProfileId"]][j]
+            #GenProfRefStudy <- getGeneticProfiles.CGDS(ENV$cgds, ENV$checked_Studies_forGenProf[i])[,1][j]
 
-
-            GenProfStudy <- getGeneticProfiles.CGDS(myGlobalEnv$cgds, myGlobalEnv$checked_Studies_forGenProf[i])[,2][j]
-            GenProfRefStudy <- getGeneticProfiles.CGDS(myGlobalEnv$cgds, myGlobalEnv$checked_Studies_forGenProf[i])[,1][j]
-
-            tkinsert(myGlobalEnv$tl,"end",paste(j,":",GenProfStudy))
+            tkinsert(ENV$tl,"end", paste(j,":", GenProfStudy))
+            
             GenProfsStudy <- cbind(GenProfsStudy, GenProfStudy)
             GenProfsRefStudy <- cbind(GenProfsRefStudy, GenProfRefStudy)
         }
@@ -72,11 +72,6 @@ getGenProfs <- function(){
         GenProfsStudies <- cbind(GenProfsStudies, GenProfsStudy)
         GenProfsRefStudies <- cbind(GenProfsRefStudies, GenProfsRefStudy)
     }
-
-
-    GenProfsRefStudies <- GenProfsRefStudies[-1]
-    myGlobalEnv$GenProfsRefStudies <- GenProfsRefStudies
-    myGlobalEnv$GenProfsStudies <-GenProfsStudies
-
-
+    ENV$GenProfsRefStudies <- GenProfsRefStudies
+    ENV$GenProfsStudies <- GenProfsStudies
 }

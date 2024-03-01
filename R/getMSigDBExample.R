@@ -9,15 +9,15 @@
 #'  }
 getMSigDBExample <- function(){
     
-    ifrm <- function(obj, env = myGlobalEnv()) {
+    ifrm <- function(obj, env) {
         obj <- deparse(substitute(obj))
         if(exists(obj, envir = env)) {
             rm(list = obj, envir = env)
         }
     }
-    ifrm(MSigDB, myGlobalEnv)
-    ifrm(MSigDBFile,myGlobalEnv)
-    ifrm(fname.MSigDB,myGlobalEnv)
+    ifrm(MSigDB, ENV)
+    ifrm(MSigDBFile,ENV)
+    ifrm(fname.MSigDB,ENV)
     
     
     police <- tkfont.create(family="arial", size=10)
@@ -46,7 +46,7 @@ getMSigDBExample <- function(){
         lcurselectMSigDB <- length(curselectMSigDB)
         
         fname.MSigDB <-  list.files(paste(path.package("canceR"),"/extdata/MSigDB", sep=""))[curselectMSigDB]
-        myGlobalEnv$fname.GMT <- paste(path.package("canceR"),"/extdata/MSigDB/", fname.MSigDB,sep="")
+        ENV$fname.GMT <- paste(path.package("canceR"),"/extdata/MSigDB/", fname.MSigDB,sep="")
         
         if (lcurselectMSigDB ==0){
             msgSelectMSigDB<-"Select MSigBD"
@@ -54,8 +54,8 @@ getMSigDBExample <- function(){
         } else {
             tkdelete(tl1info,0,1)
             tkinsert(tl1info,"end",fname.MSigDB)
-            tkinsert(myGlobalEnv$tlGMT,"end",myGlobalEnv$fname.GMT)
-            tkfocus(myGlobalEnv$ttDialogGSEA)
+            tkinsert(ENV$tlGMT,"end",ENV$fname.GMT)
+            tkfocus(ENV$ttDialogGSEA)
             tkdestroy(ttMSigDB)
         }
         

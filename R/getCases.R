@@ -6,94 +6,85 @@
 #' 
 #' @examples
 #' 
+#' cgds <- cBioPortal(
+#' hostname = "www.cbioportal.org",
+#' protocol = "https",
+#' api = "/api/v2/api-docs"
+#' )
 #' \dontrun{
-#'  # Create CGDS object
-#'  cgds<-CGDS("http://www.cbioportal.org/")
-#'  # Get list of cancer studies at server
-#'  Studies <- getCancerStudies(cgds)[,2]
-#'  # Get available case lists (collection of samples) for a given cancer study
-#'  mycancerstudy <- getCancerStudies(cgds)[2,1]
-#'  mycaselist <- getCaseLists(cgds,mycancerstudy)[1,1]
-#' 
-#'   ##getCases()
-#'   }
+#' getDataByGenes( api =  cgds,
+#' studyId = "gbm_tcga_pub",
+#' genes = c("NF1", "TP53", "ABL1"),
+#' by = "hugoGeneSymbol",
+#' molecularProfileIds = "gbm_tcga_pub_mrna"
+#' )
+#'}
 #'   
 getCases <- function(){
-    
-    
-    
+
     #get Study Index 
-    StudiesRef <- getCancerStudies.CGDS(myGlobalEnv$cgds)[,1]
+    #StudiesRef <- ENV$Studies |> pull("studyId")
     #checked_StudyIndex
-    checked_StudyIndex_forCases <- myGlobalEnv$checked_StudyIndex
-    myGlobalEnv$checked_StudyIndex_forCases <- checked_StudyIndex_forCases
+    #ENV$checked_StudyIndex_forCases <- ENV$checked_StudyIndex
     
     ## and we need the cases list of every study
-    checked_Studies_forCases <- myGlobalEnv$checked_Studies
-    myGlobalEnv$checked_Studies_forCases <- checked_Studies_forCases
-    lchecked_Studies_forCases <- length(checked_Studies_forCases)
-    myGlobalEnv$lchecked_Studies_forCases <- lchecked_Studies_forCases
+    #checked_Studies_forCases <- ENV$checked_Studies_id
+    #ENV$checked_Studies_forCases <- checked_Studies_forCases
+    #lchecked_Studies_forCases <- length(checked_Studies_forCases)
+    #ENV$lchecked_Studies_forCases <- lchecked_Studies_forCases
     
     
     police <- tkfont.create(family="arial", size=11)
-    tkconfigure(myGlobalEnv$tc, foreground="black", font=police)
+    tkconfigure(ENV$tc, foreground="black", font=police)
     
-    
-    
-    CasesStudies = 0
-    CasesRefStudies=0
-    LCases=0
-    CasesRefStudy=0
-    
-    
-    
-    for (i in 1:myGlobalEnv$lchecked_Studies_forCases){
+    CasesStudies <- 0
+    CasesRefStudies <- NULL
+    #ENV$Cases <- NULL
+    for (i in seq(length(ENV$checked_StudyIndex))){
         
+        Si <- ENV$checked_StudyIndex[i]
         
+        tkinsert(ENV$tc,"end", paste("***** Study ", Si ," : ", ENV$Studies$name[Si], "*****"))
         
-        Si <- myGlobalEnv$checked_StudyIndex[i]
+        ENV$Cases[[i]] <- cBioPortalData::sampleLists(ENV$cgds, ENV$checked_Studies_id[i])
         
+        ENV$n_Cases[i] <- nrow(ENV$Cases[[i]])
         
-        tkinsert(myGlobalEnv$tc,"end",paste("***** Study ", Si ," : ", myGlobalEnv$Studies[Si], "*****"))
-        
-        LCases[i] <- length(getCaseLists(myGlobalEnv$cgds, StudiesRef[Si])[,1])
-        
-        myGlobalEnv$LCases[i] <- LCases[i]
-        print(paste("There are", myGlobalEnv$LCases[i], "Cases in",myGlobalEnv$Studies[Si] ,sep=" "))
+        print(paste("There are", ENV$n_Cases[i], "Cases in", ENV$checked_Studies_id[i], sep=" "))
         
         # create progress bar
-        progressBar_Cases <- tkProgressBar(title = myGlobalEnv$Studies[Si], min = 0,
-                                           max = LCases[i], width = 400)
+        progressBar_Cases <- tkProgressBar(title = ENV$Studies$name[Si], min = 0,
+                                           max = ENV$n_Cases[i], width = 400)
         
-        j=0
-        CasesStudy = 0
-        CaseRefStudy =0
-        CasesRefStudy = 0
-        for (j in 1:LCases[i]){
+        j <- 0
+        CasesStudy <- 0
+        CaseRefStudy <- NULL
+        CasesRefStudy <-  NULL
+        for (j in seq(ENV$n_Cases[i])){
             Sys.sleep(0.1)
-            setTkProgressBar(progressBar_Cases, j, label=paste( round(j/LCases[i]*100, 0),
+            setTkProgressBar(progressBar_Cases, j, 
+                             label=paste(round(j/ENV$n_Cases[i]*100, 0),
                                                                 "% of Cases"))
+            CaseStudy <- ENV$Cases[[i]][["description"]][j]
+            #print(CaseStudy)
+            #CaseStudy <- getCaseLists(ENV$cgds,checked_Studies_id[i])[,3][j]
+            CaseRefStudy <- ENV$Cases[[i]][["studyId"]][j]
+            #print(CaseRefStudy)
+            #CaseRefStudy <- getCaseLists(ENV$cgds, checked_Studies_id[i])[,1][j]
+    
+            tkinsert(ENV$tc,"end", paste(j,":", CaseStudy))
             
-            CaseStudy <- getCaseLists(myGlobalEnv$cgds,checked_Studies_forCases[i])[,3][j]
-            CaseRefStudy <- getCaseLists(myGlobalEnv$cgds, checked_Studies_forCases[i])[,1][j]
-            
-            tkinsert(myGlobalEnv$tc,"end",paste(j,":",CaseStudy))
-            
-            CasesStudy <- cbind(CasesStudy, CaseStudy)
-            CasesRefStudy <- cbind(CasesRefStudy,CaseRefStudy)
-            
+            CasesStudy <- c(CasesStudy, CaseStudy)
+            CasesRefStudy <- c(CasesRefStudy,CaseRefStudy)
         }
         ##Close ProgressBar_Cases
         close(progressBar_Cases)
-        
-        
-        CasesStudies <- cbind(CasesStudies, CasesStudy)
-        CasesRefStudies <- cbind(CasesRefStudies, CasesRefStudy)
+        CasesStudies <- c(CasesStudies, CasesStudy)
+        CasesRefStudies <- c(CasesRefStudies, CasesRefStudy)
         
     }
     
-    CasesRefStudies <- CasesRefStudies[-1]
-    myGlobalEnv$CasesRefStudies <- CasesRefStudies
-    myGlobalEnv$CasesStudies <- CasesStudies
+    ENV$CasesRefStudies <- CasesRefStudies
+    ENV$CasesStudies <- CasesStudies
     
 }

@@ -7,6 +7,11 @@ testthat::context("canceR functions")
 
 testthat::test_that("cbioportal connection",
                     {
-                        mycgds <- CGDS("http://www.cbioportal.org/")
-                        result <- test.CGDS(mycgds)
+                       # mycgds <- CGDS("http://www.cbioportal.org/api/v2/api-docs")
+                        cgds <- cBioPortalData::cBioPortal(
+                            hostname = "www.cbioportal.org",
+                            protocol = "https",
+                            api = "/api/v2/api-docs"
+                        )
+                        result <- test.CGDS(cgds)
                     })

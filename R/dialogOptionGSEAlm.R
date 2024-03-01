@@ -13,11 +13,11 @@
 #' getOptionGSEAlm()
 #' }
 dialogOptionGSEAlm <- function(k, ClinicalData){
-    Lchecked_Cases <- length(myGlobalEnv$curselectCases)
+    Lchecked_Cases <- length(ENV$curselectCases)
     ttClinData_cb <- tktoplevel()
     #tkwm.geometry(ttClinData_cb,"180x250")
 
-    tktitle(ttClinData_cb) <- paste(myGlobalEnv$StudyRefCase[k],myGlobalEnv$CasesStudies[myGlobalEnv$curselectCases[k]+1], sep=" ")
+    tktitle(ttClinData_cb) <- paste(ENV$StudyRefCase[k],ENV$CasesStudies[ENV$curselectCases[k]+1], sep=" ")
 
     permutEntry <- tclVar(1000)
     rEntry  <- tclVar(.05)
@@ -78,23 +78,23 @@ dialogOptionGSEAlm <- function(k, ClinicalData){
 
         ######################
 
-        myGlobalEnv$curselect <- as.numeric(tkcurselection(ttc))+1
-        myGlobalEnv$ClinicalData <- ClinicalData[myGlobalEnv$curselect-1]
+        ENV$curselect <- as.numeric(tkcurselection(ttc))+1
+        ENV$ClinicalData <- ClinicalData[ENV$curselect-1]
 
-        namesClinicalData <- paste("0",names(ClinicalData[myGlobalEnv$curselect]), sep="+")
-        myGlobalEnv$class2 <- names(table(ClinicalData[myGlobalEnv$curselect]))[2]
-        coVariables <- names(ClinicalData[myGlobalEnv$curselect])
+        namesClinicalData <- paste("0",names(ClinicalData[ENV$curselect]), sep="+")
+        ENV$class2 <- names(table(ClinicalData[ENV$curselect]))[2]
+        coVariables <- names(ClinicalData[ENV$curselect])
         #######################
 
 
         ### Listen permutation Value
-        myGlobalEnv$permutVal <- as.numeric(tclvalue(permutEntry))
+        ENV$permutVal <- as.numeric(tclvalue(permutEntry))
 
         ##Listen pValue
-        myGlobalEnv$seuilpVal <- as.numeric(tclvalue(rEntry))
+        ENV$seuilpVal <- as.numeric(tclvalue(rEntry))
 
-        print(paste("permutation: ",myGlobalEnv$permutVal, sep=" "))
-        print (paste("p-Value: ", myGlobalEnv$seuilpVal, sep=" "))
+        print(paste("permutation: ",ENV$permutVal, sep=" "))
+        print (paste("p-Value: ", ENV$seuilpVal, sep=" "))
 
 
 #         namesClinicalData<-0
@@ -110,19 +110,19 @@ dialogOptionGSEAlm <- function(k, ClinicalData){
 #
 #                 namesClinicalData <- paste(namesClinicalData,names(ClinicalData[i]), sep="+")
 #
-#                 myGlobalEnv$class2 <- names(table(ClinicalData[i]))[2]
+#                 ENV$class2 <- names(table(ClinicalData[i]))[2]
 #             }
 #         }
 
-        myGlobalEnv$namesClinicalData <- namesClinicalData
+        ENV$namesClinicalData <- namesClinicalData
 
         ### only for Survival plot
-        myGlobalEnv$variable <- as.formula(sprintf("Surv(OS_MONTHS,OS_STATUS)~%s", coVariables))
+        ENV$variable <- as.formula(sprintf("Surv(OS_MONTHS,OS_STATUS)~%s", coVariables))
 
         #coVariables<-paste0(strsplit(namesClinicalData, '')[[1]][c(-1,-2)], collapse = '')
         coVariables <- sprintf("~%s", coVariables)
-        myGlobalEnv$coVariables <- as.formula(coVariables)
-        print(paste("coVariables:", myGlobalEnv$coVariables, sep=" ")[2])
+        ENV$coVariables <- as.formula(coVariables)
+        print(paste("coVariables:", ENV$coVariables, sep=" ")[2])
         tkdestroy(ttClinData_cb)
     }
 

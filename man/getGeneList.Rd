@@ -13,7 +13,7 @@ Gene list path of file
 User needs to specify which gene is interesting to get genomic cancer data. The gene must be with Symbol and one gene by line.
 }
 \examples{
-myGlobalEnv <- new.env(parent = emptyenv())
+ENV <- new.env(parent = emptyenv())
 \dontrun{
 getGeneList()
  }

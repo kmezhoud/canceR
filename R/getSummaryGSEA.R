@@ -22,7 +22,7 @@ getSummaryGSEA <- function(){
     
     FDR<-dialogSummary_GSEA(Variable)
     
-    tab1 <-read.table( myGlobalEnv$location1, header=TRUE, sep="\t")
+    tab1 <-read.table( ENV$location1, header=TRUE, sep="\t")
     
     cnames<- colnames(tab1)
     ##select only signicant pVal 0.01
@@ -31,7 +31,7 @@ getSummaryGSEA <- function(){
     tab1 <- tab1[order(tab1$NES),]
     
     
-    tab2 <-read.table(myGlobalEnv$location2, header=TRUE, sep="\t")
+    tab2 <-read.table(ENV$location2, header=TRUE, sep="\t")
     
     ##select only signicant pVal 0.01
     tab2 <-tab2[which(tab2$FDR.q.val<FDR),]

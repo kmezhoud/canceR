@@ -31,19 +31,19 @@ dialogSelectFiles_GSEA()
 #  stop("The GSEA.1.0.R file is not found.")
 #}
 
-GSEA.program.location <- paste(path.package("canceR"),"/R/GSEA.1.0.R", sep="")
+GSEA.program.location <- paste(path.package("canceR"),"/extdata/GSEA.1.0.R", sep="")
 #GSEA.program.location <- fname.GSEA   #  R source program (change pathname to the rigth location in local machine)
 source(GSEA.program.location, verbose=TRUE, max.deparse.length=9999)
 
-myGlobalEnv$prefix <- basename(myGlobalEnv$fname.Output)
+ENV$prefix <- basename(ENV$fname.Output)
 
 GSEA(                                                                    # Input/Output Files :-------------------------------------------
- input.ds  = myGlobalEnv$fname.GCT,           # Input gene expression Affy dataset file in RES or GCT format
- input.cls = myGlobalEnv$fname.CLS,           # Input class vector (phenotype) file in CLS format
- gs.db     = myGlobalEnv$fname.GMT,         # Gene set database in GMT format
- output.directory      = myGlobalEnv$fname.Output,        # Directory where to store output and results (default: "")
+ input.ds  = ENV$fname.GCT,           # Input gene expression Affy dataset file in RES or GCT format
+ input.cls = ENV$fname.CLS,           # Input class vector (phenotype) file in CLS format
+ gs.db     = ENV$fname.GMT,         # Gene set database in GMT format
+ output.directory      = ENV$fname.Output,        # Directory where to store output and results (default: "")
 ##  Program parameters :-------------------------------------------------------------------------------------------------------------------------
- doc.string            = myGlobalEnv$prefix,          # Documentation string used as a prefix to name result files (default: "GSEA.analysis")
+ doc.string            = ENV$prefix,          # Documentation string used as a prefix to name result files (default: "GSEA.analysis")
  non.interactive.run   = FALSE,               # Run in interactive (i.e. R GUI) or batch (R command line) mode (default: F)
  reshuffling.type      = "sample.labels", # Type of permutation reshuffling: "sample.labels" or "gene.labels" (default: "sample.labels" 
  nperm                 = 1000,            # Number of random permutations (default: 1000)
@@ -70,7 +70,7 @@ GSEA(                                                                    # Input
 # Overlap and leading gene subset assignment analysis of the GSEA results
 
 GSEA.Analyze.Sets(
-  directory           = myGlobalEnv$fname.Output,        # Directory where to store output and results (default: "")
+  directory           = ENV$fname.Output,        # Directory where to store output and results (default: "")
    topgs = 20,                              # number of top scoring gene sets used for analysis
    non.interactive.run = FALSE,
    height = 16,

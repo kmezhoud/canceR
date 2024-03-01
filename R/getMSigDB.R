@@ -10,26 +10,27 @@
 #'  d <- 7
 #' \dontrun{
 #' setWorkspace()
-#' getMSigDB(eSet = myGlobalEnv$eSetClassifier,k = 1)
+#' getMSigDB(eSet = ENV$eSetClassifier,k = 1)
 #' }
 #' 
 getMSigDB <- function(eSet,k){
      
     ## Selecting GeneList from getGeneList.R or getGenesClasses.R functions.
-    ifExist <- function(obj, env = myGlobalEnv()) {
+    ifExist <- function(obj, env = ENV()) {
         obj <- deparse(substitute(obj))
         if(exists(obj, envir = env)) {
-            myGlobalEnv$GeneList <- rownames(myGlobalEnv$GenesDetails[[k]])
-            myGlobalEnv$GeneListfile <- paste(names(myGlobalEnv$GenesDetails)[k])
-            return(myGlobalEnv$GeneListfile)
+            ENV$GeneList <- rownames(ENV$GenesDetails[[k]])
+            ENV$GeneListfile <- paste(names(ENV$GenesDetails)[k])
+            return(ENV$GeneListfile)
         }
     }
  
-    ifExist(myGlobalEnv$GenesDetails, myGlobalEnv)
+    ifExist(ENV$GenesDetails, ENV)
     
     #list of GO terms (biological processes) acquired from MSigDB
     #http://www.broadinstitute.org/gsea/downloads.jsp
-    mSigDBPath <- tclvalue(tkgetOpenFile(filetypes = "{{GMT Files} {.gmt}} {{All files} *}", title="load MSigDB for Gene Symbol List ")) # Very simple, isn't it?
+    mSigDBPath <- tclvalue(tkgetOpenFile(filetypes = "{{GMT Files} {.gmt}} {{All files} *}",
+                                         title="load MSigDB for Gene Symbol List ")) # Very simple, isn't it?
     if (!nchar(mSigDBPath)) {
         tkmessageBox(message = "No file was selected!")
     } else {
@@ -37,9 +38,9 @@ getMSigDB <- function(eSet,k){
     }
     ##verify if the mSigDB_forGenelist  exists or not If yes skip if no do the remain codes
     ####Changing the gene list file with genes classes
-    mSigDB_SubName <- paste(basename(mSigDBPath), "_",basename(myGlobalEnv$GeneListfile),".RData",sep="")
+    mSigDB_SubName <- paste(basename(mSigDBPath), "_",basename(ENV$GeneListfile),".RData",sep="")
     mSigDB_SubName <- gsub(".txt","", mSigDB_SubName)
-    myGlobalEnv$mSigDB_SubName <- gsub(".gmt","", mSigDB_SubName)
+    ENV$mSigDB_SubName <- gsub(".gmt","", mSigDB_SubName)
     
     #########################
     ####Create a new directory "MSigDB" from MSigDB and All specific MSigDB created
@@ -53,10 +54,10 @@ getMSigDB <- function(eSet,k){
     
     workspace <- getwd()
     setwd("./Results/MSigDB")
-    if(file.exists(myGlobalEnv$mSigDB_SubName)&& exists("mSigDB_forGeneList",envir = myGlobalEnv)){
+    if(file.exists(ENV$mSigDB_SubName)&& exists("mSigDB_forGeneList",envir = ENV)){
         setwd(workspace)
         print("skip getMSigDB: The SubMSigDB existe in /Results/MSigDB folder.")
-        myGlobalEnv$mSigDB_SubName <-myGlobalEnv$mSigDB_SubName
+        ENV$mSigDB_SubName <-ENV$mSigDB_SubName
     } else{
         setwd(workspace)
         print("Getting SubMSigDB for requested eSet and genes list.")
@@ -78,17 +79,17 @@ getMSigDB <- function(eSet,k){
         
         #save the processed gene sets for further use
         #save(mSigDB_forGeneList,file='mSigDB_forGeneList.RData')
-        mSigDB_SubName <-paste(basename(mSigDBPath), "_",basename(myGlobalEnv$GeneListfile),".RData",sep="")
+        mSigDB_SubName <-paste(basename(mSigDBPath), "_",basename(ENV$GeneListfile),".RData",sep="")
         mSigDB_SubName <- gsub(".txt","", mSigDB_SubName)
         mSigDB_SubName <- gsub(".gmt","", mSigDB_SubName)
-        myGlobalEnv$mSigDB_SubName <- mSigDB_SubName
-        myGlobalEnv$mSigDB_forGeneList<-mSigDB_forGeneList
+        ENV$mSigDB_SubName <- mSigDB_SubName
+        ENV$mSigDB_forGeneList<-mSigDB_forGeneList
         
         #assign(mSigDB_SubName,mSigDB_SubName, envir=.GlobalEnv)
         workspace <- getwd()
         setwd("./Results/MSigDB")
         Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)
-        save(mSigDB_forGeneList,file=myGlobalEnv$mSigDB_SubName, envir = myGlobalEnv)
+        save(mSigDB_forGeneList,file=ENV$mSigDB_SubName, envir = ENV)
         setwd(workspace)
     }
 }

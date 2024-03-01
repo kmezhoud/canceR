@@ -157,7 +157,7 @@ tkgrid(ScalemiRNA, cbThrmiRNA)
 tkgrid.configure(cbThrmiRNA,sticky="s",column=1)
 
 ## Mutation frequency frame
-#Mut_Entry  = tclVar(median(myGlobalEnv$Freq_DfMutData))
+#Mut_Entry  = tclVar(median(ENV$Freq_DfMutData))
 Mut_Entry  = tclVar("14")
 frameMut<- tkframe(ttCircos,relief="groove",borderwidth=2)
 tkgrid(tklabel(frameMut, text="Threshold of Mutation Frequency:"))
@@ -168,7 +168,7 @@ cbValThrMut <- tclVar("0")
 cbThrMut <- tkcheckbutton(frameMut)
 tkconfigure(cbThrMut,variable=cbValThrMut, text="")
 
-ScaleMut <- tkscale(frameMut,length=200,from=0,to=max(myGlobalEnv$Freq_DfMutData, na.rm=TRUE),showvalue=TRUE,
+ScaleMut <- tkscale(frameMut,length=200,from=0,to=max(ENV$Freq_DfMutData, na.rm=TRUE),showvalue=TRUE,
                     variable=Mut_Entry,resolution=1,orient='horiz')
 
 tkgrid(ScaleMut, cbThrMut)
@@ -194,7 +194,7 @@ okOn <- function(){
     if(cbValuemiRNA=="1"){miRNA <- 1}else if(cbValuemiRNA=="0"){miRNA <- 0}
     if(cbValueMut=="1"){Mut <- 1}else if(cbValueMut=="0"){Mut <- 0}
     
-    myGlobalEnv$ReturnCBoxCircos <-c(mRNA,CNA,HM450,HM27,RPPA,miRNA,Mut)
+    ENV$ReturnCBoxCircos <-c(mRNA,CNA,HM450,HM27,RPPA,miRNA,Mut)
     
     
     ## CheckBox for Thrshold
@@ -215,7 +215,7 @@ okOn <- function(){
     if(cbvaluemiRNA=="1"){ThrmiRNA <- 1}else if(cbvaluemiRNA=="0"){ThrmiRNA <- 0}
     if(cbvalueMut=="1"){ThrMut <- 1}else if(cbvalueMut=="0"){ThrMut <- 0}
     
-    myGlobalEnv$ReturnCBoxThrCircos <-c(ThrmRNA,ThrCNA,ThrHM450,ThrHM27,ThrRPPA,ThrmiRNA,ThrMut)
+    ENV$ReturnCBoxThrCircos <-c(ThrmRNA,ThrCNA,ThrHM450,ThrHM27,ThrRPPA,ThrmiRNA,ThrMut)
     
     
    #Entry Threshold of mRNA correlation
@@ -239,7 +239,7 @@ okOn <- function(){
     #Entry Threshold of miRNA correlation
     ThreshMut <- as.numeric(tclvalue(Mut_Entry))
     
-    myGlobalEnv$ReturnThreshCircos <-c(ThreshmRNA,ThreshCNA,ThreshHM450,ThreshHM27,ThreshRPPA, ThreshmiRNA,ThreshMut) 
+    ENV$ReturnThreshCircos <-c(ThreshmRNA,ThreshCNA,ThreshHM450,ThreshHM27,ThreshRPPA, ThreshmiRNA,ThreshMut) 
    
     tkdestroy(ttCircos)
 }

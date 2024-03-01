@@ -8,7 +8,7 @@
 #' @examples
 #' readRDS(paste(path.package("canceR"),"/extdata/rdata/prad_michPhenoTest1021.rds", sep=""))
 #' \dontrun{
-#' getPhenoTest(myGlobalEnv$eSet)
+#' getPhenoTest(ENV$eSet)
 #' }
 #' @importFrom phenoTest ExpressionPhenoTest
 #' @importFrom phenoTest getSignif
@@ -21,15 +21,16 @@ getPhenoTest <- function(){
     geteSet()
     
     
-    Biobase::pData(myGlobalEnv$eSet)<- as.data.frame(lapply(Biobase::pData(myGlobalEnv$eSet),function(x) if(is.character(x)|is.factor(x)) gsub("N/A","NA",x,  ignore.case = TRUE) else x))
+    Biobase::pData(ENV$eSet)<- as.data.frame(lapply(Biobase::pData(ENV$eSet),
+                                                    function(x) if(is.character(x)|is.factor(x)) gsub("N/A","NA",x,  ignore.case = TRUE) else x))
     
     
     ##popup select variable
     
-    dialogOptionPhenoTest(myGlobalEnv$eSet)
-    tkwait.window(myGlobalEnv$ttPheno)
+    dialogOptionPhenoTest(ENV$eSet)
+    tkwait.window(ENV$ttPheno)
     
-    if(length(table(Biobase::pData(myGlobalEnv$eSet)[myGlobalEnv$Category]))>4){
+    if(length(table(Biobase::pData(ENV$eSet)[ENV$Category]))>4){
         
         msgBadCategory <- paste("Category variable has more than 4 Levels. Select another category.")
         tkmessageBox(message= msgBadCategory, icon="info")
@@ -37,20 +38,22 @@ getPhenoTest <- function(){
     }
     
     
-    if (inherits(try(epheno <- phenoTest::ExpressionPhenoTest(myGlobalEnv$eSet, myGlobalEnv$var2test, p.adjust.method=myGlobalEnv$p.adjustChoice, approach="frequentist"), silent=TRUE),"try-error"))
+    if (inherits(try(epheno <- phenoTest::ExpressionPhenoTest(ENV$eSet, ENV$var2test,
+                                                              p.adjust.method=ENV$p.adjustChoice, approach="frequentist"), silent=TRUE),"try-error"))
     {
         msgBadCovariables <- paste("There is incompatible variables. Select another Formula.")
         tkmessageBox(message=msgBadCovariables, icon="warning")
         stop(msgBadCovariables)
     } else{         
-        epheno <- phenoTest::ExpressionPhenoTest(myGlobalEnv$eSet, myGlobalEnv$var2test, p.adjust.method=myGlobalEnv$p.adjustChoice, approach="frequentist", continuousCategories= length(table(pData(myGlobalEnv$eSet)[myGlobalEnv$Category])))
+        epheno <- phenoTest::ExpressionPhenoTest(ENV$eSet, ENV$var2test,
+                                                 p.adjust.method=ENV$p.adjustChoice, approach="frequentist", continuousCategories= length(table(pData(ENV$eSet)[ENV$Category])))
         
         
     }
     
     ## add continuousCategories and approach options
-    #epheno <- ExpressionPhenoTest(myGlobalEnv$eSet, var2test, p.adjust.method=p.adjustChoice, continuousCategories= 3)
-    #epheno <- ExpressionPhenoTest(myGlobalEnv$eSet, var2test, p.adjust.method=p.adjustChoice, continuousCategories= 3, approach="frequentist")
+    #epheno <- ExpressionPhenoTest(ENV$eSet, var2test, p.adjust.method=p.adjustChoice, continuousCategories= 3)
+    #epheno <- ExpressionPhenoTest(ENV$eSet, var2test, p.adjust.method=p.adjustChoice, continuousCategories= 3, approach="frequentist")
     
     # ##################################
     ephenoSign<- phenoTest::getSignif(epheno)
@@ -68,8 +71,8 @@ getPhenoTest <- function(){
         
     }
     ## rearange row by Significant pval
-    if(exists("EventTime", envir = myGlobalEnv)){
-        myGlobalEnv$PhenoTestResults <- PhenoTestResults[order(PhenoTestResults[,length(table(pData(myGlobalEnv$eSet)[myGlobalEnv$Category]))]),]
+    if(exists("EventTime", envir = ENV)){
+        ENV$PhenoTestResults <- PhenoTestResults[order(PhenoTestResults[,length(table(pData(ENV$eSet)[ENV$Category]))]),]
     } else{
         PhenoTestResults <- PhenoTestResults[order(PhenoTestResults[,2]),]
     }
@@ -77,20 +80,21 @@ getPhenoTest <- function(){
     PhenoTestResults <-rbind(colnames(PhenoTestResults), PhenoTestResults)
     PhenoTestResults<- cbind(as.character(row.names(PhenoTestResults)), PhenoTestResults)
     
-    Title <- paste(myGlobalEnv$GenProfChoice,"Significant pVal <0.05", sep=":")
+    Title <- paste(ENV$GenProfChoice,"Significant pVal <0.05", sep=":")
     getInTable(PhenoTestResults, Title)
     
     
     
     ### filtering only pVal < 0.05.
-    if(exists("EventTime", envir = myGlobalEnv)){
-        PhenoTestResultsFilter <- subset(PhenoTestResults, PhenoTestResults[,length(table(pData(myGlobalEnv$eSet)[myGlobalEnv$Category]))] <= 0.05)
+    if(exists("EventTime", envir = ENV)){
+        PhenoTestResultsFilter <- subset(PhenoTestResults, 
+                                         PhenoTestResults[,length(table(pData(ENV$eSet)[ENV$Category]))] <= 0.05)
         
     }else{
         PhenoTestResultsFilter <- subset(PhenoTestResults, PhenoTestResults[,3] <= 0.05)
     }
     
-    title<- paste(myGlobalEnv$GenProfChoice," ONLY Significant pVal <0.05", sep=":")
+    title<- paste(ENV$GenProfChoice," ONLY Significant pVal <0.05", sep=":")
     getInTable(PhenoTestResultsFilter, title)
     
      

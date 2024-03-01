@@ -51,20 +51,20 @@ plotModel <- function(plotCommand, title= "TITLE",hscale=1, vscale=1 ){
         tkdestroy(ttplot)
         if (rbVal3=="SVG")
             #tkmessageBox(message=rbVal2)
-            myGlobalEnv$graph<-paste(rbVal3)
+            ENV$graph<-paste(rbVal3)
         if (rbVal3=="JPG")
             #tkmessageBox(message=rbVal2)
-            myGlobalEnv$graph<-paste(rbVal3)
+            ENV$graph<-paste(rbVal3)
         if (rbVal3=="PNG")
             #tkmessageBox(message=rbVal2)
-            myGlobalEnv$graph<-paste(rbVal3)
+            ENV$graph<-paste(rbVal3)
         
         #fileName <- tclvalue(tkgetSaveFile(initialfile = "plot.svg",filetypes = "{{SVG Files} {.svg}} {{JPEG Files} {.jpg .jpeg}} {{PNG Files} {.png}}  {{All files} *}")) 
-        if (myGlobalEnv$graph=="SVG"){
+        if (ENV$graph=="SVG"){
             fileName <- tclvalue(tkgetSaveFile(initialfile = "plot.svg",filetypes = "{{SVG Files} {.svg}}")) 
-        } else if (myGlobalEnv$graph=="JPG"){
+        } else if (ENV$graph=="JPG"){
             fileName <- tclvalue(tkgetSaveFile(initialfile = "plot.jpg",filetypes = "{{JPEG Files} {.jpg .jpeg}}")) 
-        } else if (myGlobalEnv$graph=="PNG"){
+        } else if (ENV$graph=="PNG"){
             fileName <- tclvalue(tkgetSaveFile(initialfile = "plot.png",filetypes = "{{PNG Files} {.png}} ")) 
             
         }
@@ -73,8 +73,8 @@ plotModel <- function(plotCommand, title= "TITLE",hscale=1, vscale=1 ){
         } else {
             tkmessageBox(message = paste("The file selected was", fileName))
         }
-        ##myGlobalEnv$graph file type Option
-        if(myGlobalEnv$graph=="SVG"){
+        ##ENV$graph file type Option
+        if(ENV$graph=="SVG"){
             #library(RSvgDevice) Doesn't work with windows OS
             #RSvgDevice::devSVG(fileName,width = 600 / 300, height = 600 / 300)
             if(Sys.info()['sysname'] != "windows"){
@@ -83,11 +83,11 @@ plotModel <- function(plotCommand, title= "TITLE",hscale=1, vscale=1 ){
             plotCommand()
             graphics.off()
             }
-        } else if (myGlobalEnv$graph=="JPG"){
+        } else if (ENV$graph=="JPG"){
             jpeg(fileName, width=7, height=7,units="in", res=300)
             plotCommand()
             dev.off()
-        } else if (myGlobalEnv$graph=="PNG"){
+        } else if (ENV$graph=="PNG"){
             png(fileName,width=7, height=7,units="in", res=300)
             plotCommand()
             dev.off()

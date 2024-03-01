@@ -10,8 +10,8 @@
 #' readRDS(paste(path.package("canceR"),"/extdata/rdata/Circos.rds", sep=""))
 #' \dontrun{
 #' getListProfData()
-#' getCor_ExpCNAMet(myGlobalEnv$ListProfData$Expression, dimension="mRNA")
-#' head(myGlobalEnv$Cor_Exp)
+#' getCor_ExpCNAMet(ENV$ListProfData$Expression, dimension="mRNA")
+#' head(ENV$Cor_Exp)
 #' }
 #' @import plyr
 #' 
@@ -35,8 +35,8 @@ getCor_ExpCNAMet <- function(ListMatrix, dimension){
         rownames(x) = make.names(x[,1], unique=TRUE)
         ## ordering genes in MutData as in GeneList
         
-        df_GeneList <- as.data.frame(rep(t(myGlobalEnv$GeneList), n))
-        #df_GeneList <- as.data.frame(myGlobalEnv$GeneList)
+        df_GeneList <- as.data.frame(rep(t(ENV$GeneList), n))
+        #df_GeneList <- as.data.frame(ENV$GeneList)
         rownames(df_GeneList) <- make.names(df_GeneList[,1], unique =TRUE)
         
         df_merge <- keeping.order(df_GeneList, merge, y=x, by = "row.names")
@@ -45,20 +45,20 @@ getCor_ExpCNAMet <- function(ListMatrix, dimension){
     }
     
 #     
-#     if(exists("Cor_Exp", envir = myGlobalEnv)){
-#         rm(Cor_Exp, envir=myGlobalEnv)
+#     if(exists("Cor_Exp", envir = ENV)){
+#         rm(Cor_Exp, envir=ENV)
 #         
 #     }    
-#     if(exists("Cor_CNA", envir = myGlobalEnv)){
-#         rm(Cor_CNA, envir=myGlobalEnv)
+#     if(exists("Cor_CNA", envir = ENV)){
+#         rm(Cor_CNA, envir=ENV)
 #         
 #     }   
-#     if(exists("Cor_Met", envir = myGlobalEnv)){
-#         rm(Cor_Met, envir=myGlobalEnv)
+#     if(exists("Cor_Met", envir = ENV)){
+#         rm(Cor_Met, envir=ENV)
 #         
 #     }
-#     if(exists("Cor_RPPA", envir = myGlobalEnv)){
-#         rm("Cor_RPPA", envir=myGlobalEnv)
+#     if(exists("Cor_RPPA", envir = ENV)){
+#         rm("Cor_RPPA", envir=ENV)
 #         
 #     }
 #     
@@ -84,10 +84,10 @@ getCor_ExpCNAMet <- function(ListMatrix, dimension){
     
     ## Define Lists
     
-    #Lchecked_GenProf <- length(myGlobalEnv$curselectGenProfs)
+    #Lchecked_GenProf <- length(ENV$curselectGenProfs)
     #ListProfData <- vector("list", Lchecked_GenProf)
-    #ListProfData$Expression <- myGlobalEnv$ListProfData$Expression
-    #myGlobalEnv$Cor_Met <- vector("list", 2)
+    #ListProfData$Expression <- ENV$ListProfData$Expression
+    #ENV$Cor_Met <- vector("list", 2)
     
     ## Rotate the list of Matrices by 90°
     ListMatrix90 <- getMatrices(c(1:ncol(ListMatrix[[1]])),dataList=ListMatrix)
@@ -115,10 +115,10 @@ getCor_ExpCNAMet <- function(ListMatrix, dimension){
     dimnames(Cor_ArrayMatrix) <- list(names(ListMatrix), names(ListMatrix), colnames(ListMatrix[[1]]))
     
     #################
-    #aaply(Cor_ArrayMatrix, c(3,1), function(x) x[myGlobalEnv$GeneList,,drop=FALSE])
+    #aaply(Cor_ArrayMatrix, c(3,1), function(x) x[ENV$GeneList,,drop=FALSE])
     
-    #ProfData[,(as.factor(myGlobalEnv$GeneList))][1,1:7]
-    #ProfData[,(as.factor(myGlobalEnv$GeneList))][1,1:7]
+    #ProfData[,(as.factor(ENV$GeneList))][1,1:7]
+    #ProfData[,(as.factor(ENV$GeneList))][1,1:7]
     ################
     
     #DF1_CorMatrix <- adply(Cor_ArrayMatrix,1:2)
@@ -128,20 +128,20 @@ getCor_ExpCNAMet <- function(ListMatrix, dimension){
     Cor_DfMatrix[is.na(Cor_DfMatrix)]<-0
     
     ## keeping the order of geneList
-    Cor_DfMatrix <-MergeRowNames(Cor_DfMatrix, length(myGlobalEnv$checked_Studies))
+    Cor_DfMatrix <-MergeRowNames(Cor_DfMatrix, length(ENV$checked_Studies))
 
     if(dimension == "Exp"){
-        myGlobalEnv$Cor_Exp <- Cor_DfMatrix        
+        ENV$Cor_Exp <- Cor_DfMatrix        
     } else if(dimension == "MetHM450") {
-        myGlobalEnv$Cor_Met$HM450 <- Cor_DfMatrix
+        ENV$Cor_Met$HM450 <- Cor_DfMatrix
     } else if (dimension=="MetHM27"){
-        myGlobalEnv$Cor_Met$HM27 <- Cor_DfMatrix
+        ENV$Cor_Met$HM27 <- Cor_DfMatrix
     } else if(dimension == "CNA") {
-        myGlobalEnv$Cor_CNA <- Cor_DfMatrix
+        ENV$Cor_CNA <- Cor_DfMatrix
     } else if(dimension == "RPPA") {
-        myGlobalEnv$Cor_RPPA <- Cor_DfMatrix
+        ENV$Cor_RPPA <- Cor_DfMatrix
         } else if(dimension == "miRNA"){
-            myGlobalEnv$Cor_miRNA <- Cor_DfMatrix
+            ENV$Cor_miRNA <- Cor_DfMatrix
         }
     
     #     ## aggregate only correlation bigger that threshol by rowname

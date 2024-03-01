@@ -21,7 +21,7 @@ Get gene correlation for multiple dimensions.
 readRDS(paste(path.package("canceR"),"/extdata/rdata/Circos.rds", sep=""))
 \dontrun{
 getListProfData()
-getCor_ExpCNAMet(myGlobalEnv$ListProfData$Expression, dimension="mRNA")
-head(myGlobalEnv$Cor_Exp)
+getCor_ExpCNAMet(ENV$ListProfData$Expression, dimension="mRNA")
+head(ENV$Cor_Exp)
 }
 }

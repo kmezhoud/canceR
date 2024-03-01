@@ -22,9 +22,9 @@ getSpecificMut <- function(){
     
     
         
-        Lchecked_Studies <- myGlobalEnv$lchecked_Studies_forCases
-        Lchecked_Cases <- length(myGlobalEnv$curselectCases)
-        Lchecked_GenProf <- length(myGlobalEnv$curselectGenProfs)
+        Lchecked_Studies <- ENV$lchecked_Studies
+        Lchecked_Cases <- length(ENV$curselectCases)
+        Lchecked_GenProf <- length(ENV$curselectGenProfs)
         ###########################################################
         MutData=0
         MutData_All <-NULL
@@ -33,13 +33,26 @@ getSpecificMut <- function(){
         
         for(c in 1:Lchecked_Cases){
             
-            GenProf<-myGlobalEnv$GenProfsRefStudies[myGlobalEnv$curselectGenProfs[c]]
-            Case<- myGlobalEnv$CasesRefStudies[myGlobalEnv$curselectCases[c]]
-            MutData <- getMutationData(myGlobalEnv$cgds,Case, GenProf, myGlobalEnv$GeneList)
+            GenProf <- ENV$GenProfsRefStudies[ENV$curselectGenProfs[c]]
+            Study_id <- ENV$CasesRefStudies[ENV$curselectCases[c]]
+            
+            MutData <- getDataByGenes(
+                api = ENV$cgds,
+                studyId = Study_id,
+                genes = ENV$GeneList,
+                by = "hugoGeneSymbol",
+                molecularProfileIds = GenProf) |>
+                unname() |>
+                as.data.frame() |>
+                select(-c("uniqueSampleKey", "uniquePatientKey", "molecularProfileId", "sampleId", "studyId"))
             
             if(length(MutData[,1])==0){
-                msgNoMutData=paste("No Mutation Data are Available for\n", myGlobalEnv$CasesStudies[myGlobalEnv$curselectCases[c]+1])
-                tkmessageBox(message=msgNoMutData, title= paste(myGlobalEnv$StudyRefCase[c],myGlobalEnv$CasesStudies[myGlobalEnv$curselectCases[c]+1], myGlobalEnv$GenProfsStudies[myGlobalEnv$curselectCases[c]+1], sep=": "))
+                msgNoMutData=paste("No Mutation Data are Available for\n", 
+                                   ENV$CasesStudies[ENV$curselectCases[c]+1])
+                tkmessageBox(message=msgNoMutData, 
+                             title= paste(ENV$StudyRefCase[c],
+                             ENV$CasesStudies[ENV$curselectCases[c]+1], 
+                             ENV$GenProfsStudies[ENV$curselectCases[c]+1], sep=": "))
                 
                 
             } else{

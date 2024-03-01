@@ -4,7 +4,10 @@
 \alias{testCheckedCaseGenProf}
 \title{Testing checked appropriate Cases for appropriate Genetic profiles.}
 \usage{
-testCheckedCaseGenProf()
+testCheckedCaseGenProf(singleGene=0)
+}
+\arguments{
+\item{singleGene}{specify if the check for querying genetic profile for a specific gene or not (0,1).}
 }
 \value{
 dialog box with warning message
@@ -15,6 +18,6 @@ Testing checked appropriate Cases for appropriate Genetic profiles.
 \examples{
 readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
 \dontrun{
-testCheckedCaseGenProf()
+testCheckedCaseGenProf(singleGene=0)
 }
 }

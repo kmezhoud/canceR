@@ -10,18 +10,19 @@
 getClinicalDataMatrix <- function(){
  
     Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)
-    if(exists("ClinicalDataMatrixfile", envir = myGlobalEnv)){
-        rm(myGlobalEnv$ClinicalDataMatrixfile)
+    if(exists("ClinicalDataMatrixfile", envir = ENV)){
+        rm(ENV$ClinicalDataMatrixfile)
     }
-    myGlobalEnv$ClinicalDataMatrixfile <- tclvalue(tkgetOpenFile(filetypes = "{{txt Files} {.txt}} {{All files} *}", title="Choose Gene Expression Matrix from File")) 
+    ENV$ClinicalDataMatrixfile <- tclvalue(tkgetOpenFile(filetypes = "{{txt Files} {.txt}} {{All files} *}", 
+                                                         title="Choose Gene Expression Matrix from File")) 
     
-    if (!nchar(myGlobalEnv$ClinicalDataMatrixfile)) {
+    if (!nchar(ENV$ClinicalDataMatrixfile)) {
         tkmessageBox(message = "No file was selected!")
     } else {
         Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)
-        myGlobalEnv$ClinicalData<-read.table(myGlobalEnv$ClinicalDataMatrixfile)
+        ENV$ClinicalData<-read.table(ENV$ClinicalDataMatrixfile)
        
-        tkmessageBox(message = paste("The file selected was", myGlobalEnv$ClinicalDataMatrixfile))
+        tkmessageBox(message = paste("The file selected was", ENV$ClinicalDataMatrixfile))
         tkfocus(ttMain)
     }
     

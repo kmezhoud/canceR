@@ -18,13 +18,13 @@
 #'}
 #'
 getGeneListFromMSigDB <- function(){
-    if(exists("GeneListMSigDB", envir = myGlobalEnv)){
-        rm("GeneListMSigDB", envir = myGlobalEnv)
-        rm("GeneList", envir = myGlobalEnv)
+    if(exists("GeneListMSigDB", envir = ENV)){
+        rm("GeneListMSigDB", envir = ENV)
+        rm("GeneList", envir = ENV)
     }
     
     getMSigDBfile()
-    MSigDB <- myGlobalEnv$mSigDB
+    MSigDB <- ENV$mSigDB
     
     #split each line at the tabs
     MSigDB<-strsplit(MSigDB,'\t')
@@ -52,7 +52,7 @@ getGeneListFromMSigDB <- function(){
     #            "POSITIVE_REGULATION_OF_CELL_ADHESION"
     #            )
     dialoggetGeneListMSigDB(MSigDB)
-    regex <- myGlobalEnv$regex
+    regex <- ENV$regex
     
     SubMSigDB <- 0
     for( i in 1:length(regex)){
@@ -81,6 +81,6 @@ getGeneListFromMSigDB <- function(){
     GeneListMSigDB <- cbind(rnames, GeneListMSigDB)
     rownames(GeneListMSigDB) <- NULL
     colnames(GeneListMSigDB) <- c("GeneSet","Gene")
-    myGlobalEnv$GeneListMSigDB <- GeneListMSigDB
-    myGlobalEnv$GeneList <- t(as.character(GeneListMSigDB[,2]))
+    ENV$GeneListMSigDB <- GeneListMSigDB
+    ENV$GeneList <- t(as.character(GeneListMSigDB[,2]))
 }

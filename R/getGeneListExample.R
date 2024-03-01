@@ -3,7 +3,7 @@
 #' @return Gene list path of file
 #' @export
 #' @examples
-#' myGlobalEnv <- new.env(parent = emptyenv())
+#' ENV <- new.env(parent = emptyenv())
 #' \dontrun{
 #' getGeneListExample() 
 #' }
@@ -16,9 +16,9 @@ getGeneListExample <- function(){
             rm(list = obj, envir = env)
         }
     }
-    ifrm(myGlobalEnv$GeneList)
-    ifrm(myGlobalEnv$GeneListfile)
-    ifrm(myGlobalEnv$fname.GeneList)
+    ifrm(ENV$GeneList)
+    ifrm(ENV$GeneListfile)
+    ifrm(ENV$fname.GeneList)
     
     
     police <- tkfont.create(family="arial", size=10)
@@ -52,7 +52,7 @@ getGeneListExample <- function(){
         lcurselectGeneList <- length(curselectGeneList)
         
         fname.GeneList <-  list.files(paste(path.package("canceR"),"/extdata/GeneList", sep=""))[curselectGeneList]
-        myGlobalEnv$GeneListfile <- paste(path.package("canceR"),"/extdata/GeneList/", fname.GeneList,sep="")
+        ENV$GeneListfile <- paste(path.package("canceR"),"/extdata/GeneList/", fname.GeneList,sep="")
         if (lcurselectGeneList ==0){
             msgSelectGeneList<-"Select Gene list"
             tkmessageBox(message=msgSelectGeneList)
@@ -60,8 +60,8 @@ getGeneListExample <- function(){
             tkdelete(tl1info,0,1)
             tkinsert(tl1info,"end",fname.GeneList)
             Sys.chmod(getwd(), mode = "0777", use_umask = TRUE)
-            GeneList<-unique(read.table(myGlobalEnv$GeneListfile))
-            myGlobalEnv$GeneList <- t(GeneList)
+            GeneList<-unique(read.table(ENV$GeneListfile))
+            ENV$GeneList <- t(GeneList)
             tkmessageBox(message = paste("The file selected is", basename(fname.GeneList),"with", length(t(GeneList))," genes"),icon="info")
             tkfocus(ttGeneList)
             tkdestroy(ttGeneList)

@@ -27,5 +27,4 @@ row2 <- c("A", "B", "C")
 row3 <- rbind.na(row1, row2)
 }
 
-
 }

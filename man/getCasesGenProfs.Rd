@@ -13,10 +13,17 @@ This function is run by the "Get Cases and Genetic Profiles for selected Studies
 get Cases and Genetic Profiles of selected Studies.
 }
 \examples{
-##Load Session
-readRDS(paste(path.package("canceR"),"/extdata/rdata/brca_tcga73genes.rds", sep=""))
-## load Cases and Genetic Profiles 
+cgds <- cBioPortal(
+hostname = "www.cbioportal.org",
+protocol = "https",
+api = "/api/v2/api-docs"
+)
 \dontrun{
-getCasesGenProfs()
+getDataByGenes( api =  cgds,
+studyId = "gbm_tcga_pub",
+genes = c("NF1", "TP53", "ABL1"),
+by = "hugoGeneSymbol",
+molecularProfileIds = "gbm_tcga_pub_mrna"
+)
 }
 }

@@ -22,19 +22,19 @@ setWorkspace <- function(){
     
     getWorkspace <- function(){
         tkfocus(ttWorkspace)
-        if(exists("path_workspace", envir = myGlobalEnv)){
+        if(exists("path_workspace", envir = ENV)){
             tkdelete(tlWorkspace,0,1)
         }
-        myGlobalEnv$path_workspace <- tk_choose.dir()
+        ENV$path_workspace <- tk_choose.dir()
         
-        if(!file.exists(myGlobalEnv$path_workspace)){
-            Sys.chmod(dirname(myGlobalEnv$path_workspace), mode = "0777", use_umask = TRUE)
-            dir.create(file.path(myGlobalEnv$path_workspace), showWarnings = FALSE)
+        if(!file.exists(ENV$path_workspace)){
+            Sys.chmod(dirname(ENV$path_workspace), mode = "0777", use_umask = TRUE)
+            dir.create(file.path(ENV$path_workspace), showWarnings = FALSE)
             
         }
         
         
-        tkinsert(tlWorkspace,"end",myGlobalEnv$path_workspace)
+        tkinsert(tlWorkspace,"end",ENV$path_workspace)
         tkfocus(ttWorkspace)
     }
     
@@ -53,10 +53,10 @@ setWorkspace <- function(){
         if(exists("pathResultsFolder")){
             tkdelete(tlResults,0,1)
         }
-        pathResultsFolder <- paste(myGlobalEnv$path_workspace, "/Results/", sep="")
+        pathResultsFolder <- paste(ENV$path_workspace, "/Results/", sep="")
         
         if(!file.exists(pathResultsFolder)){
-            Sys.chmod(dirname(myGlobalEnv$path_workspace), mode = "0777", use_umask = TRUE)
+            Sys.chmod(dirname(ENV$path_workspace), mode = "0777", use_umask = TRUE)
             dir.create(file.path(pathResultsFolder), showWarnings = FALSE)
             dir.create(file.path(paste(pathResultsFolder,"ProfileData",sep="")), showWarnings = FALSE)
             dir.create(file.path(paste(pathResultsFolder,"GSEAlm",sep="")), showWarnings = FALSE)
@@ -84,11 +84,11 @@ setWorkspace <- function(){
             tkdelete(tlMSigDB,0,1)
         }
         
-        pathMSigDBFolder <- paste(myGlobalEnv$path_workspace, "/Results/MSigDB/", sep="")
+        pathMSigDBFolder <- paste(ENV$path_workspace, "/Results/MSigDB/", sep="")
         
         
         if(!file.exists(pathMSigDBFolder)){
-            Sys.chmod(dirname(myGlobalEnv$path_workspace), mode = "0777", use_umask = TRUE)
+            Sys.chmod(dirname(ENV$path_workspace), mode = "0777", use_umask = TRUE)
             dir.create(file.path(pathMSigDBFolder), showWarnings = FALSE)
             
         }
@@ -115,11 +115,11 @@ setWorkspace <- function(){
             tkdelete(tlgct_cls,0,1)
         }
         
-        pathgct_clsFolder <- paste(myGlobalEnv$path_workspace, "/Results/gct_cls/", sep="")
+        pathgct_clsFolder <- paste(ENV$path_workspace, "/Results/gct_cls/", sep="")
         
         
         if(!file.exists(pathgct_clsFolder)){
-            Sys.chmod(dirname(myGlobalEnv$path_workspace), mode = "0777", use_umask = TRUE)
+            Sys.chmod(dirname(ENV$path_workspace), mode = "0777", use_umask = TRUE)
             dir.create(file.path(pathgct_clsFolder), showWarnings = FALSE)
             
         }
@@ -137,7 +137,7 @@ setWorkspace <- function(){
     ##
     OK <- function(){
         
-        setwd(myGlobalEnv$path_workspace)
+        setwd(ENV$path_workspace)
         tkdestroy(ttWorkspace)
     }
     
